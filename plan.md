@@ -8,6 +8,10 @@
 ## Winter semester
 
 * **Week 1**
+  * Figure out what technologies to use.
+  * Research ad targeting and profiling.
+  * Explore different approaches/architectures.
+  * Meet with supervisor.
 * **Week 2**
 * **Week 3**
 * **Week 4**
