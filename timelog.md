@@ -11,3 +11,8 @@
 
 * *1 hour* Gathering of requirements from project description and setting up github repository
 * *0.5 hour* Coming up with a plan for week 1
+
+### 30 Sep 2020
+
+* *1 hour* Researching different full stack web development technologies 
+* *1 hour* Reading documentation and watching videos for developing with the PERN stack (postgresql, express, react, node)
