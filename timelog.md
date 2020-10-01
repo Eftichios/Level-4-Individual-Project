@@ -16,3 +16,8 @@
 
 * *1 hour* Researching different full stack web development technologies 
 * *1 hour* Reading documentation and watching videos for developing with the PERN stack (postgresql, express, react, node)
+
+### 01 Oct 2020
+
+* *1 hour* Reading about ad targeting and profiling
+* *1 hour* Trying different strategies to see specific ads, no success 
