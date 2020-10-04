@@ -21,3 +21,15 @@
 
 * *1 hour* Reading about ad targeting and profiling
 * *1 hour* Trying different strategies to see specific ads, no success 
+
+### 02 Oct 2020
+
+* *0.5 hour* Supervisor meeting
+
+### 03 Oct 2020
+
+* *1 hour* Reading research papers
+
+### 03 Oct 2020
+
+* *2 hours* Reading research papers
