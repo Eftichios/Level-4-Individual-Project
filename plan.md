@@ -13,6 +13,10 @@
   * Explore different approaches/architectures.
   * Meet with supervisor.
 * **Week 2**
+  * Finish reading research papers.
+  * Explore blacklight(A Real-Time Website Privacy Inspector) and Facebook API.
+  * Start designing a minumum viable product.
+  * Meet with supervisor.
 * **Week 3**
 * **Week 4**
 * **Week 5**
