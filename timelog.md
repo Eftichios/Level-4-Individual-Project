@@ -30,6 +30,11 @@
 
 * *1 hour* Reading research papers
 
-### 03 Oct 2020
+### 04 Oct 2020
 
 * *2 hours* Reading research papers
+
+### 05 Oct 2020
+
+* *0.5 hour* Coming up with a plan for week 2 and looking at different approaches.
+* *0.5 hour* Trying to get tracker data from explore Blacklight(A Real-Time Website Privacy Inspector) using http requests.
