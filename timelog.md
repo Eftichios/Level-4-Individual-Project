@@ -28,13 +28,20 @@
 
 ### 03 Oct 2020
 
-* *1 hour* Reading research papers
+* *1 hour* Reading research papers (DOI: https://doi.org/10.1007/11551201_21)
 
 ### 04 Oct 2020
 
-* *2 hours* Reading research papers
+* *2 hours* Reading research papers(DOI: https://doi.org/10.1145/1124772.1124835, https://doi.org/10.1145/1013115.1013149)
+
+## Week 2
 
 ### 05 Oct 2020
 
 * *0.5 hour* Coming up with a plan for week 2 and looking at different approaches.
-* *0.5 hour* Trying to get tracker data from explore Blacklight(A Real-Time Website Privacy Inspector) using http requests.
+* *0.5 hour* Trying to get tracker data from Blacklight(A Real-Time Website Privacy Inspector) using http requests.
+
+### 06 Oct 2020
+
+* *1 hour* Reading research papers (DOI: https://doi.org/10.1145/3290605.3300508)
+* *1 hour* Finding information on ad tracking, cookies and headless browsers
