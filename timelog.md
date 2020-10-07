@@ -45,3 +45,7 @@
 
 * *1 hour* Reading research papers (DOI: https://doi.org/10.1145/3290605.3300508)
 * *1 hour* Finding information on ad tracking, cookies and headless browsers
+
+### 07 Oct 2020
+
+* *1 hour* Watching videos on multiplayer game development with javascript (using socket.io)
