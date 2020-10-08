@@ -49,3 +49,7 @@
 ### 07 Oct 2020
 
 * *1 hour* Watching videos on multiplayer game development with javascript (using socket.io)
+
+### 08 Oct 2020
+
+* *3 hours* Reading research papers (DOI: https://doi.org/10.1145/2362364.2362371, https://doi.org/10.1177/1461444820924631)
