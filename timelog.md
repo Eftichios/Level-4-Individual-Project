@@ -53,3 +53,10 @@
 ### 08 Oct 2020
 
 * *3 hours* Reading research papers (DOI: https://doi.org/10.1145/2362364.2362371, https://doi.org/10.1177/1461444820924631)
+
+### 09 Oct 2020
+
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+* *0.5 hour* Looking at blacklight's source code on github
+
