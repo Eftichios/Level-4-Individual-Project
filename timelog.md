@@ -60,3 +60,8 @@
 * *0.5 hour* Supervisor meeting
 * *0.5 hour* Looking at blacklight's source code on github
 
+### 10 Oct 2020
+
+* *1 hour* Looking at blacklight's source code on github
+* *1 hour* Playing around with javascript and the Puppeteer library
+
