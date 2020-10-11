@@ -65,3 +65,9 @@
 * *1 hour* Looking at blacklight's source code on github
 * *1 hour* Playing around with javascript and the Puppeteer library
 
+### 11 Oct 2020
+
+* *0.5 hour* Reading article (https://themarkup.org/blacklight/2020/09/22/how-we-built-a-real-time-privacy-inspector)
+* *1 hour* Building blacklight locally and playing with code
+* *1 hour* Installing Postgresql and starting React project for learning purposes
+
