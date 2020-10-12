@@ -71,3 +71,10 @@
 * *1 hour* Building blacklight locally and playing with code
 * *1 hour* Installing Postgresql and starting React project for learning purposes
 
+## Week 3
+
+### 05 Oct 2020
+
+* *0.5 hour* Coming up with a plan for week 3 and looking at different approaches.
+* *1 hour* Learning React and Node
+
