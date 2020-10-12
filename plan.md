@@ -18,6 +18,9 @@
   * Start designing a minumum viable product.
   * Meet with supervisor.
 * **Week 3**
+  * Use a reference manager to organise paper summaries
+  * Explore technical feasibility
+  * Meet with supervisor
 * **Week 4**
 * **Week 5**
 * **Week 6**
