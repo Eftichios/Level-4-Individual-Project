@@ -73,8 +73,12 @@
 
 ## Week 3
 
-### 05 Oct 2020
+### 12 Oct 2020
 
 * *0.5 hour* Coming up with a plan for week 3 and looking at different approaches.
 * *1 hour* Learning React and Node
+
+### 13 Oct 2020
+
+* *2 hours* Organising papers in a reference manager (Mendeley) and adding summaries
 
