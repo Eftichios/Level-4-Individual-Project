@@ -82,3 +82,7 @@
 
 * *2 hours* Organising papers in a reference manager (Mendeley) and adding summaries
 
+### 14 Oct 2020
+
+* *2 hours* Exploring technical feasibility (Facebook Graph API or Javascript Puppeteer)
+
