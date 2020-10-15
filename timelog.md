@@ -86,3 +86,7 @@
 
 * *2 hours* Exploring technical feasibility (Facebook Graph API or Javascript Puppeteer)
 
+### 15 Oct 2020
+
+* *2 hours* Exploring technical feasibility (Javascript Puppeteer and DOM manipulation)
+
