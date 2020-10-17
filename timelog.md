@@ -90,3 +90,12 @@
 
 * *2 hours* Exploring technical feasibility (Javascript Puppeteer and DOM manipulation)
 
+### 16 Oct 2020
+
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 17 Oct 2020
+* *1 hour* Coming up with ideas for two designs
+* *1 hour* Exploring technical feasibility (Facebook account creation and web scraping)
+
