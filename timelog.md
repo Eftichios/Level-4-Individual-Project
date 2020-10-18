@@ -99,3 +99,7 @@
 * *1 hour* Coming up with ideas for two designs
 * *1 hour* Exploring technical feasibility (Facebook account creation and web scraping)
 
+### 18 Oct 2020
+* *0.5 hour* Reading article (https://techcrunch.com/2020/10/16/iab-europes-ad-tracking-consent-framework-found-to-fail-gdpr-standard/)
+* *2 hours* Working on first design (Figma wireframes) 
+
