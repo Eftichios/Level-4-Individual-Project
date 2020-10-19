@@ -22,6 +22,10 @@
   * Explore technical feasibility
   * Meet with supervisor
 * **Week 4**
+  * Create two different low detail designs for evaluation
+  * Evaluate the designs
+  * User Stories/Scenarios
+  * Meet with supervisor
 * **Week 5**
 * **Week 6**
 * **Week 7**
