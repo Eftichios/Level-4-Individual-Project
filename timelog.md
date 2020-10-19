@@ -103,3 +103,12 @@
 * *0.5 hour* Reading article (https://techcrunch.com/2020/10/16/iab-europes-ad-tracking-consent-framework-found-to-fail-gdpr-standard/)
 * *2 hours* Working on first design (Figma wireframes) 
 
+## Week 4
+
+### 19 Oct 2020
+
+* *0.5 hour* Coming up with a plan for week 4.
+* *1 hour* Working on first design.
+* *1 hour* Working on second design.
+
+
