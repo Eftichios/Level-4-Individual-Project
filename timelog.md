@@ -111,4 +111,11 @@
 * *1 hour* Working on first design.
 * *1 hour* Working on second design.
 
+### 20 Oct 2020
+
+* *0.5 hour* Watching web scraping video. 
+* *1.5 hours* Trying to scrape ads out of Facebook by looking at DOM (somewhat succesful)
+* *1 hour* Working on Design 1
+
+
 
