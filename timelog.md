@@ -122,5 +122,10 @@
 * *2 hours* Organising and adding information in github wiki. 
 * *1.5 hours* Working on designs. 
 
+### 22 Oct 2020
+
+* *2.5 hours* Working on designs. 
+* *1 hours* Creating survey for evaluation of designs. 
+
 
 
