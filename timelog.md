@@ -117,5 +117,10 @@
 * *1.5 hours* Trying to scrape ads out of Facebook by looking at DOM (somewhat succesful)
 * *1 hour* Working on Design 1
 
+### 21 Oct 2020
+
+* *2 hours* Organising and adding information in github wiki. 
+* *1.5 hours* Working on designs. 
+
 
 
