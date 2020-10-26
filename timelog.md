@@ -127,5 +127,27 @@
 * *2.5 hours* Working on designs. 
 * *1 hours* Creating survey for evaluation of designs. 
 
+### 23 Oct 2020
+
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+* *1 hour* Looking at web proxies 
+
+### 24 Oct 2020
+
+* *1 hour* Exploring technical feasibility 
+
+### 25 Oct 2020
+
+* *0.5 hour* Refining survey
+
+### 26 Oct 2020
+
+* *0.5 hour* Coming up with a plan for week 5.
+* *1 hour* Adding information in the Github wiki.
+* *1 hour* Creating new Facebook account and exploring different aspects of the game.
+
+ 
+
 
 
