@@ -27,6 +27,11 @@
   * User Stories/Scenarios
   * Meet with supervisor
 * **Week 5**
+  * Explore different aspects of the game manually
+  * Analyse survey results (when available)
+  * Look at Facebook categories on a fresh account
+  * Read about web proxies
+  * Meet with supervisor
 * **Week 6**
 * **Week 7**
 * **Week 8**
