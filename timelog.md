@@ -141,11 +141,20 @@
 
 * *0.5 hour* Refining survey
 
+## Week 4
+
 ### 26 Oct 2020
 
 * *0.5 hour* Coming up with a plan for week 5.
 * *1 hour* Adding information in the Github wiki.
 * *1 hour* Creating new Facebook account and exploring different aspects of the game.
+
+### 27 Oct 2020
+
+* *0.5 hour* Trying to figure out why Facebook is not profiling the new account.
+* *1.5 hour* Setting up a simple web server to try to listen to browser requests.
+
+
 
  
 
