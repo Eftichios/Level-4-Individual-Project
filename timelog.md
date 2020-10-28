@@ -141,7 +141,7 @@
 
 * *0.5 hour* Refining survey
 
-## Week 4
+## Week 5
 
 ### 26 Oct 2020
 
@@ -153,6 +153,11 @@
 
 * *0.5 hour* Trying to figure out why Facebook is not profiling the new account.
 * *1.5 hour* Setting up a simple web server to try to listen to browser requests.
+
+### 28 Oct 2020
+
+* *1 hour* Looking at survey results and adding an evaluation of them on wiki.
+* *1 hour* Looking at puppeteer, web proxies and chrome extensions to find a way to monitor network requests.
 
 
 
