@@ -159,8 +159,9 @@
 * *1 hour* Looking at survey results and adding an evaluation of them on wiki.
 * *1 hour* Looking at puppeteer, web proxies and chrome extensions to find a way to monitor network requests.
 
+### 29 Oct 2020
 
-
+* *2.5 hours* Trying different approaches for setting up a web proxy
  
 
 
