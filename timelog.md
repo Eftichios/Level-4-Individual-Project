@@ -162,6 +162,16 @@
 ### 29 Oct 2020
 
 * *2.5 hours* Trying different approaches for setting up a web proxy
+
+### 30 Oct 2020
+
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 31 Oct 2020
+
+* *1.5 hours* Creating user stories (github wiki)
+* *2.5 hour* Creating issues in github and adding them to a board
  
 
 
