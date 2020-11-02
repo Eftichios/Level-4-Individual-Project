@@ -177,6 +177,13 @@
 
 * *0.5 hour* Looking at github actions for future CI/CD
 * *0.5 hour* Watching a video on deploying a PERN app to Heroku
+
+## Week 5
+
+### 02 Nov 2020
+
+* *0.5 hour* Coming up with a plan for week 6.
+* *0.5 hour* Adding information in the Github wiki.
  
 
 
