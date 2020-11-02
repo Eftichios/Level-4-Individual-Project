@@ -172,6 +172,11 @@
 
 * *1.5 hours* Creating user stories (github wiki)
 * *2.5 hour* Creating issues in github and adding them to a board
+
+### 01 Nov 2020
+
+* *0.5 hour* Looking at github actions for future CI/CD
+* *0.5 hour* Watching a video on deploying a PERN app to Heroku
  
 
 
