@@ -33,6 +33,10 @@
   * Read about web proxies
   * Meet with supervisor
 * **Week 6**
+  * Look at automation for creating Facebook accounts
+  * Keep looking at Facebook categories on a fresh account
+  * Start development (User stories and React architecture diagram)
+  * Meet with supervisor
 * **Week 7**
 * **Week 8**
 * **Week 9**
