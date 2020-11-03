@@ -184,6 +184,11 @@
 
 * *0.5 hour* Coming up with a plan for week 6.
 * *0.5 hour* Adding information in the Github wiki.
+
+### 03 Nov 2020
+
+* *1 hour* Creating a React component diagram.
+* *0.5 hour* Adding information in the Github wiki.
  
 
 
