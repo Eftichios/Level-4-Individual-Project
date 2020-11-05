@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import './App.css';
+import {Register} from './Components/Authentication/Register';
+import {Route, Switch, Link } from 'react-router-dom';
+import Navigation from "./Components/Navigation";
 
 function App() {
   
@@ -15,7 +18,14 @@ function App() {
   }
   
   return (
-    <div><button className="btn btn-success mt-2" onClick={getMessage}>Submit</button><p>{descr}</p></div>
+    <div>
+      <Navigation />
+      <main>
+        <Switch>
+          <Route path="/register" component={Register} />
+        </Switch>
+      </main>
+    </div>
   );
 }
 
