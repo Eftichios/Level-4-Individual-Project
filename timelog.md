@@ -190,6 +190,10 @@
 * *1 hour* Creating a React component diagram.
 * *0.5 hour* Adding information in the Github wiki.
  
+### 04 Nov 2020
+
+* *1 hour* Coming up with an alternative strategy if no technical solutions are found.
+* *1.5 hours* Creating a skeleton of the web application.
 
 
 
