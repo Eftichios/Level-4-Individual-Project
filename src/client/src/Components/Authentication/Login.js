@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../index.css"
 
-export class Register extends React.Component {
+export class Login extends React.Component {
 
     constructor(props){
         super(props);
@@ -11,7 +11,7 @@ export class Register extends React.Component {
         return <div className="pb-2 card container">
         <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
-        <h3>Register for an account</h3>
+        <h3>Login</h3>
           <form className="col-12">
             <div className="form-group">
               <label htmlFor="usernameInput">Username</label>
@@ -21,13 +21,9 @@ export class Register extends React.Component {
               <label htmlFor="passwordInput">Password</label>
               <input type="text" className="form-control" id="passwordInput" placeholder="Password" />
             </div>
-            <div className="form-group">
-              <label htmlFor="passwordInputConfirm">Confirm password</label>
-              <input type="text" className="form-control" id="passwordInputConfirm" placeholder="Confirm Password" />
-            </div>
             <div class="text-center">
-            <button className="constSize btn btn-primary">Register</button>
-            <button className="constSize btn orange ml-2">Login</button>
+            <button className="constSize btn btn-primary">Login</button>
+            <button className="constSize btn orange ml-2">Register</button>
             </div>
           </form>   
         </div>
@@ -36,4 +32,4 @@ export class Register extends React.Component {
     }
 }
 
-export default Register;
+export default Login;
