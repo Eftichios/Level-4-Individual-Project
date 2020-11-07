@@ -178,7 +178,7 @@
 * *0.5 hour* Looking at github actions for future CI/CD
 * *0.5 hour* Watching a video on deploying a PERN app to Heroku
 
-## Week 5
+## Week 6
 
 ### 02 Nov 2020
 
@@ -194,6 +194,21 @@
 
 * *1 hour* Coming up with an alternative strategy if no technical solutions are found.
 * *1.5 hours* Creating a skeleton of the web application.
+
+### 05 Nov 2020
+
+* *1 hour* Looking at chrome extensions.
+* *1 hours* Working on the register and login pages.
+
+### 06 Nov 2020
+
+* *0.5 hour* Preparing for supervisor meeting.
+* *0.5 hour* Supervisor meeting.
+
+### 07 Nov 2020
+
+* *1 hour* Looking at HAR files and playing around with Puppeteer.
+* *1.5 hours* Working on dashboard view (Front-end).
 
 
 
