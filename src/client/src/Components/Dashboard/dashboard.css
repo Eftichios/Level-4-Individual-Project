@@ -1,0 +1,9 @@
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 25%;
+}
+
+.not-full {
+    width: 80%;
+}
