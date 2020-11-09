@@ -38,6 +38,11 @@
   * Start development (User stories and React architecture diagram)
   * Meet with supervisor
 * **Week 7**
+  * Continue development
+  * Read about current developments and issues in targeted advertising
+  * Explore what data there is on ad tracking servers (name, location?)
+  * Think about game modes involving ad trackers instead of adverts
+  * Meet with supervisor
 * **Week 8**
 * **Week 9**
 * **Week 10**
