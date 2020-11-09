@@ -210,5 +210,10 @@
 * *1 hour* Looking at HAR files and playing around with Puppeteer.
 * *1.5 hours* Working on dashboard view (Front-end).
 
+### 08 Nov 2020
+
+* *1 hour* Trying to match urls from Har file with list of known trackers.
+* *1.5 hours* Developing the web app (lobby and dashboard components).
+
 
 
