@@ -1,0 +1,25 @@
+.player-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.chat {
+    width:50%;
+    height: 200px;
+}
+
+.display {
+    height: 85%;
+}
+
+.vote {
+    width: 10%;
+}
+
+.send {
+    position: absolute;
+    right:    0;
+    bottom:   0;
+}

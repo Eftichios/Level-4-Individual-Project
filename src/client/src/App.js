@@ -5,6 +5,7 @@ import {Login} from './Components/Authentication/Login';
 import {Route, Switch } from 'react-router-dom';
 import Navigation from "./Components/Navigation";
 import Dashboard from "./Components/Dashboard/Dashboard"
+import Lobby from "./Components/Lobby/Lobby";
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/lobby" component={Lobby} />
         </Switch>
       </main>
       </div>
