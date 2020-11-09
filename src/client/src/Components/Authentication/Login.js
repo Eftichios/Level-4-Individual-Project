@@ -8,7 +8,7 @@ export class Login extends React.Component {
     }
 
     render(){
-        return <div className="pb-2 card container">
+        return <div className="pb-2 container">
         <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
         <h3>Login</h3>
