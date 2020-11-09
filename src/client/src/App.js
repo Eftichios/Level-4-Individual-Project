@@ -9,8 +9,12 @@ import Dashboard from "./Components/Dashboard/Dashboard"
 function App() {
   
   return (
-    <div>
+    <div className="row">
+      <div className="col-md-2">
       <Navigation />
+      </div>
+      <div className="col-md-8 mt-4 card">
+      <div className="card-body">
       <main>
         <Switch>
           <Route path="/register" component={Register} />
@@ -18,6 +22,8 @@ function App() {
           <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </main>
+      </div>
+      </div>
     </div>
   );
 }
