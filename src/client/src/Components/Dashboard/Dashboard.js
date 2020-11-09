@@ -22,10 +22,11 @@ export class Dashboard extends React.Component {
                 <div className="col-md-6">
                     <DashPlay name={this.state.name} rank={this.state.rank}></DashPlay>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 vertical">
                     <DashSettings></DashSettings>
                 </div>
             </div>
+            <hr />
             <div className="row mt-4">
                 <div className="col-md-6">
                     <DashAchieve></DashAchieve>

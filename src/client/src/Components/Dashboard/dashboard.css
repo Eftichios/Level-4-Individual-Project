@@ -7,3 +7,12 @@
 .not-full {
     width: 80%;
 }
+
+.vertical {
+    border-left:1px solid rgb(139, 139, 139);
+    height:350px
+}
+
+hr {
+    background-color: rgb(139, 139, 139);
+}
