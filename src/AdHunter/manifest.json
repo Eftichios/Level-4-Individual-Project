@@ -1,0 +1,10 @@
+{
+    "name": "Ad Hunter", 
+    "description": "Counts how many ad trackers there are on a page",
+    "manifest_version": 2,
+    "version": "1.0", 
+    "background": {
+        "scripts": ["blocked.js", "adhunt.js"]
+    },
+    "permissions": ["webRequest", "webRequestBlocking", "http://*/", "https://*/"]
+}
