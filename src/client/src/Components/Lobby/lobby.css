@@ -19,7 +19,18 @@
 }
 
 .send {
-    position: absolute;
-    right:    0;
-    bottom:   0;
+    float: right;
+}
+
+.pad-img {
+    padding: 1% 1% 1% 1%;
+    margin: 3% 3% 3% 3%;
+}
+
+.left-imgs{
+    align-items: left;
+}
+
+.right-imgs{
+    align-items: right;
 }

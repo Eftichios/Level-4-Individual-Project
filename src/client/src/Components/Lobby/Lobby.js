@@ -18,13 +18,32 @@ export class Lobby extends React.Component {
             <div className="row">
                 <div className="col-md-8">
                     <div className="row">
-                        <div className="col-md-5 card">
-                            <div className="card-body">VOTE</div>
+                        <div className="col-md-4 card">
+                            <div className="card-body">
+                                <h3 className="text-center">Vote</h3>
+                                <div className="row">
+                                    <div className="col-md-5 pad-img left-imgs">
+                                        <img src="https://via.placeholder.com/100" alt="category 1"/>
+                                    </div>
+                                    <div className="col-md-5 pad-img right-imgs">
+                                        <img src="https://via.placeholder.com/100" alt="category 2" />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-5 pad-img left-imgs">
+                                        <img src="https://via.placeholder.com/100" alt="category 3" />
+                                    </div>
+                                    <div className="col-md-5 pad-img right-imgs">
+                                        <img src="https://via.placeholder.com/100" alt="category 4" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div className="col-md-1"></div>
                         <div className="col-md-7 text-center card">
                             <div className="card-body">
                                 <span>PLAYERS</span>
-                                <table class="table table-borderless">
+                                <table className="table table-borderless">
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -68,7 +87,7 @@ export class Lobby extends React.Component {
             <div className="text-center mb-4 mt-2">
                 <strong>Wating for players to get ready...</strong>
             </div>
-            <div class="text-center">
+            <div className="text-center">
                 <button disabled="true" className="btn btn-primary constSize">Start Game</button>
             </div>
         </div>
