@@ -215,5 +215,19 @@
 * *1 hour* Trying to match urls from Har file with list of known trackers.
 * *1.5 hours* Developing the web app (lobby and dashboard components).
 
+## Week 7
+
+### 09 Nov 2020
+
+* *0.5 hour* Coming up with a plan for week 7.
+* *1 hour* Adding information in the Github wiki and thinking about strategies.
+
+### 10 Nov 2020
+
+* *0.5 hour* Exploring ad blockers and chrome extensions.
+* *1 hour* Building a very basic Chrome Extension that blocks ads and ad trackers.
+* *1 hour* Developing the web app (lobby component).
+
+
 
 
