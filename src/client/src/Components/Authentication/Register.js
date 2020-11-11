@@ -25,7 +25,7 @@ export class Register extends React.Component {
               <label htmlFor="passwordInputConfirm">Confirm password</label>
               <input type="text" className="form-control" id="passwordInputConfirm" placeholder="Confirm Password" />
             </div>
-            <div class="text-center">
+            <div className="text-center">
             <button className="constSize btn btn-primary">Register</button>
             <button className="constSize btn orange ml-2">Login</button>
             </div>
