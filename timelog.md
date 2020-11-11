@@ -228,6 +228,11 @@
 * *1 hour* Building a very basic Chrome Extension that blocks ads and ad trackers.
 * *1 hour* Developing the web app (lobby component).
 
+### 11 Nov 2020
+
+* *0.5 hour* Set up communication between server and extension (REST API).
+* *2 hours* Trying to extract meaningful data out of urls (name and location)
+
 
 
 
