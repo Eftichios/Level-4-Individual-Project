@@ -6,5 +6,5 @@
     "background": {
         "scripts": ["blocked.js", "adhunt.js"]
     },
-    "permissions": ["webRequest", "webRequestBlocking", "http://*/", "https://*/"]
+    "permissions": ["webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost:5000/"]
 }
