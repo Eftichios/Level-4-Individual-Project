@@ -4,7 +4,15 @@
     "manifest_version": 2,
     "version": "1.0", 
     "background": {
-        "scripts": ["blocked.js", "adhunt.js"]
+        "scripts": ["background.js", "blocked.js", "adhunt.js"],
+        "persistent": true
     },
-    "permissions": ["webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost:5000/"]
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {"256":"images/icon256.png"}
+    },
+    "icons": {
+        "256": "images/icon256.png"
+    },
+    "permissions": ["activeTab", "declarativeContent", "storage", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost:5000/"]
 }
