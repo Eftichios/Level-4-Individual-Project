@@ -233,6 +233,10 @@
 * *0.5 hour* Set up communication between server and extension (REST API).
 * *2 hours* Trying to extract meaningful data out of urls (name and location)
 
+### 12 Nov 2020
+
+* *3.5 hour* Building an interface for the extension and adding functionality for displaying total ads and ads on a certain page.
+
 
 
 
