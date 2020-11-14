@@ -1,4 +1,4 @@
-chrome.webRequest.onBeforeRequest.addListener(
+chrome.webRequest.onCompleted.addListener(
     function(details) {
         //console.log("Block: ", details)
                 
