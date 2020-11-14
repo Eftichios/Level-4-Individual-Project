@@ -237,6 +237,15 @@
 
 * *3.5 hour* Building an interface for the extension and adding functionality for displaying total ads and ads on a certain page.
 
+### 13 Nov 2020
+
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 14 Nov 2020
+
+* *2 hours* Developing the web app (Summary, Leadboard, extension)
+
 
 
 
