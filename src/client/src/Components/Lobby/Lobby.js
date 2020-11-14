@@ -10,7 +10,27 @@ export class Lobby extends React.Component {
 
     constructor(props){
         super(props);
+
+        
+        class Messages {
+            
+            constructor(player, msg, date  ){
+
+                this.player = player;
+                this.msg = msg;
+                this.date = date;
+            }
+        }
+
+        this.msgs_data = [new Messages("George","Hey everyone!", new Date()), 
+                    new Messages("Jacob","Hello!", new Date()), 
+                    new Messages("Larry","Yoo, have fun guys!", new Date()), 
+                    new Messages("George","Thanks man, you too!", new Date()), 
+                    new Messages("Jacob","Good luck :)", new Date())]
+        
+        this.msgs = this.msgs_data.map((msg)=><p><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
     }
+    
 
     render(){
         return <div>
@@ -43,6 +63,7 @@ export class Lobby extends React.Component {
                         <div className="col-md-7 text-center card">
                             <div className="card-body">
                                 <span>PLAYERS</span>
+                                <div className="table-wrapper-scroll-y scrollbar">
                                 <table className="table table-borderless">
                                     <thead>
                                         <tr>
@@ -69,6 +90,7 @@ export class Lobby extends React.Component {
                                         </tr>
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,7 +104,7 @@ export class Lobby extends React.Component {
                 </div>
             </div>
             <div className="row mt-4">
-                <LobbyChat user="George"></LobbyChat>
+                <LobbyChat msgs={this.msgs} user="George"></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
                 <strong>Wating for players to get ready...</strong>

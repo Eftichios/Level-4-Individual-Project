@@ -7,33 +7,17 @@ export class LobbyChat extends React.Component {
         super(props);
 
         this.state = {
-            user: props.user
+            user: props.user,
+            msgs: props.msgs
         }
 
-        class Messages {
-            
-            constructor(player, msg, date  ){
-
-                this.player = player;
-                this.msg = msg;
-                this.date = date;
-            }
-        }
-
-        this.msgs_data = [new Messages("George","Hey everyone!", new Date()), 
-                    new Messages("Jacob","Hello!", new Date()), 
-                    new Messages("Larry","Yoo, have fun guys!", new Date()), 
-                    new Messages("George","Thanks man, you too!", new Date()), 
-                    new Messages("Jacob","Good luck :)", new Date())]
-        
-        this.msgs = this.msgs_data.map((msg)=><p><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
     }
 
     render () {
         return <div className="card chat">
             <div className="card-body ">
                 <div className="mb-1 overflow-auto display">
-                    {this.msgs}
+                    {this.state.msgs}
                     </div>
                 <div className="row">
                 <div className="input-group">
