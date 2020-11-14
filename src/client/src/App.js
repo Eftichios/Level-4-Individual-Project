@@ -6,6 +6,7 @@ import {Route, Switch } from 'react-router-dom';
 import Navigation from "./Components/Navigation";
 import Dashboard from "./Components/Dashboard/Dashboard"
 import Lobby from "./Components/Lobby/Lobby";
+import Summary from "./Components/Summary/Summary";
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/lobby" component={Lobby} />
+          <Route path="/summary" component={Summary} />
         </Switch>
       </main>
       </div>

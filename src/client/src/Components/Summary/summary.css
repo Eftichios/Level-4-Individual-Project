@@ -1,0 +1,46 @@
+.player-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.chat {
+    width:50%;
+    height: 200px;
+}
+
+.display {
+    height: 85%;
+}
+
+.vote {
+    width: 10%;
+}
+
+.send {
+    float: right;
+}
+
+.pad-img {
+    padding: 1% 1% 1% 1%;
+    margin: 3% 3% 3% 3%;
+}
+
+.left-imgs{
+    align-items: left;
+}
+
+.right-imgs{
+    align-items: right;
+}
+
+.scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
