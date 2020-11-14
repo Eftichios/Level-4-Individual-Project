@@ -10,11 +10,11 @@ import Lobby from "./Components/Lobby/Lobby";
 function App() {
   
   return (
-    <div className="row">
+    <div className="row full">
       <div className="col-md-2">
       <Navigation />
       </div>
-      <div className="col-md-8 mt-4 card">
+      <div className="col-md-8 mt-4 card card-main">
       <div className="card-body">
       <main>
         <Switch>
