@@ -2,6 +2,7 @@ import React from 'react';
 import "../../index.css";
 import "./dashboard.css";
 import profile from "../../Media/profile.jpeg";
+import DashLead from './DashLead';
 
 export class DashPlay extends React.Component {
 
@@ -20,8 +21,8 @@ export class DashPlay extends React.Component {
                 <div className="p-1">Player: {this.state.name}</div>
                 <div className="p-1">Rank: {this.state.rank}</div>
                 <div className="p-1"><button className="constSize btn btn-primary">Play Game</button></div>
-                <div className="p-1"><button className="constSize btn orange">View Leaderboards</button></div>
-                <div className="p-1"><button className="constSize btn btn-secondary">Game Mode</button></div>
+                <div className="p-1"><DashLead user="George"></DashLead></div>
+                <div className="p-1"><button className="constSize btn btn-secondary" >Game Mode</button></div>
                </div>
     }
 

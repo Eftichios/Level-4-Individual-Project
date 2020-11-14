@@ -25,7 +25,7 @@ export class LobbyChat extends React.Component {
                     <div className="input-group-append">
                         <button className="btn btn-secondary" type="button">Send</button>
                     </div>
-                    </div>
+                </div>
                 </div>
             </div>
 
