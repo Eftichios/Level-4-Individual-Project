@@ -27,11 +27,14 @@ app.get("/index", async(req, res)=>{
     res.send("Server says hi!");
 })
 
+// Receives details of a network request
+// Finds the name and location of the organisation that owns the server
 app.post('/extension', function (req, res) {
     res.send('POST request to the extensions');
     var url = req.body.url;
     var hostname = (new URL(url)).hostname;
 
+    // format the hostname
     if (hostname.startsWith("www.")) {
         hostname = hostname.substring(4, hostname.length)
     } else {
@@ -39,7 +42,7 @@ app.post('/extension', function (req, res) {
     }
     
 
-    //console.log(req.body);
+    // Look through our directory of Domains for potential matches
     if (!unique_hosts.includes(hostname)){
         unique_hosts.push(hostname);
         var all_locations = [];
@@ -50,7 +53,7 @@ app.post('/extension', function (req, res) {
                 all_locations.push(codes[countries[i]])
                 owner = domain.owner.name;
             } catch (err) {
-                //console.log("NOT FOUND");
+                console.log("NOT FOUND");
             }   
         }   
         var origin = all_locations.length>0? all_locations.toString() : "Unknown";

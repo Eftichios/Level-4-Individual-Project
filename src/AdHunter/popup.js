@@ -1,16 +1,9 @@
-let changeColor = document.getElementById('changeColor');
-let totalAdsNumber = 0;
-
+// get total ads from storage and display it in our popup
 chrome.storage.sync.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;
 });
 
-
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
+// Find the active tab and set the number of page ad trackers
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   var tab_id = tab[0].id.toString();
   chrome.storage.sync.get([tab_id], function(data) {
@@ -18,6 +11,9 @@ chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   });
 });
 
+// Every time a value changes in our storage we listen to it
+// We check if the values that have changed are any of the total ads or page ads
+// We update the html accordingly
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
     var tab_id = tab[0].id.toString();
@@ -39,11 +35,3 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
   });
 });
 
-changeColor.onclick = function(element) {
-    let color = element.target.value;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.executeScript(
-          tabs[0].id,
-          {code: 'document.body.style.backgroundColor = "' + color + '";'});
-    });
-  };
