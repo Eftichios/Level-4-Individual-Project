@@ -44,6 +44,10 @@
   * Think about game modes involving ad trackers instead of adverts
   * Meet with supervisor
 * **Week 8**
+  * Continue development
+  * Try to get more ad tracker data to play with
+  * Create different game designs for evaluation
+  * Meet with supervisor
 * **Week 9**
 * **Week 10**
 * **Week 11 [PROJECT WEEK]**

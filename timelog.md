@@ -246,6 +246,23 @@
 
 * *2 hours* Developing the web app (Summary, Leadboard, extension)
 
+### 15 Nov 2020
+
+* *1 hour* Trying to get advert images from network requests
+* *1 hour* Debugging and fixing errors with the chrome extension
+
+## Week 8
+
+### 16 Nov 2020
+* *1 hour* Working on game-play designs
+
+### 17 Nov 2020
+* *2 hours* Working on game-play designs
+
+### 18 Nov 2020
+* *3 hours* Working on game-play designs
+
+
 
 
 
