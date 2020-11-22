@@ -254,14 +254,28 @@
 ## Week 8
 
 ### 16 Nov 2020
-* *1 hour* Working on game-play designs
+* *1 hour* Working on game-play designs (Game Design 1)
 
 ### 17 Nov 2020
-* *2 hours* Working on game-play designs
+* *2 hours* Working on game-play designs (Game Design 1 and 2)
 
 ### 18 Nov 2020
-* *3 hours* Working on game-play designs
+* *3 hours* Working on game-play designs (Game Design 2 and 3)
 
+### 18 Nov 2020
+* *3 hours* Working on game-play designs (Game Design 2 and 3)
+
+### 19 Nov 2020
+* *1 hour* Working on game-play designs (Game Design 3)
+* *1.5 hours* Creating survey for game design evaluation
+
+### 20 Nov 2020
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 21 Nov 2020
+* *0.5 hour* Adding information on the github wiki
+* *2 hours* Refining game-play designs and survey
 
 
 
