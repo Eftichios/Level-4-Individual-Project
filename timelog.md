@@ -280,6 +280,9 @@
 ### 22 Nov 2020
 * *1 hour* Starting database design (Entities and relationships)
 
+## Week 9
 
+### 23 Nov 2020
+* *1.5 hours* Trying to parse DOM for adverts
 
 
