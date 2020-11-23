@@ -277,6 +277,9 @@
 * *0.5 hour* Adding information on the github wiki
 * *2 hours* Refining game-play designs and survey
 
+### 22 Nov 2020
+* *1 hour* Starting database design (Entities and relationships)
+
 
 
 
