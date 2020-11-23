@@ -49,6 +49,11 @@
   * Create different game designs for evaluation
   * Meet with supervisor
 * **Week 9**
+  * Continue development
+  * Evaluate game designs
+  * Try to categorise adverts
+  * Start database design
+  * Meet with supervisor
 * **Week 10**
 * **Week 11 [PROJECT WEEK]**
 * **Week 12 [PROJECT WEEK]** Status report submitted.
