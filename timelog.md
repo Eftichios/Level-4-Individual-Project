@@ -285,4 +285,7 @@
 ### 23 Nov 2020
 * *1.5 hours* Trying to parse DOM for adverts
 
+### 24 Nov 2020
+* *1 hour* Getting redirect links of adverts and looking for apis to classify them (no success, none of them is free to use)
+* *1 hour* Designing ER Diagram 
 
