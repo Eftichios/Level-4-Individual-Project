@@ -289,3 +289,10 @@
 * *1 hour* Getting redirect links of adverts and looking for apis to classify them (no success, none of them is free to use)
 * *1 hour* Designing ER Diagram 
 
+### 25 Nov 2020
+* *1.5 hours* Finalising initial version of an ER Diagram
+
+### 26 Nov 2020
+* *1.5 hours* Evaluating survey for game modes and adding information on github wiki
+* *0.5 hour* Finding information on url classification
+
