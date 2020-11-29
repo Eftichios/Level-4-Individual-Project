@@ -23,6 +23,17 @@ const codes = {
     US: "United States" 
 }
 
+//ROUTES//
+
+//register and login routes
+
+app.use("/auth", require("./routes/jwtAuth"));
+
+//dashboard route
+app.use("/dashboard", require("./routes/dashboard"));
+
+//other routes
+
 app.get("/index", async(req, res)=>{
     res.send("Server says hi!");
 })
