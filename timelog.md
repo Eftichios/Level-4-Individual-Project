@@ -296,3 +296,14 @@
 * *1.5 hours* Evaluating survey for game modes and adding information on github wiki
 * *0.5 hour* Finding information on url classification
 
+### 27 Nov 2020
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 28 Nov 2020
+* Break from project to finish deadlines 
+
+### 29 Nov 2020
+* *2 hours* Backend authorization and authentication using jwt 
+
+
