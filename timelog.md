@@ -306,4 +306,10 @@
 ### 29 Nov 2020
 * *2 hours* Backend authorization and authentication using jwt 
 
+### 30 Nov 2020
+* Break from project to finish deadlines 
+
+### 01 Dec 2020
+* *2.5 hours* Working on front-end authorization and authentication
+
 
