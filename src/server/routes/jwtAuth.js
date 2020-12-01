@@ -14,7 +14,7 @@ router.post("/register", validInfo, async (req,res)=>{
         // check if user exists (throw error in this case)
         const user = await pool.query("SELECT * FROM users WHERE user_name=$1",[name]);
         if (user.rows.length !== 0){
-            return res.status(401).send("User with that user name already exists")
+            return res.status(401).json("User with that user name already exists")
         }
 
         // Bcrypt the password
@@ -34,7 +34,7 @@ router.post("/register", validInfo, async (req,res)=>{
 
     } catch (err){
         console.error(err.message)
-        res.status(500).send("Server Error");
+        res.status(500).json("Server Error");
     }
 })
 
@@ -67,7 +67,7 @@ router.post("/login", validInfo,  async (req,res)=>{
 
     } catch (err){
         console.error(err.message);
-        res.status(500).send("Server Error")
+        res.status(500).json("Server Error")
     }
 })
 
