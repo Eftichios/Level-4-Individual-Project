@@ -15,7 +15,7 @@ export class DashAchieve extends React.Component {
     render(){
         return <div className="d-flex flex-column align-items-center">
         <h3>Achievements</h3>
-        <table class="table text-center not-full">
+        <table className="table text-center not-full">
             <thead>
                 <tr>
                     <th scope="col">#</th>

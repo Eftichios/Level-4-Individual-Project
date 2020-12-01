@@ -1,10 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import "../../index.css"
 
 export class Register extends React.Component {
 
     constructor(props){
         super(props);
+
+        this.state = {
+          name: "",
+          password: "",
+          confirm_password: ""
+        }
+        
+        this.setAuth = props.setAuth;
+    }
+
+    onChange = e => {
+      this.setState({[e.target.name]: e.target.value});
+    };
+
+    onSubmitForm = async (e) => {
+      e.preventDefault();
+      
+      try {
+        const response = await fetch("http://localhost:5000/auth/register", {
+          method:"POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({"name": this.state.name, "password": this.state.password})
+        });
+
+        const parseRes = await response.json();
+        
+        if (parseRes.token){
+          localStorage.setItem("token", parseRes.token);
+          this.setAuth(true)
+          toast.success("Registered succesfully!")
+        } else {
+          this.setAuth(false)
+          toast.error(parseRes);
+        }
+
+
+
+      } catch (err){
+        console.error(err.message)
+      }
+      
     }
 
     render(){
@@ -12,22 +55,22 @@ export class Register extends React.Component {
         <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
         <h3>Register for an account</h3>
-          <form className="col-12">
+          <form className="col-12" onSubmit={this.onSubmitForm}>
             <div className="form-group">
               <label htmlFor="usernameInput">Username</label>
-              <input type="text" className="form-control" id="usernameInput" placeholder="Username" />
+              <input name="name" type="text" className="form-control" id="usernameInput" placeholder="Username" value={this.state.name} onChange={(e)=>this.onChange(e)} />
             </div>
             <div className="form-group">
               <label htmlFor="passwordInput">Password</label>
-              <input type="text" className="form-control" id="passwordInput" placeholder="Password" />
+              <input name="password" type="password" className="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={(e)=>this.onChange(e)} />
             </div>
             <div className="form-group">
               <label htmlFor="passwordInputConfirm">Confirm password</label>
-              <input type="text" className="form-control" id="passwordInputConfirm" placeholder="Confirm Password" />
+              <input name="confirm_password" type="password" className="form-control" id="passwordInputConfirm" placeholder="Confirm Password" value={this.state.confirm_password} onChange={(e)=>this.onChange(e)} />
             </div>
             <div className="text-center">
-            <button className="constSize btn btn-primary">Register</button>
-            <button className="constSize btn orange ml-2">Login</button>
+              <button value="submit" className="constSize btn btn-primary">Register</button>
+              <Link to="/login"><button className="constSize btn orange ml-2">Login</button></Link>
             </div>
           </form>   
         </div>

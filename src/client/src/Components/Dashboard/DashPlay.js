@@ -10,8 +10,8 @@ export class DashPlay extends React.Component {
         super(props);
 
         this.state = {
-            name: this.props.name,
-            rank: this.props.rank
+            name: props.name,
+            rank: props.rank
         };
     }
 

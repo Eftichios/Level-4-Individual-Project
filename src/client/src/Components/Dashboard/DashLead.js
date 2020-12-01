@@ -42,7 +42,7 @@ export class DashLead extends React.Component {
     render(){
         return <div>
                 <div className="p-1"><button className="constSize btn orange" data-toggle="modal" data-target="#leaderboard">View Leaderboards</button></div>
-                <div className="modal fade" id="leaderboard" tabindex="-1" role="dialog" aria-labelledby="leaderboardLabel" aria-hidden="true">
+                <div className="modal fade" id="leaderboard" tabIndex="-1" role="dialog" aria-labelledby="leaderboardLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                     <div className="modal-header">

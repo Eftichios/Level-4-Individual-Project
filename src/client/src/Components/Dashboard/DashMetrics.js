@@ -13,12 +13,12 @@ export class DashMetrics extends React.Component {
     render(){
         return <div className="row">
             <div className="col-md-6">
-                <div class="card text-center">
+                <div className="card text-center">
                     <h3>Metrics</h3>
                 </div>
             </div>
             <div className="col-md-6">
-                <div class="card mr-2 text-center">
+                <div className="card mr-2 text-center">
                     <h3>Game History</h3>
                 </div>
             </div>
