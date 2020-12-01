@@ -2,3 +2,4 @@ database.sql
 db.js
 node_modules
 Domains
+.env
