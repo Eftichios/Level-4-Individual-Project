@@ -55,6 +55,8 @@
   * Start database design
   * Meet with supervisor
 * **Week 10**
+  * Continue development
+  * Break from project to finish deadlines for other courses
 * **Week 11 [PROJECT WEEK]**
 * **Week 12 [PROJECT WEEK]** Status report submitted.
 
