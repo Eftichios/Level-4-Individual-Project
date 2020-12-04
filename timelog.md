@@ -309,7 +309,18 @@
 ### 30 Nov 2020
 * Break from project to finish deadlines 
 
+## Week 10
+
 ### 01 Dec 2020
-* *2.5 hours* Working on front-end authorization and authentication
+* Break from project to finish deadlines
+
+### 02 Dec 2020
+* Break from project to finish deadlines
+
+### 03 Dec 2020
+* Break from project to finish deadlines
+
+### 04 Dec 2020
+* Break from project to finish deadlines
 
 
