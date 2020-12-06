@@ -262,9 +262,6 @@
 ### 18 Nov 2020
 * *3 hours* Working on game-play designs (Game Design 2 and 3)
 
-### 18 Nov 2020
-* *3 hours* Working on game-play designs (Game Design 2 and 3)
-
 ### 19 Nov 2020
 * *1 hour* Working on game-play designs (Game Design 3)
 * *1.5 hours* Creating survey for game design evaluation
@@ -306,10 +303,10 @@
 ### 29 Nov 2020
 * *2 hours* Backend authorization and authentication using jwt 
 
+## Week 10
+
 ### 30 Nov 2020
 * Break from project to finish deadlines 
-
-## Week 10
 
 ### 01 Dec 2020
 * Break from project to finish deadlines
@@ -322,5 +319,13 @@
 
 ### 04 Dec 2020
 * Break from project to finish deadlines
+
+### 05 Dec 2020
+* *1 hour* Researching for best approaches for a lobby system
+* *1 hour* Starting development of the lobby system
+
+### 06 Dec 2020
+* *0.5 hour* Adding information to github wiki and adding issues to project
+* *1.5 hours* Writing the sql commands for creating the database and the appropriate tables
 
 
