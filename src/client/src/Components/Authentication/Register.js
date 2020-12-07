@@ -11,7 +11,8 @@ export class Register extends React.Component {
         this.state = {
           name: "",
           password: "",
-          confirm_password: ""
+          confirm_password: "",
+          owns_plugin: true
         }
         
         this.setAuth = props.setAuth;
@@ -19,6 +20,7 @@ export class Register extends React.Component {
 
     onChange = e => {
       this.setState({[e.target.name]: e.target.value});
+      console.log(e.target.name, e.target.value);
     };
 
     onSubmitForm = async (e) => {
@@ -28,7 +30,7 @@ export class Register extends React.Component {
         const response = await fetch("http://localhost:5000/auth/register", {
           method:"POST",
           headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({"name": this.state.name, "password": this.state.password})
+          body: JSON.stringify({"name": this.state.name, "password": this.state.password, "owns_plugin": this.state.owns_plugin})
         });
 
         const parseRes = await response.json();
@@ -67,6 +69,13 @@ export class Register extends React.Component {
             <div className="form-group">
               <label htmlFor="passwordInputConfirm">Confirm password</label>
               <input name="confirm_password" type="password" className="form-control" id="passwordInputConfirm" placeholder="Confirm Password" value={this.state.confirm_password} onChange={(e)=>this.onChange(e)} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="ownsPluginInput">Do you have the chrome extension installed?</label>
+              <select className="form-control" name="owns_plugin" id="ownsPluginInput" onChange={(e)=>this.onChange(e)}>
+                <option value={true}>Yes</option>
+                <option value={false}>No</option>
+              </select>
             </div>
             <div className="text-center">
               <button value="submit" className="constSize btn btn-primary">Register</button>
