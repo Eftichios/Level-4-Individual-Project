@@ -10,8 +10,7 @@ app.use(express.json());
 
 // define all routes, loaded from the corresponding files
 const routes = {
-    authentication: require('./routes/jwtAuth'),
-    dashboard: require('./routes/dashboard')
+    users: require('./routes/users')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
@@ -22,6 +21,12 @@ function makeHandlerAwareOfAsyncErrors(handler) {
 		} catch (error) {
 			next(error);
 		}
+	};
+}
+
+for (const [routeName, routeController] of Object.entries(routes)) {
+	if (routeController.getAll) {
+		app.get(`/api/${routeName}`, makeHandlerAwareOfAsyncErrors(routeController.getAll))
 	};
 }
 
