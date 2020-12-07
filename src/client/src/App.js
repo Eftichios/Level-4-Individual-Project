@@ -30,7 +30,7 @@ function App() {
 
       const parseRes = await response.json();
 
-      parseRes === true? setIsAuthenticated(true): setIsAuthenticated(false);
+      parseRes === true? setAuth(true): setAuth(false);
 
     } catch (err){
       console.error(err.message);
@@ -42,12 +42,10 @@ function App() {
   })
 
   return (
-    <div className="row full">
-      <div className="col-md-2">
-      <Navigation />
-      </div>
-      <div className="col-md-8 mt-4 card card-main">
+    <div className="d-flex justify-content-center">
+      <div className="mt-4 card card-main">
       <div className="card-body">
+      <input type="hidden" autofocus={true} /> {/* Put this here to remove autofocus */}
       <Router>
         <Switch>
           <Route path="/register" render={props => !isAuthenticated? <Register {...props} setAuth={setAuth} />:

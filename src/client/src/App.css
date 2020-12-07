@@ -8,6 +8,9 @@ html, body {
 
 .card-main {
     height: 85%;
+    width: 85%;
+    background: rgb(0,148,255);
+    background: linear-gradient(180deg, rgba(0,148,255,0.09) 38%, rgba(248,150,3,0.38) 100%);
 }
 
 .full {
