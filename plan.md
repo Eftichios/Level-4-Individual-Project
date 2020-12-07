@@ -58,6 +58,11 @@
   * Continue development
   * Break from project to finish deadlines for other courses
 * **Week 11 [PROJECT WEEK]**
+  * Set up database with dummy data
+  * User authentication/authorization for web app and extension
+  * Lobby system
+  * Add functionality to various pages
+  * Meet with supervisor
 * **Week 12 [PROJECT WEEK]** Status report submitted.
 
 ## Winter break
