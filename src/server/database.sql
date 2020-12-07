@@ -80,7 +80,7 @@ CREATE TABLE game_history(
 CREATE TABLE market(
     trade_id SERIAL PRIMARY KEY NOT NULL,
     player_1_id int REFERENCES users(user_id) NOT NULL,
-    player_2_id int REFERENCES users(user_id) NOT NULL,
+    player_2_id int REFERENCES users(user_id),
     offering_organisation_id int REFERENCES organisations(organisation_id), 
     offerred_organisation_id int REFERENCES organisations(organisation_id),
     active boolean NOT NULL,
@@ -94,9 +94,84 @@ CREATE TABLE market(
    For example, if a table has a foreign key referencing some row in another table, 
    that row must exist or else we get a constraint error 
    
-   Insert data for the user test_user that already exists in the database by registering*/
+   Insert data for the user with the user name 'test_user' that already exists in the database by registering
+*/
+
+/* 1. Insert dummy data for an organisation */
+INSERT INTO organisations(
+    organisation_name, 
+    organisation_location, 
+    organisation_description, 
+    points, 
+    rarity)
+VALUES ('Google', 'USA', 'A tech company', 10, 'very common');
+
+/* 2. Insert dummy data for an achievement */
+INSERT INTO achievements(
+    difficulty,
+    title,
+    game_mode,
+    achievement_description)
+VALUES ('easy', 'Catch me if you can [I]', 'race', 'Play 10 games of race game mode');
+
+/* 3. Insert dummy data for user_metrics for user with user id 6 (test_user) */
+INSERT INTO user_metrics(
+    user_id,
+    race_games,
+    category_games,
+    total_ad_trackers,
+    categories_count
+)
+VALUES (6, 0, 0, 0, {0,0,0,0,0}); /* for now the array will contain counts only for 5 categories */
+
+/* 4. Insert dummy data for user_achievements for user with user id 6 (test_user) */
+INSERT INTO user_achievements(
+    user_id,
+    achievement_id,
+    date_completed,
+    completed
+)
+VALUES (6, 1, NULL, false);
+
+/* 5. Insert dummy data for user_organisations for user with user id 6 (test_user) */
+INSERT INTO user_organisations(
+    user_id,
+    organisation_id,
+    times_found,
+    date_found_first,
+    found_url,
+    acquired_from
+)
+VALUES (6, 1, 0, NULL, NULL, NULL);
+
+/* 6. Insert dummy data for game_history table for a game of type race*/
+INSERT INTO game_history(
+    winner_id,
+    game_mode,
+    game_date,
+    player_stats,
+    game_stats
+)
+VALUES (6, 'race', '2020-12-07', 
+        '{"test_user" : {"page_history":[{"www.example.com": 20,
+                                    "www.another-example.com": 15,
+                                    "www.lots-of-trackers.com": 65}],
+                   "total_score": 100 }}',
+        '{"time_elapsed" : 13.12,
+          "winners": {"1st":"test_user", "2nd":"None", "3rd":"None"},
+          "ad_trackers_required": 100,}');
 
 
-
-
+/* 7. Insert dummy data into the market table */
+INSERT INTO market(
+    player_1_id,
+    player_2_id,
+    offering_organisation_id,
+    offerred_organisation_id,
+    active,
+    date_started,
+    date_finished,
+    offered
+)
+VALUES (6, NULL, 1, NULL, true, '2020-12-07', NULL, false);
 
