@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../../index.css";
+import "../../App.css"
 import {toast} from 'react-toastify';
 
 export class Login extends React.Component {
@@ -49,7 +50,7 @@ export class Login extends React.Component {
     }
 
     render(){
-        return <div className="pb-2 container">
+        return <div className="loader-middle pb-2 container">
         <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
         <h3>Login</h3>
@@ -64,7 +65,7 @@ export class Login extends React.Component {
             </div>
             <div className="text-center">
               <button value="submit" className="constSize btn btn-primary">Login</button>
-              <Link to="/register"><button className="constSize btn orange ml-2">Register</button></Link>
+              <Link to="/register"><button className="constSize btn orange">Register</button></Link>
             </div>
           </form>   
         </div>

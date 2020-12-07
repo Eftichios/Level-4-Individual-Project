@@ -55,23 +55,21 @@ export class App extends React.Component {
     }
 
     return (
-      <div className="d-flex justify-content-center">
-        <div className="mt-4 card card-main">
-        <div className="card-body">
-        <input type="hidden" autoFocus={true} /> {/* Put this here to remove autofocus */}
-        <Router>
-          <Switch>
-            <Route path="/register" render={props => !this.state.isAuthenticated? <Register {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
-            <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
-            <Route path="/dashboard" render={props => this.state.isAuthenticated? <Dashboard {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
-            <Route path="/lobby" render={props => this.state.isAuthenticated? <Lobby {...props} setAuth={this.setAuth} />:<Redirect to="/login"/>} />
-            <Route path="/summary" render={props => this.state.isAuthenticated? <Summary {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
-            <Route path="/test" render={props => this.state.isAuthenticated? <h3>AUTHENTICATED</h3>:<h3>NOT AUTHENTICATED</h3>} />
-          </Switch>
-        </Router>
+        <div className="linear-background d-flex justify-content-center fill-height">
+          <div className="mt-4 container fill-height">
+          <input type="hidden" autoFocus={true} /> {/* Put this here to remove autofocus */}
+          <Router>
+            <Switch>
+              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
+              <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
+              <Route path="/dashboard" render={props => this.state.isAuthenticated? <Dashboard {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
+              <Route path="/lobby" render={props => this.state.isAuthenticated? <Lobby {...props} setAuth={this.setAuth} />:<Redirect to="/login"/>} />
+              <Route path="/summary" render={props => this.state.isAuthenticated? <Summary {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
+              <Route path="/test" render={props => this.state.isAuthenticated? <h3>AUTHENTICATED</h3>:<h3>NOT AUTHENTICATED</h3>} />
+            </Switch>
+          </Router>
+          </div>
         </div>
-        </div>
-      </div>
     );
   }
 }

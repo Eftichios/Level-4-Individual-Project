@@ -53,7 +53,7 @@ export class Register extends React.Component {
     }
 
     render(){
-        return <div className="pb-2 container">
+        return <div className="loader-middle pb-2 container">
         <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
         <h3>Register for an account</h3>
@@ -79,7 +79,7 @@ export class Register extends React.Component {
             </div>
             <div className="text-center">
               <button value="submit" className="constSize btn btn-primary">Register</button>
-              <Link to="/login"><button className="constSize btn orange ml-2">Login</button></Link>
+              <Link to="/login"><button className="constSize btn orange">Login</button></Link>
             </div>
           </form>   
         </div>

@@ -6,9 +6,7 @@ html, body {
     height: 100%;
 }
 
-.card-main {
-    height: 85%;
-    width: 85%;
+.linear-background {
     background: rgb(0,148,255);
     background: linear-gradient(180deg, rgba(0,148,255,0.09) 38%, rgba(248,150,3,0.38) 100%);
 }
@@ -24,4 +22,10 @@ html, body {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+}
+
+.fill-height {
+    height: -moz-available;         
+    height: -webkit-fill-available;  
+    height: stretch;
 }
