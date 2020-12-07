@@ -31,7 +31,7 @@ export class DashLead extends React.Component {
                         new Players(9,"Bruce",7,532),
                         new Players(10,"Liam",3,214),]
         
-        this.players = this.players_data.map((player)=><tr>
+        this.players = this.players_data.map((player)=><tr key={player.name}>
             <td>{player.rank}</td>
             <td>{player.name===this.state.user? <strong>{player.name}</strong>:player.name}</td>
             <td>{player.games}</td>

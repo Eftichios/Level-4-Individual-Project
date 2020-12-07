@@ -14,21 +14,21 @@ export class Lobby extends React.Component {
         
         class Messages {
             
-            constructor(player, msg, date  ){
-
+            constructor(id, player, msg, date){
+                this.id = id;
                 this.player = player;
                 this.msg = msg;
                 this.date = date;
             }
         }
 
-        this.msgs_data = [new Messages("George","Hey everyone!", new Date()), 
-                    new Messages("Jacob","Hello!", new Date()), 
-                    new Messages("Larry","Yoo, have fun guys!", new Date()), 
-                    new Messages("George","Thanks man, you too!", new Date()), 
-                    new Messages("Jacob","Good luck :)", new Date())]
+        this.msgs_data = [new Messages(1, "George","Hey everyone!", new Date()), 
+                    new Messages(2, "Jacob","Hello!", new Date()), 
+                    new Messages(3, "Larry","Yoo, have fun guys!", new Date()), 
+                    new Messages(4, "George","Thanks man, you too!", new Date()), 
+                    new Messages(5, "Jacob","Good luck :)", new Date())]
         
-        this.msgs = this.msgs_data.map((msg)=><p><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
+        this.msgs = this.msgs_data.map((msg)=><p key={msg.id}><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
     }
     
 
@@ -110,7 +110,7 @@ export class Lobby extends React.Component {
                 <strong>Wating for players to get ready...</strong>
             </div>
             <div className="text-center">
-                <button disabled="true" className="btn btn-primary constSize">Start Game</button>
+                <button disabled={true} className="btn btn-primary constSize">Start Game</button>
             </div>
         </div>
     }

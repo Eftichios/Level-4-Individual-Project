@@ -7,7 +7,9 @@ export class DashMetrics extends React.Component {
     constructor(props){
         super(props);
 
-        this.state = props;
+        this.state = {
+            user: "George"
+        };
     }
 
     render(){

@@ -13,21 +13,21 @@ export class Summary extends React.Component {
 
         class Messages {
             
-            constructor(player, msg, date  ){
-
+            constructor(id, player, msg, date ){
+                this.id = id;
                 this.player = player;
                 this.msg = msg;
                 this.date = date;
             }
         }
 
-        this.msgs_data = [new Messages("George","That was fun!", new Date()), 
-                    new Messages("Jacob","Yeah, wanna play again?", new Date()), 
-                    new Messages("Larry","I have to go, maybe later.", new Date()), 
-                    new Messages("George","Im up to play again", new Date()), 
-                    new Messages("Jacob","See ya, have fun boys!", new Date())]
+        this.msgs_data = [new Messages(1, "George","That was fun!", new Date()), 
+                    new Messages(2, "Jacob","Yeah, wanna play again?", new Date()), 
+                    new Messages(3, "Larry","I have to go, maybe later.", new Date()), 
+                    new Messages(4, "George","Im up to play again", new Date()), 
+                    new Messages(5, "Jacob","See ya, have fun boys!", new Date())]
         
-        this.msgs = this.msgs_data.map((msg)=><p><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
+        this.msgs = this.msgs_data.map((msg)=><p key={msg.id}><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
     }
 
     render(){

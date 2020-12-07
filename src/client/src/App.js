@@ -58,7 +58,7 @@ export class App extends React.Component {
       <div className="d-flex justify-content-center">
         <div className="mt-4 card card-main">
         <div className="card-body">
-        <input type="hidden" autofocus={true} /> {/* Put this here to remove autofocus */}
+        <input type="hidden" autoFocus={true} /> {/* Put this here to remove autofocus */}
         <Router>
           <Switch>
             <Route path="/register" render={props => !this.state.isAuthenticated? <Register {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
