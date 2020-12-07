@@ -328,4 +328,15 @@
 * *0.5 hour* Adding information to github wiki and adding issues to project
 * *1.5 hours* Writing the sql commands for creating the database and the appropriate tables
 
+## Week 11
+
+### 07 Dec 2020
+* *0.5 hour* Coming up for a plan for week 11 and adding issues and information on github
+* *0.5 hour* Refining user registration
+* *1 hours* Creating dummy data for database tables and inserting one row in each table manually
+* *0.5 hour* Reading about ORM to create a script that automatically creates the database and tables and populates them with dummy data
+* *2 hours* Fixing bugs and warnings in the web app
+* *1.5 hours* Added background colour, adding responsiveness to the web app and fixing broken positioning of elements
+* *2 hours* Setting up Sequelize to handle database operations
+
 
