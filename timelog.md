@@ -339,4 +339,10 @@
 * *1.5 hours* Added background colour, adding responsiveness to the web app and fixing broken positioning of elements
 * *2 hours* Setting up Sequelize to handle database operations
 
+### 08 Dec 2020
+* *2.5 hours* Front-end development: added sidebar for navigation and added various styling throughout the app
+* *4 hours* Dissertation guideance lectures part 1 and part 2
+* *1 hour* Setting up the routes for login and register to use sequelize instead of sql queries (also added additional queries)
+* *1.5 hours* Writing sequelize models for achievements, organisations and user_organisations (with dummy data)
+
 
