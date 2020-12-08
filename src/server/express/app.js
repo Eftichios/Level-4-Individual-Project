@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const validInfo = require("../middleware/validInfo");
+const authorization = require("../middleware/authorization");
 
 // create express app
 const app = express();
@@ -25,10 +27,36 @@ function makeHandlerAwareOfAsyncErrors(handler) {
 }
 
 for (const [routeName, routeController] of Object.entries(routes)) {
+	// handle all common routes for the controllers
 	if (routeController.getAll) {
-		app.get(`/api/${routeName}`, makeHandlerAwareOfAsyncErrors(routeController.getAll))
-	};
-}
+		app.get(`/api/${routeName}`, makeHandlerAwareOfAsyncErrors(routeController.getAll));
+	} 
+	if (routeController.getById) {
+		app.get(`/api/${routeName}/:id`, makeHandlerAwareOfAsyncErrors(routeController.getById));
+	}
+	if (routeController.getByName) {
+		app.post(`/api/${routeName}/name`, makeHandlerAwareOfAsyncErrors(routeController.getByName));
+	}
+
+	if (routeController.update) {
+		app.put(`/api/${routeName}/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.update));
+	}
+
+	if (routeController.remove) {
+		app.delete(`/api/${routeName}/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.remove));
+	}
+
+	// handle special routes
+	if (routeController.register) {
+		app.post(`/api/auth/register`, validInfo, makeHandlerAwareOfAsyncErrors(routeController.register));
+	}
+	if (routeController.login) {
+		app.post(`/api/auth/login`, validInfo, makeHandlerAwareOfAsyncErrors(routeController.login));
+	}
+	if (routeController.isVerified) {
+		app.get(`/api/auth/isVerified`, authorization, makeHandlerAwareOfAsyncErrors(routeController.isVerified));
+	}
+};
 
 app.get('/', (req, res)=>{
     res.send("test route");
