@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-// const { applyExtraSetup } = require('./extra-setup');
+const { applyExtraSetup } = require('./extra-setup');
 require("dotenv").config();
 
 
@@ -8,7 +8,10 @@ sequelize.options.logging = false;
 
 // load all of our models
 const modelDefiners = [
-    require('./models/user.model')
+    require('./models/user.model'),
+    require('./models/organisation.model'),
+    require('./models/user_organisation.model'),
+    require('./models/achievement.model')
 ]
 
 for (const modelDefiner of modelDefiners) {
@@ -16,6 +19,6 @@ for (const modelDefiner of modelDefiners) {
 }
 
 // if any extra configuration is needed add it
-// applyExtraSetup(sequelize);
+applyExtraSetup(sequelize);
 
 module.exports = sequelize;
