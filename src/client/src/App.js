@@ -9,6 +9,7 @@ import Summary from "./Components/Summary/Summary";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from 'react-loader-spinner'
+import Navigation from "./Components/Navigation/Navigation";
 
 toast.configure();
 
@@ -55,10 +56,11 @@ export class App extends React.Component {
     }
 
     return (
-        <div className="linear-background d-flex justify-content-center fill-height">
+        <div className="d-flex justify-content-center">
           <div className="mt-4 container fill-height">
           <input type="hidden" autoFocus={true} /> {/* Put this here to remove autofocus */}
           <Router>
+          <Navigation  />
             <Switch>
               <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
               <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
@@ -66,6 +68,7 @@ export class App extends React.Component {
               <Route path="/lobby" render={props => this.state.isAuthenticated? <Lobby {...props} setAuth={this.setAuth} />:<Redirect to="/login"/>} />
               <Route path="/summary" render={props => this.state.isAuthenticated? <Summary {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
               <Route path="/test" render={props => this.state.isAuthenticated? <h3>AUTHENTICATED</h3>:<h3>NOT AUTHENTICATED</h3>} />
+              <Route path="/" exact render={props => <Redirect to="/dashboard" />} />
             </Switch>
           </Router>
           </div>
