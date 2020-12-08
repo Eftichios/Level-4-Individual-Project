@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const sequelize = require("./db");
+const pool = require("./db");
 
 // create express app
 app = express();
@@ -8,12 +8,6 @@ app = express();
 // use cors and allow for json responses
 app.use(cors());
 app.use(express.json())
-
-// connect to database
-sequelize.options.logging = false;
-sequelize.authenticate()
-    .then(response=>console.log("Connected to database"))
-    .catch(err=>console.error("Failed to connect to database", err));
 
 const countries = ["AU","CA","CH","DE","FR","GB","NL","NO","US"];
 var unique_hosts = [];
