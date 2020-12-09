@@ -5,6 +5,7 @@ async function reset() {
 
     await sequelize.sync({ force: true });
 
+    // populates users table
     await sequelize.models.user.bulkCreate([
         { user_name: "user_1", user_password:"Unusable", owns_plugin:true, score:10},
         { user_name: "user_2", user_password:"Unusable", owns_plugin:true, score:15},
@@ -14,6 +15,7 @@ async function reset() {
         { user_name: "user_6", user_password:"Unusable", owns_plugin:true, score:35}
     ]);
 
+    // populates organisations table
     await sequelize.models.organisation.bulkCreate([
         { organisation_name: 'dummy_org_1', organisation_location: 'dummy_loc_1', organisation_description: 'dummy_descr_1',
           points: 10, rarity: 'very common'},
@@ -29,6 +31,7 @@ async function reset() {
           points: 250, rarity: 'extremely rare'}, 
     ]);
 
+    // populates achievements table
     await sequelize.models.achievement.bulkCreate([
         { difficulty: 'easy', title: 'Fastest man alive I', game_mode: 'race', 
             achievement_description: 'Play 1 race game.'},
@@ -42,6 +45,25 @@ async function reset() {
             achievement_description: 'Find 5 rare organisations'},
     ]);
 
+    // populates user_metric table
+    await sequelize.models.user_metric.bulkCreate([
+        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
+        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2]},
+        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24]},
+        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
+        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
+        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
+    ]);
+
+    // populates user_achievements table
+    await sequelize.models.user_achievement.bulkCreate([
+        { user_id: 1, achievement_id: 1, date_completed: new Date(), completed: true},
+        { user_id: 2, achievement_id: 1, date_completed: new Date(), completed: true},
+        { user_id: 3, achievement_id: 1, date_completed: new Date(), completed: true},
+        { user_id: 1, achievement_id: 2, date_completed: new Date(), completed: true},
+    ]);
+
+    // populates user_organisations table
     await sequelize.models.user_organisation.bulkCreate([
         {organisation_id: 1, user_id: 1, times_found: 5, date_found_first: new Date(), 
             found_url:"dummy_url_1-1.com", acquired_from:'hunting'},
@@ -53,7 +75,21 @@ async function reset() {
             found_url:"dummy_url_2-2.com", acquired_from:'hunting'}
     ]);
 
-    console.log("Done!")
+    // populate game_history table
+    await sequelize.models.game_history.bulkCreate([
+        { winner_id: 1, game_mode: 'race', game_date: new Date(), 
+        player_stats: '{"user_1" : {"page_history":[{"www.example.com": 20, \
+        "www.another-example.com": 15, "www.lots-of-trackers.com": 65}], "total_score": 100 }}',
+        game_stats: '{"time_elapsed" : 13.12, "winners": {"1st":"user_1", "2nd":"None", "3rd":"None"}, \
+        "ad_trackers_required": 100,}'}
+    ]);
+
+    await sequelize.models.market.bulkCreate([
+        { player_1: 1, player_2: null, offering_organisation_id: 1, offerred_organisation_id: null,
+            active: true, date_started: new Date(), date_finished: null, offered: false}
+    ]);
+
+    console.log("Populating tables...")
 };
 
 reset();

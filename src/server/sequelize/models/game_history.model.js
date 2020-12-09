@@ -1,28 +1,30 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('achievement', {
-        achievement_id: {
+    sequelize.define('game_history', {
+        game_id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        difficulty: {
-            allowNull: false,
-            type: DataTypes.ENUM('easy', 'medium', 'hard')
-        },
-        title: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
         game_mode: {
             allowNull: false,
-            type: DataTypes.ENUM('race', 'category', 'hunting')
+            type: DataTypes.ENUM('race', 'category', 'hunting'),
         },
-        achievement_description: {
+        game_date: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: DataTypes.DATE
+        },
+        player_stats: {
+            allowNull: false,
+            type: DataTypes.JSONB
+        },
+        game_stats: {
+            allowNull: false,
+            type: DataTypes.JSONB
         }
+    },{
+        freezeTableName: true
     });
 };
