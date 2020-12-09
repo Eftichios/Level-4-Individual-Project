@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import "../../index.css";
 import "./dashboard.css";
 import DashSettings from './DashSettings';
@@ -12,7 +12,7 @@ export class Dashboard extends React.Component {
         super(props);
         
         this.state = {
-            name: "George",
+            name: "",
             rank: 4
         }
 
@@ -23,13 +23,13 @@ export class Dashboard extends React.Component {
     getUserProfile = async ()=> {
         try {
 
-            const response = await fetch("http://localhost:5000/dashboard", {
+            const response = await fetch(`http://localhost:5000/api/users/${this.props.user_id}`, {
                 method:"GET",
                 headers: {token: localStorage.token, "Content-Type": "application/json"}
             })
 
             const parseRes = await response.json();
-            console.log(parseRes);
+            console.log(`Found user with id:${parseRes.user_id}`, parseRes);
 
             this.setState({name: parseRes.user_name})
 
@@ -41,10 +41,10 @@ export class Dashboard extends React.Component {
     
 
     render(){
-        return <div>
+        return <Fragment>
             <div className="row">
                 <div className="col-md-6">
-                    <DashPlay name={this.state.name} rank={this.state.rank}></DashPlay>
+                    <DashPlay name={this.state.name}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
                     <DashSettings setAuth={this.setAuth}></DashSettings>
@@ -59,7 +59,7 @@ export class Dashboard extends React.Component {
                     <DashMetrics></DashMetrics>
                 </div>
             </div>
-        </div>
+        </Fragment>
     }
 }
 

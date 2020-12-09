@@ -1,9 +1,8 @@
 module.exports = (req, res, next) => {
-    const {name, password} = req.body;
-
+    const {user_name, password} = req.body;
     // check if we have any empty values for name or password
-    if (req.path === "/register" || req.path === "/login") {
-        if (![name, password].every(Boolean)){
+    if (req.path === "/api/auth/register" || req.path === "/api/auth/login") {
+        if (![user_name, password].every(Boolean)){
             return res.status(401).json("Missing Credentials")
         }
     } 

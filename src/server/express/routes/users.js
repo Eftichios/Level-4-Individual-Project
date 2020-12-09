@@ -103,7 +103,8 @@ async function login(req, res) {
 
 async function isVerified(req, res) {
     // if we reach here then user is verified
-    res.json(true);
+    // we can return the id of the user in order to be able to use it throughtout the app
+    res.json({'success': true, 'user_id': req.user});
 }
 
 module.exports = {

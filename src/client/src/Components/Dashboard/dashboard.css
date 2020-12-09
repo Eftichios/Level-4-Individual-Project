@@ -1,7 +1,7 @@
 .profile {
     width: 150px;
     height: 150px;
-    border-radius: 25%;
+    border-radius: 50%;
 }
 
 .not-full {
@@ -17,15 +17,15 @@ hr {
     background-color: rgb(139, 139, 139);
 }
 
-.scrollbar {
-    position: relative;
-    height: 200px;
-    overflow: auto;
+.achieve-scrollbar {
+    display: block;
+    overflow-y: auto;
+    height: 35vh;
 }
 
-.table-wrapper-scroll-y {
+/* .table-wrapper-scroll-y {
     display: block;
-}
+} */
 
 .modal-dialog,
 .modal-content {

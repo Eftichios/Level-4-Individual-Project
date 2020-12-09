@@ -17,7 +17,7 @@ export class DashAchieve extends React.Component {
     render(){
         return <div className="d-flex flex-column align-items-center">
         <h3>Achievements</h3>
-        <div className="table-responsive scrollbar table-wrapper-scroll-y">
+        <div className="table-responsive achieve-scrollbar">
             <table className="table">
                 <thead>
                     <tr>

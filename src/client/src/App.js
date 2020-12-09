@@ -20,7 +20,8 @@ export class App extends React.Component {
     
     this.state = {
       isAuthenticated: true,
-      isLoading: true
+      isLoading: true,
+      user_id: NaN
     }
     
     this.setAuth = (token_exists) => {
@@ -34,14 +35,14 @@ export class App extends React.Component {
 
   isAuth = async () => {
     try{
-      const response = await fetch("http://localhost:5000/auth/is-verify", {
+      const response = await fetch("http://localhost:5000/api/auth/isVerified", {
         method: "GET",
         headers: {token: localStorage.token}
       });
 
       const parseRes = await response.json();
-      parseRes===true? this.setState({isAuthenticated:true}) : this.setState({isAuthenticated:false});
-      this.setState({isLoading: false});
+      parseRes.success===true? this.setState({isAuthenticated:true}) : this.setState({isAuthenticated:false});
+      this.setState({isLoading: false, user_id: parseRes.user_id});
       
     } catch (err){
       this.setState({isLoading: false});
@@ -56,17 +57,17 @@ export class App extends React.Component {
     }
 
     return (
-        <div className="d-flex justify-content-center">
-          <div className="mt-4 container fill-height">
+        <div className="d-flex">
+          <div className="container-fluid">
           <input type="hidden" autoFocus={true} /> {/* Put this here to remove autofocus */}
           <Router>
           
             <Switch>
-              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setAuth={this.setAuth} />:<Redirect to="/login" />} />
+              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setAuth={this.setAuth}/>:<Redirect to="/login" />} />
               <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
-              <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} setAuth={this.setAuth} /></>:<Redirect to="/login" />} />
-              <Route path="/lobby" render={props => this.state.isAuthenticated? <><Navigation  /><Lobby {...props} setAuth={this.setAuth} /></>:<Redirect to="/login"/>} />
-              <Route path="/summary" render={props => this.state.isAuthenticated? <><Navigation  /><Summary {...props} setAuth={this.setAuth} /></>:<Redirect to="/login" />} />
+              <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
+              <Route path="/lobby" render={props => this.state.isAuthenticated? <><Navigation  /><Lobby {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login"/>} />
+              <Route path="/summary" render={props => this.state.isAuthenticated? <><Navigation  /><Summary {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
               <Route path="/test" render={props => this.state.isAuthenticated? <h3>AUTHENTICATED</h3>:<h3>NOT AUTHENTICATED</h3>} />
               <Route path="/" exact render={props => <Redirect to="/dashboard" />} />
             </Switch>
