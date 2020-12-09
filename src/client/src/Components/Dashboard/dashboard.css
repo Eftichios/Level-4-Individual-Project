@@ -54,3 +54,10 @@ hr {
 .chart {
     display: inline-block;
 }
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
