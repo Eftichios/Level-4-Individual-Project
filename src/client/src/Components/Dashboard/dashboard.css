@@ -38,3 +38,11 @@ hr {
     max-height: calc(100vh - 120px);
     overflow-y: scroll;
 }
+
+.detail-hover:hover{
+    cursor: pointer;
+}
+
+.modal-body input {
+    text-align: center;
+}
