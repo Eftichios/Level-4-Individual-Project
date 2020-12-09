@@ -44,3 +44,7 @@
 .table-wrapper-scroll-y {
     display: block;
 }
+
+.lobby-padding {
+    padding: 0 12px 4px 12px;
+}

@@ -33,7 +33,7 @@ export class Lobby extends React.Component {
     
 
     render(){
-        return <div>
+        return <div className="lobby-padding">
             <h3 className="text-center mb-4">Lobby</h3>
             <div className="row">
                 <div className="col-md-8">

@@ -31,7 +31,7 @@ export class Summary extends React.Component {
     }
 
     render(){
-        return <div>
+        return <div className="summary-padding">
             <h3 className="text-center mb-4">Summary</h3>
             <div className="row">
                 <div className="col-md-8">
