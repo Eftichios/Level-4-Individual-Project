@@ -20,7 +20,7 @@ hr {
 .achieve-scrollbar {
     display: block;
     overflow-y: auto;
-    height: 35vh;
+    height: 45vh;
 }
 
 /* .table-wrapper-scroll-y {
@@ -43,6 +43,14 @@ hr {
     cursor: pointer;
 }
 
+.tooltip-hover:hover {
+    cursor: help;
+}
+
 .modal-body input {
     text-align: center;
+}
+
+.chart {
+    display: inline-block;
 }

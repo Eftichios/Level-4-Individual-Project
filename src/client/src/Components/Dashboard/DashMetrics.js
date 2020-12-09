@@ -1,6 +1,9 @@
 import React from 'react';
 import "../../index.css";
 import "./dashboard.css";
+import Chart from "react-google-charts";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 export class DashMetrics extends React.Component {
 
@@ -35,6 +38,8 @@ export class DashMetrics extends React.Component {
             <td>{game.game_mode}</td>
             <td>{game.time_elapsed}</td>
         </tr>)
+
+        this.games_played = {'race': 10, 'category': 4}
     }
 
     render(){
@@ -42,13 +47,40 @@ export class DashMetrics extends React.Component {
             <div className="col-md-6">
                 <div className="text-center">
                     <h3>Metrics</h3>
+                    <p>Games Played: <strong>{this.games_played['race'] + this.games_played['category']}</strong> 
+                    <FontAwesomeIcon title={`Race: ${this.games_played['race']} | Category: ${this.games_played['category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
+                    </p>
+                    <p>Total trackers: 1521</p>
+                    <div className="chart align-items-center">
+                        <h5>Ad categories seen</h5>
+                        <Chart
+                            width={'30vh'}
+                            height={'30vh'}
+                            chartType="PieChart"
+                            loader={<div>Loading Chart</div>}
+                            data={[
+                                ['Category', 'Ads delivered'],
+                                ['Health', 11],
+                                ['Technology', 4],
+                                ['Education', 1],
+                                ['Travel', 12],
+                                ['Gambling', 7],
+                            ]}
+                            options={{
+                                backgroundColor: 'transparent',
+                                legend: 'none',
+                                chartArea: {'width': '100%', 'height': '80%'}
+                            }}
+                            rootProps={{ 'data-testid': '1' }}
+                        />
+                    </div>
                 </div>
             </div>
             <div className="col-md-6">
-                <div className="mr-2 text-center">
+                <div className="text-center">
                     <h3>Game History</h3>
                     <div className="table-responsive achieve-scrollbar">
-                        <table className="table table-borderless">
+                        <table className="table table-sm table-borderless">
                             <thead>
                                 <tr>
                                     <th scope="col">Date</th>
