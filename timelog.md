@@ -345,4 +345,7 @@
 * *1 hour* Setting up the routes for login and register to use sequelize instead of sql queries (also added additional queries)
 * *1.5 hours* Writing sequelize models for achievements, organisations and user_organisations (with dummy data)
 
-
+### 09 Dec 2020
+* *1.5 hours* Finishing sequlize models and population script
+* *1.5 hour* Fixing various bugs throughout the web app 
+* *4 hours* Front end-development: achievement view, metrics view, game history view
