@@ -5,10 +5,13 @@ chrome.runtime.onInstalled.addListener(function() {
     });
     chrome.storage.sync.set({'totalAds': 0}, function(){
       console.log("Initialise total ads number.")
-    })
+    });
     chrome.storage.sync.set({'auth': null}, function(){
       console.log("Looking for user authentication...")
-    })
+    });
+    chrome.storage.sync.set({'gameOn': false}, function(){
+      console.log("Setting status...")
+    });
 
   });
 
@@ -17,7 +20,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostContains: "."},
+        pageUrl: {urlContains: "/"},
       })
       ],
           actions: [new chrome.declarativeContent.ShowPageAction()]

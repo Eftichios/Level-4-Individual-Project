@@ -14,6 +14,5 @@
     "icons": {
         "256": "images/icon256.png"
     },
-    "permissions": ["activeTab", "declarativeContent", "storage", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost:5000/"],
-    "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://stackpath.bootstrapcdn.com; object-src 'self';"
+    "permissions": ["activeTab", "declarativeContent", "storage", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost/*"]
 }

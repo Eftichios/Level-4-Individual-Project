@@ -1,9 +1,13 @@
 const app = require('./express/app');
+const cors = require('cors');
 const sequelize = require('./sequelize');
 const PORT = 5000;
+const {setUpSocketCommunication} = require('./extension_socket');
+
+app.use(cors())
 const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer);
-const {setUpSocketCommunication} = require('./extension_socket');
+
 
 async function assertDatabaseConnectionOk() {
 	console.log(`Checking database connection...`);

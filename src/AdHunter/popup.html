@@ -9,6 +9,10 @@
           width: 400px;
           outline: none;
         }
+        .ext-image {
+          width: 150px;
+          height: 150px;
+        }
       </style>
     </head>
     <body>
@@ -16,9 +20,16 @@
       <div class="row">
         <h1 class="text-center text-success auth">Loading...</h1>
       </div>
-      <p id="totalAds">0</p>
-      <p id="ads">0</p>
-
+      <div class="row">
+        <h1 class="text-center text-info gameOn">Status: Loading...</h1>
+      </div>
+      <div class="text-center">
+        <img class="ext-image" src="images/icon256.png" alt="Extension Image"/>
+      </div>
+      <div class="text-center">
+        <p>Total Ads: <span id="totalAds">0</span></p>
+        <p>Page Ads: <span id="ads">0</span></p>
+      </div>
       <script src="resources/bootstrap.bundle.min.js"></script>
     </body>
   </html>
