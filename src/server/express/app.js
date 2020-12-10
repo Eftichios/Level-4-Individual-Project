@@ -12,7 +12,8 @@ app.use(express.json());
 
 // define all routes, loaded from the corresponding files
 const routes = {
-    users: require('./routes/users')
+	users: require('./routes/users'),
+	game: require('./routes/game')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
@@ -46,7 +47,7 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.delete(`/api/${routeName}/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.remove));
 	}
 
-	// handle special routes
+	// handle athorisation routes
 	if (routeController.register) {
 		app.post(`/api/auth/register`, validInfo, makeHandlerAwareOfAsyncErrors(routeController.register));
 	}
@@ -56,6 +57,17 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	if (routeController.isVerified) {
 		app.get(`/api/auth/isVerified`, authorization, makeHandlerAwareOfAsyncErrors(routeController.isVerified));
 	}
+
+	// handle game play routes 
+	if (routeController.play){
+		app.post(`/api/play`, authorization, makeHandlerAwareOfAsyncErrors(routeController.play));
+	}
+
+	if (routeController.stop){
+		app.post(`/api/stopGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.stop));
+	}
+
+
 };
 
 app.get('/', (req, res)=>{
