@@ -1,6 +1,9 @@
 const app = require('./express/app');
 const sequelize = require('./sequelize');
 const PORT = 5000;
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer);
+const {setUpSocketCommunication} = require('./extension_socket');
 
 async function assertDatabaseConnectionOk() {
 	console.log(`Checking database connection...`);
@@ -17,9 +20,11 @@ async function assertDatabaseConnectionOk() {
 async function init() {
 	await assertDatabaseConnectionOk();
 
+	await setUpSocketCommunication(io);
+
 	console.log(`Starting Sequelize + Express on port ${PORT}...`);
 
-	app.listen(PORT, () => {
+	httpServer.listen(PORT, () => {
 		console.log(`Express server started on port ${PORT}.`);
 	});
 }

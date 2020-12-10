@@ -3,6 +3,11 @@ chrome.storage.sync.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;
 });
 
+chrome.storage.sync.get('auth', function(data) {
+  console.log(data.auth);
+  document.getElementsByClassName('auth')[0].innerHTML = data.auth?"You are logged in":"You are not logged in";
+});
+
 // Find the active tab and set the number of page ad trackers
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   var tab_id = tab[0].id.toString();
@@ -23,6 +28,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('totalAds').innerHTML = storageChange.newValue;
       }else if (key==tab_id){
         document.getElementById('ads').innerHTML = storageChange.newValue;
+      }else if (key=="auth") {
+        document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
       }
       console.log('Storage key "%s" in namespace "%s" changed. ' +
                   'Old value was "%s", new value is "%s".',

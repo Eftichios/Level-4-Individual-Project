@@ -6,6 +6,10 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({'totalAds': 0}, function(){
       console.log("Initialise total ads number.")
     })
+    chrome.storage.sync.set({'auth': null}, function(){
+      console.log("Looking for user authentication...")
+    })
+
   });
 
   // Enables the extension for all pages given in the pageUrl option
