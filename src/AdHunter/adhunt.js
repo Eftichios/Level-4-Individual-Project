@@ -18,20 +18,31 @@ chrome.webRequest.onCompleted.addListener(
                 });  
             });
           });
+
+        // Add 1 to the game session ads
+        chrome.storage.sync.get('gameState', function(gameData) {
+            chrome.storage.sync.get('player', function(playerData) {
+                var gameState = gameData.gameState;
+                gameState.players[playerData.player] += 1;
+                chrome.storage.sync.set({'gameState': gameState}, function() {
+                    console.log("Game ads: ", gameState.players[playerData.player]);
+                });  
+            });
+        });
         
         // make a POST request to the server
         // with the details of the request
-        fetch('http://localhost:5000/extension', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(details),
-            })
-            .then(response => {
-                console.log(response);
+        // fetch('http://localhost:5000/extension', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(details),
+        //     })
+        //     .then(response => {
+        //         console.log(response);
  
-            })
+        //     })
         return {cancel: true}
     },
     {urls: blocked_domains},
