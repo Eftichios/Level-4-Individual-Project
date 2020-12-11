@@ -15,8 +15,13 @@ async function setUpSocketCommunication(io) {
             socket.emit('notloggedIn', false)
         }
 
+        socket.on('playerWon', (data)=>{
+            console.log(data);
+        })
+
         await setSocket(socket);
     });
+
     return io;
     
 }

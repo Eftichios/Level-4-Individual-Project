@@ -1,7 +1,7 @@
 var socket = null;
 
 function _initGameState(player) {
-    return {"players":{[player]: 0}, "game_mode":"Race", "condition": 10 }
+    return {"players":{[player]: 0}, "game_mode":"Race", "condition": 10, "started_at": new Date() }
 }
 
 async function setSocket(_socket) {
@@ -20,11 +20,12 @@ async function play(req, res){
         res.status(200).json(true);
     } catch (err) {
         console.error(err.message);
+        res.status(500).json(false);
     }
 }
 
 async function stop(req, res){
-    socket.emit('gameStop', "Plyaer has quit the game");
+    socket.emit('gameStop', "Player has quit the game");
     res.status(200).json(true);
 }
 

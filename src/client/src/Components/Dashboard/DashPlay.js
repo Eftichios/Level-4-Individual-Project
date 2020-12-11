@@ -3,8 +3,6 @@ import "../../index.css";
 import "./dashboard.css";
 import profile from "../../Media/profile.jpeg";
 import DashLead from './DashLead';
-import { parse } from '@fortawesome/fontawesome-svg-core';
-import { faBoxTissue } from '@fortawesome/free-solid-svg-icons';
 
 export class DashPlay extends React.Component {
 

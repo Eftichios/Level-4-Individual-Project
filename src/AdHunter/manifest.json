@@ -4,7 +4,7 @@
     "manifest_version": 2,
     "version": "1.0", 
     "background": {
-        "scripts": ["background.js", "blocked.js", "adhunt.js", "socket.io.js", "websocket.js"],
+        "scripts": ["background.js", "blocked.js","socket.io.js", "adhunt.js", "websocket.js"],
         "persistent": true
     },
     "page_action": {
