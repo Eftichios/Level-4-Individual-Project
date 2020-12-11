@@ -349,3 +349,16 @@
 * *1.5 hours* Finishing sequlize models and population script
 * *1.5 hour* Fixing various bugs throughout the web app 
 * *4 hours* Front end-development: achievement view, metrics view, game history view
+
+### 10 Dec 2020
+* *1 hour* Looking at different strategies for communication between server and chrome extension
+* *1 hour* Socket.io chat tutorial with node.js and express
+* *2.5 hours* Setting up communication between server and chrome extension
+* *3 hours* Working on game play functionality. Added three-way communication between client, server and extension
+
+### 11 Dec 2020
+* *3 hours* Working on game play functionality. Shared states between server and extension and detection of winning condition
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+* *2.5 hours* Finalising simple game play for a single user, server now notifies client accordingly
+* *1 hour* Trying to optimise chrome extension speed
