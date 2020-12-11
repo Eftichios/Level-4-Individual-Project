@@ -1,7 +1,7 @@
 var socket = null;
 
 function _initGameState(player) {
-    return {"players":{[player]: 0}, "game_mode":"Race", "condition": 10, "started_at": new Date() }
+    return {"players":{[player]: 0}, "game_mode":"Race", "condition": 1, "started_at": new Date() }
 }
 
 async function setSocket(_socket) {

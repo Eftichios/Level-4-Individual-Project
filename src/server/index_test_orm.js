@@ -6,7 +6,11 @@ const {setUpSocketCommunication} = require('./extension_socket');
 
 app.use(cors())
 const httpServer = require('http').createServer(app);
-const io = require('socket.io')(httpServer);
+const io = require('socket.io')(httpServer, {
+	cors: {
+		origin: "http://localhost:3000"
+	}
+});
 
 
 async function assertDatabaseConnectionOk() {

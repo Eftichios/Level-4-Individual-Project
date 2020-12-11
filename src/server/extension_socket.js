@@ -15,9 +15,16 @@ async function setUpSocketCommunication(io) {
             socket.emit('notloggedIn', false)
         }
 
+        var game_state = null;
         socket.on('playerWon', (data)=>{
-            console.log(data);
+            game_state = data;
+            if (game_state){
+                io.emit('clientGameOver', game_state);              
+            }
         })
+        
+
+        
 
         await setSocket(socket);
     });

@@ -3,6 +3,8 @@ import "../../index.css";
 import "./dashboard.css";
 import profile from "../../Media/profile.jpeg";
 import DashLead from './DashLead';
+import io from 'socket.io-client';
+var socket = io.connect('http://localhost:5000', {forceNew: true});
 
 export class DashPlay extends React.Component {
 
@@ -13,8 +15,18 @@ export class DashPlay extends React.Component {
             rank: 0,
             status: "Not in game",
             statusClass: {"Not in game":"text-danger", "In game":"text-success"},
-            showStopButton: false
+            showStopButton: false,
+            game_state: null
         };
+
+        socket.on('connect', ()=>{
+            console.log('Connected to server')
+        });
+
+        socket.on('clientGameOver', (data)=>{
+            this.setState({status: "Not in game", showStopButton: false});
+            this.setState({game_state: data});
+        })
 
         this.getUserRank(props.name)
     }
@@ -35,7 +47,7 @@ export class DashPlay extends React.Component {
             const parseRes = await response.json();
 
             if (parseRes) {
-                this.setState({status: "In game", showStopButton: true});
+                this.setState({status: "In game", showStopButton: true, game_state: null});
             }
 
         } catch (err) {
@@ -64,6 +76,10 @@ export class DashPlay extends React.Component {
 
     }
 
+    createSummary = (game_state) => {
+    return <div>{`winner: ${game_state.player}`}</div>
+    }
+
     render(){
         return <div className="d-flex flex-column align-items-center">
                 <div className="p-1"><img className="profile" src={profile} alt="Profile" /></div>
@@ -74,6 +90,7 @@ export class DashPlay extends React.Component {
                     <button hidden={this.state.showStopButton} onClick={()=>this.startGame(this.props.name)} className="constSize btn btn-primary">Play Game</button>
                     <button hidden={!this.state.showStopButton} onClick={()=>this.stopGame(this.props.name)} className="constSize btn btn-danger">Stop Game</button>
                 </div>
+                {this.state.game_state? this.createSummary(this.state.game_state):""}
                 <div className="p-1"><DashLead user="George"></DashLead></div>
                 <div className="p-1"><button className="constSize btn btn-secondary" >Game Mode</button></div>
                </div>

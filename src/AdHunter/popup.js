@@ -1,28 +1,31 @@
 // get total ads from storage and display it in our popup
-chrome.storage.sync.get('totalAds', function(data) {
+chrome.storage.local.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;
 });
 
-chrome.storage.sync.get('auth', function(data) {
+chrome.storage.local.get('auth', function(data) {
   document.getElementsByClassName('auth')[0].innerHTML = data.auth?"You are logged in":"You are not logged in";
 });
 
-chrome.storage.sync.get('gameOn', function(data) {
+chrome.storage.local.get('gameOn', function(data) {
   document.getElementsByClassName('gameOn')[0].innerHTML = data.gameOn?"Status: In game":"Status: Not in game";
 });
 
-chrome.storage.sync.get('gameState', function(gameData) {
-  chrome.storage.sync.get('player', function(playerData) {
+chrome.storage.local.get('gameState', function(gameData) {
+  chrome.storage.local.get('player', function(playerData) {
     console.log("Popup says:", gameData, playerData);
     var player = playerData.player;
-    document.getElementById('adsFound').innerHTML = gameData.gameState.players[player];
+    console.log(gameData);
+    if (gameData.gameState){
+      document.getElementById('adsFound').innerHTML = gameData.gameState.players[player];
+    }
   });
 });
 
 // Find the active tab and set the number of page ad trackers
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   var tab_id = tab[0].id.toString();
-  chrome.storage.sync.get([tab_id], function(data) {
+  chrome.storage.local.get([tab_id], function(data) {
     document.getElementById('ads').innerHTML = data[tab_id];
   });
 });
@@ -43,8 +46,11 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
       }else if (key=="gameOn") {
         document.getElementsByClassName('gameOn')[0].innerHTML = storageChange.newValue==true?"Status: In game":"Status: Not in game";
-      }else if (key=="gameState") {
-        chrome.storage.sync.get('player', function(data) {
+        if (storageChange.newValue==false) {
+          chome.storage.local.set("gameState", null);
+        }
+      }else if (key=="gameState" && storageChange.newValue) {
+        chrome.storage.local.get('player', function(data) {
           var player = data.player;
           document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player];
         });
