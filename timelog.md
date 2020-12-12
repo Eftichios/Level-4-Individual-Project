@@ -362,3 +362,6 @@
 * *0.5 hour* Supervisor meeting
 * *2.5 hours* Finalising simple game play for a single user, server now notifies client accordingly
 * *1 hour* Trying to optimise chrome extension speed
+
+### 12 Dec 2020
+* *2.5 hours* Optimising the speed of the extension's track identification
