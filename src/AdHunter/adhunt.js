@@ -1,5 +1,37 @@
 var socket = io.connect('http://localhost:5000');
 
+function map_url(url){
+    var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    var domain = match && match[1]; 
+    if (!domain) {
+        console.log("COULD NOT FIND DOMAIN FROM: ", url)
+        return null
+    }
+    find_host = domain.match(/^(.+)\./);
+
+    var hostname = find_host[1];
+    if (hostname === undefined){
+        console.log("Failed to find hostname for:", domain);
+        return null
+    } else{
+        if (find_host[1].startsWith("www.")){
+            hostname = hostname.slice(4,)
+        }
+    }
+    
+    var alternative_hostname_match = hostname.match(/\.(\w|\d|[-])*$/)
+    var alternative_hostname = alternative_hostname_match?alternative_hostname_match[0].slice(1,): "ALT NOT FOUND"
+
+    blocked = blocked_domains[hostname] || blocked_domains[alternative_hostname];
+    if (blocked===undefined) {
+        return null;
+    } else { 
+        return blocked;
+    }
+    
+}
+
+
 chrome.storage.onChanged.addListener(function race_flag_listener(changes, namespace) {
     var game_on = false;
     var emmited = false;
@@ -11,8 +43,13 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
     } 
     if (game_on) {
         // Adds a listener function to all requests that match url from the blocked domains
-        chrome.webRequest.onCompleted.addListener(
+        chrome.webRequest.onBeforeRequest.addListener(
             function race_trackers(details) {
+                var blocked_urls = map_url(details.url);
+                if (!blocked_urls){
+                    return
+                }
+                
                 // Add 1 to the total ad trackers number      
                 chrome.storage.local.get('totalAds', function(data) {
                     chrome.storage.local.set({'totalAds': data.totalAds + 1}, function() {
@@ -69,9 +106,9 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 //         console.log(response);
         
                 //     })
-                return {cancel: false}
+                // return
             },
-            {urls: blocked_domains},
+            {urls: ["<all_urls>"]},
         )
 
          
