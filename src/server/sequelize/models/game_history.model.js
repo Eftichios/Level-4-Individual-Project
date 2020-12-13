@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
         game_stats: {
             allowNull: false,
             type: DataTypes.JSONB
+        },
+        player_ids: {
+            allowNull: false,
+            type: DataTypes.ARRAY(DataTypes.INTEGER)
         }
     },{
         freezeTableName: true

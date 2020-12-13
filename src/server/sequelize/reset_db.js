@@ -81,7 +81,8 @@ async function reset() {
         player_stats: '{"user_1" : {"page_history":[{"www.example.com": 20, \
         "www.another-example.com": 15, "www.lots-of-trackers.com": 65}], "total_score": 100 }}',
         game_stats: '{"time_elapsed" : 13.12, "winners": {"1st":"user_1", "2nd":"None", "3rd":"None"}, \
-        "ad_trackers_required": 100,}'}
+        "ad_trackers_required": 100,}',
+        player_ids: [1,2,3,4,5]}
     ]);
 
     await sequelize.models.market.bulkCreate([
