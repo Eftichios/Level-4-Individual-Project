@@ -17,7 +17,8 @@ const routes = {
 	organisations: require('./routes/organisations'),
 	achievements: require('./routes/achievements'),
 	userMetrics: require('./routes/user_metrics'),
-	userAchievements: require('./routes/user_achievements')
+	userAchievements: require('./routes/user_achievements'),
+	userOrganisations: require('./routes/user_organisations')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
