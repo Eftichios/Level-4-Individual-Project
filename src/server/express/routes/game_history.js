@@ -12,6 +12,12 @@ async function getById(req, res) {
     }
 }
 
+async function create(req, res) {
+    await models.game_history.create(req.body);
+    res.status(201).json(true);
+}
+
 module.exports = {
     getById,
+    create
 }

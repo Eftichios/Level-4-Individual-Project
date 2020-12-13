@@ -45,13 +45,14 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	if (routeController.getByName) {
 		app.post(`/api/${routeName}/name`, makeHandlerAwareOfAsyncErrors(routeController.getByName));
 	}
-
 	if (routeController.update) {
 		app.put(`/api/${routeName}/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.update));
 	}
-
 	if (routeController.remove) {
 		app.delete(`/api/${routeName}/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.remove));
+	}
+	if (routeController.create) {
+		app.post(`/api/${routeName}`, authorization, makeHandlerAwareOfAsyncErrors(routeController.create));
 	}
 
 	// handle athorisation routes

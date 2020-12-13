@@ -28,8 +28,14 @@ async function remove(req, res) {
     res.status(200).json("Trade request deleted succesfully.")
 }
 
+async function create(req, res) {
+    await models.market.create(req.body);
+    res.status(201).json(true);
+}
+
 module.exports = {
     getAll,
     getById,
-    remove
+    remove,
+    create
 }
