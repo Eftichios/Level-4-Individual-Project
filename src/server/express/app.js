@@ -13,7 +13,8 @@ app.use(express.json());
 // define all routes, loaded from the corresponding files
 const routes = {
 	users: require('./routes/users'),
-	game: require('./routes/game')
+	game: require('./routes/game'),
+	organisations: require('./routes/organisations')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.

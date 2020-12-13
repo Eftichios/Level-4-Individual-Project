@@ -33,7 +33,11 @@ async function update(req, res) {
 
     // check if body user id is same as param id 
     if (req.body.id === user_id) {
-        await models.user.update({user_password: req.body.passowrd}, {where: {user_id: user_id}});
+        // Bcrypt the password
+        const salt_rounds = 10;
+        const salt = await bcrypt.genSalt(salt_rounds);
+        const bcrypt_password = await bcrypt.hash(req.body.password, salt);
+        await models.user.update({user_password: bcrypt_password}, {where: {user_id: user_id}});
         res.status(200).json("Password changed succesfully.")
     } else {
         res.status(400).json(`Bad request: param ID (${user_id}) does not match body ID (${req.body.id}).`)
@@ -48,6 +52,7 @@ async function remove(req, res) {
             user_id:id
         }
     });
+    res.status(200).json("User deleted succesfully.")
 }
 
 async function register(req, res) {
