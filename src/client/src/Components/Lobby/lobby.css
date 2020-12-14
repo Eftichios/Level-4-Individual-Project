@@ -6,8 +6,10 @@
 }
 
 .chat {
-    width:50%;
-    height: 200px;
+    width:80vh;
+    height: 25vh;
+    background-color: transparent;
+    border: hidden;
 }
 
 .display {
@@ -37,7 +39,7 @@
 
 .scrollbar {
     position: relative;
-    height: 200px;
+    height: 35vh;
     overflow: auto;
 }
 
@@ -47,4 +49,36 @@
 
 .lobby-padding {
     padding: 0 12px 4px 12px;
+}
+
+.text-orange {
+    color: #F89603;
+    font-weight: bold;
+}
+
+.game-details {
+    font-size: large;
+    
+}
+
+.player-table {
+    font-size: larger;
+}
+
+.lobby-profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.running {
+    padding: 5px;
+    margin-left: 50px;
+    width: 35vh;
+    height: 35vh;
+    opacity: 80%;
+}
+
+.push-down {
+    margin-bottom: 50px;
 }
