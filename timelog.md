@@ -365,3 +365,14 @@
 
 ### 12 Dec 2020
 * *2.5 hours* Optimising the speed of the extension's track identification
+
+### 13 Dec 2020
+* *3 hours* Building controllers and routes for all database tables
+
+## Week 12
+
+### 14 Dec 2020
+* *1 hour* Fixing bugs in the web application
+* *2 hours* Improving user interface for summary and lobby page
+* *0.5 hour* Adding plan for week 12 and information on github wiki
+* *3.5 hours* Working on lobby system
