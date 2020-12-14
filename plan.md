@@ -63,7 +63,13 @@
   * Lobby system
   * Add functionality to various pages
   * Meet with supervisor
-* **Week 12 [PROJECT WEEK]** Status report submitted.
+* **Week 12 [PROJECT WEEK]** 
+  * Refine user interface to look nicer
+  * Add controllers and routes for the database tables
+  * Implement a lobby system
+  * Multi-player gameplay
+  * Submit report
+  * Meet with supervisor
 
 ## Winter break
 
