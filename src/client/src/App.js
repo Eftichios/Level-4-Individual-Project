@@ -42,7 +42,7 @@ export class App extends React.Component {
 
       const parseRes = await response.json();
       parseRes.success===true? this.setState({isAuthenticated:true}) : this.setState({isAuthenticated:false});
-      this.setState({isLoading: false, user_id: parseRes.user_id});
+      this.setState({user_id: parseRes.user_id,isLoading: false });
       
     } catch (err){
       this.setState({isLoading: false});
