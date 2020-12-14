@@ -6,12 +6,16 @@ import running from "../../Media/running.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LobbyChat } from './LobbyChat';
+import socket from "../Utilities/socketConfig";
 
 export class Lobby extends React.Component {
 
     constructor(props){
         super(props);
 
+        this.state = {
+            socket: null
+        }
         
         class Messages {
             
@@ -30,8 +34,16 @@ export class Lobby extends React.Component {
                     new Messages(5, "Jacob","Good luck :)", new Date())]
         
         this.msgs = this.msgs_data.map((msg)=><p key={msg.id}><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
+
+        socket.on("userJoinedRoom", (data)=>{
+            console.log("User has joined room", data)
+            }
+        );
+    } 
+
+    getLobbyStatus(room){
+
     }
-    
 
     render(){
         return <div className="lobby-padding">

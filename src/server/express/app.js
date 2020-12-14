@@ -75,6 +75,10 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/stopGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.stop));
 	}
 
+	if (routeController.getSocketFromId){
+		app.post(`/api/getSocketFromId`, authorization, makeHandlerAwareOfAsyncErrors(routeController.getSocketFromId));
+	}
+
 
 };
 
