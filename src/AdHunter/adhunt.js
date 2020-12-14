@@ -4,10 +4,14 @@ function map_url(url){
     var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     var domain = match && match[1]; 
     if (!domain) {
-        console.log("COULD NOT FIND DOMAIN FROM: ", url)
+        // console.log("COULD NOT FIND DOMAIN FROM: ", url)
         return null
     }
     find_host = domain.match(/^(.+)\./);
+    
+    if (!find_host){
+        return null
+    }
 
     var hostname = find_host[1];
     if (hostname === undefined){

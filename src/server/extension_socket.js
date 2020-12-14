@@ -1,4 +1,4 @@
-const { setSocket } = require('./express/routes/game')
+const { setIo } = require('./express/routes/game')
 
 
 async function userIsLoggedIn(){
@@ -26,7 +26,7 @@ async function setUpSocketCommunication(io) {
 
         
 
-        await setSocket(socket);
+        await setIo(io);
     });
 
     return io;

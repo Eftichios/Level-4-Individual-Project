@@ -13,9 +13,7 @@ chrome.storage.local.get('gameOn', function(data) {
 
 chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('player', function(playerData) {
-    console.log("Popup says:", gameData, playerData);
     var player = playerData.player;
-    console.log(gameData);
     if (gameData.gameState){
       document.getElementById('adsFound').innerHTML = gameData.gameState.players[player];
     }
@@ -48,6 +46,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementsByClassName('gameOn')[0].innerHTML = storageChange.newValue==true?"Status: In game":"Status: Not in game";
         if (storageChange.newValue==false) {
           chome.storage.local.set("gameState", null);
+          chrome.storage.local.set({'player': null});
         }
       }else if (key=="gameState" && storageChange.newValue) {
         chrome.storage.local.get('player', function(data) {

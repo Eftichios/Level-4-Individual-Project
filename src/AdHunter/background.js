@@ -12,8 +12,8 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'gameOn': false}, function(){
       console.log("Setting status...")
     });
-    chrome.storage.local.set({'gameState': null})
-    chrome.storage.local.set({'player': null})
+    chrome.storage.local.set({'gameState': null});
+    chrome.storage.local.set({'player': null});
 
   });
 
