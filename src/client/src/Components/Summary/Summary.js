@@ -32,65 +32,91 @@ export class Summary extends React.Component {
 
     render(){
         return <div className="summary-padding">
-            <h3 className="text-center mb-4">Summary</h3>
+            <h3 className="text-center push-down">Summary</h3>
             <div className="row">
-                <div className="col-md-8">
-                    <div className="row">
-                        <div className="col-md-4 card">
-                            <div className="card-body">
-                                <h3 className="text-center"><strong>George</strong> is the winner!</h3>
-                                    <div className="text-center">
-                                        <img src="https://via.placeholder.com/100" alt="winner" />
-                                    </div>
-                                <p>Game Mode: <strong>Race</strong></p>
-                                <p>Time taken: <strong>00:05:37</strong></p>
-                            </div>
-                        </div>
-                        <div className="col-md-1"></div>
-                        <div className="col-md-7 text-center card">
-                            <div className="card-body">
-                                <span>Page History</span>
-                                <div className="table-wrapper-scroll-y scrollbar">
-                                <table className="table table-borderless">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Url</th>
-                                            <th scope="col">Ad Count</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Google</td>
-                                            <td><FontAwesomeIcon className="text-info" icon={faInfoCircle} /></td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>news-site.com</td>
-                                            <td><FontAwesomeIcon className="text-info"  icon={faInfoCircle} /></td>
-                                            <td>21</td>
-                                        </tr>
-                                        <tr>
-                                            <td>technology.com</td>
-                                            <td><FontAwesomeIcon className="text-info"  icon={faInfoCircle} /></td>
-                                            <td>14</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div>
-                        </div>
+                <div className="text-center col-md-4">
+                    <h3><strong>George</strong> is the winner!</h3>
+                    <h5><strong>Score:</strong></h5>
+                    <div className="stats-table">
+                        <table className="table table-borderless">
+                            <thead>
+                                <th scope="col"></th>
+                                <th scope="col">Player</th>
+                                <th scope="col">Trackers Found</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1st</td>
+                                <td>George</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>2nd</td>
+                                <td>Jacob</td>
+                                <td>91</td>
+                            </tr>
+                            <tr>
+                                <td>3rd</td>
+                                <td>Larry</td>
+                                <td>78</td>
+                            </tr>
+                        </tbody>
+                        </table>
                     </div>
                 </div>
+                <div className="text-center col-md-4">
+                <h5><strong>Page History</strong></h5>
+                <div className="table-wrapper-scroll-y scrollbar">
+                    <table className="player-table table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                                <th scope="col">Url</th>
+                                <th scope="col">Tracker Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Google</td>
+                            <td><FontAwesomeIcon className="text-info" icon={faInfoCircle} /></td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>news-site.com</td>
+                            <td><FontAwesomeIcon className="text-info"  icon={faInfoCircle} /></td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>technology.com</td>
+                            <td><FontAwesomeIcon className="text-info"  icon={faInfoCircle} /></td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>Travel blog</td>
+                            <td><FontAwesomeIcon className="text-info"  icon={faInfoCircle} /></td>
+                            <td>62</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+            
                 <div className="col-md-4">
-                    <div className="d-flex flex-column align-items-center">
-                        <div className="p-1"><img className="profile" src={profile} alt="Profile" /></div>
+                    <div className="float-right pr-5 d-flex flex-column align-items-center">
+                        <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
+                        <div className="p-1 mb-4"><h3><strong>George</strong></h3></div>
+                        <div className="mb-4 d-flex flex-column align-items-center game-details">
+                            <div className="p-1">Game Mode:</div>
+                            <div className="p-1 text-orange">Race</div>
+                            <div className="p-1">Get tracked by:</div>
+                            <div className="p-1 text-orange">100 Ad Trackers</div>
+                        </div>
                         <div className="p-1"><button className="constSize btn orange">Play Again</button></div>
                     </div>
                 </div>
             </div>
-            <div className="row mt-4">
-                <LobbyChat msgs = {this.msgs} user="George"></LobbyChat>
+            <div className="row d-flex flex-column align-items-center">
+                <LobbyChat msgs={this.msgs} user="George"></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
                 <strong>Game is over. Click on Done to return to the Dashboard.</strong>

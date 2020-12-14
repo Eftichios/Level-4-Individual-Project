@@ -1,3 +1,7 @@
 .summary-padding {
     padding: 0 14px 4px 14px;
 }
+
+.stats-table {
+    justify-content: center;
+}
