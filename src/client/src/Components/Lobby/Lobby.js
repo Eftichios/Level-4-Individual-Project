@@ -40,21 +40,34 @@ export class Lobby extends React.Component {
         
     } 
 
-    componentDidMount(){
-        socket.on("userJoinedRoom", (data)=>{
-            this.setState({lobbyData: data});
-            }
-        );
-        socket.on("userLeft", (data)=>{
-            this.setState({lobbyData: data});
-            }
-        );
+    onUnload = (e) => {
+        e.preventDefault();
+        e.returnValue = '';
     }
 
-    componentWillUnmount(){    
+    componentDidMount(){
+        
+        if (this.props.location.state){
+
+            // detect when user closes the tab/browser
+            window.addEventListener('beforeunload', this.onUnload);
+
+            socket.on("userJoinedRoom", (data)=>{
+                this.setState({lobbyData: data});
+                }
+            );
+            socket.on("userLeft", (data)=>{
+                this.setState({lobbyData: data});
+                }
+            );
+        }
+    }
+
+    componentWillUnmount(){      
         if (this.props.location.state){
             console.log("USER LEAVING PAGE");
             socket.emit("userLeftLobby", this.props.location.state.user_id);
+            window.removeEventListener('beforeunload', this.onUnload);
         } else {
             console.log("Redirecting to dashboard. To reach the lobby search for a game.")
         }

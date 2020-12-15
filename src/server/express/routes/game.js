@@ -20,6 +20,13 @@ function _setSocketConnections(lobby, socket){
             lobbyHandler.removeLobby(lobby);
         }
     });
+
+    socket.on('disconnect', (data)=> {
+        console.log("USER CLOSED TAB/BROWSER", socket.id);
+        console.log(lobby.socketPlayerMap[socket.id]);
+        lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
+        io.to(lobby.room).emit("userLeft", lobby);
+    })
 }
 
 async function play(req, res){
@@ -31,7 +38,7 @@ async function play(req, res){
         _setSocketConnections(lobby, socket);
         
         // // initialise game state
-        lobby.addPlayer(user_name, user_id);
+        lobby.addPlayer(socket.id, user_name, user_id);
         
         // notify all sockets that a user has joined the lobby
         io.to(lobby.room).emit("userJoinedRoom", lobby);

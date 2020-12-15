@@ -5,6 +5,7 @@ class Lobby {
         this.playerIds = {}
         this.game_mode = game_mode;
         this.room = "Room" + index;
+        this.socketPlayerMap = {};
     }
 
     isLobbyFull(){
@@ -15,9 +16,10 @@ class Lobby {
         return playerId in this.playerIds;
     }
 
-    addPlayer(user_name, playerId) {
+    addPlayer(socketId, user_name, playerId) {
         if (!this.isLobbyFull() && !this.isPlayerInLobby() ){
             this.playerIds[playerId] = {"name": user_name, "ready": false};
+            this.socketPlayerMap[socketId] = playerId;
         }
     }
 
