@@ -33,18 +33,16 @@ export class DashPlay extends React.Component {
         this.state.rank = 5
     }
 
-    findGame = async (user_name) => {
+    findGame = async (user_id, user_name) => {
         try {
             const response = await fetch("http://localhost:5000/api/play", {
                 method: "POST",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
-                body: JSON.stringify({ "user_name": user_name, "socketId": socket.id }),
+                body: JSON.stringify({ "user_id": user_id, "user_name": user_name, "socketId": socket.id }),
             });
 
             const parseRes = await response.json();
-            // console.log(parseRes);
             if (parseRes) {
-                console.log(parseRes);
                 this.setState({lobby: parseRes});
             }
 
@@ -56,14 +54,14 @@ export class DashPlay extends React.Component {
 
     render(){
         if (this.state.lobby){
-            return <Redirect to={{pathname: "/lobby", state: {lobby: this.state.lobby}}}  />
+            return <Redirect to={{pathname: "/lobby", state: {lobby: this.state.lobby, user_name: this.props.name, user_id: this.props.user_id}}}  />
         }
         return <div className="d-flex flex-column align-items-center">
                 <div className="p-1"><img className="profile" src={profile} alt="Profile" /></div>
                 <div className="p-1">Player: {this.props.name}</div>
                 <div className="p-1">Rank: {this.state.rank}</div>
                 <div className="p-1">
-                    <button onClick={()=>this.findGame(this.props.name)} className="constSize btn btn-primary">Play Game</button>
+                    <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">Play Game</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
                 <div className="p-1"><button className="constSize btn btn-secondary" >Game Mode</button></div>

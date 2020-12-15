@@ -15,9 +15,9 @@ class Lobby {
         return playerId in this.playerIds;
     }
 
-    addPlayer(playerId) {
-        if (!this.isLobbyFull && !this.isPlayerInLobby ){
-            this.playerIds[playerId] = false;
+    addPlayer(user_name, playerId) {
+        if (!this.isLobbyFull() && !this.isPlayerInLobby() ){
+            this.playerIds[playerId] = {"name": user_name, "ready": false};
         }
     }
 
@@ -29,14 +29,18 @@ class Lobby {
 
     playerToggleReady(playerId, ready) {
         if (this.isPlayerInLobby){
-            this.playerIds[playerId] = ready;
+            this.playerIds[playerId]["ready"] = ready
         }
     }
 
     checkIfAllReady() {
-        const isNotReady = (ready) => !ready;
+        const isNotReady = (pid) => !this.playerIds[pid]["ready"];
 
         return !Object.values(this.playerIds).some(isNotReady);
+    }
+
+    getNumberOfPlayers(){
+        return Object.keys(this.playerIds).length;
     }
 }
 

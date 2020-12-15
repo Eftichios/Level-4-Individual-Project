@@ -15,6 +15,10 @@
     padding: 0;
   }
 
+  .toggle-button:hover {
+    cursor: pointer;
+  }
+
   .menu-bars-x {
     display: flex;
     justify-content: flex-start;

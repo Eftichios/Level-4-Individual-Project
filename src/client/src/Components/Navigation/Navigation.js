@@ -35,16 +35,16 @@ export class Navigation extends React.Component {
         return <div>
             <IconContext.Provider value={{ color: '#fff' }}>
             <div>
-                <Link to='#' className='menu-bars'>
-                    <FaBars color='#007bff' onClick={()=>this.toggleSidebar()} />
-                </Link>
+                <div className='menu-bars'>
+                    <FaBars className="toggle-button" color='#007bff' onClick={()=>this.toggleSidebar()} />
+                </div>
             </div>
             <nav className={this.state.show_sidebar? 'nav-menu active':'nav-menu'}>
                 <ul className='nav-menu-items' onClick={()=>this.toggleSidebar()}>
                     <li className='float-right navbar-toggle'>
-                        <Link to='#' className='menu-bars-x'>
-                            <BiArrowBack />
-                        </Link>
+                        <div className='menu-bars-x'>
+                            <BiArrowBack className="toggle-button" />
+                        </div>
                     </li>
                     {this.links}
                 </ul>

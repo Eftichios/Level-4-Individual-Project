@@ -11,17 +11,31 @@ async function setIo(_io) {
     io = _io;
 }
 
+function _setSocketConnections(lobby, socket){
+    socket.join(lobby.room);
+    socket.on("userLeftLobby", (user_id)=>{
+        lobby.removePlayer(user_id);
+        io.to(lobby.room).emit("userLeft", lobby);
+        if (lobby.getNumberOfPlayers()===0){
+            lobbyHandler.removeLobby(lobby);
+        }
+    });
+}
+
 async function play(req, res){
     try {
         var lobby = lobbyHandler.findOrCreateLobby("Race");
-        const { user_name, socketId } = req.body;
-        io.sockets.sockets.get(socketId).join(lobby.room, function (){
-            console.log("User joined room:",lobby.room)
-        });
+        const { user_id, user_name, socketId } = req.body;
+        
+        var socket = io.sockets.sockets.get(socketId);
+        _setSocketConnections(lobby, socket);
+        
         // // initialise game state
-        // var game_state = _initGameState(user_name);
-        io.to(lobby.room).emit("userJoinedRoom", user_name);
-        // // send message to chrome extension
+        lobby.addPlayer(user_name, user_id);
+        
+        // notify all sockets that a user has joined the lobby
+        io.to(lobby.room).emit("userJoinedRoom", lobby);
+
         res.status(200).json(lobby);
     } catch (err) {
         console.error(err.message);

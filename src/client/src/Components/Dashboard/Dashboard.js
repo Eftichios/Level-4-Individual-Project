@@ -44,7 +44,7 @@ export class Dashboard extends React.Component {
         return <Fragment>
             <div className="row">
                 <div className="col-md-6">
-                    <DashPlay name={this.state.name}></DashPlay>
+                    <DashPlay name={this.state.name} user_id={this.props.user_id}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
                     <DashSettings setAuth={this.setAuth}></DashSettings>

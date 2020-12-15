@@ -22,7 +22,7 @@ class LobbyHandler{
     }
 
     removeLobby(lobby) {
-        this.lobbies = this.lobbies.filter((l) => l!==lobby);
+        this.lobbies = this.lobbies.filter((l) => l.room!==lobby.room);
     }
 
     getLobbyDetailsByRoom(roomId){
