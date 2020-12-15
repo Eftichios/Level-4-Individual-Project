@@ -376,3 +376,11 @@
 * *2 hours* Improving user interface for summary and lobby page
 * *0.5 hour* Adding plan for week 12 and information on github wiki
 * *3.5 hours* Working on lobby system
+
+### 15 Dec 2020
+* *2.5 hours* Implementing lobby system
+* *2 hours* Fixing various bugs in the lobby system
+* *1 hour* Trying to identify which websockets belong to chrome extensions
+* *1.5 hours* Trying to match users with their corresponding extension socket
+* *1 hour* Implementing server and extension socket communication to build a data structure that holds all user ids with their corresponding extension socket ids 
+* *0.5 hour* Fixing bugs in the server and extension socket communication  
