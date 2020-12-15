@@ -4,16 +4,12 @@ socket.on('connect', ()=>{
     console.log('Connected to server')
 });
 
-socket.on('loggedIn', async (payload)=>{
-    chrome.storage.local.set({'auth': true}, function() {
-        console.log("User logged in web application");  
-    }); 
-});
+socket.on('identifyExtension', async (data)=>{
+    chrome.storage.local.get('ownerName', async function(data){
 
-socket.on('notloggedIn', async (payload)=>{
-    chrome.storage.local.set({'auth': false}, function() {
-        console.log("User not logged in web application");
-    });  
+        var user_id = await getUserIdFromName(data.ownerName);
+        socket.emit("extensionResponse", {'foundUser': user_id?user_id:false, 'user_id':user_id});
+    });
 });
 
 socket.on('gameStart', async(payload)=>{

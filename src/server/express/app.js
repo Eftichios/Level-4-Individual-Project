@@ -67,16 +67,12 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	}
 
 	// handle game play routes 
-	if (routeController.play){
-		app.post(`/api/play`, authorization, makeHandlerAwareOfAsyncErrors(routeController.play));
+	if (routeController.findGame){
+		app.post(`/api/play`, authorization, makeHandlerAwareOfAsyncErrors(routeController.findGame));
 	}
 
-	if (routeController.stop){
-		app.post(`/api/stopGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.stop));
-	}
-
-	if (routeController.getSocketFromId){
-		app.post(`/api/getSocketFromId`, authorization, makeHandlerAwareOfAsyncErrors(routeController.getSocketFromId));
+	if (routeController.startGame){
+		app.post(`/api/startGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.startGame))
 	}
 
 

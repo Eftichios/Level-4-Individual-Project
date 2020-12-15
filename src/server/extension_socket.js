@@ -1,37 +1,31 @@
-const { setIo } = require('./express/routes/game')
+var playerExtensionSocket = {};
+var io = null;
 
-
-async function userIsLoggedIn(){
-    return true;
-}
-
-
-async function setUpSocketCommunication(io) { 
+async function setUpSocketCommunication(_io) { 
+    io = _io;
     io.on('connection', async (socket)=>{
-        var user_logged_in = await userIsLoggedIn();
-        if (user_logged_in){
-            socket.emit('loggedIn', true)
-        } else {
-            socket.emit('notloggedIn', false)
-        }
-
         var game_state = null;
         socket.on('playerWon', (data)=>{
             game_state = data;
             if (game_state){
                 io.emit('clientGameOver', game_state);              
             }
-        })
-        
+        });
 
-        
+        socket.on('extensionResponse', async (data)=>{
+            console.log("Extension socket: ", data, socket.id);
+            playerExtensionSocket[data.user_id] = socket.id;
+        });       
+    });   
+}
 
-        await setIo(io);
-    });
+function getPlayerExtensionSockets() {
+    return playerExtensionSocket;
+}
 
+function getIo() {
     return io;
-    
 }
 
 
-module.exports = {setUpSocketCommunication};
+module.exports = {setUpSocketCommunication, getIo, getPlayerExtensionSockets};

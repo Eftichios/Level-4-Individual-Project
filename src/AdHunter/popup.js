@@ -1,3 +1,33 @@
+chrome.storage.local.get('ownerName', function(data) {
+  if (data.ownerName){
+    document.getElementById('usernameInput').setAttribute('hidden', true);
+    document.getElementById('usernameLabel').setAttribute('hidden', true);
+    document.getElementById('addName').setAttribute('hidden', true);
+    document.getElementById('changeName').removeAttribute('hidden');
+  }
+});
+
+
+document.forms['usernameForm'].addEventListener("submit", (event)=>{
+  event.preventDefault();
+  document.getElementById('usernameInput').setAttribute('hidden', true);
+  document.getElementById('usernameLabel').setAttribute('hidden', true);
+  document.getElementById('addName').setAttribute('hidden', true);
+  document.getElementById('changeName').removeAttribute('hidden');
+
+  
+  var user_name = document.getElementById('usernameInput').value;
+  chrome.storage.local.set({'ownerName': user_name});
+});
+
+document.getElementById('changeName').addEventListener("click", (event)=>{
+  event.preventDefault();
+  document.getElementById('usernameInput').removeAttribute('hidden');
+  document.getElementById('addName').removeAttribute('hidden');
+  document.getElementById('changeName').setAttribute('hidden', true);
+});
+
+
 // get total ads from storage and display it in our popup
 chrome.storage.local.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;

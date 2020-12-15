@@ -14,6 +14,9 @@ chrome.runtime.onInstalled.addListener(function() {
     });
     chrome.storage.local.set({'gameState': null});
     chrome.storage.local.set({'player': null});
+    chrome.storage.local.set({'ownerName': null});
+    chrome.storage.local.set({'ownerId': null});
+
 
   });
 

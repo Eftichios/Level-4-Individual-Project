@@ -16,7 +16,17 @@
       </style>
     </head>
     <body>
-      <script src="popup.js"></script>
+      <form class="mt-2" id="usernameForm">
+        <div class="input-group">
+          <label id="usernameLabel" for="usernameInput">Username</label>
+          <input name="name" type="text" id="usernameInput"/>
+          <input id="addName" type="submit" class="btn btn-primary" value="Add username"/>
+          <div class="text-center">
+            <input hidden id="changeName" type="submit" class="btn btn-warning" value="Change username"/>
+          </div>
+        </div>
+        
+      </form>
       <div class="row">
         <h1 class="text-center text-success auth">Loading...</h1>
       </div>
@@ -32,5 +42,6 @@
         <p>Found: <span id="adsFound">0</span> trackers</p>
       </div>
       <script src="resources/bootstrap.bundle.min.js"></script>
+      <script src="popup.js"></script>
     </body>
   </html>

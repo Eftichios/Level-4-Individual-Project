@@ -45,6 +45,27 @@ export class Lobby extends React.Component {
         e.returnValue = '';
     }
 
+    startGame = async () => {
+        try {
+            try {
+
+                const response = await fetch(`http://localhost:5000/api/startGame`, {
+                    method:"POST",
+                    headers: {token: localStorage.token, "Content-Type": "application/json"},
+                    body: JSON.stringify({"room":this.state.lobbyData.room})
+                })
+    
+                const parseRes = await response.json();
+                console.log(parseRes);
+
+            } catch (err){
+                console.error(err.message)
+            } 
+        } catch {
+
+        }
+    }
+
     componentDidMount(){
         
         if (this.props.location.state){
@@ -136,7 +157,7 @@ export class Lobby extends React.Component {
                 <strong>Wating for players to get ready...</strong>
             </div>
             <div className="text-center">
-                <button disabled={true} className="btn btn-primary constSize">Start Game</button>
+                <button onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>
             </div>
             <Prompt when={true} message={(location, action)=>{
                 console.log(location, action);
