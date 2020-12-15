@@ -21,12 +21,16 @@ export class App extends React.Component {
     this.state = {
       isAuthenticated: true,
       isLoading: true,
-      user_id: NaN
+      user_id: null
     }
     
     this.setAuth = (token_exists) => {
       this.setState({isAuthenticated: token_exists});
     };
+
+    this.setUserId = (u_id) => {
+      this.setState({user_id: u_id});
+    }
   }
 
   componentDidMount() {
@@ -40,13 +44,14 @@ export class App extends React.Component {
         headers: {token: localStorage.token}
       });
 
-      const parseRes = await response.json();
+      const parseRes = await response.json();  
+      this.setUserId(parseRes.user_id);
       parseRes.success===true? this.setState({isAuthenticated:true}) : this.setState({isAuthenticated:false});
-      this.setState({user_id: parseRes.user_id,isLoading: false });
       
     } catch (err){
-      this.setState({isLoading: false});
       console.error(err.message);
+    } finally {
+      this.setState({isLoading: false})
     }
   }
 
@@ -63,8 +68,8 @@ export class App extends React.Component {
           <Router>
           
             <Switch>
-              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setAuth={this.setAuth}/>:<Redirect to="/login" />} />
-              <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
+              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setUserId={this.setUserId} setAuth={this.setAuth}/>:<Redirect to="/login" />} />
+              <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setUserId={this.setUserId} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
               <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
               <Route path="/lobby" render={props => this.state.isAuthenticated? <><Navigation  /><Lobby {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login"/>} />
               <Route path="/summary" render={props => this.state.isAuthenticated? <><Navigation  /><Summary {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />

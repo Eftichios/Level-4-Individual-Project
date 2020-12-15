@@ -16,6 +16,7 @@ export class Register extends React.Component {
         }
         
         this.setAuth = props.setAuth;
+        this.setUserId = props.setUserId;
     }
 
     onChange = e => {
@@ -37,6 +38,7 @@ export class Register extends React.Component {
         
         if (parseRes.token){
           localStorage.setItem("token", parseRes.token);
+          this.setUserId(parseRes.user_id);
           this.setAuth(true)
           toast.success("Registered succesfully!")
         } else {

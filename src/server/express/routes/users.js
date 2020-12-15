@@ -77,7 +77,7 @@ async function register(req, res) {
         // generate jwt token
         const token = jwtGenerator(newUser.user_id);
 
-        res.json({token});
+        res.status(200).json({"token":token, "user_id":newUser.user_id});
     }
 
 async function login(req, res) {
@@ -103,7 +103,7 @@ async function login(req, res) {
     // give the user a jwt token
     const token = jwtGenerator(user.user_id);
 
-    res.json({token});
+    res.status(200).json({"token":token, "user_id":user.user_id});
 }
 
 async function isVerified(req, res) {

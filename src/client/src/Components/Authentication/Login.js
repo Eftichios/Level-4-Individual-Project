@@ -9,6 +9,7 @@ export class Login extends React.Component {
     constructor(props){
         super(props);
         this.setAuth = props.setAuth;
+        this.setUserId = props.setUserId;
 
         this.state = {
           name: "",
@@ -33,7 +34,8 @@ export class Login extends React.Component {
 
             if (parseRes.token){
               localStorage.setItem("token", parseRes.token);
-              this.setAuth(true);
+              this.setUserId(parseRes.user_id);
+              this.setAuth(true);         
               toast.success("Logged in succesfully.");
             }else {
               this.setAuth(false);

@@ -17,13 +17,17 @@ export class Dashboard extends React.Component {
         }
 
         this.setAuth = props.setAuth;  
+        this.user_id = props.user_id;
+    }
+
+    componentDidMount(){
         this.getUserProfile();
     }
 
     getUserProfile = async ()=> {
         try {
 
-            const response = await fetch(`http://localhost:5000/api/users/${this.props.user_id}`, {
+            const response = await fetch(`http://localhost:5000/api/users/${this.user_id}`, {
                 method:"GET",
                 headers: {token: localStorage.token, "Content-Type": "application/json"}
             })
