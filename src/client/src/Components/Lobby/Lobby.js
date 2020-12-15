@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LobbyChat } from './LobbyChat';
 import socket from "../Utilities/socketConfig";
-import { Prompt } from 'react-router-dom';
+import { Prompt, Redirect } from 'react-router-dom';
 
 export class Lobby extends React.Component {
 
@@ -16,7 +16,7 @@ export class Lobby extends React.Component {
 
         this.state = {
             socket: null,
-            lobbyData: this.props.location.state.lobby
+            lobbyData: this.props.location.state? this.props.location.state.lobby: null
         }
         
         class Messages {
@@ -51,9 +51,13 @@ export class Lobby extends React.Component {
         );
     }
 
-    componentWillUnmount(){
-        console.log("USER LEAVING PAGE");
-        socket.emit("userLeftLobby", this.props.location.state.user_id);
+    componentWillUnmount(){    
+        if (this.props.location.state){
+            console.log("USER LEAVING PAGE");
+            socket.emit("userLeftLobby", this.props.location.state.user_id);
+        } else {
+            console.log("Redirecting to dashboard. To reach the lobby search for a game.")
+        }
     }
 
     constructPlayerTable(){
@@ -69,6 +73,10 @@ export class Lobby extends React.Component {
     }
 
     render(){
+        if (!this.state.lobbyData){
+            return <Redirect to="/dashboard"></Redirect>
+        }
+
         return <div className="lobby-padding">
             <h3 className="text-center push-down">Lobby - {this.state.lobbyData.room}</h3>
             <div className="row">
