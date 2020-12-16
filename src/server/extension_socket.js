@@ -8,6 +8,7 @@ async function setUpSocketCommunication(_io) {
         socket.on('playerWon', (data)=>{
             game_state = data;
             if (game_state){
+                console.log(game_state);
                 io.emit('clientGameOver', game_state);              
             }
         });
@@ -15,7 +16,11 @@ async function setUpSocketCommunication(_io) {
         socket.on('extensionResponse', async (data)=>{
             console.log("Extension socket: ", data, socket.id);
             playerExtensionSocket[data.user_id] = socket.id;
-        });       
+        });   
+        
+        socket.on('sendUpdateToAllClients', async (player_game_state)=>{
+            io.to(player_game_state.game_state.room).emit("updateGameState", player_game_state);
+        })
     });   
 }
 

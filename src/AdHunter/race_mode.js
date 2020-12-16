@@ -1,8 +1,7 @@
 function map_url(url){
-    var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    var domain = match && match[1]; 
+    domain = extractDomain(url); 
     if (!domain) {
-        // console.log("COULD NOT FIND DOMAIN FROM: ", url)
+        console.log("COULD NOT FIND DOMAIN FROM: ", url)
         return null
     }
     find_host = domain.match(/^(.+)\./);
@@ -49,6 +48,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
             function race_trackers(details) {
                 var blocked_urls = map_url(details.url);
                 if (!blocked_urls){
+                    console.log("not a tracker")
                     return
                 }
                 
@@ -60,35 +60,41 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 }); 
                 
                 // Add 1 to the page ad trackers number
-                chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
-                    var tab_id = tab[0].id.toString();
-                    chrome.storage.local.get([tab_id], function(data) {
-                        chrome.storage.local.set({[tab_id]: data[tab_id] + 1}, function() {
-                            console.log("Page ads: ", data[tab_id] + 1);
-                        });  
-                    });
+                var tab_id = details.tabId.toString();
+                var initiator = details.initiator;
+                var domain = extractDomain(initiator);
+                chrome.storage.local.get([tab_id], function(data) {
+                    data[tab_id].trackers +=1;
+                    if (data[tab_id].url==="other" && domain) {
+                        data[tab_id].url = domain;
+                    }
+                    chrome.storage.local.set({[tab_id]: data[tab_id]}, function() {
+                        console.log("Page ads: ", data[tab_id].trackers);
+                    });  
                 });
+                
 
                 // Add 1 to the game session ads
                 chrome.storage.local.get('gameState', function(gameData) {
-                    chrome.storage.local.get('player', function(playerData) {
+                    chrome.storage.local.get('ownerName', function(playerData) {
                         var gameState = gameData.gameState;
-                        gameState.players[playerData.player] += 1;
+                        var playerName = playerData.ownerName;
+                        gameState.players[playerName] += 1;
+                        socket.emit("sendUpdateToAllClients", {'player':playerName,'game_state':gameState});
                         chrome.storage.local.set({'gameState': gameState}, function() {
-                            console.log("Game ads: ", gameState.players[playerData.player]);
+                            console.log("Game ads: ", gameState.players[playerName]);
                         });
-                        if (gameState.players[playerData.player] >= gameState.condition){
+                        if (gameState.players[playerName] >= gameState.condition){
                             game_on = false;
-                            chrome.webRequest.onCompleted.removeListener(race_trackers);
+                            chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
                             console.log("FOUND ENOUGH TRACKERS!");
+                            gameState['finished_at'] = new Date();
                             if (!emmited){
-                                socket.emit('playerWon', {"player": playerData.player, "game_state": gameState})
+                                socket.emit('playerWon', {"player": playerName, "game_state": gameState})
                                 emmited = true;    
                             }
                             
-                            chrome.storage.local.set({'gameOn': false}); 
-                            gameState['finished_at'] = new Date();
-                            
+                            chrome.storage.local.set({'gameOn': false});                    
                             return;
                         }
                           

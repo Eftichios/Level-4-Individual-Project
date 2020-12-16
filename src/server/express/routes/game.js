@@ -5,8 +5,8 @@ var lobbyHandler = new LobbyHandler();
 
 function _initRaceGameState(lobby) {
     var players = {};
-    Object.keys(lobby.playerIds).forEach((pid)=>players[pid]=0);
-    return {"players":players, "game_mode":"Race", "condition": 10, "started_at": new Date() }
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]=0);
+    return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 async function _setClientSocketConnections(io, lobby, socket){
