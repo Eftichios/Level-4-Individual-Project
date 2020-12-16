@@ -1,8 +1,5 @@
 // Initialise color and total ads number when extension is installed
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.local.set({color: '#3aa757'}, function() {
-      console.log("The color is green.");
-    });
     chrome.storage.local.set({'totalAds': 0}, function(){
       console.log("Initialise total ads number.")
     });
@@ -13,7 +10,6 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log("Setting status...")
     });
     chrome.storage.local.set({'gameState': null});
-    chrome.storage.local.set({'player': null});
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
 
@@ -36,17 +32,24 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.tabs.query({}, function(tab) {
     tab.forEach((t) => {
       var id = t.id.toString();
-      chrome.storage.local.set({[id]: 0}, function() {
-      console.log("Initialised total ads for tab with id",id);
+      var domain = extractDomain(t.url);
+      if (!domain){
+        domain = "other";
+      }
+      chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
+      console.log("Initialised total ads for tab with id",id, t);
     });
     });
   });
   
   // When a new tab is created, initialise a counter for ad trackers
   chrome.tabs.onCreated.addListener(function (tab) {
-    console.log(tab, " CREATED");
     var id = tab.id.toString();
-    chrome.storage.local.set({[id]: 0}, function() {
+    var domain = extractDomain(tab.url) || extractDomain(tab.pendingUrl);
+    if (!domain){
+      domain = "other";
+    }
+    chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
       console.log("Initialised total ads for tab with id",id);
     });
   });
@@ -54,9 +57,28 @@ chrome.runtime.onInstalled.addListener(function() {
 
   // When a tab is destroyed, remove the counter from storage
   chrome.tabs.onRemoved.addListener(function (tab_id){
-    console.log(tab_id, " DESTROYED")
     var id = tab_id.toString()
     chrome.storage.local.remove([id], function() {
       console.log("Destroyed total ads for tab with id ",id);
     });
   })
+
+  // Listen to url changes in order to update url trackers
+  chrome.tabs.onUpdated.addListener(function (tab_id){
+    var id = tab_id.toString();
+    chrome.tabs.get(tab_id, function(tab_details){
+      var domain = extractDomain(tab_details.url);
+      if (!domain){
+        domain = "other";
+      }
+      chrome.storage.local.get([id], function(data) {
+        console.log("tab update detected", data[id].url, domain)
+        if (data[id].url !== domain){
+          chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
+            console.log("Initialised total ads for tab with id",id);
+          });
+        }
+      });
+       
+    });   
+  });

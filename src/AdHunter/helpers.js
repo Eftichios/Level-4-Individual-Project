@@ -15,3 +15,10 @@ getUserIdFromName = async (user_name) => {
         return null;
       } 
 }
+
+extractDomain = (url)=>{
+  var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+  var domain = match && match[1];
+
+  return domain
+}

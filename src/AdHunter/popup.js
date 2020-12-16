@@ -1,7 +1,6 @@
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
     document.getElementById('usernameInput').setAttribute('hidden', true);
-    document.getElementById('usernameLabel').setAttribute('hidden', true);
     document.getElementById('addName').setAttribute('hidden', true);
     document.getElementById('changeName').removeAttribute('hidden');
   }
@@ -11,7 +10,6 @@ chrome.storage.local.get('ownerName', function(data) {
 document.forms['usernameForm'].addEventListener("submit", (event)=>{
   event.preventDefault();
   document.getElementById('usernameInput').setAttribute('hidden', true);
-  document.getElementById('usernameLabel').setAttribute('hidden', true);
   document.getElementById('addName').setAttribute('hidden', true);
   document.getElementById('changeName').removeAttribute('hidden');
 
@@ -42,11 +40,9 @@ chrome.storage.local.get('gameOn', function(data) {
 });
 
 chrome.storage.local.get('gameState', function(gameData) {
-  chrome.storage.local.get('player', function(playerData) {
-    var player = playerData.player;
-    if (gameData.gameState){
-      document.getElementById('adsFound').innerHTML = gameData.gameState.players[player];
-    }
+  chrome.storage.local.get('ownerName', function(playerData) {
+    var player = playerData.ownerName;
+    document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
   });
 });
 
@@ -54,7 +50,14 @@ chrome.storage.local.get('gameState', function(gameData) {
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   var tab_id = tab[0].id.toString();
   chrome.storage.local.get([tab_id], function(data) {
-    document.getElementById('ads').innerHTML = data[tab_id];
+    document.getElementById('ads').innerHTML = `(${data[tab_id].url}): ${data[tab_id].trackers}`;
+  });
+});
+
+chrome.tabs.onActivated.addListener(function(activeInfo) {
+  var tab_id = activeInfo.tabId.toString();
+  chrome.storage.local.get([tab_id], function(data) {
+    document.getElementById('ads').innerHTML = `(${data[tab_id].url}): ${data[tab_id].trackers}`;
   });
 });
 
@@ -69,20 +72,23 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       if (key=="totalAds"){
         document.getElementById('totalAds').innerHTML = storageChange.newValue;
       }else if (key==tab_id){
-        document.getElementById('ads').innerHTML = storageChange.newValue;
+        document.getElementById('ads').innerHTML = `(${storageChange.newValue.url}): ${storageChange.newValue.trackers}`;
       }else if (key=="auth") {
         document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
       }else if (key=="gameOn") {
         document.getElementsByClassName('gameOn')[0].innerHTML = storageChange.newValue==true?"Status: In game":"Status: Not in game";
         if (storageChange.newValue==false) {
-          chome.storage.local.set("gameState", null);
+          chrome.storage.local.set({"gameState": null});
           chrome.storage.local.set({'player': null});
+          document.getElementById('adsFound').innerHTML = 0;
         }
       }else if (key=="gameState" && storageChange.newValue) {
-        chrome.storage.local.get('player', function(data) {
-          var player = data.player;
+        chrome.storage.local.get('ownerName', function(data) {
+          var player = data.ownerName;
           document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player];
         });
+      } else {
+        document.getElementById('adsFound').innerHTML = 0;
       }
       console.log('Storage key "%s" in namespace "%s" changed. ' +
                   'Old value was "%s", new value is "%s".',

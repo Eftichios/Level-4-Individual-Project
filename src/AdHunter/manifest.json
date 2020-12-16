@@ -14,5 +14,5 @@
     "icons": {
         "256": "images/icon256.png"
     },
-    "permissions": ["activeTab", "declarativeContent", "storage", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost/*"]
+    "permissions": ["activeTab", "tabs", "declarativeContent", "storage", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "http://localhost/*"]
 }

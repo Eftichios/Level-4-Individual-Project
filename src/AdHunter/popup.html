@@ -13,12 +13,15 @@
           width: 150px;
           height: 150px;
         }
+
+        form {
+          padding: 15px;
+        }
       </style>
     </head>
     <body>
-      <form class="mt-2" id="usernameForm">
+      <form id="usernameForm">
         <div class="input-group">
-          <label id="usernameLabel" for="usernameInput">Username</label>
           <input name="name" type="text" id="usernameInput"/>
           <input id="addName" type="submit" class="btn btn-primary" value="Add username"/>
           <div class="text-center">
@@ -37,8 +40,8 @@
         <img class="ext-image" src="images/icon256.png" alt="Extension Image"/>
       </div>
       <div class="game-stats text-center">
-        <p hidden>Total Ads: <span id="totalAds">0</span></p>
-        <p hidden>Page Ads: <span id="ads">0</span></p>
+        <p>Total Ads: <span id="totalAds">0</span></p>
+        <p>On this site<span id="ads">0</span></p>
         <p>Found: <span id="adsFound">0</span> trackers</p>
       </div>
       <script src="resources/bootstrap.bundle.min.js"></script>
