@@ -3,8 +3,8 @@
 \usepackage{times}
     \usepackage{fullpage}
     
-    \title{ {{cookiecutter.project_title}}
-    \author{ {{cookiecutter.student_name}} - {{cookiecutter.student_id}} }
+    \title{ Distributed game using adverts and trackers in web browsers}
+    \author{ Eftychios Karagiorgis - 2329664k }
 
     \begin{document}
     \maketitle
@@ -18,30 +18,47 @@
 
 \subsubsection{Motivation}\label{motivation}
 
-\emph{{[}Clearly motivate the purpose of your project; why someone would
-care about what you are doing{]}}
+Ad targeting ecosystems are complex, the lack of transparency in terms of what exact data is used and how coupled with the lack of controls that users have causes concerns over privacy of personal data. Advertisers usually profile users based on personal data such as their browsing history or social media profile in order to deliver targeted ads. Putting the user's knowledge of these systems to the test could provide useful insights as to how they think the profiling is done.
 
 \subsubsection{Aims}\label{aims}
 
-\emph{{[}Clearly state what the project is intended to do. This should
-be something which is measurable; it should be possible to tell if you
-succeeded{]}}
+The aim is to develop a multiplayer game using adverts and trackers as the main game resources to explore user's understanding of targeted advertising as well as raise awareness of the various issues that come with it through game mechanics and information sections. In a game session, players will be given an advert category and then attempt to trick the profiling done by advertisers in order to receive adverts in that category. This will be implemented as a web application along with a browser extension. The web app will allow users to find games as well as have game metrics and achievements while the extension will gather advert information during the gameplay. The behaviour of the users will be evaluated by analysing the data gathered from the game-pla. Futhermore, the enjoyment and engangement of the game will be evaluted through surveys.
 
 \subsection{Progress}\label{progress}
 
-\emph{{[}Briefly state your progress so far, as a bulleted list{]}}
+\begin{itemize}
+\item  Technologies and frameworks chosen: front-end will be implemented using React, back-end using Node.js with express. The database will be a postgresql database and the extension will be implemented in chrome. Websockets will be used to allow for real-time communication between different parties implemented using Socket.io.
+\item  Background research done on the infrastructure of targeted advertising as well as different privacy issues involved with it.
+\item  Exploration of different technologies that identify tracking such as ad blockers or Blacklight.
+\item  Initial design prototypes and refinements using surveys.
+\item  Initial software architecture and React component diagram.
+\item  Web app and extension wireframes using Figma.
+\item  ER diagram and design of the database.
+\item  Basic web application developed with authentication and authorisation.
+\item  Chrome extension developed to observe and count ad trackers and notifies the server.
+\item  Database creation and population with dummy data automated using a script and Sequelize as the ORM.
+\item  Implemented REST API for all table data in the database.
+\item  Initial version of a solo game-play that counts ad trackers, the player needs to get tracked by a certain number of ad trackers to win.
+\item  Implemented multi-way communication between server, extension and front-end along with a lobby system.
+\end{itemize}
 
 \subsection{Problems and risks}\label{problems-and-risks}
 
 \subsubsection{Problems}\label{problems}
 
-\emph{{[}What problems have you had so far, that have held up the
-project?{]}}
+\begin{itemize}
+\item  Initially the idea was to use Facebook as the playground using dummy accounts, however, due to Facebook's policies on fake accounts and bot-like behaviou, dummy accounts were being banned on creation. Since using the user's personal account could compromise their privacy, we have decided to use tracking in web browsers instead.
+\item  Locating and classifying adverts on a page is very challenging as there is no descriptive labels. The best approach seems to be: getting the url of the website the advert redirects to and using a url classifiers to return the most prominent category on that website. However, we have not yet found an open-source url classification API to use and building a real-time url classifier from scratch is a whole other project.
+\item  The way that ad trackers are identified is by matching them with an open-source list of known ad tracking domains. Further information on specific entities can be found in DuckDuckGo's tracker radar. However, there might be some rare cases were a player encounters an ad trackers that there is no information for and we will fail to identify them. 
+\end{itemize}
 
 \subsubsection{Risks}\label{risks}
 
-\emph{{[}What problems do you foresee in the future and how will you
-mitigate them?{]}}
+\begin{itemize}
+\item  In a survey, we presented participants with three variations of the game-play using as much information on ad trackers as possilbe. In almost all cases, participants stated that the game-play will get boring really quick as it is repetitive and there is no clear goal other than achievements. There is not something that can be done about this as the setup of the game-play is meant to be educational and experimental.
+\item  The extension will only be available in chrome as it is the most used web browser and this means that players must use chrome to play the game which narrows the pool of participants.
+
+\end{itemize}
 
 \subsection{Plan}\label{plan}
 
@@ -50,19 +67,8 @@ submission week{]}}
 
     
 \subsection{Ethics and data}\label{ethics}
-\emph{Specify what ethical approval you need to do your evaluation and how you are approaching it. This is mandatory. 
-Specify what data you expect to collect in your evaluation. Explain how this data will help you evaluate your project.
-}
-
-Options for ethics:
-\item This project does not involve human subjects or data. No approval required.
-\item I have verified that the ethics checklist will apply to any evaluation I need to do. I will sign and complete the checklist.
-\item I have sought ethical guidance from the School's ethics convener and I will:
-\begin{itemize}
-    \item Proceed under specific instructions from the Ethics convener (e.g. modified checklist).
-    \item Apply for College Ethics Board approval.
-    \item Other procedure (give details)
-\end{itemize}    
+This project will use participants for surveys as well as for testing and evaluating the game-play. Surveys will be used to gather ideas and opinions on design choices in order to improve and refine the design of the web application in stages. To evaluate the game-play, participants will play the game and then they will be asked to answer a survey to capture user impression and opinions on the actual game-play. Additionally, during the game-play, relevant metrics will be gathered (such as what websites were visited during the game) to allow us to explore the participant's behaviour. \
+None of the data gathered from the surveys or the game-play will be personally identifiable information, the paricipants will play the game under an alias and surveys will be anonymous. Therefore, the Ethics Checklist is adequate for the nature of the experiments in this project.
 
 
 \end{document}
