@@ -12,16 +12,12 @@ socket.on('identifyExtension', async (data)=>{
     });
 });
 
-socket.on('gameStart', async(payload)=>{
+socket.on('gameStart', async(game_state)=>{
     chrome.storage.local.set({'gameOn': true}, function() {
         console.log("User has started the game");
     });  
-    chrome.storage.local.set({'gameState': payload.game_state}, function() {
-        console.log("Initialise game state", payload.game_state);
-    }); 
-
-    chrome.storage.local.set({'player': payload.player}, function() {
-        console.log("Player:", payload.player);
+    chrome.storage.local.set({'gameState': game_state}, function() {
+        console.log("Initialise game state", game_state);
     }); 
 });
 

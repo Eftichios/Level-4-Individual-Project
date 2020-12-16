@@ -9,7 +9,7 @@ function _initRaceGameState(lobby) {
     return {"players":players, "game_mode":"Race", "condition": 10, "started_at": new Date() }
 }
 
-function _setSocketConnections(io, lobby, socket){
+async function _setClientSocketConnections(io, lobby, socket){
     socket.join(lobby.room);
 
     // lobby events
@@ -28,7 +28,10 @@ function _setSocketConnections(io, lobby, socket){
         io.to(lobby.room).emit("userLeft", lobby);
     });
 
-    // extension events
+}
+
+async function _setExtSocketConnections(io, lobby, socket){
+    // TODO: set up game state update communication
 
 }
 
@@ -40,7 +43,7 @@ async function findGame(req, res){
         const { user_id, user_name, socketId } = req.body;
         
         var socket = io.sockets.sockets.get(socketId);
-        _setSocketConnections(io, lobby, socket);
+        await _setClientSocketConnections(io, lobby, socket);
         
         // // initialise game state
         lobby.addPlayer(socket.id, user_name, user_id);
@@ -56,12 +59,18 @@ async function findGame(req, res){
 }
 
 async function startGame(req, res){
-    var playerExtensionSocket = getPlayerExtensionSockets();
-    console.log(playerExtensionSocket);
+    var io = getIo();
     try{
+    var playerExtensionSocket = getPlayerExtensionSockets();
         var {room} = req.body;
         var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
+        var extension_room = `$ext_${room}`;
+        for (pid in lobby.playerIds){           
+            var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
+            extension_socket.join(extension_room, async ()=>{});
+        }
         var game_state = _initRaceGameState(lobby);
+        io.to(extension_room).emit("gameStart", game_state);
         res.status(200).json(game_state);
     } catch (err) {
         console.error(err.message);

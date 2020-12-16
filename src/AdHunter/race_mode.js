@@ -1,5 +1,3 @@
-var socket = io.connect('http://localhost:5000');
-
 function map_url(url){
     var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     var domain = match && match[1]; 
