@@ -384,3 +384,11 @@
 * *1.5 hours* Trying to match users with their corresponding extension socket
 * *1 hour* Implementing server and extension socket communication to build a data structure that holds all user ids with their corresponding extension socket ids 
 * *0.5 hour* Fixing bugs in the server and extension socket communication  
+
+### 16 Dec 2020
+* *1 hour* Fixing a bug where the extension was not receiving private socket messages
+* *0.5 hour* Put extension sockets into rooms when a game starts to enable enclosed communication
+* *1.5 hours* Sending game updates from extension to server which server forwards to all other extensions in the game session
+* *0.5 hours* Refining the extension's user interface to show more detailed feedback to the player
+* *0.5 hours* Refining and adding issues on github for future work
+* *3 hours* Working on status report
