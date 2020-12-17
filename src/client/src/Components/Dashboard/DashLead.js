@@ -8,35 +8,40 @@ export class DashLead extends React.Component {
         super(props);
 
         this.state = {
-            user: props.user
+            user: props,
+            players: null
         }
+    }
 
-        class Players {
-            constructor(rank, name, games, count){
-                this.rank=rank;
-                this.name=name;
-                this.games=games;
-                this.count=count;
-            }
+    getAndSortPlayers = async () =>{
+        try {
+            var response = await fetch("http://localhost:5000/api/users", {
+                method: "GET",
+                headers: {"Content-Type": "application/json"},
+            });
+
+            var parseRes = await response.json();
+            this.sortAndBuildPlayers(parseRes);
+        } catch (err){
+            console.error(err.message)
         }
+    }
 
-        this.players_data = [new Players(1,"George",15,1432), 
-                        new Players(2,"Jacob",13,1143),
-                        new Players(3,"Larry",11,1008),
-                        new Players(4,"Peter",10,911),
-                        new Players(5,"Maria",9,789),
-                        new Players(6,"John",11,741),
-                        new Players(7,"Elizabeth",10,734),
-                        new Players(8,"Graham",7,597),
-                        new Players(9,"Bruce",7,532),
-                        new Players(10,"Liam",3,214),]
-        
-        this.players = this.players_data.map((player)=><tr key={player.name}>
-            <td>{player.rank}</td>
-            <td>{player.name===this.state.user? <strong>{player.name}</strong>:player.name}</td>
-            <td>{player.games}</td>
-            <td>{player.count}</td>
-            </tr>)
+    sortAndBuildPlayers(players){
+        var players_sorted = players.sort((a,b) => b.score - a.score);
+        var temp_table = players_sorted.map((player, index)=>
+            <tr key={player.user_id}>
+                <td>{index}</td>
+                <td>{player.user_name}</td>
+                <td>{player.score}</td>
+            </tr>
+        );
+
+        this.setState({players: [temp_table]});
+    }
+
+    componentDidMount(){
+        this.getAndSortPlayers()
     }
 
     render(){
@@ -57,12 +62,11 @@ export class DashLead extends React.Component {
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Player</th>
-                                    <th scope="col">Games Played</th>
-                                    <th scope="col">Distinct Trackers</th>
+                                    <th scope="col">Score</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.players}
+                                {this.state.players? this.state.players: <h3 className='text-center'>Loading...</h3>}
                             </tbody>
                         </table>
                         </div>
