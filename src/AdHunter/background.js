@@ -72,10 +72,9 @@ chrome.runtime.onInstalled.addListener(function() {
         domain = "other";
       }
       chrome.storage.local.get([id], function(data) {
-        console.log("tab update detected", data[id].url, domain)
         if (data[id].url !== domain){
           chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-            console.log("Initialised total ads for tab with id",id);
+            console.log("Updated tab url",id);
           });
         }
       });

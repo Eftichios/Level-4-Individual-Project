@@ -1,7 +1,6 @@
 function map_url(url){
     domain = extractDomain(url); 
     if (!domain) {
-        console.log("COULD NOT FIND DOMAIN FROM: ", url)
         return null
     }
     find_host = domain.match(/^(.+)\./);
@@ -48,7 +47,6 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
             function race_trackers(details) {
                 var blocked_urls = map_url(details.url);
                 if (!blocked_urls){
-                    console.log("not a tracker")
                     return
                 }
                 

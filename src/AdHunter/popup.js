@@ -1,3 +1,22 @@
+_setPlayerScores = (this_player, game_state)=>{
+  if (!game_state){
+    return;
+  }
+  
+  var player_div = document.getElementById('other-players');
+
+  Object.keys(game_state.players)
+  .filter((player)=> player!=this_player)
+  .forEach((player)=>{
+    console.log(`Found player ${player} with score ${game_state.players[player]}`)
+    var player_el = document.createElement("p");
+    player_el.innerHTML = `${player}: ${game_state.players[player]}`;
+    player_div.appendChild(player_el);
+  });
+}
+
+
+
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
     document.getElementById('usernameInput').setAttribute('hidden', true);
@@ -43,6 +62,7 @@ chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('ownerName', function(playerData) {
     var player = playerData.ownerName;
     document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
+    _setPlayerScores(player, gameData.gameState);
   });
 });
 
@@ -86,6 +106,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         chrome.storage.local.get('ownerName', function(data) {
           var player = data.ownerName;
           document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player];
+          _setPlayerScores(player, storageChange.newValue.gameState);
         });
       } else {
         document.getElementById('adsFound').innerHTML = 0;

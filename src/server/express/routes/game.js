@@ -6,6 +6,8 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]=0);
+    players['dummy_user'] = 17;
+    players['dummy_user1'] = 26;
     return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
