@@ -392,3 +392,11 @@
 * *0.5 hours* Refining the extension's user interface to show more detailed feedback to the player
 * *0.5 hours* Refining and adding issues on github for future work
 * *3 hours* Working on status report
+
+### 17 Dec 2020
+* *1 hour* Improving extension interface and adding other players scores
+* *2.5 hours* Testing multiplayer gameplay and fixing bugs and errors
+* *1.5 hours* Finishing status report
+* *0.5 hour* Adding leaderboard functionality, users are retrieved and sorted based on their score
+* *2.5 hours* Adding game history functionality, server builds and stores a games history by putting the data of all users together
+* *0.5 hours* Front end for retrieving and displaying game history for the user 
