@@ -6,8 +6,6 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]=0);
-    players['dummy_user'] = 17;
-    players['dummy_user1'] = 26;
     return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
@@ -24,16 +22,23 @@ async function _setClientSocketConnections(io, lobby, socket){
     });
 
     socket.on('disconnect', (data)=> {
-        console.log("USER CLOSED TAB/BROWSER", socket.id);
-        console.log(lobby.socketPlayerMap[socket.id]);
         lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
         io.to(lobby.room).emit("userLeft", lobby);
     });
 
 }
 
-async function _setExtSocketConnections(io, lobby, socket){
-    // TODO: set up game state update communication
+async function _setExtSocketConnections(io, lobby_room, ext_room, socket){
+    socket.join(ext_room);
+
+    socket.on('sendUpdateToAllClients', async (player_game_state)=>{
+        io.to(ext_room).emit("updateGameState", player_game_state);
+    });
+
+    socket.on('playerWon', (player_game_state)=>{
+        io.to(ext_room).emit("winnerFound", player_game_state);
+        io.to(lobby_room).emit("gameFinished", player_game_state);
+    });
 
 }
 
@@ -66,10 +71,10 @@ async function startGame(req, res){
     var playerExtensionSocket = getPlayerExtensionSockets();
         var {room} = req.body;
         var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
-        var extension_room = `$ext_${room}`;
+        var extension_room = `ext_${room}`;
         for (pid in lobby.playerIds){           
             var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
-            extension_socket.join(extension_room, async ()=>{});
+            _setExtSocketConnections(io, lobby.room, extension_room, extension_socket);
         }
         var game_state = _initRaceGameState(lobby);
         io.to(extension_room).emit("gameStart", game_state);

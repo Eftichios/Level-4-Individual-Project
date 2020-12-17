@@ -35,16 +35,30 @@ function map_url(url){
 chrome.storage.onChanged.addListener(function race_flag_listener(changes, namespace) {
     var game_on = false;
     var emmited = false;
+    var winner = null;
     for (var key in changes) {
         var storageChange = changes[key];
-        if (key=="gameOn"){
-            game_on = storageChange.newValue;
+        if (key=="gameOver" && storageChange.newValue!==null){
+            game_on = !storageChange.newValue;
         }         
     } 
     if (game_on) {
         // Adds a listener function to all requests that match url from the blocked domains
         chrome.webRequest.onBeforeRequest.addListener(
             function race_trackers(details) {
+                // check if someone else has won the game
+                chrome.storage.local.get('winner', function(winnerData){
+                    winner = winnerData.winner;
+                })
+
+                if (winner){
+                    console.log(winner);
+                    game_on = false;
+                    chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
+                    return
+                }
+                
+
                 var blocked_urls = map_url(details.url);
                 if (!blocked_urls){
                     return
@@ -62,6 +76,9 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 var initiator = details.initiator;
                 var domain = extractDomain(initiator);
                 chrome.storage.local.get([tab_id], function(data) {
+                    if (!data[tab_id]){
+                        return
+                    }
                     data[tab_id].trackers +=1;
                     if (data[tab_id].url==="other" && domain) {
                         data[tab_id].url = domain;
@@ -91,8 +108,10 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                                 socket.emit('playerWon', {"player": playerName, "game_state": gameState})
                                 emmited = true;    
                             }
-                            
-                            chrome.storage.local.set({'gameOn': false});                    
+
+                            chrome.storage.local.set({'winner': playerName});
+                            chrome.storage.local.set({'gameOver': true});
+                                                
                             return;
                         }
                           

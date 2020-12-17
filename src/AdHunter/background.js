@@ -10,6 +10,7 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log("Setting status...")
     });
     chrome.storage.local.set({'gameState': null});
+    chrome.storage.local.set({'gameOver': null});
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
 

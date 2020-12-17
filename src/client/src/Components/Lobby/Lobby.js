@@ -16,7 +16,8 @@ export class Lobby extends React.Component {
 
         this.state = {
             socket: null,
-            lobbyData: this.props.location.state? this.props.location.state.lobby: null
+            lobbyData: this.props.location.state? this.props.location.state.lobby: null,
+            temp_winner: null
         }
         
         class Messages {
@@ -47,23 +48,19 @@ export class Lobby extends React.Component {
 
     startGame = async () => {
         try {
-            try {
 
-                const response = await fetch(`http://localhost:5000/api/startGame`, {
-                    method:"POST",
-                    headers: {token: localStorage.token, "Content-Type": "application/json"},
-                    body: JSON.stringify({"room":this.state.lobbyData.room})
-                })
+            const response = await fetch(`http://localhost:5000/api/startGame`, {
+                method:"POST",
+                headers: {token: localStorage.token, "Content-Type": "application/json"},
+                body: JSON.stringify({"room":this.state.lobbyData.room})
+            });
     
-                const parseRes = await response.json();
-                console.log(parseRes);
+            const parseRes = await response.json();
+            console.log(parseRes);
 
-            } catch (err){
-                console.error(err.message)
-            } 
-        } catch {
-
-        }
+        } catch (err){
+            console.error(err.message)
+        } 
     }
 
     componentDidMount(){
@@ -81,6 +78,9 @@ export class Lobby extends React.Component {
                 this.setState({lobbyData: data});
                 }
             );
+            socket.on("gameFinished", (data)=>{
+                this.setState({temp_winner: data.player});
+            })
         }
     }
 
@@ -154,7 +154,7 @@ export class Lobby extends React.Component {
                 <LobbyChat msgs={this.msgs} user="George"></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
-                <strong>Wating for players to get ready...</strong>
+                <strong>Wating for players to get ready... Winner: {this.state.temp_winner? this.state.temp_winner: "..."}</strong>
             </div>
             <div className="text-center">
                 <button onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>

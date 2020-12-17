@@ -1,4 +1,5 @@
 _setPlayerScores = (this_player, game_state)=>{
+  console.log(this_player, game_state)
   if (!game_state){
     return;
   }
@@ -9,13 +10,34 @@ _setPlayerScores = (this_player, game_state)=>{
   .filter((player)=> player!=this_player)
   .forEach((player)=>{
     console.log(`Found player ${player} with score ${game_state.players[player]}`)
-    var player_el = document.createElement("p");
-    player_el.innerHTML = `${player}: ${game_state.players[player]}`;
-    player_div.appendChild(player_el);
+    var player_el = document.getElementById(player);
+    if (!player_el){
+      player_el = document.createElement("p");
+      player_el.setAttribute('id',player)
+      player_el.innerHTML = `${player}: ${game_state.players[player]}`;
+      player_div.appendChild(player_el);
+    } else {
+      player_el.innerHTML = `${player}: ${game_state.players[player]}`;
+    }
   });
 }
 
+_postGameMetrics = (winner) => {
+  document.getElementById('status').innerHTML = "Status: Post game";
+  document.getElementById('winner').innerHTML = `Winner: <strong>${winner}</strong>`   
+}
 
+_resetGameState = () =>{
+  chrome.storage.local.get('gameState', function(gameData) {
+    chrome.storage.local.get('ownerName', function(playerData) {
+      var player = playerData.ownerName;
+      console.log(gameData);
+      document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
+      document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
+      _setPlayerScores(player, gameData.gameState);
+    });
+  });
+}
 
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
@@ -54,16 +76,21 @@ chrome.storage.local.get('auth', function(data) {
   document.getElementsByClassName('auth')[0].innerHTML = data.auth?"You are logged in":"You are not logged in";
 });
 
-chrome.storage.local.get('gameOn', function(data) {
-  document.getElementsByClassName('gameOn')[0].innerHTML = data.gameOn?"Status: In game":"Status: Not in game";
-});
-
 chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('ownerName', function(playerData) {
     var player = playerData.ownerName;
     document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
+    document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
     _setPlayerScores(player, gameData.gameState);
   });
+});
+
+chrome.storage.local.get('gameOver', function(gameOverData) {
+  if (gameOverData.gameOver){
+    chrome.storage.local.get('winner', function(winnerData){
+      _postGameMetrics(winnerData.winner);
+    });
+  }
 });
 
 // Find the active tab and set the number of page ad trackers
@@ -95,21 +122,23 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('ads').innerHTML = `(${storageChange.newValue.url}): ${storageChange.newValue.trackers}`;
       }else if (key=="auth") {
         document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
-      }else if (key=="gameOn") {
-        document.getElementsByClassName('gameOn')[0].innerHTML = storageChange.newValue==true?"Status: In game":"Status: Not in game";
-        if (storageChange.newValue==false) {
-          chrome.storage.local.set({"gameState": null});
-          chrome.storage.local.set({'player': null});
-          document.getElementById('adsFound').innerHTML = 0;
-        }
-      }else if (key=="gameState" && storageChange.newValue) {
+      }else if (key=="gameOver"){
+        if (storageChange.newValue){
+          chrome.storage.local.get('winner', function(winnerData){
+            _postGameMetrics(winnerData.winner);
+          });
+        } else {
+          _resetGameState();
+        }     
+      }
+      else if (key=="gameState" && storageChange.newValue) {
+        document.getElementById('winner').innerHTML = "";
         chrome.storage.local.get('ownerName', function(data) {
           var player = data.ownerName;
           document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player];
-          _setPlayerScores(player, storageChange.newValue.gameState);
+          document.getElementById('status').innerHTML = "Status: In game";
+          _setPlayerScores(player, storageChange.newValue);
         });
-      } else {
-        document.getElementById('adsFound').innerHTML = 0;
       }
       console.log('Storage key "%s" in namespace "%s" changed. ' +
                   'Old value was "%s", new value is "%s".',
