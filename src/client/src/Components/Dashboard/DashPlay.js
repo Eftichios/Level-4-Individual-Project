@@ -5,6 +5,7 @@ import profile from "../../Media/profile.jpeg";
 import DashLead from './DashLead';
 import {Redirect} from 'react-router';
 import socket from "../Utilities/socketConfig";
+import {toast} from 'react-toastify';
 
 export class DashPlay extends React.Component {
 
@@ -42,12 +43,13 @@ export class DashPlay extends React.Component {
             });
 
             const parseRes = await response.json();
-            if (parseRes) {
-                this.setState({lobby: parseRes});
+            if (parseRes.success) {
+                this.setState({lobby: parseRes.lobby});
+            } else {
+                toast.error(parseRes.error);
             }
-
         } catch (err) {
-            console.error(err.message);
+            console.error(err.message);      
         }
         
     }

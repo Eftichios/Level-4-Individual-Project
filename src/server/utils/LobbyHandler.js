@@ -33,6 +33,14 @@ class LobbyHandler{
         }
         return null;
     }
+
+    checkIfPlayerInLobby(playerId){
+        for (var i in this.lobbies){
+            if (this.lobbies[i].playerIds[playerId]){
+                throw new Error(`Cannot join a lobby at this time. You are most likely already in a lobby in another browser session/device.`)
+            };
+        }
+    }
 }
 
 module.exports = LobbyHandler;

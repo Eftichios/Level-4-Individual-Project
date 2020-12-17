@@ -48,20 +48,22 @@ async function findGame(req, res){
         io.emit("identifyExtension", true);
         var lobby = lobbyHandler.findOrCreateLobby("Race");
         const { user_id, user_name, socketId } = req.body;
+        lobbyHandler.checkIfPlayerInLobby(user_id);
         
+        
+
         var socket = io.sockets.sockets.get(socketId);
+        lobby.addPlayer(socket.id, user_name, user_id);
         await _setClientSocketConnections(io, lobby, socket);
         
-        // // initialise game state
-        lobby.addPlayer(socket.id, user_name, user_id);
         
         // notify all sockets that a user has joined the lobby
         io.to(lobby.room).emit("userJoinedRoom", lobby);
 
-        res.status(200).json(lobby);
+        res.status(200).json({'success':true, 'lobby':lobby});
     } catch (err) {
         console.error(err.message);
-        res.status(500).json(false);
+        res.status(500).json({'success':false, 'error':err.message});
     }
 }
 
