@@ -26,7 +26,7 @@ function map_url(url){
     if (blocked===undefined) {
         return null;
     } else { 
-        return blocked;
+        return [blocked, domain];
     }
     
 }
@@ -63,6 +63,16 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 if (!blocked_urls){
                     return
                 }
+                var domain = blocked_urls[1];
+
+                chrome.storage.local.get('page_history', function(data){
+                    if (data.page_history[domain]){
+                        data.page_history[domain] +=1 
+                    } else {
+                        data.page_history[domain] = 1
+                    }
+                    chrome.storage.local.set({"page_history": data.page_history});
+                });
                 
                 // Add 1 to the total ad trackers number      
                 chrome.storage.local.get('totalAds', function(data) {
@@ -94,17 +104,20 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     chrome.storage.local.get('ownerName', function(playerData) {
                         var gameState = gameData.gameState;
                         var playerName = playerData.ownerName;
-                        gameState.players[playerName] += 1;
+                        gameState.players[playerName]["score"] += 1;
                         socket.emit("sendUpdateToAllClients", {'player':playerName,'game_state':gameState});
                         chrome.storage.local.set({'gameState': gameState}, function() {
-                            console.log("Game ads: ", gameState.players[playerName]);
+                            console.log("Game ads: ", gameState.players[playerName]["score"]);
                         });
-                        if (gameState.players[playerName] >= gameState.condition){
+                        if (gameState.players[playerName]["score"] >= gameState.condition){
                             game_on = false;
                             chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
                             console.log("FOUND ENOUGH TRACKERS!");
                             gameState['finished_at'] = new Date();
                             if (!emmited){
+                                chrome.storage.local.get('page_history', async function(historyData){
+                                    socket.emit('playerHistory', {"player": playerName, "game_history": historyData.page_history})
+                                });
                                 socket.emit('playerWon', {"player": playerName, "game_state": gameState})
                                 emmited = true;    
                             }

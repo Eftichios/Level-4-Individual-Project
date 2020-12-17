@@ -66,7 +66,7 @@ export class DashLead extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.players? this.state.players: <h3 className='text-center'>Loading...</h3>}
+                                {this.state.players}
                             </tbody>
                         </table>
                         </div>

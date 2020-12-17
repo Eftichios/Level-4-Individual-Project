@@ -9,15 +9,15 @@ _setPlayerScores = (this_player, game_state)=>{
   Object.keys(game_state.players)
   .filter((player)=> player!=this_player)
   .forEach((player)=>{
-    console.log(`Found player ${player} with score ${game_state.players[player]}`)
+    console.log(`Found player ${player} with score ${game_state.players[player]["score"]}`)
     var player_el = document.getElementById(player);
     if (!player_el){
       player_el = document.createElement("p");
       player_el.setAttribute('id',player)
-      player_el.innerHTML = `${player}: ${game_state.players[player]}`;
+      player_el.innerHTML = `${player}: ${game_state.players[player]["score"]}`;
       player_div.appendChild(player_el);
     } else {
-      player_el.innerHTML = `${player}: ${game_state.players[player]}`;
+      player_el.innerHTML = `${player}: ${game_state.players[player]["score"]}`;
     }
   });
 }
@@ -32,7 +32,7 @@ _resetGameState = () =>{
     chrome.storage.local.get('ownerName', function(playerData) {
       var player = playerData.ownerName;
       console.log(gameData);
-      document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
+      document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]["score"]: 0;
       document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
       _setPlayerScores(player, gameData.gameState);
     });
@@ -79,7 +79,7 @@ chrome.storage.local.get('auth', function(data) {
 chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('ownerName', function(playerData) {
     var player = playerData.ownerName;
-    document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]: 0;
+    document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]["score"]: 0;
     document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
     _setPlayerScores(player, gameData.gameState);
   });
@@ -135,7 +135,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('winner').innerHTML = "";
         chrome.storage.local.get('ownerName', function(data) {
           var player = data.ownerName;
-          document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player];
+          document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player]["score"];
           document.getElementById('status').innerHTML = "Status: In game";
           _setPlayerScores(player, storageChange.newValue);
         });

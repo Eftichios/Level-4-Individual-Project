@@ -1,12 +1,33 @@
 const LobbyHandler = require('../../utils/LobbyHandler');
 const { getPlayerExtensionSockets, getIo } = require('../../extension_socket');
+const { create_from_server } = require('./game_history')
+const { getMinutesOfDates } = require('../../utils/helpers')
 
 var lobbyHandler = new LobbyHandler();
 
 function _initRaceGameState(lobby) {
     var players = {};
-    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]=0);
-    return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
+    return {"players":players, "game_mode":"race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
+}
+
+function _build_game_history(lobby, player_game_state){
+    var winner_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player_game_state.player);
+    var player_data = {}
+    Object.keys(player_game_state.game_state.players).forEach((player)=>{
+        var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player);
+        player_data[player] = {};
+        player_data[player]["page_history"] = lobby.playerIds[player_id]["page_history"];
+        player_data[player]["score"] = player_game_state.game_state.players[player]["score"];
+    })
+    
+    var game_history = {winner_id: winner_id, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
+        player_stats: player_data, 
+        game_stats: {time_elapsed: getMinutesOfDates(player_game_state.game_state.started_at, player_game_state.game_state.finished_at), 
+            win_condition: player_game_state.game_state.condition}, 
+        player_ids: Object.keys(lobby.playerIds)}
+    
+    create_from_server(game_history);
 }
 
 async function _setClientSocketConnections(io, lobby, socket){
@@ -28,18 +49,31 @@ async function _setClientSocketConnections(io, lobby, socket){
 
 }
 
-async function _setExtSocketConnections(io, lobby_room, ext_room, socket){
+async function _setExtSocketConnections(io, lobby, ext_room, socket){
     socket.join(ext_room);
 
     socket.on('sendUpdateToAllClients', async (player_game_state)=>{
-        io.to(ext_room).emit("updateGameState", player_game_state);
+        socket.to(ext_room).emit("updateGameState", player_game_state);
     });
 
     socket.on('playerWon', (player_game_state)=>{
-        io.to(ext_room).emit("winnerFound", player_game_state);
-        io.to(lobby_room).emit("gameFinished", player_game_state);
+        socket.to(ext_room).emit("winnerFound", player_game_state);
+        socket.to(lobby.room).emit("gameFinished", player_game_state);
+
+
+        // we wait until all players have reported their page history
+        // 5 seconds should be more than enough
+        // can be changed to check until lobby has page_history attribute for all users
+        setTimeout(function(){
+            _build_game_history(lobby, player_game_state);
+        }, 5000);
+        
     });
 
+    socket.on('playerHistory', (playerHistory)=>{
+        var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] === playerHistory.player);
+        lobby.playerIds[player_id]["page_history"] = playerHistory.game_history;
+    });
 }
 
 async function findGame(req, res){
@@ -76,7 +110,7 @@ async function startGame(req, res){
         var extension_room = `ext_${room}`;
         for (pid in lobby.playerIds){           
             var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
-            _setExtSocketConnections(io, lobby.room, extension_room, extension_socket);
+            _setExtSocketConnections(io, lobby, extension_room, extension_socket);
         }
         var game_state = _initRaceGameState(lobby);
         io.to(extension_room).emit("gameStart", game_state);

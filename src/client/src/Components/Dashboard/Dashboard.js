@@ -60,7 +60,7 @@ export class Dashboard extends React.Component {
                     <DashAchieve></DashAchieve>
                 </div>
                 <div className="col-md-6">
-                    <DashMetrics name={this.state.name}></DashMetrics>
+                    <DashMetrics user_id={this.props.user_id} name={this.state.name}></DashMetrics>
                 </div>
             </div>
         </Fragment>

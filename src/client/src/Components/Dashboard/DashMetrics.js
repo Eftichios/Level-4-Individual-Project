@@ -53,7 +53,7 @@ export class DashMetrics extends React.Component {
                 </div>
             </div>
             <div className="col-md-6 text-center ">
-                <DashGameHistory />
+                <DashGameHistory name={this.props.name} user_id={this.props.user_id} />
             </div>
             </div>
     }

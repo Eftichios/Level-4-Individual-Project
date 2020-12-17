@@ -1,4 +1,5 @@
 const sequelize = require('./index.js');
+const {getMinutesOfDates} = require('../utils/helpers');
 
 async function reset() {
     console.log("(Re)creating database and populating tables with dummy data");
@@ -76,12 +77,17 @@ async function reset() {
     ]);
 
     // populate game_history table
+    var player_data = {user_1: {page_history: {"www.example.com":20, "www.another-example.com": 15, "www.lots-of-trackers.com": 65}, score: 100},
+                        user_2: {page_history: {"www.example.com":15, "www.another-example.com": 10, "www.lots-of-trackers.com": 55}, score: 80}}
+
+    var startDate = new Date("2020/08/08 15:00");
+    var endDate = new Date("2020/08/08 15:13");
+    var game_data = {time_elapsed: getMinutesOfDates(startDate, endDate), win_condition: 100}
+
     await sequelize.models.game_history.bulkCreate([
         { winner_id: 1, game_mode: 'race', game_date: new Date(), 
-        player_stats: '{"user_1" : {"page_history":[{"www.example.com": 20, \
-        "www.another-example.com": 15, "www.lots-of-trackers.com": 65}], "total_score": 100 }}',
-        game_stats: '{"time_elapsed" : 13.12, "winners": {"1st":"user_1", "2nd":"None", "3rd":"None"}, \
-        "ad_trackers_required": 100,}',
+        player_stats: player_data,
+        game_stats: game_data,
         player_ids: [1,2,3,4,5]}
     ]);
 

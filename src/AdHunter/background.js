@@ -13,6 +13,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'gameOver': null});
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
+    chrome.storage.local.set({'page_history': {}});
 
 
   });
