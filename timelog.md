@@ -400,3 +400,10 @@
 * *0.5 hour* Adding leaderboard functionality, users are retrieved and sorted based on their score
 * *2.5 hours* Adding game history functionality, server builds and stores a games history by putting the data of all users together
 * *0.5 hours* Front end for retrieving and displaying game history for the user 
+
+### 18 Dec 2020
+* *0.5 hour* Adding user metrics functionality and making dummy accounts usable
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+* *1 hour* Cleaning up code and adding comments
+* *2 hours* Implementing a chat system in the lobby
