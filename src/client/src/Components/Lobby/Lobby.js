@@ -17,28 +17,10 @@ export class Lobby extends React.Component {
         this.state = {
             socket: null,
             lobbyData: this.props.location.state? this.props.location.state.lobby: null,
-            temp_winner: null
-        }
-        
-        class Messages {
-            
-            constructor(id, player, msg, date){
-                this.id = id;
-                this.player = player;
-                this.msg = msg;
-                this.date = date;
-            }
-        }
-
-        this.msgs_data = [new Messages(1, "George","Hey everyone!", new Date()), 
-                    new Messages(2, "Jacob","Hello!", new Date()), 
-                    new Messages(3, "Larry","Yoo, have fun guys!", new Date()), 
-                    new Messages(4, "George","Thanks man, you too!", new Date()), 
-                    new Messages(5, "Jacob","Good luck :)", new Date())]
-        
-        this.msgs = this.msgs_data.map((msg)=><p key={msg.id}><small>{msg.date.toLocaleTimeString()} </small>{msg.msg} - <strong>{msg.player}</strong> </p>)
-
-        
+            temp_winner: null,
+            msgData: [],
+            msgs: null
+        }              
     } 
 
     onUnload = (e) => {
@@ -79,6 +61,12 @@ export class Lobby extends React.Component {
             );
             socket.on("gameFinished", (data)=>{
                 this.setState({temp_winner: data.player});
+            })
+            socket.on("chatMessage", (data)=>{
+                var tempData = this.state.msgData.concat(data);
+                this.setState({msgData: tempData});
+                var msgData = tempData.map((msg, index)=><p className={msg.user_name==="lobby"?"text-italic":""} key={index}><small>[{new Date(msg.date).toLocaleTimeString()}] </small>{msg.message} - <strong className={msg.user_name==="lobby"?"text-info":""}>{msg.user_name}</strong> </p>)
+                this.setState({msgs: msgData})
             })
         }
     }
@@ -149,7 +137,7 @@ export class Lobby extends React.Component {
                 </div>
             </div>
             <div className="row d-flex flex-column align-items-center">
-                <LobbyChat msgs={this.msgs} user="George"></LobbyChat>
+                <LobbyChat msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
                 <strong>Wating for players to get ready... Winner: {this.state.temp_winner? this.state.temp_winner: "..."}</strong>

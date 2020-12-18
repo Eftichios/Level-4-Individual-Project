@@ -47,6 +47,10 @@ async function _setClientSocketConnections(io, lobby, socket){
         io.to(lobby.room).emit("userLeft", lobby);
     });
 
+    socket.on('chatMessagePlayer', (messageData)=>{
+        io.to(lobby.room).emit("chatMessage", messageData);
+    })
+
 }
 
 async function _setExtSocketConnections(io, lobby, ext_room, socket){
@@ -93,6 +97,7 @@ async function findGame(req, res){
         
         // notify all sockets that a user has joined the lobby
         io.to(lobby.room).emit("userJoinedRoom", lobby);
+        io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${lobby.playerIds[user_id]["name"]} has joined the lobby`, date: new Date()});
 
         res.status(200).json({'success':true, 'lobby':lobby});
     } catch (err) {
