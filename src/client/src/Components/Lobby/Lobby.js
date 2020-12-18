@@ -56,7 +56,6 @@ export class Lobby extends React.Component {
             });
     
             const parseRes = await response.json();
-            console.log(parseRes);
 
         } catch (err){
             console.error(err.message)
@@ -86,7 +85,6 @@ export class Lobby extends React.Component {
 
     componentWillUnmount(){      
         if (this.props.location.state){
-            console.log("USER LEAVING PAGE");
             socket.emit("userLeftLobby", this.props.location.state.user_id);
             window.removeEventListener('beforeunload', this.onUnload);
         } else {

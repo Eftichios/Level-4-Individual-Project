@@ -1,3 +1,4 @@
+// an array of all advert categories
 const category_map = ["Arts & Entertainment",
                     "Automotive",
                     "Business",

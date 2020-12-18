@@ -33,7 +33,6 @@ export class Dashboard extends React.Component {
             })
 
             const parseRes = await response.json();
-            console.log(`Found user with id:${parseRes.user_id}`, parseRes);
 
             this.setState({name: parseRes.user_name})
 

@@ -27,7 +27,6 @@ export class DashGameHistory extends React.Component {
             });
 
             var parseRes = await response.json();
-            console.log(parseRes);
             this.buildModalContent(parseRes);
         } catch (err){
             console.error(err.message)
@@ -83,7 +82,7 @@ export class DashGameHistory extends React.Component {
                     <input className="col-md-7" id="condition" disabled value={"Find " + game.game_stats.win_condition +" Trackers."} />
                 </div>
                 {Object.keys(game.player_stats).map((name, index)=><div key={index} className="row form-group">
-                    <label className="col-md-4" htmlFor="status">{name===this.props.name? <strong>name</strong>:name}: </label>
+                    <label className="col-md-4" htmlFor="status">{name===this.props.name? <strong>{name}</strong>:name}: </label>
                     <input disabled value={`Score ${game.player_stats[name]["score"]}`} />
                 </div>)}
                 <h5 className="text-center">Page History</h5>

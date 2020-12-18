@@ -32,7 +32,6 @@ export class DashMetrics extends React.Component {
             });
 
             var parseRes = await response.json();
-            console.log(parseRes);
             this.buildGameMetrics(parseRes);
         } catch (err){
             console.error(err.message)

@@ -48,7 +48,6 @@ export class DashAchieve extends React.Component {
     }
 
     setModalContent(achievement){
-        console.log(achievement)
         this.setState({modalContent: achievement})
     }
 
