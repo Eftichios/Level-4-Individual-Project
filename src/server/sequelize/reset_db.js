@@ -1,19 +1,26 @@
 const sequelize = require('./index.js');
 const {getMinutesOfDates} = require('../utils/helpers');
+const bcrypt = require('bcrypt');
 
 async function reset() {
     console.log("(Re)creating database and populating tables with dummy data");
 
     await sequelize.sync({ force: true });
 
+    // encrypted password for dummy users
+    const salt_rounds = 10;
+    const salt = await bcrypt.genSalt(salt_rounds);
+    const bcrypt_password = await bcrypt.hash("123", salt);
+
+
     // populates users table
     await sequelize.models.user.bulkCreate([
-        { user_name: "user_1", user_password:"Unusable", owns_plugin:true, score:10},
-        { user_name: "user_2", user_password:"Unusable", owns_plugin:true, score:15},
-        { user_name: "user_3", user_password:"Unusable", owns_plugin:true, score:20},
-        { user_name: "user_4", user_password:"Unusable", owns_plugin:true, score:25},
-        { user_name: "user_5", user_password:"Unusable", owns_plugin:true, score:30},
-        { user_name: "user_6", user_password:"Unusable", owns_plugin:true, score:35}
+        { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true, score:10},
+        { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true, score:15},
+        { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true, score:20},
+        { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true, score:25},
+        { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true, score:30},
+        { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true, score:35}
     ]);
 
     // populates organisations table
