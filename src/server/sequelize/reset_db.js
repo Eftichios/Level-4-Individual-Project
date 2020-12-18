@@ -2,6 +2,7 @@ const sequelize = require('./index.js');
 const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
 
+// creates the database tables and populates them with dummy data
 async function reset() {
     console.log("(Re)creating database and populating tables with dummy data");
 
@@ -98,6 +99,7 @@ async function reset() {
         player_ids: [1,2,3,4,5]}
     ]);
 
+    // populate the market table
     await sequelize.models.market.bulkCreate([
         { player_1: 1, player_2: null, offering_organisation_id: 1, offerred_organisation_id: null,
             active: true, date_started: new Date(), date_finished: null, offered: false}

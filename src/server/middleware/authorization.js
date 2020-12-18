@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 
+// middleware added to routes to only allow authorised users to make request
 module.exports = async (req,res,next) => {
     try {
         // get token from req

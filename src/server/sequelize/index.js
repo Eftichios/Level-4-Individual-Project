@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const { applyExtraSetup } = require('./extra-setup');
 require("dotenv").config();
 
-
+// initialise the orm
 const sequelize = new Sequelize(`postgres://postgres:${process.env.db_pass}@${process.env.db_host}:${process.env.db_port}/${process.env.db_name}`,
 {
     logging: false,
@@ -21,6 +21,7 @@ const modelDefiners = [
     require('./models/market.model')
 ]
 
+// define all the models
 for (const modelDefiner of modelDefiners) {
     modelDefiner(sequelize);
 }
