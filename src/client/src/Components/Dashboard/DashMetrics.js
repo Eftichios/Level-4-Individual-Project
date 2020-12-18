@@ -5,6 +5,7 @@ import Chart from "react-google-charts";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import DashGameHistory from './DashGameHistory';
+import category_map from "../Utilities/adCategories";
 
 export class DashMetrics extends React.Component {
 
@@ -12,19 +13,46 @@ export class DashMetrics extends React.Component {
         super(props);
         
         this.state = {
-            total_trackers: 1521
+            total_trackers: 0,
+            games_played: {'Race': 0, 'Category': 0},
+            categories: []
         }
 
-        this.games_played = {'Race': 12, 'Category': 4}
-
     }
+
+    componentDidMount(){
+        this.getUserMetrics();
+    }
+
+    getUserMetrics = async () =>{
+        try {
+            var response = await fetch(`http://localhost:5000/api/userMetrics/${this.props.user_id}`, {
+                method: "GET",
+                headers: {"Content-Type": "application/json"},
+            });
+
+            var parseRes = await response.json();
+            console.log(parseRes);
+            this.buildGameMetrics(parseRes);
+        } catch (err){
+            console.error(err.message)
+        }
+    }
+
+    buildGameMetrics(metrics){
+        var cat_count = [["Category", "Ads delievered"]];
+        metrics.categories_count.forEach((count, index)=>cat_count.push([category_map[index],count]));
+        this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
+        console.log(this.categories);
+    }
+
     render(){
         return <div className="row">
             <div className="col-md-6">
                 <div className="text-center">
                     <h3>Metrics</h3>
-                    <p>Games Played: <strong>{this.games_played['Race'] + this.games_played['Category']}</strong> 
-                    <FontAwesomeIcon title={`Race: ${this.games_played['Race']} | Category: ${this.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
+                    <p>Games Played: <strong>{this.state.games_played['Race'] + this.state.games_played['Category']}</strong> 
+                    <FontAwesomeIcon title={`Race: ${this.state.games_played['Race']} | Category: ${this.state.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
                     </p>
                     <p>Total trackers: <strong>{this.state.total_trackers}</strong></p>
                     <div className="chart align-items-center">
@@ -34,14 +62,7 @@ export class DashMetrics extends React.Component {
                             height={'30vh'}
                             chartType="PieChart"
                             loader={<div>Loading Chart</div>}
-                            data={[
-                                ['Category', 'Ads delivered'],
-                                ['Health', 11],
-                                ['Technology', 4],
-                                ['Education', 1],
-                                ['Travel', 12],
-                                ['Gambling', 7],
-                            ]}
+                            data={this.state.categories}
                             options={{
                                 backgroundColor: 'transparent',
                                 legend: 'none',
