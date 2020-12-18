@@ -1,4 +1,4 @@
-// Initialise color and total ads number when extension is installed
+// Initialise relevant player metrics when extension is installed
 chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'totalAds': 0}, function(){
       console.log("Initialise total ads number.")

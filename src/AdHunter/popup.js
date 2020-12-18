@@ -1,3 +1,4 @@
+// goes through the game state and updated the scores of all players in a game
 _setPlayerScores = (this_player, game_state)=>{
   console.log(this_player, game_state)
   if (!game_state){
@@ -22,11 +23,13 @@ _setPlayerScores = (this_player, game_state)=>{
   });
 }
 
+// sets the winner and changes status after a game is over
 _postGameMetrics = (winner) => {
   document.getElementById('status').innerHTML = "Status: Post game";
   document.getElementById('winner').innerHTML = `Winner: <strong>${winner}</strong>`   
 }
 
+// resets the state of the game
 _resetGameState = () =>{
   chrome.storage.local.get('gameState', function(gameData) {
     chrome.storage.local.get('ownerName', function(playerData) {
@@ -39,6 +42,7 @@ _resetGameState = () =>{
   });
 }
 
+// searches for the user's user name and disabled the form if it exists
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
     document.getElementById('usernameInput').setAttribute('hidden', true);
@@ -47,7 +51,7 @@ chrome.storage.local.get('ownerName', function(data) {
   }
 });
 
-
+// adds an event listener to handle form submition
 document.forms['usernameForm'].addEventListener("submit", (event)=>{
   event.preventDefault();
   document.getElementById('usernameInput').setAttribute('hidden', true);
@@ -59,6 +63,7 @@ document.forms['usernameForm'].addEventListener("submit", (event)=>{
   chrome.storage.local.set({'ownerName': user_name});
 });
 
+// adds an event listener to the change name button to enable form
 document.getElementById('changeName').addEventListener("click", (event)=>{
   event.preventDefault();
   document.getElementById('usernameInput').removeAttribute('hidden');
@@ -72,10 +77,12 @@ chrome.storage.local.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;
 });
 
+// get user authorisation to display the appropriate message
 chrome.storage.local.get('auth', function(data) {
   document.getElementsByClassName('auth')[0].innerHTML = data.auth?"You are logged in":"You are not logged in";
 });
 
+// get the game state from storage to display relevant feedback
 chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('ownerName', function(playerData) {
     var player = playerData.ownerName;
@@ -85,6 +92,7 @@ chrome.storage.local.get('gameState', function(gameData) {
   });
 });
 
+// check if a game was played and was finished and set winner
 chrome.storage.local.get('gameOver', function(gameOverData) {
   if (gameOverData.gameOver){
     chrome.storage.local.get('winner', function(winnerData){
@@ -101,6 +109,7 @@ chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   });
 });
 
+// listen to tab switches to update feedback accordingly
 chrome.tabs.onActivated.addListener(function(activeInfo) {
   var tab_id = activeInfo.tabId.toString();
   chrome.storage.local.get([tab_id], function(data) {
@@ -109,8 +118,8 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 });
 
 // Every time a value changes in our storage we listen to it
-// We check if the values that have changed are any of the total ads or page ads
 // We update the html accordingly
+// This enables real-time updating of player scores and other feedback
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
     var tab_id = tab[0].id.toString();

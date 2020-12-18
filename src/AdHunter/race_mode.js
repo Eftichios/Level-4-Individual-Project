@@ -1,14 +1,17 @@
+// find the list of regular expressions for a given url
 function map_url(url){
+    // extract domain out of url
+    // if no domain is found that means current page is not a valid website
     domain = extractDomain(url); 
     if (!domain) {
         return null
     }
+
+    // find the host of that domain and parse it appropriately
     find_host = domain.match(/^(.+)\./);
-    
     if (!find_host){
         return null
     }
-
     var hostname = find_host[1];
     if (hostname === undefined){
         console.log("Failed to find hostname for:", domain);
@@ -19,9 +22,12 @@ function map_url(url){
         }
     }
     
+    // different rule for finding host name
     var alternative_hostname_match = hostname.match(/\.(\w|\d|[-])*$/)
     var alternative_hostname = alternative_hostname_match?alternative_hostname_match[0].slice(1,): "ALT NOT FOUND"
 
+    // if hostname is in our blocked domains, return the list of regural expressions
+    // otherwise it is not an ad tracker and we return null
     blocked = blocked_domains[hostname] || blocked_domains[alternative_hostname];
     if (blocked===undefined) {
         return null;
@@ -32,16 +38,20 @@ function map_url(url){
 }
 
 
+// add listener to storage value changes
 chrome.storage.onChanged.addListener(function race_flag_listener(changes, namespace) {
     var game_on = false;
     var emmited = false;
     var winner = null;
+
+    // if the change that occured was gameOver=false that means a game started
     for (var key in changes) {
         var storageChange = changes[key];
         if (key=="gameOver" && storageChange.newValue!==null){
             game_on = !storageChange.newValue;
         }         
     } 
+
     if (game_on) {
         // Adds a listener function to all requests that match url from the blocked domains
         chrome.webRequest.onBeforeRequest.addListener(
@@ -51,20 +61,21 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     winner = winnerData.winner;
                 })
 
+                // if someone else has won the game we stop counting ad trackers 
                 if (winner){
-                    console.log(winner);
                     game_on = false;
                     chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
                     return
                 }
                 
-
+                // find the regular expressions for this url
                 var blocked_urls = map_url(details.url);
                 if (!blocked_urls){
                     return
                 }
                 var domain = blocked_urls[1];
 
+                // update the user's page history metrics
                 chrome.storage.local.get('page_history', function(data){
                     if (data.page_history[domain]){
                         data.page_history[domain] +=1 
@@ -109,6 +120,8 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                         chrome.storage.local.set({'gameState': gameState}, function() {
                             console.log("Game ads: ", gameState.players[playerName]["score"]);
                         });
+
+                        // check if player has won the game and notify server accordingly
                         if (gameState.players[playerName]["score"] >= gameState.condition){
                             game_on = false;
                             chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
@@ -130,21 +143,6 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                           
                     });
                 });
-                
-                // make a POST request to the server
-                // with the details of the request
-                // fetch('http://localhost:5000/extension', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(details),
-                //     })
-                //     .then(response => {
-                //         console.log(response);
-        
-                //     })
-                // return
             },
             {urls: ["<all_urls>"]},
         )

@@ -4,6 +4,7 @@ socket.on('connect', ()=>{
     console.log('Connected to server')
 });
 
+// special message to expose extension sockets to the server
 socket.on('identifyExtension', async (data)=>{
     chrome.storage.local.get('ownerName', async function(data){
 
@@ -13,6 +14,7 @@ socket.on('identifyExtension', async (data)=>{
     });
 });
 
+// listen to game start event and set game state
 socket.on('gameStart', async(game_state)=>{
     chrome.storage.local.set({'gameState': game_state}, function() {
         console.log("Initialise game state", game_state);
@@ -23,6 +25,7 @@ socket.on('gameStart', async(game_state)=>{
     chrome.storage.local.set({'page_history': {}});
 });
 
+// listen to updates to the game state from other players and update their score
 socket.on('updateGameState', async(player_game_state) =>{
     var player_name = player_game_state.player;
     var new_game_state = player_game_state.game_state;
@@ -32,6 +35,8 @@ socket.on('updateGameState', async(player_game_state) =>{
     });
 });
 
+// when a winner is found update game state and scores
+// send this player's history to the server
 socket.on('winnerFound', async(player_game_state)=>{
     var player_name = player_game_state.player;
     var new_game_state = player_game_state.game_state;

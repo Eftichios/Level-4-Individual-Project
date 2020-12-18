@@ -1,3 +1,4 @@
+// gets the users id from their user name
 getUserIdFromName = async (user_name) => {
     console.log(user_name);
     try{
@@ -16,6 +17,7 @@ getUserIdFromName = async (user_name) => {
       } 
 }
 
+// extracts domain out of a url
 extractDomain = (url)=>{
   var match = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
   var domain = match && match[1];
