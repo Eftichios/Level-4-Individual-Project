@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         },
         game_mode: {
             allowNull: false,
-            type: DataTypes.ENUM('race', 'category', 'hunting'),
+            type: DataTypes.ENUM('Race', 'Category', 'Hunting'),
         },
         game_date: {
             allowNull: false,

@@ -93,7 +93,7 @@ async function reset() {
     var game_data = {time_elapsed: getMinutesOfDates(startDate, endDate), win_condition: 100}
 
     await sequelize.models.game_history.bulkCreate([
-        { winner_id: 1, game_mode: 'race', game_date: new Date(), 
+        { winner_id: 1, game_mode: 'Race', game_date: new Date(), 
         player_stats: player_data,
         game_stats: game_data,
         player_ids: [1,2,3,4,5]}
