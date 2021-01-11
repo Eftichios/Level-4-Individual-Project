@@ -15,12 +15,24 @@ socket.on('identifyExtension', async (data)=>{
 });
 
 // listen to game start event and set game state
-socket.on('gameStart', async(game_state)=>{
+socket.on('gameStartRace', async(game_state)=>{
     chrome.storage.local.set({'gameState': game_state}, function() {
         console.log("Initialise game state", game_state);
     }); 
 
     chrome.storage.local.set({'gameOver': false});
+    chrome.storage.local.set({'gameMode': "Race"});
+    chrome.storage.local.set({'winner': null});
+    chrome.storage.local.set({'page_history': {}});
+});
+
+socket.on('gameStartCategory', async(game_state)=>{
+    chrome.storage.local.set({'gameState': game_state}, function() {
+        console.log("Initialise game state", game_state);
+    }); 
+
+    chrome.storage.local.set({'gameOver': false});
+    chrome.storage.local.set({'gameMode': "Category"});
     chrome.storage.local.set({'winner': null});
     chrome.storage.local.set({'page_history': {}});
 });

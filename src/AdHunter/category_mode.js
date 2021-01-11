@@ -2,7 +2,6 @@ if (ad_urls === undefined){
     var ad_urls = new Set()
 }
 
-
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     extract_links(message);
 });

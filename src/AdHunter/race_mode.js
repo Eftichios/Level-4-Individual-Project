@@ -43,16 +43,20 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
     var game_on = false;
     var emmited = false;
     var winner = null;
+    var this_game_mode = false
 
     // if the change that occured was gameOver=false that means a game started
     for (var key in changes) {
-        var storageChange = changes[key];
-        if (key=="gameOver" && storageChange.newValue!==null){
-            game_on = !storageChange.newValue;
-        }         
+        var storageChange = changes[key];        
+        if (key=="gameMode" && storageChange.newValue=="Race"){
+            this_game_mode = true
+            game_on = true
+        } else if (key=="gameMode" && storageChange.newValue==null){
+            this_game_mode = false
+            game_on = false
+        }
     } 
-
-    if (game_on) {
+    if (game_on && this_game_mode) {
         // Adds a listener function to all requests that match url from the blocked domains
         chrome.webRequest.onBeforeRequest.addListener(
             function race_trackers(details) {
@@ -124,6 +128,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                         // check if player has won the game and notify server accordingly
                         if (gameState.players[playerName]["score"] >= gameState.condition){
                             game_on = false;
+                            this_game_mode = false;
                             chrome.webRequest.onBeforeRequest.removeListener(race_trackers);
                             console.log("FOUND ENOUGH TRACKERS!");
                             gameState['finished_at'] = new Date();
@@ -137,6 +142,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
 
                             chrome.storage.local.set({'winner': playerName});
                             chrome.storage.local.set({'gameOver': true});
+                            chrome.storage.local.set({'gameMode': null});
                                                 
                             return;
                         }

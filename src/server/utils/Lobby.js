@@ -6,6 +6,7 @@ class Lobby {
         this.game_mode = game_mode;
         this.room = "Room" + index;
         this.socketPlayerMap = {};
+        this.category = null;
     }
 
     isLobbyFull(){

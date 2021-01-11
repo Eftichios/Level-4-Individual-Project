@@ -8,7 +8,13 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
+}
+
+function _initCategoryGameState(lobby) {
+    var players = {};
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
+    return {"players":players, "game_mode":"Category", "condition": "Technology", "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _build_game_history(lobby, player_game_state){
@@ -84,8 +90,9 @@ async function findGame(req, res){
     var io = getIo();
     try {
         io.emit("identifyExtension", true);
-        var lobby = lobbyHandler.findOrCreateLobby("Race");
-        const { user_id, user_name, socketId } = req.body;
+        const { user_id, user_name, socketId, game_mode } = req.body;
+        var lobby = lobbyHandler.findOrCreateLobby(game_mode);
+        
         lobbyHandler.checkIfPlayerInLobby(user_id);
         
         
@@ -117,8 +124,13 @@ async function startGame(req, res){
             var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
             _setExtSocketConnections(io, lobby, extension_room, extension_socket);
         }
-        var game_state = _initRaceGameState(lobby);
-        io.to(extension_room).emit("gameStart", game_state);
+        if (lobby.game_mode == "Race"){
+            var game_state = _initRaceGameState(lobby);
+            io.to(extension_room).emit("gameStartRace", game_state);
+        } else {
+            var game_state = _initCategoryGameState(lobby);
+            io.to(extension_room).emit("gameStartCategory", game_state);
+        }
         res.status(200).json(game_state);
     } catch (err) {
         console.error(err.message);

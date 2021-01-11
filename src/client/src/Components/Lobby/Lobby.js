@@ -3,6 +3,7 @@ import "../../index.css";
 import "./lobby.css";
 import profile from "../../Media/profile.jpeg";
 import running from "../../Media/running.png";
+import technology from "../../Media/technology.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LobbyChat } from './LobbyChat';
@@ -98,10 +99,10 @@ export class Lobby extends React.Component {
         }
 
         return <div className="lobby-padding">
-            <h3 className="text-center push-down">Lobby - {this.state.lobbyData.room}</h3>
+            <h3 className="text-center push-down">Lobby - {this.state.lobbyData.room} ({this.state.lobbyData.game_mode})</h3>
             <div className="row">
                 <div className="col-md-4">
-                    <img className="running" src={running} alt="Man running"></img>
+                    <img className="running" src={this.state.lobbyData.game_mode=="Race"?running:technology} alt="Man running"></img>
                 </div>
                 <div className="text-center col-md-4">
                 <h5><strong>PLAYERS ({this.getNumberOfPlayersInLobby()})</strong></h5>
@@ -127,9 +128,9 @@ export class Lobby extends React.Component {
                         <div className="p-1 mb-4"><h3><strong>{this.props.location.state.user_name}</strong></h3></div>
                         <div className="mb-4 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>
-                            <div className="p-1 text-orange">Race</div>
-                            <div className="p-1">Get tracked by:</div>
-                            <div className="p-1 text-orange">100 Ad Trackers</div>
+                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode}</div>
+                            <div className="p-1">{this.state.lobbyData.game_mode=="Race"?"Get tracked by:":"Category"}</div>
+                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode=="Race"?`100 Ad Trackers`:`Technology`}</div>
                         </div>
                         <div className="p-1 mb-2"><button className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button className="constSize btn orange">Leave</button></div>

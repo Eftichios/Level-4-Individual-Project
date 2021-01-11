@@ -9,8 +9,7 @@
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["identify_tab_id.js"],
-        "run_at": "document_idle"
+        "js": ["identify_tab_id.js"]
     }],
     "page_action": {
         "default_popup": "popup.html",

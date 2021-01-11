@@ -15,6 +15,7 @@ export class DashPlay extends React.Component {
         this.state = {
             rank: 0,
             lobby: null,
+            game_mode: "Race"
         };
 
         socket.on('connect', ()=>{
@@ -39,7 +40,7 @@ export class DashPlay extends React.Component {
             const response = await fetch("http://localhost:5000/api/play", {
                 method: "POST",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
-                body: JSON.stringify({ "user_id": user_id, "user_name": user_name, "socketId": socket.id }),
+                body: JSON.stringify({ "user_id": user_id, "user_name": user_name, "socketId": socket.id, "game_mode": this.state.game_mode }),
             });
 
             const parseRes = await response.json();
@@ -54,6 +55,14 @@ export class DashPlay extends React.Component {
         
     }
 
+    setGameMode = ()=>{
+        if (this.state.game_mode == "Race"){
+            this.setState({game_mode: "Category"})
+        } else {
+            this.setState({game_mode: "Race"})
+        }
+    }
+
     render(){
         if (this.state.lobby){
             return <Redirect to={{pathname: "/lobby", state: {lobby: this.state.lobby, user_name: this.props.name, user_id: this.props.user_id}}}  />
@@ -66,7 +75,7 @@ export class DashPlay extends React.Component {
                     <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">Play Game</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
-                <div className="p-1"><button className="constSize btn btn-secondary" >Game Mode</button></div>
+                <div className="p-1"><button onClick={this.setGameMode} className="constSize btn btn-secondary" >Game Mode: {this.state.game_mode}</button></div>
                </div>
     }
 

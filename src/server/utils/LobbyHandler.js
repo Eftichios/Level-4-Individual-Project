@@ -8,7 +8,7 @@ class LobbyHandler{
 
     findOrCreateLobby(game_mode){
         for (var i in this.lobbies) {
-            if (!this.lobbies[i].isLobbyFull()) {
+            if (!this.lobbies[i].isLobbyFull() && this.lobbies[i].game_mode == game_mode) {
                 return this.lobbies[i];
             }
         }

@@ -10,6 +10,7 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log("Setting status...")
     });
     chrome.storage.local.set({'gameState': null});
+    chrome.storage.local.set({'gameMode': null});
     chrome.storage.local.set({'gameOver': null});
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
@@ -87,7 +88,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     if(request.reinject) {
       chrome.tabs.executeScript(sender.tab.id,{
-        file: "test.js", 
+        file: "category_mode.js", 
         allFrames: true },
       function(){
         chrome.tabs.sendMessage(sender.tab.id, sender.tab.id);
