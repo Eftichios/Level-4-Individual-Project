@@ -407,3 +407,9 @@
 * *0.5 hour* Supervisor meeting
 * *1 hour* Cleaning up code and adding comments
 * *2 hours* Implementing a chat system in the lobby
+
+## Week 13
+
+### 11 Jan 2021
+* *2.5 hours* Adding advert identification functionality to the chrome extension 
+* *1.5 hours* Working on the category game mode 
