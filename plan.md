@@ -76,6 +76,11 @@
 ## Spring Semester
 
 * **Week 13**
+  * Add functionality to the extension to identify advert images and capture redirection urls
+  * Build an API that takes those urls and returns advert categories
+  * Start writing tests
+  * Start adding functionality to all pages in the web app
+  * Fix various bugs and optimise code where possible
 * **Week 14**
 * **Week 15**
 * **Week 16**
