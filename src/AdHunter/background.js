@@ -14,8 +14,6 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
     chrome.storage.local.set({'page_history': {}});
-
-
   });
 
   // Enables the extension for all pages given in the pageUrl option
@@ -82,4 +80,18 @@ chrome.runtime.onInstalled.addListener(function() {
       });
        
     });   
+  });
+
+  // listen to context script messages
+  // every 2 seconds run the context script inside all
+  chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+    if(request.reinject) {
+      chrome.tabs.executeScript(sender.tab.id,{
+        file: "test.js", 
+        allFrames: true },
+      function(){
+        chrome.tabs.sendMessage(sender.tab.id, sender.tab.id);
+        console.log("success in injecting script into iframes of page");
+      });
+    }
   });
