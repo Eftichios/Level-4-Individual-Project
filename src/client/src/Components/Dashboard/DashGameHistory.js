@@ -60,6 +60,7 @@ export class DashGameHistory extends React.Component {
                                                 {all_games}
                                             </tbody>
                                         </table>
+                                        {game_history.length===0?<div className="text-center">No game history found</div>:""}
                                     </div>
                                     <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
