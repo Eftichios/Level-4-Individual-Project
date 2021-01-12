@@ -36,8 +36,18 @@ function _build_game_history(lobby, player_game_state){
     create_from_server(game_history);
 }
 
+_reset_socket_listeners = (socket) =>{
+    const listeners = ["userLeftLobby", "disconnect", "chatMessagePlayer"];
+    for (var i in listeners){
+        socket.removeAllListeners(listeners[i])
+    }
+}
+
 async function _setClientSocketConnections(io, lobby, socket){
     socket.join(lobby.room);
+
+    // reset socket listeners to avoid duplicates
+    _reset_socket_listeners(socket);
 
     // lobby events
     socket.on("userLeftLobby", (user_id)=>{
@@ -46,11 +56,13 @@ async function _setClientSocketConnections(io, lobby, socket){
         if (lobby.getNumberOfPlayers()===0){
             lobbyHandler.removeLobby(lobby);
         }
+        socket.leave(lobby.room)
     });
 
     socket.on('disconnect', (data)=> {
         lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
         io.to(lobby.room).emit("userLeft", lobby);
+        socket.leave(lobby.room)
     });
 
     socket.on('chatMessagePlayer', (messageData)=>{

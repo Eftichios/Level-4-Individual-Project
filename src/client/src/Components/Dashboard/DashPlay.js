@@ -18,14 +18,23 @@ export class DashPlay extends React.Component {
             game_mode: "Race"
         };
 
-        socket.on('connect', ()=>{
-            console.log('Connected to server')
-        });
-
-        socket.on('clientGameOver', (data)=>{
-            this.setState({status: "Not in game", showStopButton: false});
-            this.setState({game_state: data});
-        })
+        // ensure that the socket listener is added only once
+        if (socket._callbacks){
+            if (!socket._callbacks.hasOwnProperty("$connect")){
+                socket.on('connect', ()=>{
+                    console.log('Connected to server')
+                });
+            }
+        } else {
+            socket.on('connect', ()=>{
+                console.log('Connected to server')
+            });
+            socket.on('clientGameOver', (data)=>{
+                this.setState({status: "Not in game", showStopButton: false});
+                this.setState({game_state: data});
+            })
+        }
+        
 
         this.getUserRank(props.name)
     }

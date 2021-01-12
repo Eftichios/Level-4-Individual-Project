@@ -20,7 +20,8 @@ export class Lobby extends React.Component {
             lobbyData: this.props.location.state? this.props.location.state.lobby: null,
             temp_winner: null,
             msgData: [],
-            msgs: null
+            msgs: null,
+            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"]
         }              
     } 
 
@@ -70,11 +71,24 @@ export class Lobby extends React.Component {
                 this.setState({msgs: msgData})
             })
         }
+
+    }
+
+    clear_socket_listeners = (socket) =>{
+        for (var i in this.state.listeners){
+            if (socket._callbacks.hasOwnProperty(this.state.listeners[i])){
+                delete socket._callbacks[this.state.listeners[i]]
+            }
+        }
     }
 
     componentWillUnmount(){      
         if (this.props.location.state){
             socket.emit("userLeftLobby", this.props.location.state.user_id);
+            
+            // when this component is unmounted remove all listeners from socket
+            this.clear_socket_listeners(socket)
+
             window.removeEventListener('beforeunload', this.onUnload);
         } else {
             console.log("Redirecting to dashboard. To reach the lobby search for a game.")
@@ -102,7 +116,7 @@ export class Lobby extends React.Component {
             <h3 className="text-center push-down">Lobby - {this.state.lobbyData.room} ({this.state.lobbyData.game_mode})</h3>
             <div className="row">
                 <div className="col-md-4">
-                    <img className="running" src={this.state.lobbyData.game_mode=="Race"?running:technology} alt="Man running"></img>
+                    <img className="running" src={this.state.lobbyData.game_mode==="Race"?running:technology} alt="Man running"></img>
                 </div>
                 <div className="text-center col-md-4">
                 <h5><strong>PLAYERS ({this.getNumberOfPlayersInLobby()})</strong></h5>
@@ -129,8 +143,8 @@ export class Lobby extends React.Component {
                         <div className="mb-4 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode}</div>
-                            <div className="p-1">{this.state.lobbyData.game_mode=="Race"?"Get tracked by:":"Category"}</div>
-                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode=="Race"?`100 Ad Trackers`:`Technology`}</div>
+                            <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category"}</div>
+                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`100 Ad Trackers`:`Technology`}</div>
                         </div>
                         <div className="p-1 mb-2"><button className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button className="constSize btn orange">Leave</button></div>
