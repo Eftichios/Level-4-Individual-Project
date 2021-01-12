@@ -413,3 +413,8 @@
 ### 11 Jan 2021
 * *2.5 hours* Adding advert identification functionality to the chrome extension 
 * *1.5 hours* Working on the category game mode 
+
+### 12 Jan 2021
+* *1 hour* Writing the dissertation
+* *1 hour* Testing web app, identifying bugs and creating issues for them
+* *2 hours* Fixing bugs and warnings 
