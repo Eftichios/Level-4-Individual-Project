@@ -57,12 +57,18 @@ async function remove(req, res) {
 
 async function register(req, res) {
         // get name and pass out of body
-        const {user_name, password, owns_plugin} = req.body;
+        const {user_name, password, confirm_password, owns_plugin} = req.body;
 
         // check if user exists (throw error in this case)
         const user = await models.user.findOne({where: {user_name: user_name}});
         if (user){
             res.status(401).json("User with that user name already exists")
+            return
+        }
+
+        if (password!==confirm_password){
+            res.status(401).json("Passwords do not match")
+            return
         }
 
         // Bcrypt the password
@@ -71,7 +77,6 @@ async function register(req, res) {
         const bcrypt_password = await bcrypt.hash(password, salt);
 
         // insert user inside database
-
         const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin, "score":0})
 
         // generate jwt token

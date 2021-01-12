@@ -31,7 +31,7 @@ export class Register extends React.Component {
         const response = await fetch("http://localhost:5000/api/auth/register", {
           method:"POST",
           headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({"user_name": this.state.name, "password": this.state.password, "owns_plugin": this.state.owns_plugin})
+          body: JSON.stringify({"user_name": this.state.name, "password": this.state.password, "confirm_password": this.state.confirm_password, "owns_plugin": this.state.owns_plugin})
         });
 
         const parseRes = await response.json();
