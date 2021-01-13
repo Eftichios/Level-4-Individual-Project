@@ -36,10 +36,17 @@ function _build_game_history(lobby, player_game_state){
     create_from_server(game_history);
 }
 
-_reset_socket_listeners = (socket) =>{
+_reset_client_socket_listeners = (socket) =>{
     const listeners = ["userLeftLobby", "disconnect", "chatMessagePlayer"];
     for (var i in listeners){
         socket.removeAllListeners(listeners[i])
+    }
+}
+
+_rest_ext_socket_listeners = (ext_socket) =>{
+    const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory"]
+    for (var i in listeners){
+        ext_socket.removeAllListeners(listeners[i])
     }
 }
 
@@ -47,7 +54,7 @@ async function _setClientSocketConnections(io, lobby, socket){
     socket.join(lobby.room);
 
     // reset socket listeners to avoid duplicates
-    _reset_socket_listeners(socket);
+    _reset_client_socket_listeners(socket);
 
     // lobby events
     socket.on("userLeftLobby", (user_id)=>{
@@ -143,6 +150,7 @@ async function startGame(req, res){
             var game_state = _initCategoryGameState(lobby);
             io.to(extension_room).emit("gameStartCategory", game_state);
         }
+        lobby.in_game = true
         res.status(200).json(game_state);
     } catch (err) {
         console.error(err.message);

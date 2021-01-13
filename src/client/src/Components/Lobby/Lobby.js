@@ -9,6 +9,7 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LobbyChat } from './LobbyChat';
 import socket from "../Utilities/socketConfig";
 import { Prompt, Redirect } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 export class Lobby extends React.Component {
 
@@ -21,13 +22,16 @@ export class Lobby extends React.Component {
             temp_winner: null,
             msgData: [],
             msgs: null,
-            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"]
+            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
+            user_refreshed: false
         }              
     } 
 
     onUnload = (e) => {
         e.preventDefault();
         e.returnValue = '';
+        console.log("USER REFRESHED PAGE")
+        this.setState({user_refreshed: true})
     }
 
     startGame = async () => {
@@ -74,6 +78,11 @@ export class Lobby extends React.Component {
 
     }
 
+    notify_refresh(){
+        socket.emit("userLeftLobby", this.props.location.state.user_id);
+        this.clear_socket_listeners(socket);
+    }
+
     clear_socket_listeners = (socket) =>{
         for (var i in this.state.listeners){
             if (socket._callbacks.hasOwnProperty(this.state.listeners[i])){
@@ -91,7 +100,7 @@ export class Lobby extends React.Component {
 
             window.removeEventListener('beforeunload', this.onUnload);
         } else {
-            console.log("Redirecting to dashboard. To reach the lobby search for a game.")
+            toast.error("Redirected to dashboard. To reach the lobby search for a game.");
         }
     }
 
@@ -109,6 +118,9 @@ export class Lobby extends React.Component {
 
     render(){
         if (!this.state.lobbyData){
+            return <Redirect to="/dashboard"></Redirect>
+        } else if (this.state.user_refreshed){
+            this.notify_refresh();
             return <Redirect to="/dashboard"></Redirect>
         }
 

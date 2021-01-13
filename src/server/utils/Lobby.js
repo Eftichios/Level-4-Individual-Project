@@ -7,10 +7,15 @@ class Lobby {
         this.room = "Room" + index;
         this.socketPlayerMap = {};
         this.category = null;
+        this.in_game = false;
     }
 
     isLobbyFull(){
         return Object.keys(this.playerIds).length >= this.MAX_players;
+    }
+
+    isLobbyInGame(){
+        return this.in_game
     }
 
     isPlayerInLobby(playerId) {
