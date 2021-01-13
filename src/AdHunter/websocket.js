@@ -66,12 +66,30 @@ socket.on('winnerFound', async(player_game_state)=>{
 })
 
 // notify the extension when a user has left the lobby
-socket.on("extUserLeft", async(data)=>{
-    chrome.storage.local.set({'winner': null});
-    chrome.storage.local.set({'gameOver': true});
-    chrome.storage.local.set({'gameMode': null});
-    chrome.storage.local.set({'page_history': {}});
-    chrome.storage.local.set({'gameState': null});
+socket.on("extUserLeft", async(user_data)=>{
+    console.log(user_data);
+
+    // check if the user that has left the lobby is the owner of this extension
+    // if so, update the game states and status accordingly
+    chrome.storage.local.get("ownerName", async (owner_data)=>{
+        if (owner_data.ownerName === user_data.user_name){
+            chrome.storage.local.set({'winner': null});
+            chrome.storage.local.set({'gameOver': true});
+            chrome.storage.local.set({'gameMode': null});
+            chrome.storage.local.set({'page_history': {}});
+            chrome.storage.local.set({'gameState': null});
+        } else {
+            // if it is not this player, remove the player that left from the game state
+            chrome.storage.local.get("gameState", async (game_state_data)=>{
+                if (game_state_data.gameState.players[user_data.user_name]){
+                    delete game_state_data.gameState.players[user_data.user_name]
+                    console.log(game_state_data.gameState)
+                    chrome.storage.local.set({"gameState": game_state_data.gameState})
+                }
+            })
+        }
+    })
+    
     socket.emit("extServerUserLeft", (data_)=>{
         console.log(data_)
     })

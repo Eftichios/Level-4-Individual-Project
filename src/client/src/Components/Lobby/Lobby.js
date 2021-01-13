@@ -24,14 +24,32 @@ export class Lobby extends React.Component {
             msgs: null,
             listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
             user_refreshed: false
-        }              
+        }   
+             
+              
     } 
+
+    checkForRefresh(){
+        if (localStorage.hasRefreshed){
+            if (localStorage.hasRefreshed === "true"){
+                localStorage.removeItem("hasRefreshed");
+                this.setState({user_refreshed: true})
+            }
+        }else{
+            localStorage.setItem("hasRefreshed", "false")
+        }
+    }
+
+    leavingPage = async ()=>{
+        await socket.emit("userLeftLobby", this.props.location.state.user_id);
+        window.removeEventListener('unload', this.leavingPage);
+        localStorage.setItem("hasRefreshed", "true")
+    }
 
     onUnload = (e) => {
         e.preventDefault();
         e.returnValue = '';
-        console.log("USER REFRESHED PAGE")
-        this.setState({user_refreshed: true})
+        
     }
 
     startGame = async () => {
@@ -52,10 +70,15 @@ export class Lobby extends React.Component {
 
     componentDidMount(){
         
+        // check if we are here from a page refresh
+        // if so, kick the player out of the lobby
+        this.checkForRefresh()
+
         if (this.props.location.state){
 
             // detect when user closes the tab/browser
             window.addEventListener('beforeunload', this.onUnload);
+            window.addEventListener('unload', this.leavingPage);
 
             socket.on("userJoinedRoom", (data)=>{
                 this.setState({lobbyData: data});
@@ -78,11 +101,6 @@ export class Lobby extends React.Component {
 
     }
 
-    notify_refresh(){
-        socket.emit("userLeftLobby", this.props.location.state.user_id);
-        this.clear_socket_listeners(socket);
-    }
-
     clear_socket_listeners = (socket) =>{
         for (var i in this.state.listeners){
             if (socket._callbacks.hasOwnProperty(this.state.listeners[i])){
@@ -93,6 +111,7 @@ export class Lobby extends React.Component {
 
     componentWillUnmount(){      
         if (this.props.location.state){
+
             socket.emit("userLeftLobby", this.props.location.state.user_id);
             
             // when this component is unmounted remove all listeners from socket
@@ -117,10 +136,7 @@ export class Lobby extends React.Component {
     }
 
     render(){
-        if (!this.state.lobbyData){
-            return <Redirect to="/dashboard"></Redirect>
-        } else if (this.state.user_refreshed){
-            this.notify_refresh();
+        if (!this.state.lobbyData || this.state.user_refreshed){
             return <Redirect to="/dashboard"></Redirect>
         }
 

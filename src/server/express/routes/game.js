@@ -58,9 +58,13 @@ async function _setClientSocketConnections(io, lobby, socket){
 
     // lobby events
     socket.on("userLeftLobby", (user_id)=>{
+        var temp_user_name = lobby.playerIds[user_id]["name"]
         lobby.removePlayer(user_id);
+        
         io.to(lobby.room).emit("userLeft", lobby);
-        io.to(`ext_${lobby.room}`).emit("extUserLeft", lobby);
+        io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${temp_user_name} has left the lobby`, date: new Date()});
+        io.to(`ext_${lobby.room}`).emit("extUserLeft", {user_id: user_id, user_name: temp_user_name});
+        
         if (lobby.getNumberOfPlayers()===0){
             lobbyHandler.removeLobby(lobby);
         }
@@ -68,8 +72,13 @@ async function _setClientSocketConnections(io, lobby, socket){
     });
 
     socket.on('disconnect', (data)=> {
+        var temp_user_name = lobby.playerIds[lobby.socketPlayerMap[socket.id]]["name"]
         lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
+
         io.to(lobby.room).emit("userLeft", lobby);
+        io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${temp_user_name} has left the lobby`, date: new Date()});
+        io.to(`ext_${lobby.room}`).emit("extUserLeft", {user_id: user_id, user_name: temp_user_name});
+
         socket.leave(lobby.room)
     });
 

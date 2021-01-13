@@ -21,6 +21,9 @@ export class Dashboard extends React.Component {
     }
 
     componentDidMount(){
+        if (localStorage.hasRefreshed){
+            localStorage.removeItem("hasRefreshed");
+        }
         this.getUserProfile();
     }
 
