@@ -418,3 +418,8 @@
 * *1 hour* Writing the dissertation
 * *1 hour* Testing web app, identifying bugs and creating issues for them
 * *2 hours* Fixing bugs and warnings 
+
+### 13 Jan 2021
+* *3 hours* Fixing bugs in the lobby, the extension and the chat system
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
