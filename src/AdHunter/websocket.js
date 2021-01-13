@@ -64,3 +64,15 @@ socket.on('winnerFound', async(player_game_state)=>{
         });
     });     
 })
+
+// notify the extension when a user has left the lobby
+socket.on("extUserLeft", async(data)=>{
+    chrome.storage.local.set({'winner': null});
+    chrome.storage.local.set({'gameOver': true});
+    chrome.storage.local.set({'gameMode': null});
+    chrome.storage.local.set({'page_history': {}});
+    chrome.storage.local.set({'gameState': null});
+    socket.emit("extServerUserLeft", (data_)=>{
+        console.log(data_)
+    })
+})

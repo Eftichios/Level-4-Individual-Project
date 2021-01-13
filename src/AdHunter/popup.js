@@ -93,10 +93,13 @@ chrome.storage.local.get('gameState', function(gameData) {
 });
 
 // check if a game was played and was finished and set winner
+// in the case where winner is null, that means the player has left the game
 chrome.storage.local.get('gameOver', function(gameOverData) {
   if (gameOverData.gameOver){
     chrome.storage.local.get('winner', function(winnerData){
-      _postGameMetrics(winnerData.winner);
+      if (winnerData.winner){
+        _postGameMetrics(winnerData.winner);
+      }
     });
   }
 });
@@ -134,7 +137,12 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       }else if (key=="gameOver"){
         if (storageChange.newValue){
           chrome.storage.local.get('winner', function(winnerData){
-            _postGameMetrics(winnerData.winner);
+            console.log(winnerData.winner)
+            if (winnerData.winner){
+              _postGameMetrics(winnerData.winner);
+            } else {
+              _resetGameState();
+            }
           });
         } else {
           _resetGameState();

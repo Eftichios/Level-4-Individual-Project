@@ -60,6 +60,7 @@ async function _setClientSocketConnections(io, lobby, socket){
     socket.on("userLeftLobby", (user_id)=>{
         lobby.removePlayer(user_id);
         io.to(lobby.room).emit("userLeft", lobby);
+        io.to(`ext_${lobby.room}`).emit("extUserLeft", lobby);
         if (lobby.getNumberOfPlayers()===0){
             lobbyHandler.removeLobby(lobby);
         }
@@ -99,6 +100,10 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         
     });
 
+    socket.on("extServerUserLeft", (data)=>{
+        socket.leave(ext_room);
+    })
+
     socket.on('playerHistory', (playerHistory)=>{
         var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] === playerHistory.player);
         lobby.playerIds[player_id]["page_history"] = playerHistory.game_history;
@@ -135,7 +140,7 @@ async function findGame(req, res){
 async function startGame(req, res){
     var io = getIo();
     try{
-    var playerExtensionSocket = getPlayerExtensionSockets();
+        var playerExtensionSocket = getPlayerExtensionSockets();
         var {room} = req.body;
         var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
         var extension_room = `ext_${room}`;
