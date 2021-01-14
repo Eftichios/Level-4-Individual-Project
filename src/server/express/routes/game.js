@@ -119,11 +119,29 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
     });
 }
 
+function waitForExtensionResponse(ms){
+    return new Promise(resolve=>setTimeout(resolve, ms))
+}
+
+async function checkIfExtensionConfigured(user_id){
+    var ext_sockets = getPlayerExtensionSockets();
+    if (!ext_sockets[user_id]){
+        throw new Error("Please ensure that you have the chrome extension installed and that you have entered your username correctly.")
+    }
+}
+
 async function findGame(req, res){
     var io = getIo();
     try {
-        io.emit("identifyExtension", true);
+        
         const { user_id, user_name, socketId, game_mode } = req.body;
+        io.emit("identifyExtension", {user_name, user_id});
+
+        // put a timer to wait for the extension to respond
+        await waitForExtensionResponse(3000);
+        await checkIfExtensionConfigured(user_id);
+        
+
         var lobby = lobbyHandler.findOrCreateLobby(game_mode);
         
         lobbyHandler.checkIfPlayerInLobby(user_id);

@@ -15,7 +15,8 @@ export class DashPlay extends React.Component {
         this.state = {
             rank: 0,
             lobby: null,
-            game_mode: "Race"
+            game_mode: "Race",
+            finding_game: false
         };
 
         // ensure that the socket listener is added only once
@@ -46,6 +47,7 @@ export class DashPlay extends React.Component {
 
     findGame = async (user_id, user_name) => {
         try {
+            this.setState({finding_game: true})
             const response = await fetch("http://localhost:5000/api/play", {
                 method: "POST",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
@@ -60,6 +62,8 @@ export class DashPlay extends React.Component {
             }
         } catch (err) {
             console.error(err.message);      
+        } finally {
+            this.setState({finding_game: false})
         }
         
     }
@@ -81,7 +85,7 @@ export class DashPlay extends React.Component {
                 <div className="p-1">Player: {this.props.name}</div>
                 <div className="p-1">Rank: {this.state.rank}</div>
                 <div className="p-1">
-                    <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">Play Game</button>
+                    <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
                 <div className="p-1"><button onClick={this.setGameMode} className="constSize btn btn-secondary" >Game Mode: {this.state.game_mode}</button></div>

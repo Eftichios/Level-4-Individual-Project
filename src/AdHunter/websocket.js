@@ -5,12 +5,19 @@ socket.on('connect', ()=>{
 });
 
 // special message to expose extension sockets to the server
-socket.on('identifyExtension', async (data)=>{
-    chrome.storage.local.get('ownerName', async function(data){
-
-        var user_id = await getUserIdFromName(data.ownerName);
-        chrome.storage.local.set({'ownerId': user_id});
-        socket.emit("extensionResponse", {'foundUser': user_id?user_id:false, 'user_id':user_id});
+socket.on('identifyExtension', async (user_data)=>{
+    chrome.storage.local.get('ownerName', async function(owner_data){
+        console.log(user_data, owner_data)
+        if (owner_data.ownerName && user_data.user_name === owner_data.ownerName){
+            var user_id = await getUserIdFromName(owner_data.ownerName);
+            // username entered correctly and matches 
+            chrome.storage.local.set({'ownerId': user_id});
+            socket.emit("extensionResponse", {'foundUser': true, 'user_id':user_id});
+        } else {
+            // the name given does not match with the player that made request
+            socket.emit("extensionResponse", {'foundUser': false, 'user_id':user_data.user_id});
+        }
+        
     });
 });
 

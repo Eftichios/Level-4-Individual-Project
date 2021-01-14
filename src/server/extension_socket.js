@@ -8,7 +8,19 @@ async function setUpSocketCommunication(_io) {
     io = _io;
     io.on('connection', async (socket)=>{
         socket.on('extensionResponse', async (data)=>{
-            playerExtensionSocket[data.user_id] = socket.id;
+            if (data.user_id){
+                // if foundUser is true, that means the details entered
+                // on the extension are correct
+                if (data.foundUser){
+                    playerExtensionSocket[data.user_id] = socket.id;
+                }else if (playerExtensionSocket[data.user_id]){
+                    // else if the user gave the wrong details
+                    // remove their extension map from the player extensions
+                    // handles cases where players might have two accounts and one extension
+                    delete playerExtensionSocket[data.user_id]
+                }
+                
+            }
         });   
     });   
 }
