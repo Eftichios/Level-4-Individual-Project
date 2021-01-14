@@ -81,6 +81,7 @@ socket.on("extUserLeft", async(user_data)=>{
     chrome.storage.local.get("ownerName", async (owner_data)=>{
         if (owner_data.ownerName === user_data.user_name){
             chrome.storage.local.set({'winner': null});
+            chrome.storage.local.set({'latestTracker': null});
             chrome.storage.local.set({'gameOver': true});
             chrome.storage.local.set({'gameMode': null});
             chrome.storage.local.set({'page_history': {}});

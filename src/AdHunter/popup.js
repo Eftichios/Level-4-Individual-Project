@@ -31,10 +31,10 @@ _postGameMetrics = (winner) => {
 
 // resets the state of the game
 _resetGameState = () =>{
+  chrome.storage.local.set({'latestTracker': null});
   chrome.storage.local.get('gameState', function(gameData) {
     chrome.storage.local.get('ownerName', function(playerData) {
       var player = playerData.ownerName;
-      console.log(gameData);
       document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]["score"]: 0;
       document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
       _setPlayerScores(player, gameData.gameState);
@@ -92,6 +92,11 @@ chrome.storage.local.get('gameState', function(gameData) {
   });
 });
 
+//get latest unique tracker found
+chrome.storage.local.get("latestTracker", function(trackerData){
+    document.getElementById('latestTracker').innerHTML = trackerData.latestTracker? trackerData.latestTracker:"None"
+})
+
 // check if a game was played and was finished and set winner
 // in the case where winner is null, that means the player has left the game
 chrome.storage.local.get('gameOver', function(gameOverData) {
@@ -132,12 +137,13 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('totalAds').innerHTML = storageChange.newValue;
       }else if (key==tab_id){
         document.getElementById('ads').innerHTML = `(${storageChange.newValue.url}): ${storageChange.newValue.trackers}`;
+      }else if (key=="latestTracker"){
+        document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="auth") {
         document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
       }else if (key=="gameOver"){
         if (storageChange.newValue){
           chrome.storage.local.get('winner', function(winnerData){
-            console.log(winnerData.winner)
             if (winnerData.winner){
               _postGameMetrics(winnerData.winner);
             } else {

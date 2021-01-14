@@ -57,9 +57,16 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
         }
     } 
     if (game_on && this_game_mode) {
+        var unique_trackers = []
         // Adds a listener function to all requests that match url from the blocked domains
         chrome.webRequest.onBeforeRequest.addListener(
-            function race_trackers(details) {
+            async function race_trackers(details) {
+
+                // variables to determine current tab and who made the request
+                var tab_id = details.tabId.toString();
+                var initiator = details.initiator;
+                var domain = extractDomain(initiator);
+
                 // check if someone else has won the game
                 chrome.storage.local.get('winner', function(winnerData){
                     winner = winnerData.winner;
@@ -77,7 +84,24 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 if (!blocked_urls){
                     return
                 }
-                var domain = blocked_urls[1];
+
+                // check if tracker found is unique
+                var tracker_domain = blocked_urls[1];
+                if (unique_trackers.includes(tracker_domain)){
+                    return
+                }else {
+                    chrome.storage.local.set({'latestTracker': tracker_domain});
+                    unique_trackers.push(tracker_domain)
+                }
+                // Add 1 to the total ad trackers number      
+                chrome.storage.local.get('totalAds', function(data) {
+                    chrome.storage.local.set({'totalAds': data.totalAds + 1}, function() {
+                        console.log("Total ads: ", data.totalAds + 1);
+                    });  
+                }); 
+                
+                // Add 1 to the page ad trackers number
+                
 
                 // update the user's page history metrics
                 chrome.storage.local.get('page_history', function(data){
@@ -88,18 +112,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     }
                     chrome.storage.local.set({"page_history": data.page_history});
                 });
-                
-                // Add 1 to the total ad trackers number      
-                chrome.storage.local.get('totalAds', function(data) {
-                    chrome.storage.local.set({'totalAds': data.totalAds + 1}, function() {
-                        console.log("Total ads: ", data.totalAds + 1);
-                    });  
-                }); 
-                
-                // Add 1 to the page ad trackers number
-                var tab_id = details.tabId.toString();
-                var initiator = details.initiator;
-                var domain = extractDomain(initiator);
+
                 chrome.storage.local.get([tab_id], function(data) {
                     if (!data[tab_id]){
                         return

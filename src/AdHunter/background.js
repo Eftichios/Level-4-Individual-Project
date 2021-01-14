@@ -15,6 +15,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
     chrome.storage.local.set({'page_history': {}});
+    chrome.storage.local.set({'latestTracker': null});
   });
 
   // Enables the extension for all pages given in the pageUrl option
