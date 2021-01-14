@@ -159,7 +159,6 @@ async function findGame(req, res){
 
         res.status(200).json({'success':true, 'lobby':lobby});
     } catch (err) {
-        console.error(err.message);
         res.status(500).json({'success':false, 'error':err.message});
     }
 }

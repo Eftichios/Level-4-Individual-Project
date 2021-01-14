@@ -27,7 +27,7 @@ class LobbyHandler{
 
     getLobbyDetailsByRoom(roomId){
         for (var i in this.lobbies){
-            if (this.lobbies[i].room = roomId){
+            if (this.lobbies[i].room === roomId){
                 return this.lobbies[i];
             }
         }
