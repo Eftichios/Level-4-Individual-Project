@@ -423,3 +423,7 @@
 * *3 hours* Fixing bugs in the lobby, the extension and the chat system
 * *0.5 hour* Preparing for supervisor meeting
 * *0.5 hour* Supervisor meeting
+
+### 14 Jan 2021 
+* *1 hour* Fixing bugs in the gameplay and lobby
+* *2 hours* Enhancing gameplay and authentication when joining lobbies
