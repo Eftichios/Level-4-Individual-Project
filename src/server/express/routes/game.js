@@ -132,61 +132,52 @@ async function checkIfExtensionConfigured(user_id){
 
 async function findGame(req, res){
     var io = getIo();
-    try {
         
-        const { user_id, user_name, socketId, game_mode } = req.body;
-        io.emit("identifyExtension", {user_name, user_id});
+    const { user_id, user_name, socketId, game_mode } = req.body;
+    io.emit("identifyExtension", {user_name, user_id});
 
-        // put a timer to wait for the extension to respond
-        await waitForExtensionResponse(3000);
-        await checkIfExtensionConfigured(user_id);
-        
-
-        var lobby = lobbyHandler.findOrCreateLobby(game_mode);
-        
-        lobbyHandler.checkIfPlayerInLobby(user_id);
-        
+    // put a timer to wait for the extension to respond
+    await waitForExtensionResponse(3000);
+    await checkIfExtensionConfigured(user_id);
         
 
-        var socket = io.sockets.sockets.get(socketId);
-        lobby.addPlayer(socket.id, user_name, user_id);
-        await _setClientSocketConnections(io, lobby, socket);
+    var lobby = lobbyHandler.findOrCreateLobby(game_mode);
+        
+    lobbyHandler.checkIfPlayerInLobby(user_id);
         
         
-        // notify all sockets that a user has joined the lobby
-        io.to(lobby.room).emit("userJoinedRoom", lobby);
-        io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${lobby.playerIds[user_id]["name"]} has joined the lobby`, date: new Date()});
 
-        res.status(200).json({'success':true, 'lobby':lobby});
-    } catch (err) {
-        res.status(500).json({'success':false, 'error':err.message});
-    }
+    var socket = io.sockets.sockets.get(socketId);
+    lobby.addPlayer(socket.id, user_name, user_id);
+    await _setClientSocketConnections(io, lobby, socket);
+        
+        
+    // notify all sockets that a user has joined the lobby
+    io.to(lobby.room).emit("userJoinedRoom", lobby);
+    io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${lobby.playerIds[user_id]["name"]} has joined the lobby`, date: new Date()});
+
+    res.status(200).json({'success':true, 'lobby':lobby});
 }
 
 async function startGame(req, res){
     var io = getIo();
-    try{
-        var playerExtensionSocket = getPlayerExtensionSockets();
-        var {room} = req.body;
-        var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
-        var extension_room = `ext_${room}`;
-        for (pid in lobby.playerIds){           
-            var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
-            _setExtSocketConnections(io, lobby, extension_room, extension_socket);
-        }
-        if (lobby.game_mode == "Race"){
-            var game_state = _initRaceGameState(lobby);
-            io.to(extension_room).emit("gameStartRace", game_state);
-        } else {
-            var game_state = _initCategoryGameState(lobby);
-            io.to(extension_room).emit("gameStartCategory", game_state);
-        }
-        lobby.in_game = true
-        res.status(200).json(game_state);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json(err.message);
+    var playerExtensionSocket = getPlayerExtensionSockets();
+    var {room} = req.body;
+    var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
+    var extension_room = `ext_${room}`;
+    for (pid in lobby.playerIds){           
+        var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
+        _setExtSocketConnections(io, lobby, extension_room, extension_socket);
     }
+    if (lobby.game_mode == "Race"){
+        var game_state = _initRaceGameState(lobby);
+        io.to(extension_room).emit("gameStartRace", game_state);
+    } else {
+        var game_state = _initCategoryGameState(lobby);
+        io.to(extension_room).emit("gameStartCategory", game_state);
+    }
+    lobby.in_game = true
+    res.status(200).json(game_state);
 }
 
 module.exports = {startGame, findGame}
