@@ -5,6 +5,7 @@ import DashSettings from './DashSettings';
 import DashPlay from './DashPlay';
 import DashAchieve from './DashAchieve';
 import DashMetrics from './DashMetrics';
+import {toast} from 'react-toastify';
 
 export class Dashboard extends React.Component {
 
@@ -40,7 +41,7 @@ export class Dashboard extends React.Component {
             this.setState({name: parseRes.user_name})
 
         } catch (err){
-            console.error(err.message)
+            toast.error("Failed to retrieve user details");
         }
     }
 

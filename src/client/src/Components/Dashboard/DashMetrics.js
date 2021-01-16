@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import DashGameHistory from './DashGameHistory';
 import category_map from "../Utilities/adCategories";
+import {toast} from 'react-toastify';
 
 export class DashMetrics extends React.Component {
 
@@ -34,9 +35,9 @@ export class DashMetrics extends React.Component {
             if (response.status === 200){
                 var parseRes = await response.json();
                 this.buildGameMetrics(parseRes);
-            }
+            } 
         } catch (err){
-            console.error(err.message)
+            toast.error("Failed to retrieve player's game metrics.");
         }
     }
 

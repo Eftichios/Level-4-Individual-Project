@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import "../../index.css";
 import "./dashboard.css";
+import {toast} from 'react-toastify';
 
 export class DashGameHistory extends React.Component {
 
@@ -29,7 +30,7 @@ export class DashGameHistory extends React.Component {
             var parseRes = await response.json();
             this.buildModalContent(parseRes);
         } catch (err){
-            console.error(err.message)
+            toast.error("Failed to retrieve player's game history.");
         }
     }
 

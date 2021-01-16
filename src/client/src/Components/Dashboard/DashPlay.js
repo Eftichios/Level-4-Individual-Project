@@ -55,13 +55,14 @@ export class DashPlay extends React.Component {
             });
 
             const parseRes = await response.json();
+            
             if (parseRes.success) {
                 this.setState({lobby: parseRes.lobby});
-            } else {
-                toast.error(parseRes.error);
+            }else {
+                toast.error(parseRes); 
             }
         } catch (err) {
-            console.error(err.message);      
+            toast.error(err.message);      
         } finally {
             this.setState({finding_game: false})
         }
@@ -69,7 +70,7 @@ export class DashPlay extends React.Component {
     }
 
     setGameMode = ()=>{
-        if (this.state.game_mode == "Race"){
+        if (this.state.game_mode === "Race"){
             this.setState({game_mode: "Category"})
         } else {
             this.setState({game_mode: "Race"})

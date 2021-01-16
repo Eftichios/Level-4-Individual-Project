@@ -23,7 +23,8 @@ export class Lobby extends React.Component {
             msgData: [],
             msgs: null,
             listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
-            user_refreshed: false
+            user_refreshed: false,
+            status_msg: "Waiting for players to get ready..."
         }   
              
               
@@ -62,9 +63,14 @@ export class Lobby extends React.Component {
             });
     
             const parseRes = await response.json();
+            
+            if (parseRes.success){
+                this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?"Game has started. Visit websites to find ad trackers!":
+                                                                                    `Game has started. Try to find an advert on "Technology"`})
+            }
 
         } catch (err){
-            console.error(err.message)
+            toast.error("Failed to start game.");
         } 
     }
 
@@ -183,7 +189,7 @@ export class Lobby extends React.Component {
                 <LobbyChat msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
-                <strong>Wating for players to get ready... Winner: {this.state.temp_winner? this.state.temp_winner: "..."}</strong>
+                <strong>{this.state.status_msg}</strong>
             </div>
             <div className="text-center">
                 <button onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import "../../index.css";
 import "./dashboard.css";
+import {toast} from 'react-toastify';
 
 export class DashLead extends React.Component {
 
@@ -23,7 +24,7 @@ export class DashLead extends React.Component {
             var parseRes = await response.json();
             this.sortAndBuildPlayers(parseRes);
         } catch (err){
-            console.error(err.message)
+            toast.error("Failed to retrieve players.");
         }
     }
 

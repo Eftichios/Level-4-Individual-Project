@@ -50,7 +50,7 @@ export class App extends React.Component {
       parseRes.success===true? this.setState({isAuthenticated:true}) : this.setState({isAuthenticated:false});
       
     } catch (err){
-      console.error(err.message);
+      toast.error("Failed to authenticate user. Please try re-logging");
     } finally {
       this.setState({isLoading: false})
     }
