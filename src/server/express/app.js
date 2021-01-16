@@ -2,9 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
+var morgan = require("morgan");
+var fs = require('fs')
+var path = require('path')
 
 // create express app
 const app = express();
+morgan.token('custom_reqBody', function (req, res) { return JSON.stringify(req.body)});
+morgan.token('custom_resBody', function (req, res) { return JSON.stringify(res.body)});
+// set up a log to keep track of all requests
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'REST_API_log.log'), { flags: 'a' })
+app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[content-length] - :response-time ms', { stream: accessLogStream }))
+
 
 // use cors and allow for json responses
 app.use(cors());
