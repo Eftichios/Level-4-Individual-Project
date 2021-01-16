@@ -1,6 +1,7 @@
 import React from 'react';
 import "./lobby.css";
 import socket from "../Utilities/socketConfig";
+import logger from '../Utilities/logger';
 
 
 export class LobbyChat extends React.Component {
@@ -18,6 +19,7 @@ export class LobbyChat extends React.Component {
       };
 
     sendMessage = async(e)=>{
+        logger.log('chat', `[${this.props.room}]: ${this.state.message}`, this.props.user_name)
         e.preventDefault();
         await socket.emit("chatMessagePlayer", {user_name: this.props.user_name, message: this.state.message, date: new Date()})
         this.setState({message:""})

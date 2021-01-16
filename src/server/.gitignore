@@ -3,4 +3,4 @@ node_modules
 Domains
 .env
 dummy_data.sql
-express/REST_API_log.log
+express/routes/logs/*

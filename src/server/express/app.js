@@ -10,9 +10,13 @@ var path = require('path')
 const app = express();
 morgan.token('custom_reqBody', function (req, res) { return JSON.stringify(req.body)});
 morgan.token('custom_resBody', function (req, res) { return JSON.stringify(res.body)});
+
 // set up a log to keep track of all requests
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'REST_API_log.log'), { flags: 'a' })
-app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[content-length] - :response-time ms', { stream: accessLogStream }))
+var accessLogStreamServer = fs.createWriteStream(path.join(__dirname, 'routes', 'logs',"server_log.log"), { flags: 'a' })
+app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[content-length] - :response-time ms', { stream: accessLogStreamServer, 
+	skip: (req,res)=>{
+		return req.url==="/api/logger"
+	}}))
 
 
 // use cors and allow for json responses
@@ -29,7 +33,8 @@ const routes = {
 	userAchievements: require('./routes/user_achievements'),
 	userOrganisations: require('./routes/user_organisations'),
 	gameHistory: require('./routes/game_history'),
-	market: require('./routes/market')
+	market: require('./routes/market'),
+	logger: require('./routes/logger')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
@@ -83,7 +88,6 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	if (routeController.startGame){
 		app.post(`/api/startGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.startGame))
 	}
-
 
 };
 

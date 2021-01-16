@@ -6,6 +6,7 @@ import DashLead from './DashLead';
 import {Redirect} from 'react-router';
 import socket from "../Utilities/socketConfig";
 import {toast} from 'react-toastify';
+import logger from '../Utilities/logger';
 
 export class DashPlay extends React.Component {
 
@@ -46,6 +47,7 @@ export class DashPlay extends React.Component {
     }
 
     findGame = async (user_id, user_name) => {
+        logger.log("info","User searching for game", user_name)
         try {
             this.setState({finding_game: true})
             const response = await fetch("http://localhost:5000/api/play", {
@@ -69,11 +71,13 @@ export class DashPlay extends React.Component {
     }
 
     setGameMode = ()=>{
+        
         if (this.state.game_mode === "Race"){
             this.setState({game_mode: "Category"})
         } else {
             this.setState({game_mode: "Race"})
         }
+        logger.log("info",`User switched game mode for ${this.state.game_mode}`, this.props.name)
     }
 
     render(){

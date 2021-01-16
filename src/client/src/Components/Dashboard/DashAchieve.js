@@ -3,6 +3,7 @@ import "../../index.css";
 import "./dashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import logger from "../Utilities/logger"
 
 export class DashAchieve extends React.Component {
 
@@ -10,7 +11,6 @@ export class DashAchieve extends React.Component {
         super(props);
 
         this.state = {
-            user: "George",
             modalContent: {}
         }
 
@@ -48,6 +48,7 @@ export class DashAchieve extends React.Component {
     }
 
     setModalContent(achievement){
+        logger.log("trace", `User clicked on achievement ${ac.title}`, this.props.name);
         this.setState({modalContent: achievement})
     }
 

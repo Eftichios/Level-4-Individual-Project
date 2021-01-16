@@ -10,6 +10,7 @@ import { LobbyChat } from './LobbyChat';
 import socket from "../Utilities/socketConfig";
 import { Prompt, Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify';
+import logger from "../Utilities/logger";
 
 export class Lobby extends React.Component {
 
@@ -54,6 +55,7 @@ export class Lobby extends React.Component {
     }
 
     startGame = async () => {
+        logger.log("info", `User started game in lobby ${this.state.lobbyData.room}`, this.props.location.user_name)
         try {
 
             const response = await fetch(`http://localhost:5000/api/startGame`, {
@@ -186,7 +188,7 @@ export class Lobby extends React.Component {
                 </div>
             </div>
             <div className="row d-flex flex-column align-items-center">
-                <LobbyChat msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
+                <LobbyChat room={this.state.lobbyData.room} msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
                 <strong>{this.state.status_msg}</strong>

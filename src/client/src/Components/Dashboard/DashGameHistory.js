@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import "../../index.css";
 import "./dashboard.css";
 import {toast} from 'react-toastify';
+import logger from '../Utilities/logger';
 
 export class DashGameHistory extends React.Component {
 
@@ -71,6 +72,7 @@ export class DashGameHistory extends React.Component {
     }
 
     setModalData(game) {
+        logger.log("trace",`User viewed history of game ${game.game_id}`, this.props.name)
         const temp_content = <Fragment>
             <div className="modal-header">
                 <h5 className="modal-title" id="gameHistoryLabel">Game stats</h5>

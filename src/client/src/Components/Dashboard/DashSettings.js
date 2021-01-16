@@ -2,6 +2,7 @@ import React from 'react';
 import "../../index.css";
 import "./dashboard.css";
 import { toast } from 'react-toastify';
+import logger from '../Utilities/logger';
 
 export class DashSettings extends React.Component {
 
@@ -12,6 +13,7 @@ export class DashSettings extends React.Component {
     }
 
     logout = (e) => {
+        logger.log("info", "User logged out.", this.props.name)
         e.preventDefault();
         localStorage.removeItem("token");
 
