@@ -60,13 +60,12 @@ export class DashPlay extends React.Component {
                 this.setState({lobby: parseRes.lobby});
             }else {
                 toast.error(parseRes); 
+                this.setState({finding_game: false})
             }
         } catch (err) {
             toast.error(err.message);      
-        } finally {
             this.setState({finding_game: false})
-        }
-        
+        }     
     }
 
     setGameMode = ()=>{
