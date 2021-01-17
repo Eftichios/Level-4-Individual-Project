@@ -8,6 +8,7 @@ class Lobby {
         this.socketPlayerMap = {};
         this.category = null;
         this.in_game = false;
+        this.game_state = null;
     }
 
     isLobbyFull(){
@@ -49,6 +50,15 @@ class Lobby {
 
     getNumberOfPlayers(){
         return Object.keys(this.playerIds).length;
+    }
+
+    checkForPageHistory(){
+        Object.entries(this.playerIds).forEach(([key, value])=>{
+            if (!value.hasOwnProperty("page_history")){
+                return false
+            }
+        });
+        return true
     }
 }
 

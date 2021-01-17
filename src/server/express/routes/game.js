@@ -8,7 +8,7 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"Race", "condition": 100, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Race", "condition": 20, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _initCategoryGameState(lobby) {
@@ -99,13 +99,8 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         socket.to(ext_room).emit("winnerFound", player_game_state);
         socket.to(lobby.room).emit("gameFinished", player_game_state);
 
-
-        // we wait until all players have reported their page history
-        // 5 seconds should be more than enough
-        // can be changed to check until lobby has page_history attribute for all users
-        setTimeout(function(){
-            _build_game_history(lobby, player_game_state);
-        }, 5000);
+        // set the game state of the lobby so that we can build the game history
+        lobby.game_state = player_game_state
         
     });
 
@@ -116,6 +111,13 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
     socket.on('playerHistory', (playerHistory)=>{
         var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] === playerHistory.player);
         lobby.playerIds[player_id]["page_history"] = playerHistory.game_history;
+
+        // check if we have received page history for all players currently in the lobby
+        // if we have, then build the game history
+        var received_from_all = lobby.checkForPageHistory();
+        if (received_from_all){
+            _build_game_history(lobby, lobby.game_state)
+        }
     });
 }
 

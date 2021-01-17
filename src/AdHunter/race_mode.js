@@ -146,10 +146,10 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                             console.log("FOUND ENOUGH TRACKERS!");
                             gameState['finished_at'] = new Date();
                             if (!emmited){
+                                socket.emit('playerWon', {"player": playerName, "game_state": gameState})
                                 chrome.storage.local.get('page_history', async function(historyData){
                                     socket.emit('playerHistory', {"player": playerName, "game_history": historyData.page_history})
                                 });
-                                socket.emit('playerWon', {"player": playerName, "game_state": gameState})
                                 emmited = true;    
                             }
 
