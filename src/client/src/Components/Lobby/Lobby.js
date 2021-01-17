@@ -29,13 +29,16 @@ export class Lobby extends React.Component {
             temp_winner: null,
             msgData: [],
             msgs: null,
-            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
+            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage", "$allReady", "$gameStarted"],
             user_refreshed: false,
             user_left: false,
             status_msg: this.status_msg_data["ready"][0],
             ready: false,
             startDisabled: true,
-            game_on: false
+            game_on: false,
+            game_finished: false,
+            game_state: null,
+            player_metrics: null
         }             
     } 
 
@@ -101,7 +104,7 @@ export class Lobby extends React.Component {
         
         // check if we are here from a page refresh
         // if so, kick the player out of the lobby
-        this.checkForRefresh()
+        this.checkForRefresh();
 
         if (this.props.location.state){
 
@@ -119,8 +122,12 @@ export class Lobby extends React.Component {
                 this.update_status_msg(data);
             }
             );
-            socket.on("gameFinished", (data)=>{
-                this.setState({temp_winner: data.player, status_msg: this.status_msg_data["done"] + data.player, game_on: false});
+            socket.on("gameFinished", (post_game_data)=>{
+                this.setState({temp_winner: post_game_data.summary.player, 
+                    status_msg: this.status_msg_data["done"] + post_game_data.summary.player, 
+                    game_on: false, game_state: post_game_data.summary.game_state, 
+                    game_finished: true,
+                    player_metrics: post_game_data.player_metrics});
             })
             socket.on("chatMessage", (data)=>{
                 var tempData = this.state.msgData.concat(data);
@@ -150,7 +157,12 @@ export class Lobby extends React.Component {
         }
     }
 
-    componentWillUnmount(){      
+    componentWillUnmount(){     
+        if (this.state.game_finished){
+            window.removeEventListener('beforeunload', this.onUnload);
+            this.clear_socket_listeners(socket);
+            return
+        } 
         if (this.props.location.state){
 
             socket.emit("userLeftLobby", this.props.location.state.user_id);
@@ -193,6 +205,12 @@ export class Lobby extends React.Component {
     render(){
         if (!this.state.lobbyData || this.state.user_refreshed || this.state.user_left){
             return <Redirect to="/dashboard"></Redirect>
+        }
+        if (this.state.game_finished){
+            return <Redirect to={{pathname: "/summary", state: {lobby: this.state.lobbyData, 
+                user_name: this.props.location.state.user_name, user_id: this.props.location.state.user_id, 
+                winner: this.state.temp_winner, msg_data: this.state.msgData, game_state: this.state.game_state,
+                player_metrics: this.state.player_metrics}}}></Redirect>
         }
 
         return <div className="lobby-padding">

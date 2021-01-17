@@ -8,7 +8,7 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"Race", "condition": 20, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Race", "condition": 10, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _initCategoryGameState(lobby) {
@@ -17,7 +17,7 @@ function _initCategoryGameState(lobby) {
     return {"players":players, "game_mode":"Category", "condition": "Technology", "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
-function _build_game_history(lobby, player_game_state){
+function _build_game_history(io, lobby, player_game_state){
     var winner_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player_game_state.player);
     var player_data = {}
     Object.keys(player_game_state.game_state.players).forEach((player)=>{
@@ -33,6 +33,8 @@ function _build_game_history(lobby, player_game_state){
             win_condition: player_game_state.game_state.condition}, 
         player_ids: Object.keys(lobby.playerIds)}
     
+
+    io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
     create_from_server(game_history);
 }
 
@@ -58,6 +60,10 @@ async function _setClientSocketConnections(io, lobby, socket){
 
     // lobby events
     socket.on("userLeftLobby", (user_id)=>{
+        if (!lobby.isPlayerInLobby(user_id)){
+            socket.leave(lobby.room)
+            return
+        }
         var temp_user_name = lobby.playerIds[user_id]["name"]
         lobby.removePlayer(user_id);
         
@@ -72,6 +78,10 @@ async function _setClientSocketConnections(io, lobby, socket){
     });
 
     socket.on('disconnect', (data)=> {
+        if (!lobby.playerIds[lobby.socketPlayerMap[socket.id]]){
+            socket.leave(lobby.room)
+            return
+        }
         var temp_user_name = lobby.playerIds[lobby.socketPlayerMap[socket.id]]["name"]
         lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
 
@@ -102,7 +112,7 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
 
     socket.on('playerWon', (player_game_state)=>{
         socket.to(ext_room).emit("winnerFound", player_game_state);
-        socket.to(lobby.room).emit("gameFinished", player_game_state);
+        
 
         // set the game state of the lobby so that we can build the game history
         lobby.game_state = player_game_state
@@ -121,7 +131,7 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         // if we have, then build the game history
         var received_from_all = lobby.checkForPageHistory();
         if (received_from_all){
-            _build_game_history(lobby, lobby.game_state)
+            _build_game_history(io, lobby, lobby.game_state)
         }
     });
 }
