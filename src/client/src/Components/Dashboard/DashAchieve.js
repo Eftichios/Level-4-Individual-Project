@@ -48,7 +48,7 @@ export class DashAchieve extends React.Component {
     }
 
     setModalContent(achievement){
-        logger.log("trace", `User clicked on achievement ${ac.title}`, this.props.name);
+        logger.log("trace", `User clicked on achievement ${achievement.title}`, this.props.name);
         this.setState({modalContent: achievement})
     }
 
