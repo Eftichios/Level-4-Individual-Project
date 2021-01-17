@@ -17,6 +17,12 @@ export class Lobby extends React.Component {
     constructor(props){
         super(props);
 
+        this.status_msg_data = {
+            "ready": ["Waiting for players to get ready...", "All players ready. You can wait for more players or start the game!", "All players ready. You can start the game!"],
+            "game": ["Game has started. Visit websites to find ad trackers!", "Game has started. Try to find an advert on the specified category"],
+            "done": ["Game has ended. Winner: "]
+
+        }
         this.state = {
             socket: null,
             lobbyData: this.props.location.state? this.props.location.state.lobby: null,
@@ -25,12 +31,11 @@ export class Lobby extends React.Component {
             msgs: null,
             listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
             user_refreshed: false,
-            status_msg: "Waiting for players to get ready...",
+            status_msg: this.status_msg_data["ready"][0],
             ready: false,
-            startDisabled: true
-        }   
-             
-              
+            startDisabled: true,
+            game_on: false
+        }             
     } 
 
     checkForRefresh(){
@@ -69,13 +74,26 @@ export class Lobby extends React.Component {
             const parseRes = await response.json();
             
             if (parseRes.success){
-                this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?"Game has started. Visit websites to find ad trackers!":
-                                                                                    `Game has started. Try to find an advert on "Technology"`})
+                this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?this.status_msg_data["game"][0]:this.status_msg_data["game"][1], game_on: true})
             }
 
         } catch (err){
             toast.error("Failed to start game.");
         } 
+    }
+
+    update_status_msg = (lobby)=>{
+        var all_ready = true
+        Object.entries(lobby.playerIds).forEach(([key,value])=>{
+            if (!value["ready"]){
+                all_ready = false
+            }
+        })
+        if (all_ready){
+            this.setState({status_msg: Object.keys(this.state.lobbyData.playerIds).length < this.state.lobbyData.MAX_players?this.status_msg_data["ready"][1]:this.status_msg_data["ready"][2]})
+        }else{
+            this.setState({status_msg: this.status_msg_data["ready"][0]})
+        }
     }
 
     componentDidMount(){
@@ -92,14 +110,16 @@ export class Lobby extends React.Component {
 
             socket.on("userJoinedRoom", (data)=>{
                 this.setState({lobbyData: data});
-                }
+                this.update_status_msg(data);
+            }
             );
             socket.on("userLeft", (data)=>{
                 this.setState({lobbyData: data});
-                }
+                this.update_status_msg(data);
+            }
             );
             socket.on("gameFinished", (data)=>{
-                this.setState({temp_winner: data.player});
+                this.setState({temp_winner: data.player, status_msg: this.status_msg_data["done"] + data.player, game_on: false});
             })
             socket.on("chatMessage", (data)=>{
                 var tempData = this.state.msgData.concat(data);
@@ -109,6 +129,13 @@ export class Lobby extends React.Component {
             })
             socket.on("allReady", (lobby_update)=>{
                 this.setState({startDisabled: !lobby_update.are_all_ready,lobbyData: lobby_update.new_lobby})
+                if (lobby_update.are_all_ready){
+                    this.setState({status_msg: Object.keys(this.state.lobbyData.playerIds).length < this.state.lobbyData.MAX_players?this.status_msg_data["ready"][1]:this.status_msg_data["ready"][2]})
+                }
+            })
+
+            socket.on("gameStarted", (data)=>{
+                this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?this.status_msg_data["game"][0]:this.status_msg_data["game"][1], game_on: true});
             })
         }
 
@@ -206,7 +233,7 @@ export class Lobby extends React.Component {
                 <strong>{this.state.status_msg}</strong>
             </div>
             <div className="text-center">
-                <button disabled={this.state.startDisabled} onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>
+                <button disabled={this.state.startDisabled || this.state.game_on} onClick={()=>this.startGame()} className="btn btn-primary constSize">{this.state.game_on?"Game in progress":"Start Game"}</button>
             </div>
             <Prompt when={true} message={(location, action)=>{
                 console.log(location, action);

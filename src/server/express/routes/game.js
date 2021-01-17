@@ -184,6 +184,7 @@ async function startGame(req, res){
         io.to(extension_room).emit("gameStartCategory", game_state);
     }
     lobby.in_game = true
+    io.to(lobby.room).emit("gameStarted", true);
     res.status(200).json({'success':true, "game_state":game_state});
 }
 
