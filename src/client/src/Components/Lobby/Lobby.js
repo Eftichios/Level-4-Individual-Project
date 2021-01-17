@@ -31,6 +31,7 @@ export class Lobby extends React.Component {
             msgs: null,
             listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
             user_refreshed: false,
+            user_left: false,
             status_msg: this.status_msg_data["ready"][0],
             ready: false,
             startDisabled: true,
@@ -90,7 +91,7 @@ export class Lobby extends React.Component {
             }
         })
         if (all_ready){
-            this.setState({status_msg: Object.keys(this.state.lobbyData.playerIds).length < this.state.lobbyData.MAX_players?this.status_msg_data["ready"][1]:this.status_msg_data["ready"][2]})
+            this.setState({status_msg: Object.keys(this.state.lobbyData.playerIds).length < this.state.lobbyData.MAX_players?this.status_msg_data["ready"][1]:this.status_msg_data["ready"][2], startDisabled: false})
         }else{
             this.setState({status_msg: this.status_msg_data["ready"][0]})
         }
@@ -182,8 +183,15 @@ export class Lobby extends React.Component {
         
     }
 
+    leaveLobby(){
+        if (window.confirm("Are you sure you want to leave?")){
+            this.setState({user_left: true})
+        }
+        
+    }
+
     render(){
-        if (!this.state.lobbyData || this.state.user_refreshed){
+        if (!this.state.lobbyData || this.state.user_refreshed || this.state.user_left){
             return <Redirect to="/dashboard"></Redirect>
         }
 
@@ -222,7 +230,7 @@ export class Lobby extends React.Component {
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`100 Ad Trackers`:`Technology`}</div>
                         </div>
                         <div className="p-1 mb-2"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
-                        <div className="p-1"><button className="constSize btn orange">Leave</button></div>
+                        <div className="p-1"><button onClick={()=>this.leaveLobby()}className="constSize btn orange">Leave</button></div>
                     </div>
                 </div>
             </div>
@@ -236,7 +244,6 @@ export class Lobby extends React.Component {
                 <button disabled={this.state.startDisabled || this.state.game_on} onClick={()=>this.startGame()} className="btn btn-primary constSize">{this.state.game_on?"Game in progress":"Start Game"}</button>
             </div>
             <Prompt when={true} message={(location, action)=>{
-                console.log(location, action);
                 
                 return location.pathname==="/lobby"?true:"Are you sure you want to leave?";
             }}></Prompt>
