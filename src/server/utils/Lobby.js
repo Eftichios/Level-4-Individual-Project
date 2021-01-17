@@ -43,9 +43,14 @@ class Lobby {
     }
 
     checkIfAllReady() {
-        const isNotReady = (pid) => !this.playerIds[pid]["ready"];
-
-        return !Object.values(this.playerIds).some(isNotReady);
+        var all_ready = true
+        Object.entries(this.playerIds).forEach(([key,value])=>{
+            if (!value["ready"]){
+                all_ready = false
+                return
+            }
+        })
+        return all_ready
     }
 
     getNumberOfPlayers(){
@@ -53,12 +58,14 @@ class Lobby {
     }
 
     checkForPageHistory(){
+        var all_history = true
         Object.entries(this.playerIds).forEach(([key, value])=>{
             if (!value.hasOwnProperty("page_history")){
-                return false
+                all_history = false
+                return
             }
         });
-        return true
+        return all_history
     }
 }
 

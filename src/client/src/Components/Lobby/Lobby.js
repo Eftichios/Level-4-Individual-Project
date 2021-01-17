@@ -25,7 +25,9 @@ export class Lobby extends React.Component {
             msgs: null,
             listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage"],
             user_refreshed: false,
-            status_msg: "Waiting for players to get ready..."
+            status_msg: "Waiting for players to get ready...",
+            ready: false,
+            startDisabled: true
         }   
              
               
@@ -105,6 +107,9 @@ export class Lobby extends React.Component {
                 var msgData = tempData.map((msg, index)=><p className={msg.user_name==="lobby"?"text-italic":""} key={index}><small>[{new Date(msg.date).toLocaleTimeString()}] </small>{msg.message} - <strong className={msg.user_name==="lobby"?"text-info":""}>{msg.user_name}</strong> </p>)
                 this.setState({msgs: msgData})
             })
+            socket.on("allReady", (lobby_update)=>{
+                this.setState({startDisabled: !lobby_update.are_all_ready,lobbyData: lobby_update.new_lobby})
+            })
         }
 
     }
@@ -141,6 +146,13 @@ export class Lobby extends React.Component {
 
     getNumberOfPlayersInLobby(){
         return `${Object.keys(this.state.lobbyData.playerIds).length}/${this.state.lobbyData.MAX_players}`;
+    }
+
+    toggleReady(){
+        this.setState({ready: !this.state.ready}, ()=>{
+            socket.emit("playerToggledReady", {user_id: this.props.location.state.user_id, is_ready: this.state.ready});
+        })
+        
     }
 
     render(){
@@ -182,7 +194,7 @@ export class Lobby extends React.Component {
                             <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category"}</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`100 Ad Trackers`:`Technology`}</div>
                         </div>
-                        <div className="p-1 mb-2"><button className="constSize btn btn-primary">Ready</button></div>
+                        <div className="p-1 mb-2"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button className="constSize btn orange">Leave</button></div>
                     </div>
                 </div>
@@ -194,7 +206,7 @@ export class Lobby extends React.Component {
                 <strong>{this.state.status_msg}</strong>
             </div>
             <div className="text-center">
-                <button onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>
+                <button disabled={this.state.startDisabled} onClick={()=>this.startGame()} className="btn btn-primary constSize">Start Game</button>
             </div>
             <Prompt when={true} message={(location, action)=>{
                 console.log(location, action);

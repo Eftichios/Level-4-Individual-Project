@@ -86,6 +86,11 @@ async function _setClientSocketConnections(io, lobby, socket){
         io.to(lobby.room).emit("chatMessage", messageData);
     })
 
+    socket.on('playerToggledReady', (user_data)=>{
+        lobby.playerIds[user_data.user_id]["ready"] = user_data.is_ready;
+        io.to(lobby.room).emit("allReady", {are_all_ready: lobby.checkIfAllReady(), new_lobby: lobby})
+    })
+
 }
 
 async function _setExtSocketConnections(io, lobby, ext_room, socket){
