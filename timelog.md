@@ -427,3 +427,21 @@
 ### 14 Jan 2021 
 * *1 hour* Fixing bugs in the gameplay and lobby
 * *2 hours* Enhancing gameplay and authentication when joining lobbies
+
+### 15 Jan 2021
+* No progress
+
+### 16 Jan 2021
+* *2 hours* Improving error handling on the client and server
+* *2 hours* Adding logging to client and server
+
+### 17 Jan 2021
+* *0.5 hour* Fixing a bug where the server was failing to build a game's history
+* *2 hours* Adding ready/leave functionality to lobby as well as status message
+* *2 hours* Moving players into the summary page post-game
+
+### 18 Jan 2021
+* *1 hour* Fixed server errors when playing consecutive games
+* *1 hour* Front-end improvements
+* *0.5 hour* Adding logging to the extension
+* *3.5 hours* Implementing unique trackers visual feedback for the players  
