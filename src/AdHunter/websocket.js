@@ -8,6 +8,7 @@ socket.on('connect', ()=>{
 socket.on('identifyExtension', async (user_data)=>{
     chrome.storage.local.get('ownerName', async function(owner_data){
         console.log(user_data, owner_data)
+        logger.log("info", `Extension socket identified from ${owner_data}`, user_data);
         if (owner_data.ownerName && user_data.user_name === owner_data.ownerName){
             var user_id = await getUserIdFromName(owner_data.ownerName);
             // username entered correctly and matches 
@@ -86,6 +87,7 @@ socket.on("extUserLeft", async(user_data)=>{
             chrome.storage.local.set({'gameMode': null});
             chrome.storage.local.set({'page_history': {}});
             chrome.storage.local.set({'gameState': null});
+            logger.log("game", "User left the game", user_data.user_name);
         } else {
             // if it is not this player, remove the player that left from the game state
             chrome.storage.local.get("gameState", async (game_state_data)=>{

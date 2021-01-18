@@ -67,6 +67,8 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 var initiator = details.initiator;
                 var domain = extractDomain(initiator);
 
+                
+
                 // check if someone else has won the game
                 chrome.storage.local.get('winner', function(winnerData){
                     winner = winnerData.winner;
@@ -93,6 +95,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     chrome.storage.local.set({'latestTracker': tracker_domain});
                     unique_trackers.push(tracker_domain)
                 }
+
                 // Add 1 to the total ad trackers number      
                 chrome.storage.local.get('totalAds', function(data) {
                     chrome.storage.local.set({'totalAds': data.totalAds + 1}, function() {
@@ -132,6 +135,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     chrome.storage.local.get('ownerName', function(playerData) {
                         var gameState = gameData.gameState;
                         var playerName = playerData.ownerName;
+                        logger.log("game", `Tracker ${tracker_domain} found on ${domain}`, playerName)
                         gameState.players[playerName]["score"] += 1;
                         socket.emit("sendUpdateToAllClients", {'player':playerName,'game_state':gameState});
                         chrome.storage.local.set({'gameState': gameState}, function() {

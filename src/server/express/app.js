@@ -89,6 +89,11 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/startGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.startGame))
 	}
 
+	// handle logger routes
+	if (routeController.logger){
+		app.post(`/api/logger`, makeHandlerAwareOfAsyncErrors(routeController.logger))
+	}
+
 };
 
 app.get('/', (req, res)=>{
