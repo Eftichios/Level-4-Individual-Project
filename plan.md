@@ -81,7 +81,13 @@
   * Start writing tests
   * Start adding functionality to all pages in the web app
   * Fix various bugs and optimise code where possible
-* **Week 14**
+* **Week 14** 
+  * Continue fixing bugs
+  * Continue writing unit tests and adding functionality to pages
+  * Build a simple achievements system for the first iteration
+  * Add information to pages in the web app
+  * Create instructions for users
+  * Deploy the web app
 * **Week 15**
 * **Week 16**
 * **Week 17**
