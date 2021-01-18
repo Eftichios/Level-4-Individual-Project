@@ -13,6 +13,13 @@
     height:350px
 }
 
+.tracker_item {
+    border-style: none; 
+    border-color: Transparent;
+    overflow: auto; 
+    resize: none;
+}
+
 hr {
     background-color: rgb(139, 139, 139);
 }

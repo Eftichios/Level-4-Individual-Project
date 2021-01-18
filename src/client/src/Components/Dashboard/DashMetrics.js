@@ -7,6 +7,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import DashGameHistory from './DashGameHistory';
 import category_map from "../Utilities/adCategories";
 import {toast} from 'react-toastify';
+import DashTrackers from './DashTrackers';
 
 export class DashMetrics extends React.Component {
 
@@ -16,7 +17,8 @@ export class DashMetrics extends React.Component {
         this.state = {
             total_trackers: 0,
             games_played: {'Race': 0, 'Category': 0},
-            categories: []
+            categories: [],
+            trackers: []
         }
 
     }
@@ -37,6 +39,7 @@ export class DashMetrics extends React.Component {
                 this.buildGameMetrics(parseRes);
             } 
         } catch (err){
+            console.error(err.message)
             toast.error("Failed to retrieve player's game metrics.");
         }
     }
@@ -45,7 +48,15 @@ export class DashMetrics extends React.Component {
         var cat_count = [["Category", "Ads delievered"]];
         metrics.categories_count.forEach((count, index)=>cat_count.push([category_map[index],count]));
         this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
-        console.log(this.categories);
+        // console.log(metrics.tracker_list);
+        this.buildTrackers(metrics.tracker_list)
+    }
+
+    buildTrackers(tracker_list){
+        var tracker_els = tracker_list.map((tracker,index)=>
+            <div className="col-md-6 text-left"><textarea className={tracker["found"]===true?"text-success tracker_item":"text-secondary tracker_item"} key={index}>{tracker["name"]}</textarea></div>
+        );
+        this.setState({trackers: tracker_els})
     }
 
     render(){
@@ -56,7 +67,7 @@ export class DashMetrics extends React.Component {
                     <p>Games Played: <strong>{this.state.games_played['Race'] + this.state.games_played['Category']}</strong> 
                     <FontAwesomeIcon title={`Race: ${this.state.games_played['Race']} | Category: ${this.state.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
                     </p>
-                    <p>Total trackers: <strong>{this.state.total_trackers}</strong></p>
+                    <DashTrackers trackers={this.state.trackers}></DashTrackers>
                     <div className="chart align-items-center">
                         <h5>Ad categories seen</h5>
                         <Chart

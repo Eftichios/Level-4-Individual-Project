@@ -4,11 +4,11 @@ const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
 
 function createTrackerJson(){
-    var trackers = {}
+    var trackers = []
     Object.entries(blocked_domains).forEach(([key,value])=>{
-        trackers[key] = false
+        trackers.push({"name": key, "found": false})
     })
-    return trackers
+    return trackers.slice(500,600)
 }
 
 
