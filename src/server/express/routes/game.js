@@ -39,13 +39,13 @@ function _build_game_history(io, lobby, player_game_state){
 }
 
 _reset_client_socket_listeners = (socket) =>{
-    const listeners = ["userLeftLobby", "disconnect", "chatMessagePlayer"];
+    const listeners = ["userLeftLobby", "disconnect", "chatMessagePlayer", 'playerToggledReady'];
     for (var i in listeners){
         socket.removeAllListeners(listeners[i])
     }
 }
 
-_rest_ext_socket_listeners = (ext_socket) =>{
+_reset_ext_socket_listeners = (ext_socket) =>{
     const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory"]
     for (var i in listeners){
         ext_socket.removeAllListeners(listeners[i])
@@ -83,11 +83,16 @@ async function _setClientSocketConnections(io, lobby, socket){
             return
         }
         var temp_user_name = lobby.playerIds[lobby.socketPlayerMap[socket.id]]["name"]
-        lobby.removePlayer(lobby.socketPlayerMap[socket.id]);
+        var temp_user_id = lobby.socketPlayerMap[socket.id]
+        lobby.removePlayer(temp_user_id);
 
         io.to(lobby.room).emit("userLeft", lobby);
         io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${temp_user_name} has left the lobby`, date: new Date()});
-        io.to(`ext_${lobby.room}`).emit("extUserLeft", {user_id: user_id, user_name: temp_user_name});
+        io.to(`ext_${lobby.room}`).emit("extUserLeft", {user_id: temp_user_id, user_name: temp_user_name});
+
+        if (lobby.getNumberOfPlayers()===0){
+            lobbyHandler.removeLobby(lobby);
+        }
 
         socket.leave(lobby.room)
     });
@@ -105,6 +110,8 @@ async function _setClientSocketConnections(io, lobby, socket){
 
 async function _setExtSocketConnections(io, lobby, ext_room, socket){
     socket.join(ext_room);
+
+    _reset_ext_socket_listeners(socket);
 
     socket.on('sendUpdateToAllClients', async (player_game_state)=>{
         socket.to(ext_room).emit("updateGameState", player_game_state);
