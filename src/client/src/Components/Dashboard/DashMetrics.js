@@ -54,7 +54,7 @@ export class DashMetrics extends React.Component {
 
     buildTrackers(tracker_list){
         var tracker_els = tracker_list.map((tracker,index)=>
-            <div className="col-md-6 text-left"><textarea className={tracker["found"]===true?"text-success tracker_item":"text-secondary tracker_item"} key={index}>{tracker["name"]}</textarea></div>
+            <div key={index} className="col-md-6 text-left"><textarea className={tracker["found"]===true?"text-success tracker_item":"text-secondary tracker_item"} value={tracker["name"]} readOnly></textarea></div>
         );
         this.setState({trackers: tracker_els})
     }
