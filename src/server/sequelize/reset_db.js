@@ -1,18 +1,27 @@
+const blocked_domains = require("./data/blocked.js")
 const sequelize = require('./index.js');
 const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
 
+function createTrackerJson(){
+    var trackers = {}
+    Object.entries(blocked_domains).forEach(([key,value])=>{
+        trackers[key] = false
+    })
+    return trackers
+}
+
+
 // creates the database tables and populates them with dummy data
 async function reset() {
     console.log("(Re)creating database and populating tables with dummy data");
-
     await sequelize.sync({ force: true });
 
     // encrypted password for dummy users
     const salt_rounds = 10;
     const salt = await bcrypt.genSalt(salt_rounds);
     const bcrypt_password = await bcrypt.hash("123", salt);
-
+    const trackers = createTrackerJson();
 
     // populates users table
     await sequelize.models.user.bulkCreate([
@@ -56,12 +65,12 @@ async function reset() {
 
     // populates user_metric table
     await sequelize.models.user_metric.bulkCreate([
-        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
-        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2]},
-        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24]},
-        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
-        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
-        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2]},
+        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
+        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2], tracker_list: trackers},
+        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24], tracker_list: trackers},
+        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
+        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
+        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
     ]);
 
     // populates user_achievements table

@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
         categories_count: {
             allowNull: false,
             type: DataTypes.ARRAY(DataTypes.INTEGER)
+        },
+        tracker_list: {
+            allowNull: false,
+            type: DataTypes.JSONB
         }
     });
 };

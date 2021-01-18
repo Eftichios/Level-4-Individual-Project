@@ -4,3 +4,4 @@ Domains
 .env
 dummy_data.sql
 express/routes/logs/*
+sequelize/data/*
