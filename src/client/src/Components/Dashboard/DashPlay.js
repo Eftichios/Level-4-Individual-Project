@@ -7,6 +7,8 @@ import {Redirect} from 'react-router';
 import socket from "../Utilities/socketConfig";
 import {toast} from 'react-toastify';
 import logger from '../Utilities/logger';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 export class DashPlay extends React.Component {
 
@@ -92,7 +94,9 @@ export class DashPlay extends React.Component {
                     <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
-                <div className="p-1"><button onClick={this.setGameMode} className="constSize btn btn-secondary" >Game Mode: {this.state.game_mode}</button></div>
+                <div className="p-1"><button onClick={this.setGameMode} className="constSize btn btn-secondary" >
+                <FontAwesomeIcon className="mr-1" icon={faChevronLeft} /><small>Game Mode:</small> {this.state.game_mode}<FontAwesomeIcon className="ml-1" icon={faChevronRight} />
+                    </button></div>
                </div>
     }
 

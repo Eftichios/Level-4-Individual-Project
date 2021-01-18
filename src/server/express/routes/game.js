@@ -8,13 +8,13 @@ var lobbyHandler = new LobbyHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"Race", "condition": 10, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Race", "condition": lobby.condition, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _initCategoryGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"Category", "condition": "Technology", "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Category", "condition": lobby.condition, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _build_game_history(io, lobby, player_game_state){
@@ -186,7 +186,7 @@ async function findGame(req, res){
 async function startGame(req, res){
     var io = getIo();
     var playerExtensionSocket = getPlayerExtensionSockets();
-    var {room} = req.body;
+    var {room, condition} = req.body;
     var lobby = lobbyHandler.getLobbyDetailsByRoom(room);
     var extension_room = `ext_${room}`;
     for (pid in lobby.playerIds){           
@@ -194,10 +194,10 @@ async function startGame(req, res){
         _setExtSocketConnections(io, lobby, extension_room, extension_socket);
     }
     if (lobby.game_mode == "Race"){
-        var game_state = _initRaceGameState(lobby);
+        var game_state = _initRaceGameState(lobby, condition);
         io.to(extension_room).emit("gameStartRace", game_state);
     } else {
-        var game_state = _initCategoryGameState(lobby);
+        var game_state = _initCategoryGameState(lobby, condition);
         io.to(extension_room).emit("gameStartCategory", game_state);
     }
     lobby.in_game = true

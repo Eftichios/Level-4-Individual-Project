@@ -38,8 +38,11 @@ export class Lobby extends React.Component {
             game_on: false,
             game_finished: false,
             game_state: null,
-            player_metrics: null
-        }             
+            player_metrics: null,
+            timer: 0
+        }   
+        
+        this.timerID = null;
     } 
 
     checkForRefresh(){
@@ -79,11 +82,20 @@ export class Lobby extends React.Component {
             
             if (parseRes.success){
                 this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?this.status_msg_data["game"][0]:this.status_msg_data["game"][1], game_on: true})
+                this.timerID = setInterval(()=>this.advance_timer(), 1000)
             }
 
         } catch (err){
             toast.error("Failed to start game.");
         } 
+    }
+
+    advance_timer(){
+        this.setState({timer: this.state.timer+1})
+    }
+
+    constructTime(){
+        return new Date(this.state.timer * 1000).toISOString().substr(11, 8)
     }
 
     update_status_msg = (lobby)=>{
@@ -123,6 +135,7 @@ export class Lobby extends React.Component {
             }
             );
             socket.on("gameFinished", (post_game_data)=>{
+                clearInterval(this.timerID);
                 this.setState({temp_winner: post_game_data.summary.player, 
                     status_msg: this.status_msg_data["done"] + post_game_data.summary.player, 
                     game_on: false, game_state: post_game_data.summary.game_state, 
@@ -157,7 +170,8 @@ export class Lobby extends React.Component {
         }
     }
 
-    componentWillUnmount(){     
+    componentWillUnmount(){  
+        clearInterval(this.timerID);   
         if (this.state.game_finished){
             window.removeEventListener('beforeunload', this.onUnload);
             this.clear_socket_listeners(socket);
@@ -244,8 +258,8 @@ export class Lobby extends React.Component {
                         <div className="mb-4 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode}</div>
-                            <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category"}</div>
-                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`100 Ad Trackers`:`Technology`}</div>
+                            <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category:"}</div>
+                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`${this.state.lobbyData.condition} Unique Ad Trackers`:`${this.state.lobbyData.condition}`}</div>
                         </div>
                         <div className="p-1 mb-2"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button onClick={()=>this.leaveLobby()}className="constSize btn orange">Leave</button></div>
@@ -256,7 +270,7 @@ export class Lobby extends React.Component {
                 <LobbyChat room={this.state.lobbyData.room} msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
             </div>
             <div className="text-center mb-4 mt-2">
-                <strong>{this.state.status_msg}</strong>
+                <strong>{this.state.status_msg} {this.state.game_on?this.constructTime():""}</strong>
             </div>
             <div className="text-center">
                 <button disabled={this.state.startDisabled || this.state.game_on} onClick={()=>this.startGame()} className="btn btn-primary constSize">{this.state.game_on?"Game in progress":"Start Game"}</button>

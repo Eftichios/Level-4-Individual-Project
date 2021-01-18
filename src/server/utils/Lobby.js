@@ -1,3 +1,6 @@
+const { getCategoryMap } = require("./helpers");
+
+
 class Lobby {
     
     constructor(game_mode, index){
@@ -6,9 +9,19 @@ class Lobby {
         this.game_mode = game_mode;
         this.room = "Room" + index;
         this.socketPlayerMap = {};
-        this.category = null;
+        this.condition = this.randomCondition();
         this.in_game = false;
         this.game_state = null;
+    }
+
+    randomCondition(){
+        var possible_trackers = [50, 100, 200, 300]
+        var category_map = getCategoryMap()
+        if (this.game_mode==="Race"){
+            return possible_trackers[Math.floor(Math.random() * possible_trackers.length)]
+        } else {
+            return category_map[Math.floor(Math.random() * category_map.length)];
+        }
     }
 
     isLobbyFull(){

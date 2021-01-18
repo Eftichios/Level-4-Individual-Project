@@ -15,4 +15,31 @@ function getMinutesOfDates(startDateStr, endDateStr){
     return Math.ceil(endDate.getMinutes() - startDate.getMinutes());
 }
 
-module.exports = { getIdParam, getMinutesOfDates }
+function getCategoryMap(){
+    return ["Arts & Entertainment",
+    "Automotive",
+    "Business",
+    "Careers",
+    "Education",
+    "Family & Parenting",
+    "Health & Fitness",
+    "Food & Drink",
+    "Hobbies & Interests",
+    "Home & Garden",
+    "Law, Gov’t & Politics",
+    "News",
+    "Personal Finance",
+    "Society",
+    "Science",
+    "Pets",
+    "Sports",
+    "Style & Fashion",
+    "Technology & Computing",
+    "Travel",
+    "Real Estate",
+    "Shopping",
+    "Religion & Spirituality",
+    "Uncategorized"];
+}
+
+module.exports = { getIdParam, getMinutesOfDates, getCategoryMap }
