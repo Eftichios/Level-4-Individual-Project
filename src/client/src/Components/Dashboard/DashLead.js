@@ -16,7 +16,7 @@ export class DashLead extends React.Component {
 
     getAndSortPlayers = async () =>{
         try {
-            var response = await fetch("http://localhost:5000/api/users", {
+            var response = await fetch("http://localhost:5000/api/userMetrics", {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
             });
@@ -29,12 +29,12 @@ export class DashLead extends React.Component {
     }
 
     sortAndBuildPlayers(players){
-        var players_sorted = players.sort((a,b) => b.score - a.score);
+        var players_sorted = players.sort((a,b) => b.user_metric.score - a.user_metric.score);
         var temp_table = players_sorted.map((player, index)=>
-            <tr key={player.user_id}>
+            <tr key={index}>
                 <td>{index}</td>
                 <td>{player.user_name}</td>
-                <td>{player.score}</td>
+                <td>{player.user_metric.score}</td>
             </tr>
         );
 

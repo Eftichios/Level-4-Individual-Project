@@ -20,7 +20,11 @@ module.exports = (sequelize) => {
         },
         tracker_list: {
             allowNull: false,
-            type: DataTypes.ARRAY(DataTypes.JSONB)
+            type: DataTypes.JSONB
+        },
+        score: {
+            allowNull: false,
+            type: DataTypes.INTEGER
         }
     });
 };

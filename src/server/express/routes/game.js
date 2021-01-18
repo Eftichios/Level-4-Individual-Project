@@ -1,14 +1,16 @@
 const LobbyHandler = require('../../utils/LobbyHandler');
+const MetricsHandler = require('../../utils/MetricsHandler');
 const { getPlayerExtensionSockets, getIo } = require('../../extension_socket');
 const { create_from_server } = require('./game_history')
 const { getMinutesOfDates } = require('../../utils/helpers')
 
 var lobbyHandler = new LobbyHandler();
+var metricsHandler = new MetricsHandler();
 
 function _initRaceGameState(lobby) {
     var players = {};
-    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
-    return {"players":players, "game_mode":"Race", "condition": lobby.condition, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0, "trackers":[]});
+    return {"players":players, "game_mode":"Race", "condition": 20, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _initCategoryGameState(lobby) {
@@ -22,6 +24,9 @@ function _build_game_history(io, lobby, player_game_state){
     var player_data = {}
     Object.keys(player_game_state.game_state.players).forEach((player)=>{
         var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player);
+
+        // handle metrics
+        metricsHandler.handleMetrics(player_id, player, player_game_state.game_state.players[player])
         player_data[player] = {};
         player_data[player]["page_history"] = lobby.playerIds[player_id]["page_history"];
         player_data[player]["score"] = player_game_state.game_state.players[player]["score"];
@@ -33,9 +38,10 @@ function _build_game_history(io, lobby, player_game_state){
             win_condition: player_game_state.game_state.condition}, 
         player_ids: Object.keys(lobby.playerIds)}
     
-
+    
     io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
     create_from_server(game_history);
+
 }
 
 _reset_client_socket_listeners = (socket) =>{

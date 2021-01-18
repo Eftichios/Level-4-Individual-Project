@@ -32,7 +32,7 @@ function map_url(url){
     if (blocked===undefined) {
         return null;
     } else { 
-        return [blocked, domain];
+        return [blocked, domain, hostname || alternative_hostname];
     }
     
 }
@@ -88,12 +88,12 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                 }
 
                 // check if tracker found is unique
-                var tracker_domain = blocked_urls[1];
-                if (unique_trackers.includes(tracker_domain)){
+                var tracker_host = blocked_urls[2];
+                if (unique_trackers.includes(tracker_host)){
                     return
                 }else {
-                    chrome.storage.local.set({'latestTracker': tracker_domain});
-                    unique_trackers.push(tracker_domain)
+                    chrome.storage.local.set({'latestTracker': tracker_host});
+                    unique_trackers.push(tracker_host)
                 }
 
                 // Add 1 to the total ad trackers number      
@@ -135,8 +135,9 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                     chrome.storage.local.get('ownerName', function(playerData) {
                         var gameState = gameData.gameState;
                         var playerName = playerData.ownerName;
-                        logger.log("game", `Tracker ${tracker_domain} found on ${domain}`, playerName)
+                        logger.log("game", `Tracker ${tracker_host} found on ${domain}`, playerName)
                         gameState.players[playerName]["score"] += 1;
+                        gameState.players[playerName]["trackers"] = unique_trackers;
                         socket.emit("sendUpdateToAllClients", {'player':playerName,'game_state':gameState});
                         chrome.storage.local.set({'gameState': gameState}, function() {
                             console.log("Game ads: ", gameState.players[playerName]["score"]);

@@ -43,6 +43,7 @@ function makeHandlerAwareOfAsyncErrors(handler) {
 		try {
 			await handler(req, res);
 		} catch (error) {
+			console.log(error)
 			res.status(500).json(`Unexpected error on the server side: ${error.message}`)
 		}
 	};

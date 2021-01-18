@@ -21,10 +21,6 @@ module.exports = (sequelize) => {
         owns_plugin: {
             allowNull: false,
             type: DataTypes.BOOLEAN
-        },
-        score: {
-            allowNull: false,
-            type: DataTypes.INTEGER
         }
     });
 };

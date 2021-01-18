@@ -9,6 +9,7 @@ function applyExtraSetup(sequelize) {
 
     // add foreign key association to user_metrics table
     models.user.hasOne(models.user_metric, {foreignKey: 'user_id'});
+    models.user_metric.belongsTo(models.user, {foreignKey: 'user_id'})
     models.user_metric.removeAttribute('id');
 
     // this will add a composite primary key to the user_achievements table

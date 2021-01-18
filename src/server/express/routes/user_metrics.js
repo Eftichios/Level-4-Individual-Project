@@ -11,6 +11,16 @@ async function getById(req, res) {
     }
 }
 
+async function getAll(req, res){
+    const user_metrics = await models.user.findAll({attributes: ['user_name'], include: [models.user_metric]});
+    if (user_metrics){
+        res.status(200).json(user_metrics)
+    } else {
+        res.status(404).json("Player scores could not be retreived.")
+    }
+}
+
 module.exports = {
     getById,
+    getAll
 }

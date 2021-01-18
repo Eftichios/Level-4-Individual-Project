@@ -48,13 +48,13 @@ export class DashMetrics extends React.Component {
         var cat_count = [["Category", "Ads delievered"]];
         metrics.categories_count.forEach((count, index)=>cat_count.push([category_map[index],count]));
         this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
-        // console.log(metrics.tracker_list);
+        console.log(metrics);
         this.buildTrackers(metrics.tracker_list)
     }
 
     buildTrackers(tracker_list){
-        var tracker_els = tracker_list.map((tracker,index)=>
-            <div key={index} className="col-md-6 text-left"><textarea className={tracker["found"]===true?"text-success tracker_item":"text-secondary tracker_item"} value={tracker["name"]} readOnly></textarea></div>
+        var tracker_els = Object.entries(tracker_list).slice(500,600).map((tracker,index)=>
+            <div key={index} className="col-md-6 text-left"><textarea className={tracker[1]===true?"text-success tracker_item":"text-secondary tracker_item"} value={tracker[0]} readOnly></textarea></div>
         );
         this.setState({trackers: tracker_els})
     }

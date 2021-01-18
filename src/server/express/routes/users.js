@@ -5,13 +5,13 @@ const { getIdParam } = require('../../utils/helpers');
 
 
 async function getAll(req, res) {
-    const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin','score']});
+    const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin']});
     res.status(200).json(users);
 }
 
 async function getById(req, res) {
     const user_id = getIdParam(req);
-    const user = await models.user.findByPk(user_id, {attributes: ['user_id','user_name','owns_plugin','score']});
+    const user = await models.user.findByPk(user_id, {attributes: ['user_id','user_name','owns_plugin']});
     if (user){
         res.status(200).json(user);
     } else {
@@ -20,7 +20,7 @@ async function getById(req, res) {
 }
 
 async function getByName(req, res) {
-    const user = await models.user.findOne({where: {user_name: req.body.user_name}, attributes: ['user_id','user_name','owns_plugin','score']})
+    const user = await models.user.findOne({where: {user_name: req.body.user_name}, attributes: ['user_id','user_name','owns_plugin']})
     if (user){
         res.status(200).json(user);
     } else {
@@ -77,7 +77,7 @@ async function register(req, res) {
         const bcrypt_password = await bcrypt.hash(password, salt);
 
         // insert user inside database
-        const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin, "score":0})
+        const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin})
 
         // generate jwt token
         const token = jwtGenerator(newUser.user_id);

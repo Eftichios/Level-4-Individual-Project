@@ -4,11 +4,11 @@ const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
 
 function createTrackerJson(){
-    var trackers = []
+    var trackers = {}
     Object.entries(blocked_domains).forEach(([key,value])=>{
-        trackers.push({"name": key, "found": false})
+        trackers[key] = false;
     })
-    return trackers.slice(500,600)
+    return trackers
 }
 
 
@@ -25,12 +25,12 @@ async function reset() {
 
     // populates users table
     await sequelize.models.user.bulkCreate([
-        { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true, score:10},
-        { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true, score:15},
-        { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true, score:20},
-        { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true, score:25},
-        { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true, score:30},
-        { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true, score:35}
+        { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true},
+        { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true},
+        { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true},
+        { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true},
+        { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true},
+        { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true}
     ]);
 
     // populates organisations table
@@ -65,12 +65,12 @@ async function reset() {
 
     // populates user_metric table
     await sequelize.models.user_metric.bulkCreate([
-        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
-        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2], tracker_list: trackers},
-        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24], tracker_list: trackers},
-        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
-        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
-        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers},
+        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:10},
+        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2], tracker_list: trackers, score:15},
+        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24], tracker_list: trackers, score:20},
+        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:25},
+        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:30},
+        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:35},
     ]);
 
     // populates user_achievements table

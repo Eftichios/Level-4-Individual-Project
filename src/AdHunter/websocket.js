@@ -51,6 +51,7 @@ socket.on('updateGameState', async(player_game_state) =>{
     var new_game_state = player_game_state.game_state;
     chrome.storage.local.get('gameState', async function(gameData){
         gameData.gameState.players[player_name]["score"] = new_game_state.players[player_name]["score"];
+        gameData.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
         chrome.storage.local.set({'gameState': gameData.gameState});
     });
 });
@@ -62,6 +63,7 @@ socket.on('winnerFound', async(player_game_state)=>{
     var new_game_state = player_game_state.game_state;
     chrome.storage.local.get('gameState', async function(data){
         data.gameState.players[player_name]["score"] = new_game_state.players[player_name]["score"];
+        data.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
         chrome.storage.local.set({'gameState': data.gameState});
         chrome.storage.local.set({'winner': player_name});
         chrome.storage.local.set({'gameOver': true});      
