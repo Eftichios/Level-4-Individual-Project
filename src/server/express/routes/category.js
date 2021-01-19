@@ -16,7 +16,7 @@ open_browser = async ()=>{
     await page.setUserAgent(userAgent.toString());
 }
 
-// open_browser();
+open_browser();
 
 search_in_database = async(url)=>{
     var ad_entry = await models.ad_category.findOne({where: {ad_url: url}});

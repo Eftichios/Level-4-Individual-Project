@@ -40,6 +40,7 @@ socket.on('gameStartCategory', async(game_state)=>{
 
     chrome.storage.local.set({'gameOver': false});
     chrome.storage.local.set({'gameMode': "Category"});
+    chrome.storage.local.set({'category': game_state.condition});
     chrome.storage.local.set({'winner': null});
     chrome.storage.local.set({'page_history': {}});
 });

@@ -16,6 +16,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'ownerId': null});
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'latestTracker': null});
+    chrome.storage.local.set({'latestCategory': null});
   });
 
   // Enables the extension for all pages given in the pageUrl option
@@ -84,16 +85,16 @@ chrome.runtime.onInstalled.addListener(function() {
     });   
   });
 
-  // listen to context script messages
-  // every 2 seconds run the context script inside all
+  // listen to content script messages
+  // every 2 seconds runs the content script inside all frames
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     if(request.reinject) {
       chrome.tabs.executeScript(sender.tab.id,{
         file: "category_mode.js", 
         allFrames: true },
-      function(){
+      function(results){
         chrome.tabs.sendMessage(sender.tab.id, sender.tab.id);
-        console.log("success in injecting script into iframes of page");
+        console.log("success in injecting script into iframes of page", results);
       });
     }
   });

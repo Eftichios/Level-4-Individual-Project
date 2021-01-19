@@ -97,6 +97,14 @@ chrome.storage.local.get("latestTracker", function(trackerData){
     document.getElementById('latestTracker').innerHTML = trackerData.latestTracker? trackerData.latestTracker:"None"
 })
 
+chrome.storage.local.get("latestCategory", function(categoryData){
+  document.getElementById('latestCategory').innerHTML = categoryData.latestCategory? categoryData.latestCategory.join(","):"None"
+})
+
+chrome.storage.local.get("category", function(categoryData){
+  document.getElementById('category').innerHTML = categoryData.category? categoryData.category:"None"
+})
+
 // check if a game was played and was finished and set winner
 // in the case where winner is null, that means the player has left the game
 chrome.storage.local.get('gameOver', function(gameOverData) {
@@ -139,6 +147,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('ads').innerHTML = `(${storageChange.newValue.url}): ${storageChange.newValue.trackers}`;
       }else if (key=="latestTracker"){
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
+      }else if (key=="latestCategory"){
+        document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.join(","):"None";
       }else if (key=="auth") {
         document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
       }else if (key=="gameOver"){
