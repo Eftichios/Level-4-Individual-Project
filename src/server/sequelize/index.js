@@ -18,7 +18,8 @@ const modelDefiners = [
     require('./models/user_achievement.model'),
     require('./models/user_organisation.model'),
     require('./models/game_history.model'),
-    require('./models/market.model')
+    require('./models/market.model'),
+    require('./models/ad_category.model')
 ]
 
 // define all the models

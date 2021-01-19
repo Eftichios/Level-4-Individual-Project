@@ -34,7 +34,8 @@ const routes = {
 	userOrganisations: require('./routes/user_organisations'),
 	gameHistory: require('./routes/game_history'),
 	market: require('./routes/market'),
-	logger: require('./routes/logger')
+	logger: require('./routes/logger'),
+	category: require('./routes/category')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
@@ -87,12 +88,17 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	}
 
 	if (routeController.startGame){
-		app.post(`/api/startGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.startGame))
+		app.post(`/api/startGame`, authorization, makeHandlerAwareOfAsyncErrors(routeController.startGame));
 	}
 
 	// handle logger routes
 	if (routeController.logger){
-		app.post(`/api/logger`, makeHandlerAwareOfAsyncErrors(routeController.logger))
+		app.post(`/api/logger`, makeHandlerAwareOfAsyncErrors(routeController.logger));
+	}
+
+	// handle category routes
+	if (routeController.category){
+		app.post(`/api/category`, makeHandlerAwareOfAsyncErrors(routeController.category));
 	}
 
 };
