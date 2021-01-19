@@ -7,7 +7,6 @@ socket.on('connect', ()=>{
 // special message to expose extension sockets to the server
 socket.on('identifyExtension', async (user_data)=>{
     chrome.storage.local.get('ownerName', async function(owner_data){
-        console.log(user_data, owner_data)
         logger.log("info", `Extension socket identified from ${owner_data}`, user_data);
         if (owner_data.ownerName && user_data.user_name === owner_data.ownerName){
             var user_id = await getUserIdFromName(owner_data.ownerName);
@@ -77,7 +76,6 @@ socket.on('winnerFound', async(player_game_state)=>{
 
 // notify the extension when a user has left the lobby
 socket.on("extUserLeft", async(user_data)=>{
-    console.log(user_data);
 
     // check if the user that has left the lobby is the owner of this extension
     // if so, update the game states and status accordingly
@@ -95,7 +93,6 @@ socket.on("extUserLeft", async(user_data)=>{
             chrome.storage.local.get("gameState", async (game_state_data)=>{
                 if (game_state_data.gameState.players[user_data.user_name]){
                     delete game_state_data.gameState.players[user_data.user_name]
-                    console.log(game_state_data.gameState)
                     chrome.storage.local.set({"gameState": game_state_data.gameState})
                 }
             })

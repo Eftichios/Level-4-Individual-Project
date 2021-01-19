@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     extract_links(message);
 });
 
-extract_links = (tab_id)=>{
+extract_links = async (tab_id)=>{
     var all_links = Array.prototype.slice.call(document.getElementsByTagName("a"));
     for (i in all_links){
         if (all_links[i].href.includes("adurl")){
@@ -14,7 +14,18 @@ extract_links = (tab_id)=>{
             if (!ad_urls.has(redirect_url)){
                 ad_urls.add(redirect_url);
                 console.log(ad_urls);
-                // make request to server
+                try{
+                var response = await fetch("http://localhost:5000/api/category", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({"ad_url":redirect_url})
+                });
+
+                var parseRes = await response.json();
+                console.log(parseRes);
+                } catch (err){
+                    //unkown category
+                }
             }
         }
     }
