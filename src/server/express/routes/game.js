@@ -10,16 +10,16 @@ var metricsHandler = new MetricsHandler();
 function _initRaceGameState(lobby) {
     var players = {};
     Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0, "trackers":[]});
-    return {"players":players, "game_mode":"Race", "condition": 20, "started_at": new Date(), "room": `ext_${lobby.room}` }
+    return {"players":players, "game_mode":"Race", "condition": lobby.condition, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
 function _initCategoryGameState(lobby) {
     var players = {};
-    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"score":0});
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"categories":[]});
     return {"players":players, "game_mode":"Category", "condition": lobby.condition, "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
-function _build_game_history(io, lobby, player_game_state){
+function _build_race_game_history(io, lobby, player_game_state){
     var winner_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player_game_state.player);
     var player_data = {}
     Object.keys(player_game_state.game_state.players).forEach((player)=>{
@@ -42,6 +42,10 @@ function _build_game_history(io, lobby, player_game_state){
     io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
     create_from_server(game_history);
 
+}
+
+function _build_category_game_history(io, lobby){
+    // io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
 }
 
 _reset_client_socket_listeners = (socket) =>{
@@ -125,15 +129,23 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
 
     socket.on('playerWon', (player_game_state)=>{
         socket.to(ext_room).emit("winnerFound", player_game_state);
-        
 
         // set the game state of the lobby so that we can build the game history
         lobby.game_state = player_game_state
+
+        if (player_game_state.game_state==="Category"){
+            _build_category_game_history(io, lobby)
+        }
+
+        
         
     });
 
-    socket.on("extServerUserLeft", (data)=>{
-        socket.leave(ext_room);
+    socket.on("extServerUserLeft", (user_name)=>{
+        if (user_name === socket.user_name){
+            socket.leave(ext_room);
+        }
+        
     })
 
     socket.on('playerHistory', (playerHistory)=>{
@@ -144,7 +156,7 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         // if we have, then build the game history
         var received_from_all = lobby.checkForPageHistory();
         if (received_from_all){
-            _build_game_history(io, lobby, lobby.game_state)
+            _build_race_game_history(io, lobby, lobby.game_state)
         }
     });
 }
@@ -197,6 +209,7 @@ async function startGame(req, res){
     var extension_room = `ext_${room}`;
     for (pid in lobby.playerIds){           
         var extension_socket = io.sockets.sockets.get(playerExtensionSocket[pid]);
+        extension_socket.user_name = lobby.playerIds[pid]["name"];
         _setExtSocketConnections(io, lobby, extension_room, extension_socket);
     }
     if (lobby.game_mode == "Race"){

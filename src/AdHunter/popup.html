@@ -31,7 +31,7 @@
         
       </form>
       <div class="row">
-        <h1 class="text-center text-success auth">Loading...</h1>
+        <h1 id="user" class="text-center text-success">Loading...</h1>
       </div>
       <div class="row">
         <h1 id="status" class="text-center text-info">Status: Loading...</h1>
@@ -40,18 +40,20 @@
       <div class="text-center">
         <img class="ext-image" src="images/icon256.png" alt="Extension Image"/>
       </div>
-      <div hidden class="game-stats race-stats text-center">
+      <div hidden id="race-stats" class="game-stats race-stats text-center">
         <p>Total Ads: <span id="totalAds">0</span></p>
         <p>On this site<span id="ads">0</span></p>
         <p>Found: <span id="adsFound">0</span> unique trackers</p>
         <p>Latest tracker: <span id="latestTracker"></span></p>
       </div>
-      <div class="game-stats category-stats text-center">
+      <div hidden id="category-stats" class="game-stats category-stats text-center">
         <p>Category: <span id="category">None</span></p>
         <p>Latest category found: <span id="latestCategory">None</span></p>
       </div>
       <div class="text-center" id="other-players">
+      
       </div>
+      <div class="text-center" hidden id="summary"><p>Game is over. Game metrics can be seen in the summary.</p></div>
       <script src="resources/bootstrap.bundle.min.js"></script>
       <script src="popup.js"></script>
     </body>

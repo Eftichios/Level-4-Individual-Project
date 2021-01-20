@@ -85,8 +85,14 @@ var extract_categories = async (url) => {
 
 async function category(req, res){
     var ad_url = extract_domain(req.body.ad_url);
-    var categories = await queueRequests(ad_url);
-    res.status(200).json(categories);
+    if (ad_url.length < 250){
+        var categories = await queueRequests(ad_url);
+        console.log(categories)
+        res.status(200).json(categories);
+    }else{
+        res.status(200).json(["No Category"]);
+    }
+    
     
 }
 

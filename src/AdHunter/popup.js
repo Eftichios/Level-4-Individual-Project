@@ -1,6 +1,5 @@
 // goes through the game state and updated the scores of all players in a game
 _setPlayerScores = (this_player, game_state)=>{
-  console.log(this_player, game_state)
   if (!game_state){
     return;
   }
@@ -10,15 +9,16 @@ _setPlayerScores = (this_player, game_state)=>{
   Object.keys(game_state.players)
   .filter((player)=> player!=this_player)
   .forEach((player)=>{
-    console.log(`Found player ${player} with score ${game_state.players[player]["score"]}`)
     var player_el = document.getElementById(player);
     if (!player_el){
       player_el = document.createElement("p");
       player_el.setAttribute('id',player)
-      player_el.innerHTML = `${player}: ${game_state.players[player]["score"]}`;
       player_div.appendChild(player_el);
-    } else {
+    } 
+    if (game_state.game_mode==="Race"){
       player_el.innerHTML = `${player}: ${game_state.players[player]["score"]}`;
+    }else {
+      player_el.innerHTML = `${player}: ${game_state.players[player]["categories"].slice(-1)[0]===undefined?"None":game_state.players[player]["categories"].slice(-1)[0]}`;
     }
   });
 }
@@ -27,17 +27,34 @@ _setPlayerScores = (this_player, game_state)=>{
 _postGameMetrics = (winner) => {
   document.getElementById('status').innerHTML = "Status: Post game";
   document.getElementById('winner').innerHTML = `Winner: <strong>${winner}</strong>`   
+  document.getElementById('other-players').innerHTML = "";
+  document.getElementById('summary').removeAttribute('hidden');
+  document.getElementById('race-stats').setAttribute('hidden', true);
+  document.getElementById('category-stats').setAttribute('hidden', true);
+
 }
 
 // resets the state of the game
 _resetGameState = () =>{
-  chrome.storage.local.set({'latestTracker': null});
+  document.getElementById('summary').setAttribute('hidden', true);
   chrome.storage.local.get('gameState', function(gameData) {
     chrome.storage.local.get('ownerName', function(playerData) {
       var player = playerData.ownerName;
-      document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]["score"]: 0;
-      document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
-      _setPlayerScores(player, gameData.gameState);
+      if (gameData.gameState){   
+        switch (gameData.gameState.game_mode){
+          case "Race":
+            document.getElementById('adsFound').innerHTML = gameData.gameState.players[player]["score"];
+            _setPlayerScores(player, gameData.gameState);
+            break;
+          case "Category":
+            document.getElementById('category').innerHTML = gameData.gameState.condition;
+            break;
+        }
+      }else{
+        document.getElementById('status').innerHTML = "Status: Not in game";
+        document.getElementById('adsFound').innerHTML = 0;
+        document.getElementById('category').innerHTML = "None";
+      }
     });
   });
 }
@@ -45,9 +62,12 @@ _resetGameState = () =>{
 // searches for the user's user name and disabled the form if it exists
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
+    document.getElementById('user').innerHTML = `Hello ${data.ownerName}!`
     document.getElementById('usernameInput').setAttribute('hidden', true);
     document.getElementById('addName').setAttribute('hidden', true);
     document.getElementById('changeName').removeAttribute('hidden');
+  } else {
+    document.getElementById('user').innerHTML = `Hello!`
   }
 });
 
@@ -77,19 +97,31 @@ chrome.storage.local.get('totalAds', function(data) {
   document.getElementById('totalAds').innerHTML = data.totalAds;
 });
 
-// get user authorisation to display the appropriate message
-chrome.storage.local.get('auth', function(data) {
-  document.getElementsByClassName('auth')[0].innerHTML = data.auth?"You are logged in":"You are not logged in";
-});
 
 // get the game state from storage to display relevant feedback
 chrome.storage.local.get('gameState', function(gameData) {
   chrome.storage.local.get('ownerName', function(playerData) {
     var player = playerData.ownerName;
-    document.getElementById('adsFound').innerHTML = gameData.gameState? gameData.gameState.players[player]["score"]: 0;
-    document.getElementById('status').innerHTML = gameData.gameState?"Status: In game":"Status: Not in game";
-    _setPlayerScores(player, gameData.gameState);
-  });
+    if (gameData.gameState){
+      _setPlayerScores(player, gameData.gameState);
+      document.getElementById('status').innerHTML = `Status: In game (${gameData.gameState.game_mode})`;
+      document.getElementById('changeName').setAttribute('disabled', true);
+      switch(gameData.gameState.game_mode){
+        case "Race":
+          document.getElementById('adsFound').innerHTML = gameData.gameState.players[player]["score"];    
+          document.getElementById('race-stats').removeAttribute('hidden');
+          document.getElementById('category-stats').setAttribute('hidden', true);
+          break;
+        case "Category":
+          document.getElementById('category').innerHTML = gameData.gameState.condition; 
+          document.getElementById('race-stats').setAttribute('hidden', true);
+          document.getElementById('category-stats').removeAttribute('hidden');    
+          break;
+      }  
+    }else{
+      document.getElementById('status').innerHTML = "Status: Not in game";
+      document.getElementById('changeName').removeAttribute('disabled');
+    }});
 });
 
 //get latest unique tracker found
@@ -98,22 +130,21 @@ chrome.storage.local.get("latestTracker", function(trackerData){
 })
 
 chrome.storage.local.get("latestCategory", function(categoryData){
+  console.log(categoryData)
   document.getElementById('latestCategory').innerHTML = categoryData.latestCategory? categoryData.latestCategory.join(","):"None"
-})
-
-chrome.storage.local.get("category", function(categoryData){
-  document.getElementById('category').innerHTML = categoryData.category? categoryData.category:"None"
 })
 
 // check if a game was played and was finished and set winner
 // in the case where winner is null, that means the player has left the game
-chrome.storage.local.get('gameOver', function(gameOverData) {
-  if (gameOverData.gameOver){
+chrome.storage.local.get('postGame', function(gameOverData) {
+  if (gameOverData.postGame){
     chrome.storage.local.get('winner', function(winnerData){
       if (winnerData.winner){
         _postGameMetrics(winnerData.winner);
       }
     });
+  }else{
+    _resetGameState();
   }
 });
 
@@ -149,28 +180,43 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="latestCategory"){
         document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.join(","):"None";
-      }else if (key=="auth") {
-        document.getElementsByClassName('auth')[0].innerHTML = storageChange.newValue==true?"You are logged in":"You are not logged in";
-      }else if (key=="gameOver"){
+      }else if (key=="ownerName"){
+        document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`
+      }else if (key=="postGame"){
         if (storageChange.newValue){
           chrome.storage.local.get('winner', function(winnerData){
-            if (winnerData.winner){
-              _postGameMetrics(winnerData.winner);
-            } else {
-              _resetGameState();
-            }
+            _postGameMetrics(winnerData.winner);
           });
         } else {
           _resetGameState();
         }     
       }
-      else if (key=="gameState" && storageChange.newValue) {
-        document.getElementById('winner').innerHTML = "";
+      else if (key=="gameState") {
+        
         chrome.storage.local.get('ownerName', function(data) {
           var player = data.ownerName;
-          document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player]["score"];
-          document.getElementById('status').innerHTML = "Status: In game";
-          _setPlayerScores(player, storageChange.newValue);
+          if (storageChange.newValue){
+            document.getElementById('winner').innerHTML = "";
+            document.getElementById('status').innerHTML = `Status: In game (${storageChange.newValue.game_mode})`;
+            document.getElementById('changeName').setAttribute('disabled', true);
+          
+          
+          switch(storageChange.newValue.game_mode){      
+            case "Race":
+              document.getElementById('adsFound').innerHTML = storageChange.newValue.players[player]["score"];
+              document.getElementById('race-stats').removeAttribute('hidden');
+              document.getElementById('category-stats').setAttribute('hidden', true);
+              _setPlayerScores(player, storageChange.newValue);
+              break;
+            case "category":
+              document.getElementById('category').innerHTML = storageChange.newValue.condition;
+              document.getElementById('race-stats').setAttribute('hidden', true);
+              document.getElementById('category-stats').removeAttribute('hidden');   
+              break;
+            }
+          } else {
+            document.getElementById('changeName').removeAttribute('disabled');
+          }
         });
       }
       console.log('Storage key "%s" in namespace "%s" changed. ' +

@@ -3,20 +3,14 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'totalAds': 0}, function(){
       console.log("Initialise total ads number.")
     });
-    chrome.storage.local.set({'auth': null}, function(){
-      console.log("Looking for user authentication...")
-    });
-    chrome.storage.local.set({'gameOn': false}, function(){
-      console.log("Setting status...")
-    });
     chrome.storage.local.set({'gameState': null});
     chrome.storage.local.set({'gameMode': null});
-    chrome.storage.local.set({'gameOver': null});
     chrome.storage.local.set({'ownerName': null});
     chrome.storage.local.set({'ownerId': null});
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'latestTracker': null});
     chrome.storage.local.set({'latestCategory': null});
+    chrome.storage.local.set({"postGame": null});
   });
 
   // Enables the extension for all pages given in the pageUrl option
@@ -98,3 +92,22 @@ chrome.runtime.onInstalled.addListener(function() {
       });
     }
   });
+
+  // handle category mode win
+  chrome.storage.onChanged.addListener(function(changes, namespace) {
+    for (var key in changes) {
+      var storageChange = changes[key];        
+      if (key=="handleCategorySockets"){
+        if (storageChange.newValue){
+          switch(storageChange.newValue.type){
+            case "update":
+              socket.emit('sendUpdateToAllClients', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
+              break;
+            case "winner":
+              socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
+              break;
+          }
+        }
+      } 
+    }
+  }); 
