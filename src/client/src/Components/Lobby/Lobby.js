@@ -82,7 +82,6 @@ export class Lobby extends React.Component {
             
             if (parseRes.success){
                 this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?this.status_msg_data["game"][0]:this.status_msg_data["game"][1], game_on: true})
-                this.timerID = setInterval(()=>this.advance_timer(), 1000)
             }
 
         } catch (err){
@@ -157,6 +156,8 @@ export class Lobby extends React.Component {
 
             socket.on("gameStarted", (data)=>{
                 this.setState({status_msg: this.state.lobbyData.game_mode==="Race"?this.status_msg_data["game"][0]:this.status_msg_data["game"][1], game_on: true});
+                this.timerID = setInterval(()=>this.advance_timer(), 1000)
+                
             })
         }
 
