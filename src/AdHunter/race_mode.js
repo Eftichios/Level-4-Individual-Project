@@ -89,9 +89,10 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
 
                 // check if tracker found is unique
                 var tracker_host = blocked_urls[2];
+                tracker_host = tracker_host.includes("safeframe.googlesyndication")?"safeframe.googlesyndication": tracker_host
                 if (unique_trackers.includes(tracker_host)){
                     return
-                }else {
+                }else { 
                     chrome.storage.local.set({'latestTracker': tracker_host});
                     unique_trackers.push(tracker_host)
                 }
@@ -108,6 +109,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
 
                 // update the user's page history metrics
                 chrome.storage.local.get('page_history', function(data){
+                    domain = tracker_host.includes("safeframe.googlesyndication")?"safeframe.googlesyndication": domain
                     if (data.page_history[domain]){
                         data.page_history[domain] +=1 
                     } else {
