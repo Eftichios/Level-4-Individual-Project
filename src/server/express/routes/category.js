@@ -1,6 +1,6 @@
 const { models } = require('../../sequelize');
 const puppeteer = require('puppeteer');
-var userAgent = require("user-agents");
+const randomUseragent = require('random-useragent');
 var url_parser = require('url');
 
 const {default: PQueue} = require('p-queue');
@@ -13,7 +13,7 @@ var page;
 open_browser = async ()=>{
     browser = await puppeteer.launch({headless: false});
     page = await browser.newPage();
-    await page.setUserAgent(userAgent.toString());
+    await page.setUserAgent(randomUseragent.getRandom().toString());
 }
 
 open_browser();
