@@ -6,7 +6,7 @@ export class DashTrackers extends React.Component {
     render(){
         return  <div>
                 <h3>Trackers</h3>
-                <div><button className="mb-1 constSize btn-sm btn-primary" data-toggle="modal" data-target="#trackers">View Trackers</button></div>
+                <div><button className="mb-1 constSize btn btn-sm btn-primary" data-toggle="modal" data-target="#trackers">View Trackers</button></div>
                 <div className="modal fade" id="trackers" tabIndex="-1" role="dialog" aria-labelledby="trackersLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
