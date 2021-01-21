@@ -5,3 +5,14 @@
 .stats-table {
     justify-content: center;
 }
+
+.page-history-toggle{
+    text-decoration: none;
+    color: blue;
+}
+
+.page-history-toggle:hover {
+    cursor: pointer;
+    text-decoration: none;
+    
+}

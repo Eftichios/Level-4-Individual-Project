@@ -22,14 +22,16 @@ export class Summary extends React.Component {
             user_left: false,
             user_refreshed: false,
             play_again: false,
-            modalContent: null
+            modalContent: null,
+            user_page_history: null,
+            game_metrics: null
         }
 
     }
 
     componentDidMount(){
         if (this.props.location.state){
-
+            this.build_game_metrics();
             // detect when user closes the tab/browser
             window.addEventListener('beforeunload', this.onUnload);
             window.addEventListener('unload', this.leavingPage);
@@ -44,7 +46,7 @@ export class Summary extends React.Component {
                 this.setState({msgData: tempData});
                 var msgData = tempData.map((msg, index)=><p className={msg.user_name==="lobby"?"text-italic":""} key={index}><small>[{new Date(msg.date).toLocaleTimeString()}] </small>{msg.message} - <strong className={msg.user_name==="lobby"?"text-info":""}>{msg.user_name}</strong> </p>)
                 this.setState({msgs: msgData})
-            })
+            });
             
         }
     }
@@ -96,11 +98,12 @@ export class Summary extends React.Component {
         var game_metrics = players_sorted.map((player, index)=>
             <tr key={index}>
                 <td>{index+1}</td>
-                <td>{player[0]}</td>
+                <td><a className="page-history-toggle" onClick={()=>this.build_page_history(player[0])}>{player[0]}</a></td>
                 <td>{player[1]["score"]}</td>
             </tr>
         )
-        return game_metrics  
+        this.build_page_history(this.props.location.state.user_name);
+        this.setState({game_metrics: game_metrics});  
     }
 
     setModalContent(trackers){
@@ -108,8 +111,9 @@ export class Summary extends React.Component {
         this.setState({modalContent: temp_list});
     }
 
-    build_page_history(){
-        var page_history = Object.entries(this.props.location.state.player_metrics[this.props.location.state.user_name]["page_history"]).map((key,index)=>
+    build_page_history(user_name){
+        
+        var page_history = Object.entries(this.props.location.state.player_metrics[user_name]["page_history"]).map((key,index)=>
             <tr key={index}>
                 <td>{key[0]}</td>
                 <td>{key[1]["count"]} 
@@ -117,7 +121,7 @@ export class Summary extends React.Component {
                 </td>
             </tr>
         )
-        return page_history
+        this.setState({user_page_history: page_history});
 
     }
 
@@ -155,7 +159,7 @@ export class Summary extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.build_game_metrics()}
+                                {this.state.game_metrics}
                             </tbody>
                         </table>
                     </div>
@@ -171,7 +175,7 @@ export class Summary extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.build_page_history()}
+                        {this.state.user_page_history}
                     </tbody>
                     </table>
                 </div>
