@@ -444,4 +444,18 @@
 * *1 hour* Fixed server errors when playing consecutive games
 * *1 hour* Front-end improvements
 * *0.5 hour* Adding logging to the extension
-* *3.5 hours* Implementing unique trackers visual feedback for the players  
+* *3.5 hours* Implementing unique trackers visual feedback for the players 
+
+### 19 Jan 2021
+* *3 hours* Setting up the category game mode
+* *0.5 hour* Dissertation writing
+
+### 20 Jan 2021
+* *2.5 hours* Refactoring the extension to handle both game modes
+* *1 hour* Improving visual feedback of extension
+
+### 21 Jan 2021
+* *2.5 hours* Adding various functionality (ranking system, players tracker list in summary...)
+* *0.5 hour* Trying to fix a bug in the extension sockets 
+
+
