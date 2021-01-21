@@ -94,8 +94,9 @@ async function reset() {
     ]);
 
     // populate game_history table
-    var player_data = {user_1: {page_history: {"www.example.com":20, "www.another-example.com": 15, "www.lots-of-trackers.com": 65}, score: 100},
-                        user_2: {page_history: {"www.example.com":15, "www.another-example.com": 10, "www.lots-of-trackers.com": 55}, score: 80}}
+    var dummy_trackers = "example_tracker"
+    var player_data = {user_1: {page_history: {"www.example.com":{"count":20,"trackers": Array(20).fill(dummy_trackers)}, "www.another-example.com": {"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":65,"trackers": Array(65).fill(dummy_trackers)}}, score: 100},
+                        user_2: {page_history: {"www.example.com":{"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.another-example.com": {"count":10,"trackers": Array(10).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":55,"trackers": Array(55).fill(dummy_trackers)}}, score: 80}}
 
     var startDate = new Date("2020/08/08 15:00");
     var endDate = new Date("2020/08/08 15:13");

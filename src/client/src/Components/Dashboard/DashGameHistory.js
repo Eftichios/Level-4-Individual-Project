@@ -3,6 +3,8 @@ import "../../index.css";
 import "./dashboard.css";
 import {toast} from 'react-toastify';
 import logger from '../Utilities/logger';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 export class DashGameHistory extends React.Component {
 
@@ -13,7 +15,8 @@ export class DashGameHistory extends React.Component {
             game_stats: "",
             show_all: true,
             game_history: null,
-            modalContentAll: null
+            modalContentAll: null,
+            modalContentTrackers: null
         };
     }
 
@@ -101,7 +104,9 @@ export class DashGameHistory extends React.Component {
                         {Object.keys(game.player_stats[this.props.name]["page_history"]).map((page, index) => 
                         <tr key={index}>
                             <td>{page}</td>
-                            <td>{game.player_stats[this.props.name]["page_history"][page]}</td>
+                            <td>{game.player_stats[this.props.name]["page_history"][page]["count"]}
+                                <FontAwesomeIcon onClick={()=>this.setTrackersModalContent(game.player_stats[this.props.name]["page_history"][page]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />
+                            </td>
                         </tr>)}
                     </tbody>
                 </table>      
@@ -112,6 +117,11 @@ export class DashGameHistory extends React.Component {
         </Fragment>
         this.setState({show_all: false, game_stats: temp_content});
         
+    }
+
+    setTrackersModalContent(trackers){
+        var temp_list = trackers.map((key,index)=><p key={index}>{index+1}. {key}</p>)
+        this.setState({modalContentTrackers: temp_list});
     }
 
     resetModalData() {
@@ -130,6 +140,24 @@ export class DashGameHistory extends React.Component {
                     </div>
                 </div>
                 </div>
+                <div className="modal fade" id="trackerModal" tabIndex="-1" role="dialog" aria-labelledby="trackerLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="trackerLabel">Trackers Found</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        {this.state.modalContentTrackers}
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+            </div>
+            </div>
             </div>
     }
 

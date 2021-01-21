@@ -109,11 +109,12 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
 
                 // update the user's page history metrics
                 chrome.storage.local.get('page_history', function(data){
-                    domain = tracker_host.includes("safeframe.googlesyndication")?"safeframe.googlesyndication": domain
+                    domain = domain.includes("safeframe.googlesyndication")?"safeframe.googlesyndication": domain
                     if (data.page_history[domain]){
-                        data.page_history[domain] +=1 
+                        data.page_history[domain]["count"] += 1;
+                        data.page_history[domain]["trackers"].push(tracker_host);
                     } else {
-                        data.page_history[domain] = 1
+                        data.page_history[domain] = {"count": 1, "trackers": [tracker_host]}
                     }
                     chrome.storage.local.set({"page_history": data.page_history});
                 });

@@ -6,6 +6,8 @@ import { LobbyChat } from '../Lobby/LobbyChat';
 import { Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import socket from "../Utilities/socketConfig";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 export class Summary extends React.Component {
 
@@ -19,7 +21,8 @@ export class Summary extends React.Component {
             msgs: null,
             user_left: false,
             user_refreshed: false,
-            play_again: false
+            play_again: false,
+            modalContent: null
         }
 
     }
@@ -100,11 +103,18 @@ export class Summary extends React.Component {
         return game_metrics  
     }
 
+    setModalContent(trackers){
+        var temp_list = trackers.map((key,index)=><p key={index}>{index+1}. {key}</p>)
+        this.setState({modalContent: temp_list});
+    }
+
     build_page_history(){
         var page_history = Object.entries(this.props.location.state.player_metrics[this.props.location.state.user_name]["page_history"]).map((key,index)=>
             <tr key={index}>
                 <td>{key[0]}</td>
-                <td>{key[1]}</td>
+                <td>{key[1]["count"]} 
+                    <FontAwesomeIcon onClick={()=>this.setModalContent(key[1]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />
+                </td>
             </tr>
         )
         return page_history
@@ -188,6 +198,24 @@ export class Summary extends React.Component {
             </div>
             <div className="text-center">
                 <button onClick={()=>this.leaveSummary()} className="btn btn-primary constSize">Done</button>
+            </div>
+            <div className="modal fade" id="trackerModal" tabIndex="-1" role="dialog" aria-labelledby="trackerLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="trackerLabel">Trackers Found</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div className="modal-body">
+                    {this.state.modalContent}
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
             </div>
         </div>
     }
