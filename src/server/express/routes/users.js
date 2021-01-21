@@ -79,7 +79,7 @@ async function register(req, res) {
 
         // insert user inside database
         const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin})
-        await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, score:10})
+        await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:10})
 
         // generate jwt token
         const token = jwtGenerator(newUser.user_id);

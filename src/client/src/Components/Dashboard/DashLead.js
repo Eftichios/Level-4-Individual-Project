@@ -29,12 +29,12 @@ export class DashLead extends React.Component {
     }
 
     sortAndBuildPlayers(players){
-        var players_sorted = players.sort((a,b) => b.user_metric.score - a.user_metric.score);
+        var players_sorted = players.sort((a,b) => b.user_metric.tracker_count - a.user_metric.tracker_count);
         var temp_table = players_sorted.map((player, index)=>
             <tr key={index}>
-                <td>{index}</td>
+                <td>{index+1}</td>
                 <td>{player.user_name}</td>
-                <td>{player.user_metric.score}</td>
+                <td>{player.user_metric.tracker_count}</td>
             </tr>
         );
 
@@ -63,13 +63,14 @@ export class DashLead extends React.Component {
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Player</th>
-                                    <th scope="col">Score</th>
+                                    <th scope="col">Unique Trackers</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.players}
                             </tbody>
                         </table>
+                        {this.state.players?"":<h3>Loading...</h3>}
                         </div>
                     <div className="modal-footer">
                         <div className="input-group not-full">

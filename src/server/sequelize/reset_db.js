@@ -65,12 +65,12 @@ async function reset() {
 
     // populates user_metric table
     await sequelize.models.user_metric.bulkCreate([
-        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:10},
-        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2], tracker_list: trackers, score:15},
-        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24], tracker_list: trackers, score:20},
-        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:25},
-        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:30},
-        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, score:35},
+        { user_id: 1, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, tracker_count: 50, score:10},
+        { user_id: 2, race_games: 1, category_games: 2, total_ad_trackers: 43, categories_count: [1,5,9,2], tracker_list: trackers, tracker_count: 41, score:15},
+        { user_id: 3, race_games: 2, category_games: 19, total_ad_trackers: 1544, categories_count: [21,32,33,24], tracker_list: trackers, tracker_count: 23, score:20},
+        { user_id: 4, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, tracker_count: 412, score:25},
+        { user_id: 5, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, tracker_count: 31, score:30},
+        { user_id: 6, race_games: 5, category_games: 5, total_ad_trackers: 143, categories_count: [1,5,9,2], tracker_list: trackers, tracker_count: 52, score:35},
     ]);
 
     // populates user_achievements table

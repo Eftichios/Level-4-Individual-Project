@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
             allowNull: false,
             type: DataTypes.JSONB
         },
+        tracker_count: {
+            allowNull: false,
+            type: DataTypes.INTEGER
+        },
         score: {
             allowNull: false,
             type: DataTypes.INTEGER

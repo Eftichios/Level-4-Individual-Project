@@ -9,13 +9,15 @@ class MetricsHandler{
 
 
     async handleTrackers(trackers, player_metrics, player_id){
+        var unique_trackers_found = 0
         for (var i in trackers){
             // check if the tracker found is in our list
             if (player_metrics.tracker_list.hasOwnProperty(trackers[i])){
-
+                
                 // if it is in our list, check if the user has found it before
                 if (player_metrics.tracker_list[trackers[i]]===false){
                     player_metrics.tracker_list[trackers[i]]=true
+                    unique_trackers_found +=1
                 }
             }else{
                 // TODO: count unkown trackers
@@ -24,7 +26,10 @@ class MetricsHandler{
             
         }
         // update the users metrics
-        var updated = await models.user_metric.update({tracker_list: player_metrics.tracker_list}, { where: {user_id: player_id}})
+        var updated = await models.user_metric.update(
+            {tracker_list: player_metrics.tracker_list, 
+             tracker_count: player_metrics.tracker_count+unique_trackers_found}, 
+            { where: {user_id: player_id}})
         
     }
 

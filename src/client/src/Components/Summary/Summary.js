@@ -92,7 +92,7 @@ export class Summary extends React.Component {
         var players_sorted = Object.entries(this.props.location.state.game_state.players).sort((a,b)=>{return b[1]["score"]-a[1]["score"]});
         var game_metrics = players_sorted.map((player, index)=>
             <tr key={index}>
-                <td>{index}</td>
+                <td>{index+1}</td>
                 <td>{player[0]}</td>
                 <td>{player[1]["score"]}</td>
             </tr>
