@@ -18,7 +18,8 @@ export class Summary extends React.Component {
             msgData: [],
             msgs: null,
             user_left: false,
-            user_refreshed: false
+            user_refreshed: false,
+            play_again: false
         }
 
     }
@@ -110,6 +111,10 @@ export class Summary extends React.Component {
 
     }
 
+    set_play_again(){
+        this.setState({play_again: true})
+    }
+
     leaveSummary(){
         if (window.confirm("Are you sure you want to leave?")){
             this.setState({user_left: true})
@@ -120,6 +125,9 @@ export class Summary extends React.Component {
     render(){
         if (!this.state.lobbyData || this.state.user_left || this.state.user_refreshed){
             return <Redirect to="/dashboard"></Redirect>
+        }
+        if (this.state.play_again){
+            return <Redirect to={{pathname: "/dashboard", state: {play_again: true, game_mode: this.state.lobbyData.game_mode, user_name: this.props.location.state.user_name }}}></Redirect>
         }
         return <div className="summary-padding">
             <h3 className="text-center push-down">Summary</h3>
@@ -168,7 +176,7 @@ export class Summary extends React.Component {
                             <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category"}</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?this.props.location.state.game_state.condition + " Ad Trackers":this.state.lobbyData.category}</div>
                         </div>
-                        <div className="p-1"><button className="constSize btn orange">Play Again</button></div>
+                        <div className="p-1"><button onClick={()=>this.set_play_again()} className="constSize btn orange">Play Again</button></div>
                     </div>
                 </div>
             </div>

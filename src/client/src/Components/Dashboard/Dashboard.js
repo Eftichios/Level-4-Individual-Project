@@ -13,19 +13,22 @@ export class Dashboard extends React.Component {
         super(props);
         
         this.state = {
-            name: "",
-            rank: 4
+            name: this.props.location.state? this.props.location.state.user_name:"",
+            rank: 4,
+            from_summary: this.props.location.state?this.props.location.state.game_mode:null
         }
 
         this.setAuth = props.setAuth;  
         this.user_id = props.user_id;
+
+        this.getUserProfile();
     }
 
     componentDidMount(){
         if (localStorage.hasRefreshed){
             localStorage.removeItem("hasRefreshed");
         }
-        this.getUserProfile();
+        
     }
 
     getUserProfile = async ()=> {
@@ -51,7 +54,7 @@ export class Dashboard extends React.Component {
         return <Fragment>
             <div className="row">
                 <div className="col-md-6">
-                    <DashPlay name={this.state.name} user_id={this.props.user_id}></DashPlay>
+                    <DashPlay name={this.state.name} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
                     <DashSettings name={this.state.name} setAuth={this.setAuth}></DashSettings>

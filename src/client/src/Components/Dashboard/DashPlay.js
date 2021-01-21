@@ -43,6 +43,13 @@ export class DashPlay extends React.Component {
         this.getUserRank(props.name)
     }
 
+    componentDidMount(){
+        if (this.props.from_summary){
+            this.setState({game_mode: this.props.from_summary})
+            this.findGame(this.props.user_id, this.props.name)
+        }
+    }
+
     getUserRank = async (user_name) =>{
         // in the future use props.score to calculate ranks
         this.state.rank = 5

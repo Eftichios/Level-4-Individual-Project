@@ -48,7 +48,6 @@ export class DashMetrics extends React.Component {
         var cat_count = [["Category", "Ads delievered"]];
         metrics.categories_count.forEach((count, index)=>cat_count.push([category_map[index],count]));
         this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
-        console.log(metrics);
         this.buildTrackers(metrics.tracker_list)
     }
 
