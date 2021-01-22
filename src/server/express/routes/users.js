@@ -3,7 +3,10 @@ const bcrypt = require('bcrypt');
 const jwtGenerator = require("../../utils/jwtGenerator");
 const { getIdParam } = require('../../utils/helpers');
 const trackers = require('../../utils/global')
+var passwordValidator = require('password-validator');
+var schema = new passwordValidator();
 
+schema.is().min(6);
 
 async function getAll(req, res) {
     const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin']});
@@ -59,6 +62,14 @@ async function remove(req, res) {
 async function register(req, res) {
         // get name and pass out of body
         const {user_name, password, confirm_password, owns_plugin} = req.body;
+
+        if (!schema.validate(password)){
+            res.status(401).json("Password should be at least 6 characters long.");
+            return
+        } else if (!schema.validate(user_name+ "123")){
+            res.status(401).json("User name should be at least 3 characters long.");
+            return
+        }
 
         // check if user exists (throw error in this case)
         const user = await models.user.findOne({where: {user_name: user_name}});

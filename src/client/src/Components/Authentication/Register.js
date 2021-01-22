@@ -21,7 +21,6 @@ export class Register extends React.Component {
 
     onChange = e => {
       this.setState({[e.target.name]: e.target.value});
-      console.log(e.target.name, e.target.value);
     };
 
     onSubmitForm = async (e) => {
