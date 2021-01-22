@@ -108,6 +108,16 @@ chrome.runtime.onInstalled.addListener(function() {
               break;
           }
         }
-      } 
+      } else if (key=="winner"){
+        if (storageChange.newValue){
+          console.log("hehehehehehehehehheeheheehbebhehehhehehhehhehhehhehehehhehehhehehhehhehhehehehehhehehhehehheheehehehheee")
+          chrome.browserAction.setBadgeBackgroundColor({ color: "#007bff" });
+          chrome.browserAction.setBadgeText({text: '(!)'});
+        } else {
+          chrome.browserAction.setBadgeText({text: ''});
+        }
+        
+      }
     }
   }); 
+
