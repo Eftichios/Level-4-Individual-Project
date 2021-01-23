@@ -45,7 +45,7 @@ export class DashTrackers extends React.Component {
             </div>
         );
         this.setState({max_pages: filtered_list.length / this.trackers_per_page});
-        this.setState({count: this.state.current_tab?`Owned: ${filtered_list.length}`:`Not Owned: ${filtered_list.length}`})
+        this.setState({count: this.state.current_tab?`Found: ${filtered_list.length}`:`Not Found: ${filtered_list.length}`})
         this.setState({trackers: tracker_els})
     }
 
@@ -102,8 +102,8 @@ export class DashTrackers extends React.Component {
                     <div className="modal-header">
                         <h5 className="modal-title" id="trackers">{this.state.modal_title}</h5>
                         <div className="page_switch text-center">
-                            <button className={this.state.current_tab?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(true)}>Owned</button>
-                            <button className={this.state.current_tab===false?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(false)}>Not Owned</button>
+                            <button className={this.state.current_tab?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(true)}>Found</button>
+                            <button className={this.state.current_tab===false?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(false)}>Not Found</button>
                         </div>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
