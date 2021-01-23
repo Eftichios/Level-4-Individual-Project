@@ -68,3 +68,7 @@ hr {
     align-items: center;
     height: 20vh;
 }
+
+.page_switch {
+    flex: auto;
+}

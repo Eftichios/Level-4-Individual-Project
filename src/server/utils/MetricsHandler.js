@@ -15,8 +15,8 @@ class MetricsHandler{
             if (player_metrics.tracker_list.hasOwnProperty(trackers[i])){
                 
                 // if it is in our list, check if the user has found it before
-                if (player_metrics.tracker_list[trackers[i]]===false){
-                    player_metrics.tracker_list[trackers[i]]=true
+                if (player_metrics.tracker_list[trackers[i]]["found"]===false){
+                    player_metrics.tracker_list[trackers[i]]["found"]=true
                     unique_trackers_found +=1
                 }
             }else{

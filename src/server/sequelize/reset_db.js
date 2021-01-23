@@ -1,4 +1,5 @@
 const blocked_domains = require("./data/blocked.js")
+const tracker_data = require("./data/trackerDataInfo")
 const sequelize = require('./index.js');
 const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
@@ -6,7 +7,12 @@ const bcrypt = require('bcrypt');
 function createTrackerJson(){
     var trackers = {}
     Object.entries(blocked_domains).forEach(([key,value])=>{
-        trackers[key] = false;
+        if (tracker_data.hasOwnProperty(key)){
+            trackers[key] = {"found": false,"extra_info": true};
+        }else {
+            trackers[key] = {"found": false,"extra_info": false};
+        }
+        
     })
     return trackers
 }

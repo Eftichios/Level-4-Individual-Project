@@ -5,3 +5,4 @@ Domains
 dummy_data.sql
 express/routes/logs/*
 sequelize/data/*
+utils/reduce_trackers.js
