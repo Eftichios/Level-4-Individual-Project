@@ -8,7 +8,7 @@ class MetricsHandler{
     }
 
 
-    async handleTrackers(trackers, player_metrics, player_id){
+    async handleTrackers(trackers, player_metrics, player_id, score){
         var unique_trackers_found = 0
         for (var i in trackers){
             // check if the tracker found is in our list
@@ -19,32 +19,42 @@ class MetricsHandler{
                     player_metrics.tracker_list[trackers[i]]["found"]=true
                     unique_trackers_found +=1
                 }
-            }else{
-                // TODO: count unkown trackers
-                
             }
-            
         }
+        
         // update the users metrics
         var updated = await models.user_metric.update(
             {tracker_list: player_metrics.tracker_list, 
-             tracker_count: player_metrics.tracker_count+unique_trackers_found}, 
+             tracker_count: player_metrics.tracker_count+unique_trackers_found,
+             total_ad_trackers: player_metrics.total_ad_trackers+score}, 
+             
             { where: {user_id: player_id}})
         
     }
 
-    handleScore(score, player_metrics){
+    async handleScore(score, player_metrics, player_id){
         var prev_total_score = player_metrics.score;
 
-        //TODO: score updating
+        var new_total_score = prev_total_score + score;
+        await models.user_metric.update({score: new_total_score}, {where: {user_id: player_id}});
     }
 
-    async handleMetrics(player_id, player_name, game_state){
+    async handleGameMode(player_metrics, game_mode, player_id){
+        if (game_mode==="Race"){
+            await models.user_metric.update({race_games: player_metrics.race_games + 1}, {where: {user_id: player_id}});
+        }else{
+            await models.user_metric.update({category_games: player_metrics.category_games + 1}, {where: {user_id: player_id}});
+        }
+        
+    }
+
+    async handleRaceMetrics(player_id, player_name, game_state){
         // get players current metrics
         var player_metrics = await this.getPlayerMetrics(player_id);
 
-        this.handleTrackers(game_state.trackers, player_metrics, player_id);
-        this.handleScore(game_state.score, player_metrics);
+        await this.handleTrackers(game_state.trackers, player_metrics, player_id, game_state.score);
+        await this.handleScore(game_state.score, player_metrics, player_id);
+        await this.handleGameMode(player_metrics, "Race", player_id);
     }
 }
 
