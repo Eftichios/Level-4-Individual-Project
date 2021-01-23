@@ -458,4 +458,13 @@
 * *2.5 hours* Adding various functionality (ranking system, players tracker list in summary...)
 * *0.5 hour* Trying to fix a bug in the extension sockets 
 
+### 22 Jan 2021
+* *0.5 hour* Writing script to refine tracker list 
+* *0.5 hour* Adding notification to extension and password/username validation to web app
+* *1 hour* Building achievements from database dynamically
+
+### 23 Jan 2021
+* *2.5 hours* Refining and refactoring trackers list 
+* *0.5 hour* Player's metrics now get updated after games (race mode)
+
 
