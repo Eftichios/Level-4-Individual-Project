@@ -9,6 +9,7 @@ const {setUpSocketCommunication} = require('./extension_socket');
 app.use(cors())
 
 if (process.env.NODE_ENV==="production") {
+	console.log(">>>", path.join(__dirname, "client/build"));
 	app.use(express.static(path.join(__dirname, "client/build")));
 }
 

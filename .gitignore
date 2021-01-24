@@ -3,5 +3,4 @@ node_modules
 Domains
 .env
 dummy_data.sql
-express/routes/logs/*
 package-lock.json
