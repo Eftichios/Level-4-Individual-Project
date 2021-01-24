@@ -11,9 +11,9 @@
 
 %==============================================================================
 %% METADATA
-\title{Level 4 Project Report Template}
-\author{John H. Williamson}
-\date{September 14, 2018}
+\title{A Distributed Game Using Adverts and Trackers In Web Browsers}
+\author{Eftychios Karagiorgis}
+\date{March 14, 2021}
 
 \maketitle
 
@@ -80,7 +80,11 @@
 % reset page numbering. Don't remove this!
 \pagenumbering{arabic} 
 
-Targeted advertising is a sensitive matter that causes concerns over intrusion of privacy. Generally, advertisers create a profile for users that is used to target more personalised content in order to increase the likelihood that the user will be interested in their adverts. In almost all cases, the user does not have much control over what data is used to create that profile or how it is gathered, this leads into a very broad range of opinions and knowledge of targeted advertising systems. Targeted adverts are commonly seen as controversial and a large percentage of internet users use ad blockers to avoid them entirely. In this paper, we attempt to use targeted advertising in a way that is fun and informative with the purpose of directly observing the knowledge that users have of these systems but also to increase awareness of privacy issues in targeted advertising.
+Ad Tracking and targeted advertising is part of the web browsing eco-system. While it is not essential to the personal browsing experience of a user, it is the main source of income for businesses that provide free services (such as Facebook). With this model, users can in most cases browse the web for free, but this comes at the cost of the user's privacy, and usually without their knowledge. In the realm of targeted advertising, there is a general lack of transparency on what exact data is gathered from the user and how it is processed. While this has improved a lot in the last years (GDPR), it is still not enough to paint a clear picture to the user and there is still a huge lack of user involvement in these systems in terms of controlling what gets used and how.
+
+
+\section{Motivation}
+Targeted advertising is a sensitive matter that causes concerns over intrusion of privacy. Generally, trackers gather data about the user and share that data with advertisers. Advertisers then use that data to create a profile for users that is used to target more personalised content in order to increase the likelihood that the user will be interested in their adverts. In almost all cases, the user does not have much control over what data is used to create that profile or how it is gathered, this leads into a very broad range of opinions and knowledge of targeted advertising systems. Adverts are commonly seen as controversial and a large percentage of internet users use ad blockers to avoid them entirely. In this paper, we attempt to use targeted advertising in a way that is fun and informative with the purpose of directly observing the knowledge that users have of these systems but also to increase awareness of privacy issues in targeted advertising.
 
 \section{Terms and Definitions}
 Let us begin by first defining some common terms that are used in targeted advertising and also throughout this paper. These definitions are taken and adapted for the context of this paper from the extensive research done by (source - Estrada-Jimenez et al.).
@@ -90,9 +94,9 @@ Let us begin by first defining some common terms that are used in targeted adver
     \item
     \textbf{Advertisers:} Advertisers are entities that promote a service or product by showing adverts to potential customers.
     \item
-    \textbf{Ad trackers:} Trackers are third party entities that collect data about the user and shares the data to advertisers.
+    \textbf{Ad trackers:} Trackers are third party entities that collect data about the user and share the data with advertisers.
     \item
-    \textbf{IAB Categories:} These are high level categories like "Sports" or "Technology" that categorise the content of an advert.
+    \textbf{IAB Categories:} These are high level categories like "Sports" or "Technology" that categorise the content of a web resource. A full list of the categories used for this project can be found in the Appendix.
 \end{itemize}
 
 \section{The game}
@@ -106,36 +110,36 @@ We begin in Chapter 2 by providing an overview of related technologies and the s
 
 %==================================================================================================================================
 \chapter{Background}
-What did other people do, and how is it relevant to what you want to do?
-\section{Guidance}
-\begin{itemize}    
-    \item
-      Don't give a laundry list of references.
-    \item
-      Tie everything you say to your problem.
-    \item
-      Present an argument.
-    \item Think critically; weigh up the contribution of the background and put it in context.    
-    \item
-      \textbf{Don't write a tutorial}; provide background and cite
-      references for further information.
-\end{itemize}
+Adblockers, blacklight, web categorisation API, AdReveal, RMT lit review, websockets, multiplayer game
 
 %==================================================================================================================================
 \chapter{Analysis/Requirements}
 What is the problem that you want to solve, and how did you arrive at it?
+The problem is if we are somehow able to utilise adverts and trackers to create a fun, engaging and informative game (but with what purpose?). What is the information we already had on a high level? How did the research question/problem change over the course of the year. Any changes in the initial proposal (initial idea was to use Facebook but we went with web browser instead, why?).
 \section{Guidance}
 Make it clear how you derived the constrained form of your problem via a clear and logical process. 
 
 %==================================================================================================================================
 \chapter{Design}
 How is this problem to be approached, without reference to specific implementation details? 
+What are the most challenging aspects of this project? Can we visualise them with some diagram on an abstract level? How do we plan to tackle them? (strategies for implementation and experimentation).
 \section{Guidance}
 Design should cover the abstract design in such a way that someone else might be able to do what you did, but with a different language or library or tool.
 
 %==================================================================================================================================
 \chapter{Implementation}
-What did you do to implement this idea, and what technical achievements did you make?
+What did you do to implement this idea, and what technical achievements did you make? 
+React, Node.js-express, Chrome extension, postgresql database. 
+Technical achievements:
+- Three way communication between server, client and extension using http requests and websockets (can we break this down so that it is easy to explain and easy to grasp?)
+- Ad tracker identification using Easy list
+- Advert identification by looking at the dom (only a fraction of adverts, explain limits)
+- Advert categorisation (web categorisation API). Explain approach and method
+- Lobby system with real-time chat
+- Achievement system
+- Gameplay metrics, to analyse gameplay data in order to reach some form of conclusion (or identify any patterns in the players gameplay)
+
+
 \section{Guidance}
 You can't talk about everything. Cover the high level first, then cover important, relevant or impressive details.
 
