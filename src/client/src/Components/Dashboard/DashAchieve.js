@@ -44,7 +44,7 @@ export class DashAchieve extends React.Component {
                             </div>
                             <div className="row form-group">
                                 <label className="col-md-4" htmlFor="status">Status: </label>
-                                <input className={`${this.mapStatusColour[achievement.completed]} col-md-7`} id="status" disabled value={achievement.completed?"Completed":"Not Completed"} />
+                                <input className={`${this.mapStatusColour[achievement.user_achievement.completed]} col-md-7`} id="status" disabled value={achievement.user_achievement.completed?"Completed":"Not Completed"} />
                             </div>
                             <div className="row form-group">
                                 <label className="col-md-4" htmlFor="game_mode">Game Mode: </label>
@@ -53,6 +53,10 @@ export class DashAchieve extends React.Component {
                             <div className="row form-group">
                                 <label className="col-md-4" htmlFor="description">Description: </label>
                                 <input type='text-area' className='col-md-7' id="description" disabled value={achievement.achievement_description} />
+                            </div>
+                            <div className="row form-group">
+                                <label className="col-md-4" htmlFor="description">Current Progress: </label>
+                                <input type='text-area' className='col-md-7' id="description" disabled value={achievement.user_achievement.progress} />
                             </div>
 
                         </div>
@@ -66,13 +70,12 @@ export class DashAchieve extends React.Component {
     }
 
     buildAchievements(achievements){
-        console.log(achievements)
         var temp_achievements = achievements.map((ac) => <tr key={ac.achievement_id}>
         <th>{ac.achievement_id}</th>
         <td>{ac.difficulty}</td>
         <td>{ac.title}</td>
         <td><FontAwesomeIcon onClick={()=>this.setModalContent(ac)} data-toggle="modal" data-target="#achievementModal" className="detail-hover text-primary" icon={faInfoCircle} /></td>
-        <th className={this.mapStatusColour(ac.completed, ac.user_achievement.progress)}>{ac.completed?"Completed":(ac.user_achievement.progress > 0?"In Progress":"Not Started")}</th>
+        <th className={this.mapStatusColour(ac.user_achievement.completed, ac.user_achievement.progress)}>{ac.user_achievement.completed?"Completed":(ac.user_achievement.progress > 0?"In Progress":"Not Started")}</th>
         </tr>);
 
         this.setState({achievements: temp_achievements})

@@ -1,4 +1,7 @@
 const { models } = require('../sequelize');
+const AchievementManager = require('./AchievementManager');
+
+var achievementManager = new AchievementManager();
 
 class MetricsHandler{
 
@@ -27,9 +30,10 @@ class MetricsHandler{
             {tracker_list: player_metrics.tracker_list, 
              tracker_count: player_metrics.tracker_count+unique_trackers_found,
              total_ad_trackers: player_metrics.total_ad_trackers+score}, 
-             
-            { where: {user_id: player_id}})
+            { where: {user_id: player_id}});
         
+        return {"unique_trackers": player_metrics.tracker_count+unique_trackers_found,
+                "total_trackers": player_metrics.total_ad_trackers+score}
     }
 
     async handleScore(score, player_metrics, player_id){
@@ -37,24 +41,28 @@ class MetricsHandler{
 
         var new_total_score = prev_total_score + score;
         await models.user_metric.update({score: new_total_score}, {where: {user_id: player_id}});
+        return new_total_score;
     }
 
     async handleGameMode(player_metrics, game_mode, player_id){
         if (game_mode==="Race"){
             await models.user_metric.update({race_games: player_metrics.race_games + 1}, {where: {user_id: player_id}});
+            return player_metrics.race_games + 1
         }else{
             await models.user_metric.update({category_games: player_metrics.category_games + 1}, {where: {user_id: player_id}});
-        }
+            return player_metrics.category_games + 1
+        }   
         
     }
 
-    async handleRaceMetrics(player_id, player_name, game_state){
+    async handleRaceMetrics(player_id, player_name, game_state, is_winner){
         // get players current metrics
         var player_metrics = await this.getPlayerMetrics(player_id);
 
-        await this.handleTrackers(game_state.trackers, player_metrics, player_id, game_state.score);
-        await this.handleScore(game_state.score, player_metrics, player_id);
-        await this.handleGameMode(player_metrics, "Race", player_id);
+        var tracker_update = await this.handleTrackers(game_state.trackers, player_metrics, player_id, game_state.score);
+        var score_update = await this.handleScore(game_state.score, player_metrics, player_id);
+        var games_played_update = await this.handleGameMode(player_metrics, "Race", player_id);
+        achievementManager.checkForRaceAchievements(player_id, tracker_update.unique_trackers, tracker_update.total_trackers, score_update, games_played_update, is_winner)
     }
 }
 

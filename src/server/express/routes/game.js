@@ -26,7 +26,7 @@ function _build_race_game_history(io, lobby, player_game_state){
         var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player);
 
         // handle metrics
-        metricsHandler.handleRaceMetrics(player_id, player, player_game_state.game_state.players[player]);
+        metricsHandler.handleRaceMetrics(player_id, player, player_game_state.game_state.players[player], winner_id===player_id);
         player_data[player] = {};
         player_data[player]["page_history"] = lobby.playerIds[player_id]["page_history"];
         player_data[player]["score"] = player_game_state.game_state.players[player]["score"];
