@@ -15,10 +15,17 @@ export class DashAchieve extends React.Component {
             modalContent: null,
             achievements: null
         }
-
-        this.mapStatusColour = {true:'text-success', 'In Progress': 'text-warning', false:'text-danger'}
-
         this.getAchievements();
+    }
+    
+    mapStatusColour(completed, progress){
+        if (completed){
+            return "text-success";
+        }else if (progress > 0){
+            return "text-warning";
+        }else{
+            return "text-danger";
+        }
     }
 
     setModalContent(achievement){
@@ -59,12 +66,13 @@ export class DashAchieve extends React.Component {
     }
 
     buildAchievements(achievements){
+        console.log(achievements)
         var temp_achievements = achievements.map((ac) => <tr key={ac.achievement_id}>
         <th>{ac.achievement_id}</th>
         <td>{ac.difficulty}</td>
         <td>{ac.title}</td>
         <td><FontAwesomeIcon onClick={()=>this.setModalContent(ac)} data-toggle="modal" data-target="#achievementModal" className="detail-hover text-primary" icon={faInfoCircle} /></td>
-        <th className={this.mapStatusColour[ac.completed]}>{ac.completed?"Completed":"Not Completed"}</th>
+        <th className={this.mapStatusColour(ac.completed, ac.user_achievement.progress)}>{ac.completed?"Completed":(ac.user_achievement.progress > 0?"In Progress":"Not Started")}</th>
         </tr>);
 
         this.setState({achievements: temp_achievements})
@@ -78,7 +86,7 @@ export class DashAchieve extends React.Component {
             });
 
             var parseRes = await response.json();
-            
+            // console.log(parseRes)
             this.buildAchievements(parseRes)
 
         } catch (err){

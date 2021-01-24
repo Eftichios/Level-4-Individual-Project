@@ -75,7 +75,7 @@ async function reset() {
         for (var achiev_index in achievements_db){
             var achiev_id = achievements_db[achiev_index]["achievement_id"];
             await sequelize.models.user_achievement.create({
-                user_id: curr_user_id, achievement_id: achiev_id, date_completed: new Date(), completed: false, progress: 0
+                user_id: curr_user_id, achievement_id: achiev_id, date_completed: null, completed: false, progress: 0
             })
         }
     }

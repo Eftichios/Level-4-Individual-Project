@@ -19,10 +19,12 @@ function parseUserAchievements(user_achievements, all_achievements){
 
 async function getById(req, res) {
     const id = getIdParam(req);
-    const user_achievements = await models.user_achievement.findAll({where: {user_id: id}});
-    const achievements = await models.achievement.findAll();
+    const user_achievements = await models.user.findAll({where: 
+        {user_id: id}, 
+        include:[{model: models.achievement, 
+            through: {attributes: ["completed","date_completed","progress"]}}]});
     if (user_achievements){
-        res.status(200).json(parseUserAchievements(user_achievements, achievements));
+        res.status(200).json(user_achievements[0]["achievements"]);
     } else {
         res.status(404).json('No achievements found for the user with the given id.');
     }
