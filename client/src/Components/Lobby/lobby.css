@@ -1,0 +1,84 @@
+.player-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.chat {
+    width:80vh;
+    height: 25vh;
+    background-color: transparent;
+    border: hidden;
+}
+
+.display {
+    height: 85%;
+}
+
+.vote {
+    width: 10%;
+}
+
+.send {
+    float: right;
+}
+
+.pad-img {
+    padding: 1% 1% 1% 1%;
+    margin: 3% 3% 3% 3%;
+}
+
+.left-imgs{
+    align-items: left;
+}
+
+.right-imgs{
+    align-items: right;
+}
+
+.scrollbar {
+    position: relative;
+    height: 35vh;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.lobby-padding {
+    padding: 0 12px 4px 12px;
+}
+
+.text-orange {
+    color: #F89603;
+    font-weight: bold;
+}
+
+.game-details {
+    font-size: large;
+    
+}
+
+.player-table {
+    font-size: larger;
+}
+
+.lobby-profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.running {
+    padding: 5px;
+    margin-left: 50px;
+    width: 35vh;
+    height: 35vh;
+    opacity: 80%;
+}
+
+.push-down {
+    margin-bottom: 50px;
+}

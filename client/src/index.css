@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/roboto/Roboto-Regular.ttf) format('truetype');
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Roboto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.orange {
+  background-color: #F89603 ;
+  color: white;
+}
+
+.constSize {
+  width: 200px;
+}

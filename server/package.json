@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "p-queue": "^6.6.2",
+    "password-validator": "^5.1.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "puppeteer": "^5.5.0",
+    "random-useragent": "^0.5.0",
+    "sequelize": "^6.3.5",
+    "socket.io": "^3.0.4",
+    "string-similarity": "^4.0.4",
+    "user-agents": "^1.0.559"
+  }
+}

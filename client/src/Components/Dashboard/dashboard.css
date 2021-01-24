@@ -1,0 +1,74 @@
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.not-full {
+    width: 80%;
+}
+
+.vertical {
+    border-left:1px solid rgb(139, 139, 139);
+    height:350px
+}
+
+.tracker_item {
+    border-style: none; 
+    border-color: Transparent;
+    overflow: auto; 
+    resize: none;
+}
+
+hr {
+    background-color: rgb(139, 139, 139);
+}
+
+.achieve-scrollbar {
+    display: block;
+    overflow-y: auto;
+    height: 45vh;
+}
+
+/* .table-wrapper-scroll-y {
+    display: block;
+} */
+
+.modal-dialog,
+.modal-content {
+    /* 80% of window height */
+    height: 80%;
+}
+
+.modal-body {
+    /* 100% = dialog height, 120px = header + footer */
+    max-height: calc(100vh - 120px);
+    overflow-y: scroll;
+}
+
+.detail-hover:hover{
+    cursor: pointer;
+}
+
+.tooltip-hover:hover {
+    cursor: help;
+}
+
+.modal-body input {
+    text-align: center;
+}
+
+.chart {
+    display: inline-block;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.page_switch {
+    flex: auto;
+}
