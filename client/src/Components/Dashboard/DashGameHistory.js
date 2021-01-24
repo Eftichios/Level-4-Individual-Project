@@ -26,7 +26,7 @@ export class DashGameHistory extends React.Component {
 
     getGameHistory = async()=>{
         try {
-            var response = await fetch(`http://localhost:5000/api/gameHistory/${this.props.user_id}`, {
+            var response = await fetch(`/api/gameHistory/${this.props.user_id}`, {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
             });

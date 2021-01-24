@@ -103,8 +103,8 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 
 };
 
-app.get('/', (req, res)=>{
-    res.send("test route");
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
 })
 
 module.exports = app;

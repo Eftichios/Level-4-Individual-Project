@@ -31,7 +31,7 @@ export class DashMetrics extends React.Component {
 
     getUserMetrics = async () =>{
         try {
-            var response = await fetch(`http://localhost:5000/api/userMetrics/${this.props.user_id}`, {
+            var response = await fetch(`/api/userMetrics/${this.props.user_id}`, {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
             });

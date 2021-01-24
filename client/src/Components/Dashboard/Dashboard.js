@@ -34,7 +34,7 @@ export class Dashboard extends React.Component {
     getUserProfile = async ()=> {
         try {
 
-            const response = await fetch(`http://localhost:5000/api/users/${this.user_id}`, {
+            const response = await fetch(`/api/users/${this.user_id}`, {
                 method:"GET",
                 headers: {token: localStorage.token, "Content-Type": "application/json"}
             })

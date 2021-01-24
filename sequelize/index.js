@@ -2,8 +2,13 @@ const { Sequelize } = require('sequelize');
 const { applyExtraSetup } = require('./extra-setup');
 require("dotenv").config();
 
+const dev_config = `postgres://postgres:${process.env.db_pass}@${process.env.db_host}:${process.env.db_port}/${process.env.db_name}`;
+const pro_config = process.env.DATABASE_URL
+
+const db_config = process.env.NODE_ENV === "production"? pro_config:dev_config;
+
 // initialise the orm
-const sequelize = new Sequelize(`postgres://postgres:${process.env.db_pass}@${process.env.db_host}:${process.env.db_port}/${process.env.db_name}`,
+const sequelize = new Sequelize(db_config,
 {
     logging: false,
     define: {timestamps: false}

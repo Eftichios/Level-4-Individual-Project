@@ -72,7 +72,7 @@ export class Lobby extends React.Component {
         logger.log("info", `User started game in lobby ${this.state.lobbyData.room}`, this.props.location.user_name)
         try {
 
-            const response = await fetch(`http://localhost:5000/api/startGame`, {
+            const response = await fetch(`/api/startGame`, {
                 method:"POST",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
                 body: JSON.stringify({"room":this.state.lobbyData.room})

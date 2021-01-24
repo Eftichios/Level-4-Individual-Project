@@ -8,3 +8,4 @@ sequelize/data/*
 utils/reduce_trackers.js
 utils/trackerData.js
 utils/trackerDataInfo.js
+package-lock.json

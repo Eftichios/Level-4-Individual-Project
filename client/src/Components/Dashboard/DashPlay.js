@@ -59,7 +59,7 @@ export class DashPlay extends React.Component {
         logger.log("info","User searching for game", user_name)
         try {
             this.setState({finding_game: true})
-            const response = await fetch("http://localhost:5000/api/play", {
+            const response = await fetch("/api/play", {
                 method: "POST",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
                 body: JSON.stringify({ "user_id": user_id, "user_name": user_name, "socketId": socket.id, "game_mode": this.state.game_mode }),

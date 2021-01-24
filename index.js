@@ -1,10 +1,16 @@
 const app = require('./express/app');
 const cors = require('cors');
 const sequelize = require('./sequelize');
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+const path = require('path')
 const {setUpSocketCommunication} = require('./extension_socket');
 
 app.use(cors())
+
+if (process.env.NODE_ENV==="production") {
+	app.use(express.static(path.join(__dirname, "client/build")));
+}
+
 const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer, {
 	cors: {

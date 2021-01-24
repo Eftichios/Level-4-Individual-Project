@@ -16,7 +16,7 @@ export class DashLead extends React.Component {
 
     getAndSortPlayers = async () =>{
         try {
-            var response = await fetch("http://localhost:5000/api/userMetrics", {
+            var response = await fetch("/api/userMetrics", {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
             });
