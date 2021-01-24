@@ -1,8 +1,9 @@
-const blocked_domains = require("./data/blocked.js")
-const tracker_data = require("./data/trackerDataInfo")
+const blocked_domains = require("./data/blocked.js");
+const tracker_data = require("./data/trackerDataInfo");
 const sequelize = require('./index.js');
 const {getMinutesOfDates} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
+const achievements = require('../utils/achievementData');
 
 function createTrackerJson(){
     var trackers = {}
@@ -30,14 +31,14 @@ async function reset() {
     const trackers = createTrackerJson();
 
     // populates users table
-    await sequelize.models.user.bulkCreate([
+    var users_db = await sequelize.models.user.bulkCreate([
         { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true},
         { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true},
         { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true},
         { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true},
         { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true},
         { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true}
-    ]);
+    ], {returning: true});
 
     // populates organisations table
     await sequelize.models.organisation.bulkCreate([
@@ -56,18 +57,7 @@ async function reset() {
     ]);
 
     // populates achievements table
-    await sequelize.models.achievement.bulkCreate([
-        { difficulty: 'easy', title: 'Fastest man alive I', game_mode: 'race', 
-            achievement_description: 'Play 1 race game.'},
-        { difficulty: 'easy', title: 'Fastest man alive II', game_mode: 'race', 
-            achievement_description: 'Play 5 race game.'},   
-        { difficulty: 'easy', title: 'Fastest man alive III', game_mode: 'race', 
-            achievement_description: 'Play 10 race game.'},
-        { difficulty: 'medium', title: 'Fastest man alive IV', game_mode: 'race', 
-            achievement_description: 'Play 25 race game.'}, 
-        { difficulty: 'hard', title: 'Hide and seek I', game_mode: 'hunting', 
-            achievement_description: 'Find 5 rare organisations'},
-    ]);
+    var achievements_db = await sequelize.models.achievement.bulkCreate(achievements, {returning:true});
 
     // populates user_metric table
     await sequelize.models.user_metric.bulkCreate([
@@ -80,12 +70,15 @@ async function reset() {
     ]);
 
     // populates user_achievements table
-    await sequelize.models.user_achievement.bulkCreate([
-        { user_id: 1, achievement_id: 1, date_completed: new Date(), completed: true},
-        { user_id: 2, achievement_id: 1, date_completed: new Date(), completed: true},
-        { user_id: 3, achievement_id: 1, date_completed: new Date(), completed: true},
-        { user_id: 1, achievement_id: 2, date_completed: new Date(), completed: true},
-    ]);
+    for (var user_index in users_db){
+        var curr_user_id = users_db[user_index]["user_id"];
+        for (var achiev_index in achievements_db){
+            var achiev_id = achievements_db[achiev_index]["achievement_id"];
+            await sequelize.models.user_achievement.create({
+                user_id: curr_user_id, achievement_id: achiev_id, date_completed: new Date(), completed: false, progress: 0
+            })
+        }
+    }
 
     // populates user_organisations table
     await sequelize.models.user_organisation.bulkCreate([

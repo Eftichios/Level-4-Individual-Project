@@ -10,5 +10,9 @@ module.exports = (sequelize) => {
             allowNull: false,
             type: DataTypes.BOOLEAN
         },
+        progress: {
+            allowNull: false,
+            type: DataTypes.INTEGER
+        }
     });
 };
