@@ -15,4 +15,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "ad-hunter" #Must be unique in Heroku
           heroku_email: "eftichios1997@hotmail.com"
-          usedocker: true
