@@ -61,7 +61,7 @@ export class DashMetrics extends React.Component {
                     <p>Games Played: <strong>{this.state.games_played['Race'] + this.state.games_played['Category']}</strong> 
                     <FontAwesomeIcon title={`Race: ${this.state.games_played['Race']} | Category: ${this.state.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
                     </p>
-                    <DashTrackers user_metrics={this.state.user_metrics}></DashTrackers>
+                    <DashTrackers user_id={this.props.user_id}></DashTrackers>
                     <div className="chart align-items-center">
                         <h5>Ad categories seen</h5>
                         <Chart

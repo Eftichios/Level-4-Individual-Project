@@ -106,6 +106,11 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/category`, makeHandlerAwareOfAsyncErrors(routeController.category));
 	}
 
+	// handle tracker list route
+	if (routeController.getTrackerList){
+		app.post(`/api/trackerList`, makeHandlerAwareOfAsyncErrors(routeController.getTrackerList));
+	}
+
 };
 
 app.get('/*', (req, res)=>{
