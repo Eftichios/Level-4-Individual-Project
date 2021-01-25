@@ -22,6 +22,12 @@ app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[conten
 // use cors and allow for json responses
 app.use(cors());
 app.use(express.json());
+app.use(cors())
+
+if (process.env.NODE_ENV==="production") {
+	console.log(">>>", path.join(__dirname, "../client/build"));
+	app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 // define all routes, loaded from the corresponding files
 const routes = {
@@ -103,7 +109,7 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 
 };
 
-app.get('*', (req, res)=>{
+app.get('/*', (req, res)=>{
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
 })
 
