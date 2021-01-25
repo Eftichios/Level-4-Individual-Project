@@ -37,7 +37,7 @@ export class DashTrackers extends React.Component {
             var response = await fetch(`/api/trackerList`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({"user_id": this.props.user_id, "offset": this.state.current_page})
+                body: JSON.stringify({"user_id": this.props.user_id, "offset": this.state.current_page, "found": this.state.current_tab})
             });
 
             if (response.status === 200){
@@ -70,7 +70,7 @@ export class DashTrackers extends React.Component {
                 {tracker["extra_info"]?<FontAwesomeIcon onClick={()=>this.toggleTrackerData(tracker)} title="Extra Info" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />:<FontAwesomeIcon title="No additional info available" className="ml-2 text-secondary" icon={faInfoCircle} />}   
             </div>
         );
-        this.setState({max_pages: this.state.current_tab?this.state.tracker_list.found_size:this.state.tracker_list.not_found_size / this.trackers_per_page});
+        this.setState({max_pages: this.state.current_tab?Math.ceil(this.state.tracker_list.found_size / this.trackers_per_page):Math.ceil(this.state.tracker_list.not_found_size / this.trackers_per_page)});
         this.setState({count: this.state.current_tab?`Found: ${this.state.tracker_list.found_size}`:`Not Found: ${this.state.tracker_list.not_found_size}`})
         this.setState({trackers: tracker_els})
     }
@@ -120,8 +120,11 @@ export class DashTrackers extends React.Component {
     }
 
     async switch_tab(owned){
+        this.setState({loading: true});
         await this.setState({current_tab: owned})
+        await this.getTrackerList();
         this.buildTrackers(0, true);
+        this.setState({loading: false});
     }
 
     render(){

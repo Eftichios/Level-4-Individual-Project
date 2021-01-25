@@ -21,12 +21,12 @@ async function getAll(req, res){
 }
 
 async function getTrackerList(req, res){
-    const {user_id, offset} = req.body;
+    const {user_id, offset, found} = req.body;
     const user_metrics = await models.user_metric.findOne({where: {user_id: user_id}, attributes:['tracker_list']});
     var tracker_list = user_metrics["tracker_list"];
     var total_size = Object.entries(tracker_list).length
     var found_size = Object.entries(tracker_list).filter((key,value)=>key[1]["found"]===true).length
-    tracker_list = Object.entries(tracker_list).sort((a,b)=>b[1]["extra_info"]-a[1]["extra_info"]).slice(offset*500, offset*500 +500)
+    tracker_list = Object.entries(tracker_list).filter((key,value)=>key[1]["found"]===found).sort((a,b)=>b[1]["extra_info"]-a[1]["extra_info"]).slice(offset*500, offset*500 +500)
     if (tracker_list){
         res.status(200).json({trackers: tracker_list, total_size: total_size, found_size: found_size, not_found_size: total_size-found_size });
     }else {
