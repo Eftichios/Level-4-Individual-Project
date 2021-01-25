@@ -92,6 +92,14 @@ async function register(req, res) {
         const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin})
         await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:10})
 
+        var achievements_db = await models.achievement.findAll();
+        for (ach_index in achievements_db){
+            var achiev_id = achievements_db[ach_index]["achievement_id"];
+            await models.user_achievement.create({
+                user_id: newUser.user_id, achievement_id: achiev_id, date_completed: null, completed: false, progress: 0
+            })
+        }
+
         // generate jwt token
         const token = jwtGenerator(newUser.user_id);
 
