@@ -22,7 +22,6 @@ app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[conten
 // use cors and allow for json responses
 app.use(cors());
 app.use(express.json());
-app.use(cors())
 
 if (process.env.NODE_ENV==="production") {
 	console.log(">>>", path.join(__dirname, "../client/build"));

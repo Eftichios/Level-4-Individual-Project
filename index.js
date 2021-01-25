@@ -15,11 +15,7 @@ if (process.env.NODE_ENV==="production") {
 }
 
 const httpServer = require('http').createServer(app);
-const io = require('socket.io')(httpServer, {
-	cors: {
-		origin: "http://localhost:3000"
-	}
-});
+const io = require('socket.io')(httpServer);
 
 // connect to the database
 async function assertDatabaseConnectionOk() {
