@@ -6,16 +6,12 @@ const PORT = process.env.PORT || 5000;
 const path = require('path')
 const {setUpSocketCommunication} = require('./extension_socket');
 
-app.use(cors())
-app.use(express.static(path.join(__dirname, "client/build")));
-
-if (process.env.NODE_ENV==="production") {
-	console.log(">>>", path.join(__dirname, "client/build"));
-	app.use(express.static(path.join(__dirname, "client/build")));
-}
-
 const httpServer = require('http').createServer(app);
-const io = require('socket.io')(httpServer);
+const io = require('socket.io')(httpServer, {
+	cors: {
+		origin: "http://localhost:3000"
+	}
+});
 
 // connect to the database
 async function assertDatabaseConnectionOk() {

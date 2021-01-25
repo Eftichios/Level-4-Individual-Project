@@ -34,13 +34,13 @@ export class DashGameHistory extends React.Component {
             var parseRes = await response.json();
             this.buildModalContent(parseRes);
         } catch (err){
-            toast.error("Failed to retrieve player's game history.");
+            toast.error("Failed to retrieve player's game history.", err.message);
         }
     }
 
     buildModalContent = (game_history) => {
         var all_games = game_history.map((game)=><tr key={game.game_id}>
-            <td>{game.game_date}</td>
+            <td>{game.game_date.substring(0, 10)}</td>
             <th className={game.winner_id===this.props.user_id?'text-success':'text-danger'}>{game.winner_id===this.props.user_id? 'W': 'L'}</th>
             <td><button className="btn btn-sm btn-info" onClick={()=>this.setModalData(game)}>{game.game_mode}</button></td>
             <td>{game.game_stats.time_elapsed===0? ">1 min": game.game_stats.time_elapsed + " min"}</td>
