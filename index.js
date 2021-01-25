@@ -10,8 +10,7 @@ const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer, {
 	cors: {
 		origin: "*"
-	},
-	transports: ['websocket']
+	}
 });
 
 // connect to the database
