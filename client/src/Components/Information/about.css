@@ -1,0 +1,11 @@
+.info-section{
+    margin: auto;
+    overflow-y: auto;
+    display: block;
+    float: center;
+    width: 70%;
+}
+
+.info-title{
+    text-align: center;
+}

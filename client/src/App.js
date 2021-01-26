@@ -10,6 +10,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from 'react-loader-spinner'
 import Navigation from "./Components/Navigation/Navigation";
+import About from "./Components/Information/About";
 
 toast.configure();
 
@@ -74,6 +75,7 @@ export class App extends React.Component {
               <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
               <Route path="/lobby" render={props => this.state.isAuthenticated? <><Navigation  /><Lobby {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login"/>} />
               <Route path="/summary" render={props => this.state.isAuthenticated? <><Navigation  /><Summary {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
+              <Route path="/about" render={props => this.state.isAuthenticated? <><Navigation  /><About {...props} /></>:<Redirect to="/login" />} />
               <Route path="/test" render={props => this.state.isAuthenticated? <h3>AUTHENTICATED</h3>:<h3>NOT AUTHENTICATED</h3>} />
               <Route path="/" exact render={props => <Redirect to="/dashboard" />} />
             </Switch>

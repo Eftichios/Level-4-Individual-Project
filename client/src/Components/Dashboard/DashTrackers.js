@@ -95,7 +95,7 @@ export class DashTrackers extends React.Component {
             </div>
         </div>
 
-        this.setState({modal_title: "Tracker Info",tracker_info: temp_tracker_info, showAll: false})
+        this.setState({modal_title: "Trackers",tracker_info: temp_tracker_info, showAll: false})
     }
 
     resetModalData(){
