@@ -24,7 +24,7 @@ export class DashSettings extends React.Component {
             e.preventDefault();
 
             try {
-              const response = await fetch(`http://localhost:5000/api/users/${this.props.user_id}`, {
+              const response = await fetch(`api/users/${this.props.user_id}`, {
                 method:"PUT",
                 headers: {token: localStorage.token, "Content-Type": "application/json"},
                 body: JSON.stringify({"old_pass": this.state.old_pass, "new_pass": this.state.new_pass, "user_id": this.props.user_id})
