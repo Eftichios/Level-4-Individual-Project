@@ -22,7 +22,8 @@ export class App extends React.Component {
     this.state = {
       isAuthenticated: true,
       isLoading: true,
-      user_id: null
+      user_id: null,
+      owns_plugin: true
     }
     
     this.setAuth = (token_exists) => {
@@ -31,6 +32,10 @@ export class App extends React.Component {
 
     this.setUserId = (u_id) => {
       this.setState({user_id: u_id});
+    }
+
+    this.setOwnsPlugin = (owns_plugin)=> {
+      this.setState({owns_plugin: owns_plugin});
     }
   }
 
@@ -70,9 +75,9 @@ export class App extends React.Component {
           <Router>
           
             <Switch>
-              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setUserId={this.setUserId} setAuth={this.setAuth}/>:<Redirect to="/login" />} />
+              <Route path="/register" render={props => !this.state.isAuthenticated? <Register  {...props} setOwnsPlugin={this.setOwnsPlugin} setUserId={this.setUserId} setAuth={this.setAuth}/>:<Redirect to="/login" />} />
               <Route path="/login" render={props => !this.state.isAuthenticated? <Login {...props} setUserId={this.setUserId} setAuth={this.setAuth} /> : <Redirect to="/dashboard" />} />
-              <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
+              <Route path="/dashboard" render={props => this.state.isAuthenticated? <><Navigation  /><Dashboard {...props} owns_plugin={this.state.owns_plugin} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
               <Route path="/lobby" render={props => this.state.isAuthenticated? <><Navigation  /><Lobby {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login"/>} />
               <Route path="/summary" render={props => this.state.isAuthenticated? <><Navigation  /><Summary {...props} setAuth={this.setAuth} user_id={this.state.user_id} /></>:<Redirect to="/login" />} />
               <Route path="/about" render={props => this.state.isAuthenticated? <><Navigation  /><About {...props} /></>:<Redirect to="/login" />} />
