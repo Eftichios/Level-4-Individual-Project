@@ -33,18 +33,40 @@ async function getByName(req, res) {
 }
 
 async function update(req, res) {
-    const user_id = getIdParam(req); 
+    const param_user_id = getIdParam(req); 
+    const {old_pass, new_pass, user_id} = req.body;
 
     // check if body user id is same as param id 
-    if (req.body.id === user_id) {
+    if (param_user_id === user_id) {
+        
+        // get the user form the db
+        var user = await models.user.findOne({where: {user_id: user_id}});
+        if (!user){
+            res.status(404).json({success: false, msg: "No user found with the given id"});
+            return;
+        }
+
+        if (!schema.validate(new_pass)){
+            res.status(400).json({success: false, msg: "Password should be at least 6 characters long."});
+            return
+        }
+
+        var hash_pass = user.user_password;
+
+        const match = await bcrypt.compare(old_pass, hash_pass);
+        if (!match){
+            res.status(400).json({success: false, msg: "Old password does not match user's password."})
+            return
+        }
+        
         // Bcrypt the password
         const salt_rounds = 10;
         const salt = await bcrypt.genSalt(salt_rounds);
-        const bcrypt_password = await bcrypt.hash(req.body.password, salt);
+        const bcrypt_password = await bcrypt.hash(new_pass, salt);
         await models.user.update({user_password: bcrypt_password}, {where: {user_id: user_id}});
-        res.status(200).json("Password changed succesfully.")
+        res.status(200).json({success: true, msg: "Password changed succesfully."})
     } else {
-        res.status(400).json(`Bad request: param ID (${user_id}) does not match body ID (${req.body.id}).`)
+        res.status(400).json({success: false, msg: `Bad request: param ID (${user_id}) does not match body ID (${req.body.id}).`})
     }
 }
 
