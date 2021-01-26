@@ -73,12 +73,12 @@ export class DashLead extends React.Component {
                         {this.state.players?"":<h3>Loading...</h3>}
                         </div>
                     <div className="modal-footer">
-                        <div className="input-group not-full">
+                        {/* <div className="input-group not-full">
                             <input type="text" className="form-control" placeholder="Search Player" aria-label="Recipient's username" aria-describedby="basic-addon2" />
                             <div className="input-group-append">
                                 <button className="btn btn-primary" type="button">Search</button>
                             </div>
-                        </div>
+                        </div> */}
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                     </div>
