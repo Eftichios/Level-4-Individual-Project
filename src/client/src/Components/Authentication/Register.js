@@ -12,11 +12,12 @@ export class Register extends React.Component {
           name: "",
           password: "",
           confirm_password: "",
-          owns_plugin: true
+          owns_plugin: "true"
         }
         
         this.setAuth = props.setAuth;
         this.setUserId = props.setUserId;
+        this.setOwnsPlugin = props.setOwnsPlugin;
     }
 
     onChange = e => {
@@ -37,9 +38,11 @@ export class Register extends React.Component {
         
         if (parseRes.token){
           localStorage.setItem("token", parseRes.token);
+          this.setOwnsPlugin(this.state.owns_plugin==="true"?true:false);
           this.setUserId(parseRes.user_id);
           this.setAuth(true)
           toast.success("Registered succesfully!")
+          
         } else {
           this.setAuth(false)
           toast.error(parseRes);

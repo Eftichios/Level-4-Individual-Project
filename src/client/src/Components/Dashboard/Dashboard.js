@@ -52,6 +52,7 @@ export class Dashboard extends React.Component {
 
     render(){
         return <Fragment>
+            {!this.props.owns_plugin?<div className="text-secondary">You have indicated that you do not own the extension. Click <a href="https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing">here</a> for instructions on setting everything up.</div>:""}
             <div className="row">
                 <div className="col-md-6">
                     <DashPlay name={this.state.name} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
