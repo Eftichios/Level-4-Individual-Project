@@ -57,7 +57,7 @@ export class Dashboard extends React.Component {
                     <DashPlay name={this.state.name} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
-                    <DashSettings name={this.state.name} setAuth={this.setAuth}></DashSettings>
+                    <DashSettings user_id={this.props.user_id} name={this.state.name} setAuth={this.setAuth}></DashSettings>
                 </div>
             </div>
             <hr />
