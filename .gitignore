@@ -4,3 +4,6 @@ Domains
 .env
 dummy_data.sql
 package-lock.json
+express/routes/logs/client_log.log
+express/routes/logs/extension_log.log
+express/routes/logs/server_log.log
