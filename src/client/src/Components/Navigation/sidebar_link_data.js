@@ -10,16 +10,22 @@ export const sidebar_data = [
         cName: 'nav-text'
     },
     {
-        title: 'Lobby',
-        path: '/lobby',
-        icon: <MdIcons.MdGroupWork />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Summary',
-        path: '/summary',
-        icon: <BiIcons.BiStats />,
+        title: 'About',
+        path: '/about',
+        icon: <MdIcons.MdInfo />,
         cName: 'nav-text'
     }
+    // {
+    //     title: 'Lobby',
+    //     path: '/lobby',
+    //     icon: <MdIcons.MdGroupWork />,
+    //     cName: 'nav-text'
+    // },
+    // {
+    //     title: 'Summary',
+    //     path: '/summary',
+    //     icon: <BiIcons.BiStats />,
+    //     cName: 'nav-text'
+    // }
 ];
 
