@@ -89,6 +89,10 @@
   * Create instructions for users
   * Deploy the web app
 * **Week 15**
+  * Continue writing unit tests
+  * With the app deployed, have some people play the game
+  * Refinements and last attempt to implement category mode
+  * Add more achievements?
 * **Week 16**
 * **Week 17**
 * **Week 19**
