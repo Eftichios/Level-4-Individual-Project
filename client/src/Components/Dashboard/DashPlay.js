@@ -79,15 +79,15 @@ export class DashPlay extends React.Component {
         }     
     }
 
-    setGameMode = ()=>{
+    // setGameMode = ()=>{
         
-        if (this.state.game_mode === "Race"){
-            this.setState({game_mode: "Category"})
-        } else {
-            this.setState({game_mode: "Race"})
-        }
-        logger.log("info",`User switched game mode for ${this.state.game_mode}`, this.props.name)
-    }
+    //     if (this.state.game_mode === "Race"){
+    //         this.setState({game_mode: "Category"})
+    //     } else {
+    //         this.setState({game_mode: "Race"})
+    //     }
+    //     logger.log("info",`User switched game mode for ${this.state.game_mode}`, this.props.name)
+    // }
 
     render(){
         if (this.state.lobby){
@@ -101,8 +101,8 @@ export class DashPlay extends React.Component {
                     <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
-                <div className="p-1"><button onClick={this.setGameMode} className="constSize btn btn-secondary" >
-                <FontAwesomeIcon className="mr-1" icon={faChevronLeft} /><small>Game Mode:</small> {this.state.game_mode}<FontAwesomeIcon className="ml-1" icon={faChevronRight} />
+                <div className="p-1"><button className="constSize btn btn-secondary" >
+                <small>Game Mode:</small> {this.state.game_mode}
                     </button></div>
                </div>
     }

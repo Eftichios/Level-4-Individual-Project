@@ -87,7 +87,7 @@ export class DashSettings extends React.Component {
                 <div className="p-1"><h3>Settings</h3></div>
                 <div className="p-1"><button onClick={(e)=>this.logout(e)} className="constSize btn btn-primary">Logout</button></div>
                 <div className="p-1"><button className="constSize btn btn-secondary" data-toggle="modal" data-target="#changePassword">Change Password</button></div>
-                <div className="p-1"><button className="constSize btn btn-danger">Delete Account</button></div>
+                {/* <div className="p-1"><button className="constSize btn btn-danger">Delete Account</button></div> */}
                 </div>
     }
 

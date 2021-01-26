@@ -62,7 +62,7 @@ export class DashMetrics extends React.Component {
                     <FontAwesomeIcon title={`Race: ${this.state.games_played['Race']} | Category: ${this.state.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
                     </p>
                     <DashTrackers user_id={this.props.user_id}></DashTrackers>
-                    <div className="chart align-items-center">
+                    {/* <div className="chart align-items-center">
                         <h5>Ad categories seen</h5>
                         <Chart
                             width={'30vh'}
@@ -77,7 +77,7 @@ export class DashMetrics extends React.Component {
                             }}
                             rootProps={{ 'data-testid': '1' }}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="col-md-6 text-center ">
