@@ -57,12 +57,12 @@
 }
 
 .game-details {
-    font-size: large;
+    font-size: medium;
     
 }
 
 .player-table {
-    font-size: larger;
+    font-size: medium;
 }
 
 .lobby-profile {
@@ -80,5 +80,5 @@
 }
 
 .push-down {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }

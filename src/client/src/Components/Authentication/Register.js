@@ -12,7 +12,8 @@ export class Register extends React.Component {
           name: "",
           password: "",
           confirm_password: "",
-          owns_plugin: "true"
+          owns_plugin: "true",
+          loading: false
         }
         
         this.setAuth = props.setAuth;
@@ -28,6 +29,7 @@ export class Register extends React.Component {
       e.preventDefault();
       
       try {
+        this.setState({loading: true});
         const response = await fetch("http://localhost:5000/api/auth/register", {
           method:"POST",
           headers: {"Content-Type": "application/json"},
@@ -35,7 +37,7 @@ export class Register extends React.Component {
         });
 
         const parseRes = await response.json();
-        
+        this.setState({loading: false});
         if (parseRes.token){
           localStorage.setItem("token", parseRes.token);
           this.setOwnsPlugin(this.state.owns_plugin==="true"?true:false);
@@ -81,7 +83,7 @@ export class Register extends React.Component {
               </select>
             </div>
             <div className="text-center">
-              <button value="submit" className="constSize btn btn-primary">Register</button>
+              <button disabled = {this.state.loading} value="submit" className="constSize btn btn-primary">{this.state.loading?"Registering...":"Register"}</button>
               <Link to="/login"><button className="constSize btn orange">Login</button></Link>
             </div>
           </form>   
