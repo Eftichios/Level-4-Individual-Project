@@ -14,7 +14,7 @@ export class Dashboard extends React.Component {
         
         this.state = {
             name: this.props.location.state? this.props.location.state.user_name:"",
-            rank: 4,
+            rank: null,
             from_summary: this.props.location.state?this.props.location.state.game_mode:null
         }
 
@@ -31,6 +31,27 @@ export class Dashboard extends React.Component {
         
     }
 
+    getAndRankPlayer = async () =>{
+        try {
+            var response = await fetch("http://localhost:5000/api/userMetrics", {
+                method: "GET",
+                headers: {"Content-Type": "application/json"},
+            });
+
+            var parseRes = await response.json();
+            this.rankPlayer(parseRes);
+        } catch (err){
+            toast.error("Failed to retrieve players.");
+        }
+    }
+
+    rankPlayer(players){
+        var temp_sorted = players.sort((a,b) => b.user_metric.tracker_count - a.user_metric.tracker_count);
+        var temp_rank = temp_sorted.findIndex(player => player.user_name === this.state.name);
+        console.log(temp_rank)
+        this.setState({rank: temp_rank+1})
+    }
+
     getUserProfile = async ()=> {
         try {
 
@@ -41,7 +62,9 @@ export class Dashboard extends React.Component {
 
             const parseRes = await response.json();
 
-            this.setState({name: parseRes.user_name})
+            await this.setState({name: parseRes.user_name})
+
+            this.getAndRankPlayer();
 
         } catch (err){
             toast.error("Failed to retrieve user details");
@@ -55,7 +78,7 @@ export class Dashboard extends React.Component {
             {!this.props.owns_plugin?<div className="text-secondary">You have indicated that you do not own the extension. Click <a href="https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing">here</a> for instructions on setting everything up.</div>:""}
             <div className="row">
                 <div className="col-md-6">
-                    <DashPlay name={this.state.name} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
+                    <DashPlay name={this.state.name} rank={this.state.rank} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
                     <DashSettings user_id={this.props.user_id} name={this.state.name} setAuth={this.setAuth}></DashSettings>
