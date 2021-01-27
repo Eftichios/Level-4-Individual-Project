@@ -33,10 +33,6 @@ export class DashPlay extends React.Component {
             socket.on('connect', ()=>{
                 console.log('Connected to server')
             });
-            socket.on('clientGameOver', (data)=>{
-                this.setState({status: "Not in game", showStopButton: false});
-                this.setState({game_state: data});
-            })
         }
         
 
@@ -98,7 +94,7 @@ export class DashPlay extends React.Component {
                 <div className="p-1">Player: {this.props.name}</div>
                 <div className="p-1">Rank: {this.state.rank}</div>
                 <div className="p-1">
-                    <button onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
+                    <button disabled={!this.props.user_id} onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
                 </div>
                 <div className="p-1"><DashLead user="George"></DashLead></div>
                 <div className="p-1"><button className="constSize btn btn-secondary" >

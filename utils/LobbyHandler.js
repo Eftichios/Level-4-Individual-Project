@@ -41,6 +41,14 @@ class LobbyHandler{
             };
         }
     }
+
+    clearEmptyLobbies(){
+        for (var i in this.lobbies){
+            if (this.lobbies[i].length === 0){
+                this.lobbies.splice(i,1);
+            }
+        }
+    }
 }
 
 module.exports = LobbyHandler;
