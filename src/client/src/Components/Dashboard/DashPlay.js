@@ -16,7 +16,6 @@ export class DashPlay extends React.Component {
         super(props);
 
         this.state = {
-            rank: 0,
             lobby: null,
             game_mode: "Race",
             finding_game: false
@@ -34,9 +33,6 @@ export class DashPlay extends React.Component {
                 console.log('Connected to server')
             });
         }
-        
-
-        this.getUserRank(props.name)
     }
 
     componentDidMount(){
@@ -44,11 +40,6 @@ export class DashPlay extends React.Component {
             this.setState({game_mode: this.props.from_summary})
             this.findGame(this.props.user_id, this.props.name)
         }
-    }
-
-    getUserRank = async (user_name) =>{
-        // in the future use props.score to calculate ranks
-        this.state.rank = 5
     }
 
     findGame = async (user_id, user_name) => {
@@ -92,7 +83,7 @@ export class DashPlay extends React.Component {
         return <div className="d-flex flex-column align-items-center">
                 <div className="p-1"><img className="profile" src={profile} alt="Profile" /></div>
                 <div className="p-1">Player: {this.props.name}</div>
-                <div className="p-1">Rank: {this.state.rank}</div>
+                <div className="p-1">Rank: {this.props.rank}</div>
                 <div className="p-1">
                     <button disabled={!this.props.user_id} onClick={()=>this.findGame(this.props.user_id, this.props.name)} className="constSize btn btn-primary">{this.state.finding_game?"Searching for game...":"Find Game"}</button>
                 </div>
