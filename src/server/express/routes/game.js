@@ -56,7 +56,7 @@ _reset_client_socket_listeners = (socket) =>{
 }
 
 _reset_ext_socket_listeners = (ext_socket) =>{
-    const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory"]
+    const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory", "extensionError"]
     for (var i in listeners){
         ext_socket.removeAllListeners(listeners[i])
     }
@@ -136,9 +136,12 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         if (player_game_state.game_state==="Category"){
             _build_category_game_history(io, lobby)
         }
+    });
 
-        
-        
+    socket.on('extensionError', (error_data)=>{
+        if (socket.user_name === error_data.player){
+            io.to(lobby.room).emit("ext_error", socket.user_name);
+        }
     });
 
     socket.on("extServerUserLeft", (user_name)=>{
@@ -190,15 +193,22 @@ async function findGame(req, res){
         
 
     var socket = io.sockets.sockets.get(socketId);
-    lobby.addPlayer(socket.id, user_name, user_id);
-    await _setClientSocketConnections(io, lobby, socket);
+    if (socket){
+        lobby.addPlayer(socket.id, user_name, user_id);
+        await _setClientSocketConnections(io, lobby, socket);
+            
+            
+        // notify all sockets that a user has joined the lobby
+        io.to(lobby.room).emit("userJoinedRoom", lobby);
+        io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${lobby.playerIds[user_id]["name"]} has joined the lobby`, date: new Date()});
+    
+        res.status(200).json({'success':true, 'lobby':lobby});
+    } else {
         
-        
-    // notify all sockets that a user has joined the lobby
-    io.to(lobby.room).emit("userJoinedRoom", lobby);
-    io.to(lobby.room).emit("chatMessage", {user_name: "lobby", message: `${lobby.playerIds[user_id]["name"]} has joined the lobby`, date: new Date()});
-
-    res.status(200).json({'success':true, 'lobby':lobby});
+        res.status(400).json("Unable to find game at this time. Try refreshing the page and trying again.");
+    }
+    lobbyHandler.clearEmptyLobbies();
+    
 }
 
 async function startGame(req, res){

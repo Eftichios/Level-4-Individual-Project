@@ -29,7 +29,7 @@ export class Lobby extends React.Component {
             temp_winner: null,
             msgData: [],
             msgs: null,
-            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage", "$allReady", "$gameStarted"],
+            listeners: ["$userJoinedRoom","$userLeft","$gameFinished","$chatMessage", "$allReady", "$gameStarted", "$ext_error"],
             user_refreshed: false,
             user_left: false,
             status_msg: this.status_msg_data["ready"][0],
@@ -39,7 +39,8 @@ export class Lobby extends React.Component {
             game_finished: false,
             game_state: null,
             player_metrics: null,
-            timer: 0
+            timer: 0,
+            error: null
         }   
         
         this.timerID = null;
@@ -159,6 +160,13 @@ export class Lobby extends React.Component {
                 this.timerID = setInterval(()=>this.advance_timer(), 1000)
                 
             })
+
+            socket.on("ext_error", (player)=>{
+                if (player===this.props.location.state.user_name){
+                    toast.error("You were kicked out of the lobby due to an error while playing.")
+                    this.setState({"error": true});
+                }
+            })
         }
 
     }
@@ -226,6 +234,9 @@ export class Lobby extends React.Component {
                 user_name: this.props.location.state.user_name, user_id: this.props.location.state.user_id, 
                 winner: this.state.temp_winner, msg_data: this.state.msgData, game_state: this.state.game_state,
                 player_metrics: this.state.player_metrics}}}></Redirect>
+        }
+        if (this.state.error){
+            return <Redirect to="/dashboard"></Redirect>
         }
 
         return <div className="lobby-padding">

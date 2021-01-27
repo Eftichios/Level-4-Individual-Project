@@ -164,6 +164,12 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
   });
 });
 
+chrome.storage.local.get('error', function(err_data){
+  if (err_data.error){
+    document.getElementById('status').innerHTML = "Something went wrong..."
+  }
+})
+
 // Every time a value changes in our storage we listen to it
 // We update the html accordingly
 // This enables real-time updating of player scores and other feedback
@@ -181,7 +187,9 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       }else if (key=="latestCategory"){
         document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.join(","):"None";
       }else if (key=="ownerName"){
-        document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`
+        document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`;
+      }else if (key=="error"){
+        document.getElementById('status').innerHTML = "Something went wrong...";
       }else if (key=="postGame"){
         if (storageChange.newValue){
           chrome.storage.local.get('winner', function(winnerData){

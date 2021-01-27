@@ -64,17 +64,24 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.tabs.onUpdated.addListener(function (tab_id){
     var id = tab_id.toString();
     chrome.tabs.get(tab_id, function(tab_details){
-      var domain = extractDomain(tab_details.url);
-      if (!domain){
-        domain = "other";
-      }
-      chrome.storage.local.get([id], function(data) {
-        if (data[id].url !== domain){
-          chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-            console.log("Updated tab url",id);
-          });
+      try{
+        var domain = extractDomain(tab_details.url);
+        if (!domain){
+          domain = "other";
         }
-      });
+        chrome.storage.local.get([id], function(data) {
+          if (data[id].url !== domain){
+            chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
+              console.log("Updated tab url",id);
+            });
+          }
+        });
+      } catch (err){
+        console.log(err.message);
+        chrome.storage.local.set({[id]: {'url':domain?domain:"other", 'trackers':0}}, function() {
+          console.log("Updated tab url",id);
+        });
+      }
        
     });   
   });
@@ -110,13 +117,17 @@ chrome.runtime.onInstalled.addListener(function() {
         }
       } else if (key=="winner"){
         if (storageChange.newValue){
-          console.log("hehehehehehehehehheeheheehbebhehehhehehhehhehhehhehehehhehehhehehhehhehhehehehehhehehhehehheheehehehheee")
           chrome.browserAction.setBadgeBackgroundColor({ color: "#007bff" });
           chrome.browserAction.setBadgeText({text: '(!)'});
         } else {
           chrome.browserAction.setBadgeText({text: ''});
         }
         
+      } else if (key=="error"){
+        chrome.storage.local.get("ownerName", function(owner_data){
+          socket.emit('extensionError', {player: owner_data.ownerName, error: storageChange.newValue});
+
+        })
       }
     }
   }); 

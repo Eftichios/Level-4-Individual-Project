@@ -30,6 +30,7 @@ socket.on('gameStartRace', async(game_state)=>{
     chrome.storage.local.set({'winner': null});
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'postGame': null});
+    chrome.storage.local.set({'error': null});
 });
 
 // listen to category game start event and set game state
@@ -41,6 +42,7 @@ socket.on('gameStartCategory', async(game_state)=>{
     chrome.storage.local.set({'winner': null});
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'postGame': null});
+    chrome.storage.local.set({'error': null});
 });
 
 // listen to updates to the game state from other players and update their score
@@ -48,14 +50,18 @@ socket.on('updateGameState', async(player_game_state) =>{
     var player_name = player_game_state.player;
     var new_game_state = player_game_state.game_state;
     chrome.storage.local.get('gameState', async function(gameData){
-        if (gameData.gameState && gameData.gameState.game_mode==="Race"){
-            gameData.gameState.players[player_name]["score"] = new_game_state.players[player_name]["score"];
-            gameData.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
-        } else {
-            gameData.gameState.players[player_name]["categories"] = new_game_state.players[player_name]["categories"];
+        try{
+            if (gameData.gameState && gameData.gameState.game_mode==="Race"){
+                gameData.gameState.players[player_name]["score"] = new_game_state.players[player_name]["score"];
+                gameData.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
+            } else {
+                gameData.gameState.players[player_name]["categories"] = new_game_state.players[player_name]["categories"];
+            }
+            
+            chrome.storage.local.set({'gameState': gameData.gameState});
+        } catch (err){
+            chrome.storage.local.set({'error': err.message})
         }
-        
-        chrome.storage.local.set({'gameState': gameData.gameState});
     });
 });
 
