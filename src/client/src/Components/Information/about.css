@@ -9,3 +9,11 @@
 .info-title{
     text-align: center;
 }
+
+.detail-hover:hover{
+    cursor: pointer;
+}
+
+.info-body{
+    text-align: start;
+}
