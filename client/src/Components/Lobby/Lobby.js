@@ -266,14 +266,14 @@ export class Lobby extends React.Component {
                 <div className="col-md-4">
                     <div className="float-right pr-5 d-flex flex-column align-items-center">
                         <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
-                        <div className="p-1 mb-4"><h3><strong>{this.props.location.state.user_name}</strong></h3></div>
-                        <div className="mb-4 d-flex flex-column align-items-center game-details">
+                        <div className="p-1 mb-1"><h5><strong>{this.props.location.state.user_name}</strong></h5></div>
+                        <div className="mb-1 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode}</div>
                             <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category:"}</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`${this.state.lobbyData.condition} Unique Ad Trackers`:`${this.state.lobbyData.condition}`}</div>
                         </div>
-                        <div className="p-1 mb-2"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
+                        <div className="p-1"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button onClick={()=>this.leaveLobby()}className="constSize btn orange">Leave</button></div>
                     </div>
                 </div>
@@ -281,7 +281,7 @@ export class Lobby extends React.Component {
             <div className="row d-flex flex-column align-items-center">
                 <LobbyChat room={this.state.lobbyData.room} msgs={this.state.msgs} user_name={this.props.location.state.user_name}></LobbyChat>
             </div>
-            <div className="text-center mb-4 mt-2">
+            <div className="text-center mb-1 mt-1">
                 <strong>{this.state.status_msg} {this.state.game_on?this.constructTime():""}</strong>
             </div>
             <div className="text-center">
