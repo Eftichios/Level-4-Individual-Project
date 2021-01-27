@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import {toast} from 'react-toastify';
 import Loader from 'react-loader-spinner';
+import InfoModal from '../Information/InfoModal';
 
 export class DashTrackers extends React.Component {
 
@@ -26,6 +27,11 @@ export class DashTrackers extends React.Component {
         }
 
         this.trackers_per_page = 500;
+        
+        this.infoTitle = "What do these trackers mean?"
+
+        this.infoBody = "These are domains of known third party trackers that collect information about the user while they are browsing the web. You can see which trackers have tracked you \
+        while playing the game by looking at the Found tab. In some cases we have further information on the trackers (indicated by the info circle next to the domain name)."
     }
 
     componentDidMount(){
@@ -135,7 +141,8 @@ export class DashTrackers extends React.Component {
                 <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="trackers">{this.state.modal_title}</h5>
+                        <h5 className="modal-title mr-2" id="trackers">{this.state.modal_title}</h5>
+                        <InfoModal who="trackerInfo" title={this.infoTitle} text={this.infoBody}></InfoModal>
                         <div className="page_switch text-center">
                             <button className={this.state.current_tab?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(true)}>Found</button>
                             <button className={this.state.current_tab===false?"btn btn-primary":"btn btn-secondary"} onClick={()=>this.switch_tab(false)}>Not Found</button>

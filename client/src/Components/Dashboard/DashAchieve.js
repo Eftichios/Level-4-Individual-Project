@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import logger from "../Utilities/logger";
 import {toast} from 'react-toastify';
+import InfoModal from '../Information/InfoModal';
 
 export class DashAchieve extends React.Component {
 
@@ -16,6 +17,11 @@ export class DashAchieve extends React.Component {
             achievements: null
         }
         this.getAchievements();
+
+        this.infoTitle = "Achievements information";
+
+        this.infoBody = "After each game, an achievement manager takes the gameplay metrics and checks if the player has passed the conditions to \
+        complete an achievement. The purpose of achievements is to increase the rewards a player gets while trying out the game.";
     }
     
     mapStatusColour(completed, progress){
@@ -99,7 +105,7 @@ export class DashAchieve extends React.Component {
 
     render(){
         return <div className="d-flex flex-column align-items-center">
-        <h3>Achievements</h3>
+        <div className="row"><h3 className="mr-2">Achievements</h3><InfoModal who="achieveInfo" title={this.infoTitle} text={this.infoBody}></InfoModal></div>
         <div className="table-responsive achieve-scrollbar">
             <table className="table table-borderless">
                 <thead>
