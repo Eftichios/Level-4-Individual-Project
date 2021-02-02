@@ -5,7 +5,6 @@ import Chart from "react-google-charts";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import DashGameHistory from './DashGameHistory';
-import category_map from "../Utilities/adCategories";
 import {toast} from 'react-toastify';
 import DashTrackers from './DashTrackers';
 
@@ -49,7 +48,7 @@ export class DashMetrics extends React.Component {
 
     buildGameMetrics(metrics){
         var cat_count = [["Category", "Ads delievered"]];
-        metrics.categories_count.forEach((count, index)=>cat_count.push([category_map[index],count]));
+        Object.keys(metrics.categories_count).forEach((key)=> cat_count.push([key,metrics.categories_count[key]]));
         this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
     }
 

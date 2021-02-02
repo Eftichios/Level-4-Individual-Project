@@ -11,6 +11,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'latestTracker': null});
     chrome.storage.local.set({'latestCategory': null});
     chrome.storage.local.set({"postGame": null});
+    chrome.storage.local.set({'adCount': 0});
   });
 
   // Enables the extension for all pages given in the pageUrl option
@@ -63,27 +64,26 @@ chrome.runtime.onInstalled.addListener(function() {
   // Listen to url changes in order to update url trackers
   chrome.tabs.onUpdated.addListener(function (tab_id){
     var id = tab_id.toString();
-    chrome.tabs.get(tab_id, function(tab_details){
-      try{
-        var domain = extractDomain(tab_details.url);
-        if (!domain){
-          domain = "other";
-        }
-        chrome.storage.local.get([id], function(data) {
-          if (data[id].url !== domain){
-            chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-              console.log("Updated tab url",id);
-            });
+    try{
+      chrome.tabs.get(tab_id, function(tab_details){
+          var domain = extractDomain(tab_details.url);
+          if (!domain){
+            domain = "other";
           }
-        });
-      } catch (err){
+          chrome.storage.local.get([id], function(data) {
+            if (data[id].url !== domain){
+              chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
+                console.log("Updated tab url",id);
+              });
+            }
+          });
+        })
+      }catch (err){
         console.log(err.message);
         chrome.storage.local.set({[id]: {'url':domain?domain:"other", 'trackers':0}}, function() {
           console.log("Updated tab url",id);
         });
-      }
-       
-    });   
+    }  
   });
 
   // listen to content script messages
@@ -123,7 +123,7 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.browserAction.setBadgeText({text: ''});
         }
         
-      } else if (key=="error"){
+      } else if (key=="error" && storageChange.newValue){
         chrome.storage.local.get("ownerName", function(owner_data){
           socket.emit('extensionError', {player: owner_data.ownerName, error: storageChange.newValue});
 

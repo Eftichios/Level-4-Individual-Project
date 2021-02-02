@@ -129,9 +129,13 @@ chrome.storage.local.get("latestTracker", function(trackerData){
     document.getElementById('latestTracker').innerHTML = trackerData.latestTracker? trackerData.latestTracker:"None"
 })
 
+chrome.storage.local.get("adCount", function(adCountData){
+  document.getElementById('adCount').innerHTML = adCountData.adCount;
+})
+
 chrome.storage.local.get("latestCategory", function(categoryData){
   console.log(categoryData)
-  document.getElementById('latestCategory').innerHTML = categoryData.latestCategory? categoryData.latestCategory.join(","):"None"
+  document.getElementById('latestCategory').innerHTML = categoryData.latestCategory? categoryData.latestCategory.categories.join(" | "):"None"
 })
 
 // check if a game was played and was finished and set winner
@@ -185,7 +189,9 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       }else if (key=="latestTracker"){
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="latestCategory"){
-        document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.join(","):"None";
+        document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.categories.join(" | "):"None";
+      }else if (key=="adCount"){
+        document.getElementById('adCount').innerHTML = storageChange.newValue;
       }else if (key=="ownerName"){
         document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`;
       }else if (key=="error"){

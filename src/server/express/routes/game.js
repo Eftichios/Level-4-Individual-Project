@@ -1,7 +1,7 @@
 const LobbyHandler = require('../../utils/LobbyHandler');
 const MetricsHandler = require('../../utils/MetricsHandler');
 const { getPlayerExtensionSockets, getIo } = require('../../extension_socket');
-const { create_from_server } = require('./game_history')
+const { create_race_from_server, create_category_from_server } = require('./game_history')
 const { getMinutesOfDates } = require('../../utils/helpers')
 
 var lobbyHandler = new LobbyHandler();
@@ -40,12 +40,31 @@ function _build_race_game_history(io, lobby, player_game_state){
     
     
     io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
-    create_from_server(game_history);
+    create_race_from_server(game_history);
 
 }
 
-function _build_category_game_history(io, lobby){
-    // io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
+function _build_category_game_history(io, lobby, player_game_state){
+    var winner_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player_game_state.player);
+    var player_data = {}
+    Object.keys(player_game_state.game_state.players).forEach((player)=>{
+        var player_id = Object.keys(lobby.playerIds).find(id => lobby.playerIds[id]["name"] == player);
+
+        // handle metrics
+        metricsHandler.handleCategoryMetrics(player_id, player, player_game_state.game_state.players[player], winner_id===player_id);
+        player_data[player] = {};
+        player_data[player]["categories"] = lobby.playerIds[player_id]["categories"];
+    })
+    
+    var game_history = {winner_id: winner_id, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
+        player_stats: player_data, 
+        game_stats: {time_elapsed: getMinutesOfDates(player_game_state.game_state.started_at, player_game_state.game_state.finished_at), 
+            win_condition: player_game_state.game_state.condition}, 
+        player_ids: Object.keys(lobby.playerIds)}
+    
+    
+    io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
+    create_category_from_server(game_history);
 }
 
 _reset_client_socket_listeners = (socket) =>{
@@ -133,8 +152,8 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
         // set the game state of the lobby so that we can build the game history
         lobby.game_state = player_game_state
 
-        if (player_game_state.game_state==="Category"){
-            _build_category_game_history(io, lobby)
+        if (player_game_state.game_state.game_mode==="Category"){
+            _build_category_game_history(io, lobby, player_game_state)
         }
     });
 

@@ -1,22 +1,6 @@
 const { models } = require('../../sequelize');
-const puppeteer = require('puppeteer');
-const randomUseragent = require('random-useragent');
 var url_parser = require('url');
-
-const {default: PQueue} = require('p-queue');
-// create a new queue that handles requests one by one 
-const queue = new PQueue({ concurrency: 1 });
-
-var browser;
-var page;
-
-open_browser = async ()=>{
-    browser = await puppeteer.launch({headless: false});
-    page = await browser.newPage();
-    await page.setUserAgent(randomUseragent.getRandom().toString());
-}
-
-// open_browser();
+var sa = require('superagent');
 
 search_in_database = async(url)=>{
     var ad_entry = await models.ad_category.findOne({where: {ad_url: url}});
@@ -31,63 +15,39 @@ store_in_database = async(url, categories)=>{
     await models.ad_category.create({"ad_url":url,"categories":categories})
 }
 
-async function queueRequests(ad_url) {
-    return queue.add(() => extract_categories(ad_url));
-}
 
 var extract_domain = (url) => {
     return url_parser.parse(url).hostname || url
 }
 
-var extract_categories = async (url) => {
-    var cached_categories = await search_in_database(url);
-    if (cached_categories){
-        return cached_categories
+async function queryCategories(url){
+    var categories = await search_in_database(url);
+    if (categories){
+        return categories;
     }
-    try {
-      await page.goto("https://website-categorization.whoisxmlapi.com/api", 
-      { waitUntil: ['load','domcontentloaded','networkidle0','networkidle2'] });
-      
-      await page.focus('input[name=search]');
-      await page.keyboard.down('Control');
-      await page.keyboard.press('A');
-      await page.keyboard.up('Control');
-      await page.keyboard.press('Backspace');
-      await page.keyboard.type(url)
-      await page.click('button[type=submit]');
-      
-      await page.waitForTimeout(2000)
-  
-      await page.click('div[class=sweet-action-close]');
-      
-      
-    } catch (err){
-    //   console.log(err.message);
-    } finally {
-    //   await page.waitForSelector('div[class=categories]');
-      let categories = await page.evaluate(()=> {
-        var el_html_collection = document.getElementsByClassName('category'); 
-        var el_array = [].slice.call(el_html_collection);
-  
-        let parsed = []
-        for (i in el_array){
-          parsed.push(el_array[i].innerText)
+
+    // make api request
+    try{
+        var res = await sa.get(`https://website-categorization.whoisxmlapi.com/api/v1?apiKey=at_ur6J5OfOyx7VU1A1SAeKlgwKFA7zx&domainName=${url}`)
+        console.log(res.body.categories);
+        if (res.body.categories.length > 0){
+            categories = res.body.categories;
+        } else {
+            categories = ["No Category"];
         }
-        return parsed;
-      });
-      
-      categories = categories.length>0?categories:["No Category"]
-      await store_in_database(url, categories);
-      return categories
+        await store_in_database(url, categories);
+        return categories;
+    } catch (err){
+        console.log(err.message, url)
+        return ["No Category"];
     }
-  
+
 }
 
 async function category(req, res){
     var ad_url = extract_domain(req.body.ad_url);
     if (ad_url.length < 250){
-        var categories = await queueRequests(ad_url);
-        console.log(categories)
+        var categories = await queryCategories(ad_url);
         res.status(200).json(categories);
     }else{
         res.status(200).json(["No Category"]);

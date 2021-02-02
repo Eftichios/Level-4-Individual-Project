@@ -82,6 +82,7 @@ socket.on('winnerFound', async(player_game_state)=>{
         chrome.storage.local.set({'gameState': null});   
         chrome.storage.local.set({'latestTracker': null});
         chrome.storage.local.set({'latestCategory': null});
+        chrome.storage.local.set({'adCount': 0});
     });
     chrome.storage.local.get('ownerName', async function(data){
         chrome.storage.local.get('page_history', async function(historyData){
