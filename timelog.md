@@ -440,6 +440,8 @@
 * *2 hours* Adding ready/leave functionality to lobby as well as status message
 * *2 hours* Moving players into the summary page post-game
 
+## Week 14
+
 ### 18 Jan 2021
 * *1 hour* Fixed server errors when playing consecutive games
 * *1 hour* Front-end improvements
@@ -466,5 +468,44 @@
 ### 23 Jan 2021
 * *2.5 hours* Refining and refactoring trackers list 
 * *0.5 hour* Player's metrics now get updated after games (race mode)
+
+### 24 Jan 2021
+* *2 hours* Building achievements system
+* *4 hours* Deploying the web app
+
+## Week 15
+
+### 25 Jan 2021
+* *5 hours* Fixing errors and bugs in deployed app
+
+### 26 Jan 2021
+* *1 hour* Adding missing functionality
+* *1.5 hours* About page and instructions on setting up the game
+
+### 27 Jan 2021
+* *1 hour* Error handling in the extension
+* *1 hour* UI refinements and player rank functionality
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 28 Jan 2021
+* No progress today
+
+### 29 Jan 2021
+* *0.5 hour* Trying to reproduce socket bug on deployed app (no sucess)
+* *1 hour* Editing and adding information on the github wiki
+
+### 30 Jan 2021
+* *1 hour* Dissertation writing
+
+### 31 Jan 2021
+* *1 hour* Looking at unit testing with jest
+
+## Week 16
+
+### 01 Feb 2021
+* *1 hour* Manually testing gameplay with multiple lobbies active at the same time
+* *1.5 hours* Setting up the category game mode
+
 
 
