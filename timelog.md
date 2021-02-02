@@ -507,5 +507,10 @@
 * *1 hour* Manually testing gameplay with multiple lobbies active at the same time
 * *1.5 hours* Setting up the category game mode
 
+### 02 Feb 2021
+* *3 hours* Setting up the category game mode
+* *0.5 hour* Gameplay walkthrough with one other player
+
+
 
 
