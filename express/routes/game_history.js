@@ -17,12 +17,17 @@ async function create(req, res) {
     res.status(201).json(true);
 }
 
-async function create_from_server(game_history){
+async function create_race_from_server(game_history){
+    await models.game_history.create(game_history);
+}
+
+async function create_category_from_server(game_history){
     await models.game_history.create(game_history);
 }
 
 module.exports = {
     getById,
     create,
-    create_from_server
+    create_race_from_server,
+    create_category_from_server
 }

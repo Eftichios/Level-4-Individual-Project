@@ -31,7 +31,11 @@ export class Summary extends React.Component {
 
     componentDidMount(){
         if (this.props.location.state){
-            this.build_game_metrics();
+            if (this.props.location.state.game_state.game_mode === "Race"){
+                this.build_race_game_metrics();
+            } else {
+                this.build_category_game_metrics();
+            }
             // detect when user closes the tab/browser
             window.addEventListener('beforeunload', this.onUnload);
             window.addEventListener('unload', this.leavingPage);
@@ -93,7 +97,7 @@ export class Summary extends React.Component {
         }
     }
 
-    build_game_metrics(){
+    build_race_game_metrics(){
         var players_sorted = Object.entries(this.props.location.state.game_state.players).sort((a,b)=>{return b[1]["score"]-a[1]["score"]});
         var game_metrics = players_sorted.map((player, index)=>
             <tr key={index}>
@@ -104,6 +108,36 @@ export class Summary extends React.Component {
         )
         this.build_page_history(this.props.location.state.user_name);
         this.setState({game_metrics: game_metrics});  
+    }
+
+    build_category_game_metrics(){
+        var players_sorted = Object.entries(this.props.location.state.game_state.players).sort((a,b)=>{return b[1]["categories"].length-a[1]["categories"].length});
+
+        var game_metrics = players_sorted.map((player, index)=>
+            <tr key={index}>
+                <td>{index+1}</td>
+                <td><a href="" className="page-history-toggle" onClick={()=>this.build_category_history(player[0])}>{player[0]}</a></td>
+                <td>{player[1]["categories"].length}</td>
+            </tr>)
+        
+        this.build_category_history(this.props.location.state.user_name);
+        this.setState({game_metrics: game_metrics});
+    }
+
+    build_category_history(user_name){
+        console.log(this.props.location.state)
+        var temp_cat_count = this.props.location.state.game_state.players[user_name]["categories"].reduce((total, cat)=>{
+            total[cat] = (total[cat] || 0) + 1;
+            return total;
+        },{})
+
+        var category_history = Object.entries(temp_cat_count).map((key,index)=>
+            <tr key={index}>
+                <td>{key[0]}</td>
+                <td>{key[1]}</td>
+            </tr>
+        )
+        this.setState({user_category_history: category_history});
     }
 
     setModalContent(trackers){
@@ -155,7 +189,7 @@ export class Summary extends React.Component {
                                 <tr>
                                     <th>#</th>
                                     <th>Player</th>
-                                    <th>Score</th>
+                                    <th>{this.state.lobbyData.game_mode==="Race"?"Score":"Categories Found"}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -165,17 +199,17 @@ export class Summary extends React.Component {
                     </div>
                 </div>
                 <div className="text-center col-md-4">
-                <h5><strong>Page History</strong></h5>
+                <h5><strong>{this.state.lobbyData.game_mode==="Race"?"Page History":"Categories Count"}</strong></h5>
                 <div className="table-wrapper-scroll-y scrollbar">
                     <table className="player-table table table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col">Page</th>
-                            <th scope="col">Tracker Count</th>
+                        <th scope="col">{this.state.lobbyData.game_mode==="Race"?"Page":"Category"}</th>
+                            <th scope="col">{this.state.lobbyData.game_mode==="Race"?"Tracker Count":"Count"}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.user_page_history}
+                    {this.state.lobbyData.game_mode==="Race"?this.state.user_page_history:this.state.user_category_history}
                     </tbody>
                     </table>
                 </div>
@@ -188,7 +222,7 @@ export class Summary extends React.Component {
                             <div className="p-1">Game Mode:</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode}</div>
                             <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category"}</div>
-                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?this.props.location.state.game_state.condition + " Ad Trackers":this.state.lobbyData.category}</div>
+                            <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?this.props.location.state.game_state.condition + " Ad Trackers":this.state.lobbyData.condition}</div>
                         </div>
                         <div className="p-1"><button onClick={()=>this.set_play_again()} className="constSize btn orange">Play Again</button></div>
                     </div>

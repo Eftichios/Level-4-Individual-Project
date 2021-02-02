@@ -79,6 +79,10 @@ class AchievementManager{
         await this.checkGamesPlayed(user_id, games_played_update, achievements, "Race");
         await this.checkGamesWon(user_id, is_winner, achievements, "Race");
     }
+
+    async checkForCategoryAchievements(user_id, cat_count, games_played_update, is_winner){
+        return
+    }
 }
 
 module.exports = AchievementManager

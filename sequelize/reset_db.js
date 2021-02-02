@@ -1,7 +1,7 @@
 const blocked_domains = require("./data/blocked.js");
 const tracker_data = require("./data/trackerDataInfo");
 const sequelize = require('./index.js');
-const {getMinutesOfDates} = require('../utils/helpers');
+const {getMinutesOfDates, getCategoryMap} = require('../utils/helpers');
 const bcrypt = require('bcrypt');
 const achievements = require('../utils/achievementData');
 
@@ -16,6 +16,16 @@ function createTrackerJson(){
         
     })
     return trackers
+}
+
+function createCategories(){
+    var cat_labels = getCategoryMap();
+    var cat_count = {}
+    cat_labels.forEach((cat)=>{
+        cat_count[cat] = 0
+    })
+
+    return cat_count
 }
 
 
@@ -59,14 +69,16 @@ async function reset() {
     // populates achievements table
     var achievements_db = await sequelize.models.achievement.bulkCreate(achievements, {returning:true});
 
+    var cat_count = createCategories();
+
     // populates user_metric table
     await sequelize.models.user_metric.bulkCreate([
-        { user_id: 1, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
-        { user_id: 2, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
-        { user_id: 3, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
-        { user_id: 4, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
-        { user_id: 5, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
-        { user_id: 6, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 1, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 2, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 3, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 4, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 5, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
+        { user_id: 6, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:0},
     ]);
 
     // populates user_achievements table
