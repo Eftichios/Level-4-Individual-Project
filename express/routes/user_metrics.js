@@ -34,8 +34,26 @@ async function getTrackerList(req, res){
     }
 }
 
+async function search(req, res){
+    const search_query = req.body.user
+    if (search_query){
+        var user_metrics = await models.user.findAll({attributes: ['user_name'], include: [{model: models.user_metric, attributes: ["tracker_count"]}], where:{user_name: {
+            [Op.like]: '%' + search_query + '%'
+        }}});
+    } else {
+        var user_metrics = await models.user.findAll({attributes: ['user_name'], include: [{model: models.user_metric, attributes: ["tracker_count"]}]});
+    }
+    
+    if (user_metrics){
+        res.status(200).json(user_metrics)
+    } else {
+        res.status(404).json(null)
+    }
+}
+
 module.exports = {
     getById,
     getAll,
-    getTrackerList
+    getTrackerList,
+    search
 }

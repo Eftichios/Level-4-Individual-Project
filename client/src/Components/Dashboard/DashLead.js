@@ -10,9 +10,35 @@ export class DashLead extends React.Component {
 
         this.state = {
             user: props,
-            players: null
+            players: null,
+            search_query: ""
         }
     }
+
+    onChange = e => {
+        this.setState({[e.target.name]: e.target.value});
+    };
+
+    onSubmitForm = async (e) => {
+        e.preventDefault();
+        
+        try {
+          const response = await fetch(`http://localhost:5000/api/userMetrics/search`, {
+            method:"POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({user: this.state.search_query})
+          });
+  
+          const parseRes = await response.json();
+          if (parseRes){
+            this.sortAndBuildPlayers(parseRes);   
+          } 
+
+        } catch (err){
+          console.error(err.message)
+        }
+        
+      }
 
     getAndSortPlayers = async () =>{
         try {
@@ -73,12 +99,12 @@ export class DashLead extends React.Component {
                         {this.state.players?"":<h3>Loading...</h3>}
                         </div>
                     <div className="modal-footer">
-                        {/* <div className="input-group not-full">
-                            <input type="text" className="form-control" placeholder="Search Player" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <div className="input-group not-full">
+                            <input name="search_query" type="text" className="form-control" placeholder="Search Player" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={(e)=>this.onChange(e)}/>
                             <div className="input-group-append">
-                                <button className="btn btn-primary" type="button">Search</button>
+                                <button onClick={(e)=>this.onSubmitForm(e)} className="btn btn-primary" type="button">Search</button>
                             </div>
-                        </div> */}
+                        </div>
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                     </div>
