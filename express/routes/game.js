@@ -32,7 +32,7 @@ function _build_race_game_history(io, lobby, player_game_state){
         player_data[player]["score"] = player_game_state.game_state.players[player]["score"];
     })
     
-    var game_history = {winner_id: winner_id, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
+    var game_history = {winner_id: winner_id, winner_name: player_game_state.player, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
         player_stats: player_data, 
         game_stats: {time_elapsed: getMinutesOfDates(player_game_state.game_state.started_at, player_game_state.game_state.finished_at), 
             win_condition: player_game_state.game_state.condition}, 
@@ -53,10 +53,10 @@ function _build_category_game_history(io, lobby, player_game_state){
         // handle metrics
         metricsHandler.handleCategoryMetrics(player_id, player, player_game_state.game_state.players[player], winner_id===player_id);
         player_data[player] = {};
-        player_data[player]["categories"] = lobby.playerIds[player_id]["categories"];
+        player_data[player]["categories"] = player_game_state.game_state.players[player]["categories"];
     })
     
-    var game_history = {winner_id: winner_id, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
+    var game_history = {winner_id: winner_id, winner_name: player_game_state.player, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
         player_stats: player_data, 
         game_stats: {time_elapsed: getMinutesOfDates(player_game_state.game_state.started_at, player_game_state.game_state.finished_at), 
             win_condition: player_game_state.game_state.condition}, 
