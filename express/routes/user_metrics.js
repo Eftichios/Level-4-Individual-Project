@@ -1,5 +1,6 @@
 const { models } = require('../../sequelize');
 const { getIdParam } = require('../../utils/helpers');
+const { Op } = require('sequelize'); 
 
 async function getById(req, res) {
     const id = getIdParam(req);
