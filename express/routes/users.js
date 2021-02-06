@@ -1,12 +1,32 @@
 const { models } = require('../../sequelize');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require("../../utils/jwtGenerator");
-const { getIdParam } = require('../../utils/helpers');
+const { getIdParam, getCategoryMap } = require('../../utils/helpers');
 const trackers = require('../../utils/global')
 var passwordValidator = require('password-validator');
 var schema = new passwordValidator();
 
 schema.is().min(6);
+
+function createCategories(){
+    var cat_labels = getCategoryMap();
+    var cat_count = {}
+    cat_labels.forEach((cat)=>{
+        cat_count[cat] = 0
+    })
+
+    return cat_count
+}
+
+async function initAchievements(user_id){
+    const achievements = await models.achievement.findAll();
+    for (var achiev_index in achievements){
+        var achiev_id = achievements[achiev_index]["achievement_id"];
+        await models.user_achievement.create({
+            user_id: user_id, achievement_id: achiev_id, date_completed: null, completed: false, progress: 0
+        })
+    }
+}
 
 async function getAll(req, res) {
     const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin']});
@@ -111,16 +131,10 @@ async function register(req, res) {
         const bcrypt_password = await bcrypt.hash(password, salt);
 
         // insert user inside database
+        var cat_count = createCategories();
         const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin})
-        await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: [], tracker_list: trackers, tracker_count: 0, score:10})
-
-        var achievements_db = await models.achievement.findAll();
-        for (ach_index in achievements_db){
-            var achiev_id = achievements_db[ach_index]["achievement_id"];
-            await models.user_achievement.create({
-                user_id: newUser.user_id, achievement_id: achiev_id, date_completed: null, completed: false, progress: 0
-            })
-        }
+        await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:10})
+        await initAchievements(newUser.user_id);
 
         // generate jwt token
         const token = jwtGenerator(newUser.user_id);
