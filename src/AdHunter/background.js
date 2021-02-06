@@ -111,6 +111,7 @@ chrome.runtime.onInstalled.addListener(function() {
               socket.emit('sendUpdateToAllClients', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
               break;
             case "winner":
+              storageChange.newValue.data.game_state["finished_at"] = new Date()
               socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
               break;
           }

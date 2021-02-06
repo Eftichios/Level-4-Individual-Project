@@ -74,8 +74,55 @@ export class DashGameHistory extends React.Component {
         this.setState({modalContentAll: temp_data})
     }
 
-    setModalData(game) {
-        logger.log("trace",`User viewed history of game ${game.game_id}`, this.props.name)
+    setModalRaceData(game){
+        const temp_content = <Fragment>
+        <div className="modal-header">
+            <h5 className="modal-title" id="gameHistoryLabel">Game stats</h5>
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+           </div>
+        <div className="modal-body">
+            <div className="row form-group">
+                <label className="col-md-4" htmlFor="condition">Condition: </label>
+                <input className="col-md-7" id="condition" disabled value={"Find " + game.game_stats.win_condition +" Trackers."} />
+            </div>
+            {Object.keys(game.player_stats).map((name, index)=><div key={index} className="row form-group">
+                <label className="col-md-4" htmlFor="status">{name===this.props.name? <strong>{name}</strong>:name}: </label>
+                <input disabled value={`Score ${game.player_stats[name]["score"]}`} />
+            </div>)}
+            <h5 className="text-center">Page History</h5>
+            <table className="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>Url</th>
+                        <th>Ad Trackers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.keys(game.player_stats[this.props.name]["page_history"]).map((page, index) => 
+                    <tr key={index}>
+                        <td>{page}</td>
+                        <td>{game.player_stats[this.props.name]["page_history"][page]["count"]}
+                            <FontAwesomeIcon onClick={()=>this.setTrackersModalContent(game.player_stats[this.props.name]["page_history"][page]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />
+                        </td>
+                    </tr>)}
+                </tbody>
+            </table>      
+        </div>
+        <div className="modal-footer">
+            <button onClick={()=>this.resetModalData()} type="button" className="btn btn-secondary">Back</button>
+        </div> 
+    </Fragment>
+    this.setState({show_all: false, game_stats: temp_content});
+    }
+
+    setModalCategoryData(game){
+        var temp_cat_count = game.player_stats[this.props.name]["categories"].reduce((total, cat)=>{
+            total[cat] = (total[cat] || 0) + 1;
+            return total;
+        },{});
+
         const temp_content = <Fragment>
             <div className="modal-header">
                 <h5 className="modal-title" id="gameHistoryLabel">Game stats</h5>
@@ -86,28 +133,27 @@ export class DashGameHistory extends React.Component {
             <div className="modal-body">
                 <div className="row form-group">
                     <label className="col-md-4" htmlFor="condition">Condition: </label>
-                    <input className="col-md-7" id="condition" disabled value={"Find " + game.game_stats.win_condition +" Trackers."} />
+                    <input className="col-md-7" id="condition" disabled value={"Category: " + game.game_stats.win_condition} />
                 </div>
-                {Object.keys(game.player_stats).map((name, index)=><div key={index} className="row form-group">
-                    <label className="col-md-4" htmlFor="status">{name===this.props.name? <strong>{name}</strong>:name}: </label>
-                    <input disabled value={`Score ${game.player_stats[name]["score"]}`} />
-                </div>)}
-                <h5 className="text-center">Page History</h5>
+                <div className="row form-group">
+                    <label className="col-md-4" htmlFor="status">Winner: </label>
+                    <input disabled value={game.winner_name} />
+                </div>
+                <h5 className="text-center">Categories</h5>
                 <table className="table table-borderless">
                     <thead>
                         <tr>
-                            <th>Url</th>
-                            <th>Ad Trackers</th>
+                            <th>Category</th>
+                            <th>Count</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {Object.keys(game.player_stats[this.props.name]["page_history"]).map((page, index) => 
-                        <tr key={index}>
-                            <td>{page}</td>
-                            <td>{game.player_stats[this.props.name]["page_history"][page]["count"]}
-                                <FontAwesomeIcon onClick={()=>this.setTrackersModalContent(game.player_stats[this.props.name]["page_history"][page]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />
-                            </td>
-                        </tr>)}
+                        {Object.entries(temp_cat_count).map((key,index)=>
+                            <tr key={index}>
+                                <td>{key[0]}</td>
+                                <td>{key[1]}</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>      
             </div>
@@ -116,7 +162,15 @@ export class DashGameHistory extends React.Component {
             </div> 
         </Fragment>
         this.setState({show_all: false, game_stats: temp_content});
-        
+    }
+
+    setModalData(game) {
+        logger.log("trace",`User viewed history of game ${game.game_id}`, this.props.name)
+        if (game.game_mode==="Race"){
+            this.setModalRaceData(game);
+        } else {
+            this.setModalCategoryData(game);
+        }
     }
 
     setTrackersModalContent(trackers){

@@ -106,19 +106,29 @@ async function reset() {
 
     // populate game_history table
     var dummy_trackers = "example_tracker"
-    var player_data = {user_1: {page_history: {"www.example.com":{"count":20,"trackers": Array(20).fill(dummy_trackers)}, "www.another-example.com": {"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":65,"trackers": Array(65).fill(dummy_trackers)}}, score: 100},
+    var player_data_race = {user_1: {page_history: {"www.example.com":{"count":20,"trackers": Array(20).fill(dummy_trackers)}, "www.another-example.com": {"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":65,"trackers": Array(65).fill(dummy_trackers)}}, score: 100},
                         user_2: {page_history: {"www.example.com":{"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.another-example.com": {"count":10,"trackers": Array(10).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":55,"trackers": Array(55).fill(dummy_trackers)}}, score: 80}}
+
+    var player_data_category = {user_1: {categories: ["Internet and Telecom","Law and Government","Law and Government","Science", "Food and Drink", "News and Media"]},
+                                user_2: {categories: ["Internet and Telecom", "Science", "Science", "Food and Drink", "Food and Drink"]}}
 
     var startDate = new Date("2020/08/08 15:00");
     var endDate = new Date("2020/08/08 15:13");
-    var game_data = {time_elapsed: getMinutesOfDates(startDate, endDate), win_condition: 100}
+    var game_data_race = {time_elapsed: getMinutesOfDates(startDate, endDate), win_condition: 100}
+    var game_data_category = {time_elapsed: getMinutesOfDates(startDate, endDate), win_condition: "News and Media"}
 
     await sequelize.models.game_history.bulkCreate([
-        { winner_id: 1, game_mode: 'Race', game_date: new Date(), 
-        player_stats: player_data,
-        game_stats: game_data,
-        player_ids: [1,2,3,4,5]}
-    ]);
+        { winner_id: 1, winner_name: "user_1", game_mode: 'Race', game_date: new Date(), 
+        player_stats: player_data_race,
+        game_stats: game_data_race,
+        player_ids: [1,2]}
+    ,
+        { winner_id: 1, winner_name: "user_1", game_mode: 'Category', game_date: new Date(), 
+        player_stats: player_data_category,
+        game_stats: game_data_category,
+        player_ids: [1,2]}
+        ]
+    );
 
     // populate the market table
     await sequelize.models.market.bulkCreate([

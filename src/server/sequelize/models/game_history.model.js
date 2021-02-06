@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
+        winner_name: {
+            allowNull: false,
+            type: DataTypes.STRING
+        },
         game_mode: {
             allowNull: false,
             type: DataTypes.ENUM('Race', 'Category', 'Hunting'),
