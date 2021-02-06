@@ -101,6 +101,11 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/category`, makeHandlerAwareOfAsyncErrors(routeController.category));
 	}
 
+	//handle user_metrics search route
+	if (routeController.search){
+		app.post(`/api/userMetrics/search`, makeHandlerAwareOfAsyncErrors(routeController.search));
+	}
+
 };
 
 app.get('/', (req, res)=>{
