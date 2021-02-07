@@ -103,7 +103,7 @@ export class Summary extends React.Component {
         var game_metrics = players_sorted.map((player, index)=>
             <tr key={index}>
                 <td>{index+1}</td>
-                <td><a className="page-history-toggle" onClick={()=>this.build_page_history(player[0])}>{player[0]}</a></td>
+                <td><button className="btn btn-link page-history-toggle" onClick={()=>this.build_page_history(player[0])}>{player[0]}</button></td>
                 <td>{player[1]["score"]}</td>
             </tr>
         )
@@ -117,7 +117,7 @@ export class Summary extends React.Component {
         var game_metrics = players_sorted.map((player, index)=>
             <tr key={index}>
                 <td>{index+1}</td>
-                <td><a href="" className="page-history-toggle" onClick={()=>this.build_category_history(player[0])}>{player[0]}</a></td>
+                <td><button className="btn btn-link page-history-toggle" onClick={()=>this.build_category_history(player[0])}>{player[0]}</button></td>
                 <td>{player[1]["categories"].length}</td>
             </tr>)
         
@@ -126,7 +126,6 @@ export class Summary extends React.Component {
     }
 
     build_category_history(user_name){
-        console.log(this.props.location.state)
         var temp_cat_count = this.props.location.state.game_state.players[user_name]["categories"].reduce((total, cat)=>{
             total[cat] = (total[cat] || 0) + 1;
             return total;

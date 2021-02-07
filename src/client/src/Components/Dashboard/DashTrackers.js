@@ -25,8 +25,8 @@ export class DashTrackers extends React.Component {
 
         this.infoTitle = "What do these trackers mean?"
 
-        this.infoBody = "These are domains of known third party trackers that collect information about the user while they are browsing the web. You can see which trackers have tracked you \
-        while playing the game by looking at the Found tab. In some cases we have further information on the trackers (indicated by the info circle next to the domain name)."
+        this.infoBody = "These are domains of known third party trackers that collect information about the user while they are browsing the web. You can see which trackers have tracked you\n" +
+                "while playing the game by looking at the Found tab. In some cases we have further information on the trackers (indicated by the info circle next to the domain name)."
     }
 
     buildTrackers(page_index, reset_index=false){
