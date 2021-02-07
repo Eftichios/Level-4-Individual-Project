@@ -1,6 +1,6 @@
 class Logger{
     _construct_msg = (level, message, user) =>{
-        return {Date: new Date().toLocaleString(), level: level, msg: message, user: user}
+        return {date: new Date().toLocaleString(), level: level, msg: message, user: user}
     }
 
     log = (level, message, user) =>{

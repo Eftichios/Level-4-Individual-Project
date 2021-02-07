@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
+const save_log = require("../middleware/server_log_handler");
 var morgan = require("morgan");
 var fs = require('fs')
 var path = require('path')
@@ -16,12 +17,16 @@ var accessLogStreamServer = fs.createWriteStream(path.join(__dirname, 'routes', 
 app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[content-length] - :response-time ms', { stream: accessLogStreamServer, 
 	skip: (req,res)=>{
 		return req.url==="/api/logger"
-	}}))
-
+}}))
 
 // use cors and allow for json responses
 app.use(cors());
 app.use(express.json());
+
+app.use((req,res,next)=>{
+	save_log(req, res);
+	next();
+})
 
 // define all routes, loaded from the corresponding files
 const routes = {
