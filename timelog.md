@@ -511,6 +511,22 @@
 * *3 hours* Setting up the category game mode
 * *0.5 hour* Gameplay walkthrough with one other player
 
+### 03 Feb 2021
+* *1 hour* Refining category game mode 
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 04 Feb 2021
+* *1 hour* Dissertation writing
+
+### 05 Feb 2021
+* No progress 
+
+### 06 Feb 2021
+* *1 hour* Bug fixes in registration and database
+* *0.5 hours* Leaderboard search functionality
+* *1.5 hours* Category mode game history
+
 
 
 
