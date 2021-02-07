@@ -24,7 +24,10 @@ const modelDefiners = [
     require('./models/user_organisation.model'),
     require('./models/game_history.model'),
     require('./models/market.model'),
-    require('./models/ad_category.model')
+    require('./models/ad_category.model'),
+    require('./models/client_logger.model'),
+    require('./models/extension_logger.model'),
+    require('./models/server_logger.model')
 ]
 
 // define all the models

@@ -1,13 +1,11 @@
-var fs = require('fs')
-var path = require('path')
+const { models } = require('../../sequelize');
 
 async function logger(req, res){
     if (req.body.from==="client"){
-        var accessLogStreamClient = fs.createWriteStream(path.join(__dirname, 'logs',"client_log.log"), { flags: 'a' })
+        await models.client_logger.create(req.body.msg_data);
     }else{
-        var accessLogStreamClient = fs.createWriteStream(path.join(__dirname, 'logs',"extension_log.log"), { flags: 'a' })
+        await models.extension_logger.create(req.body.msg_data);
     }
-    accessLogStreamClient.write(JSON.stringify(req.body.msg_data)+"\n")
     res.status(200).json("success")
 }
 
