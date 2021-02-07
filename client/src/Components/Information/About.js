@@ -43,14 +43,14 @@ export class About extends React.Component {
                 <h3>What information is gathered:</h3>
             </div>
             <div className="info-text">
-            <p >During the game-play we gather and store useful information that would help us evaluate the player's strategies and behaviour. The information that is gathered is:
+            <div >During the game-play we gather and store useful information that would help us evaluate the player's strategies and behaviour. The information that is gathered is:
                 <ul>
                     <li>Websites visited during the game.</li>
                     <li>Trackers found in each website.</li>
                     <li>Player names and scores</li>
                 </ul>
                 Note: No information is gathered when not playing. 
-            </p>
+            </div>
             </div>
             <div className="info-title">
                 <h3>How it works:</h3>

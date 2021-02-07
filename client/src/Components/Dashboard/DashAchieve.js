@@ -20,8 +20,8 @@ export class DashAchieve extends React.Component {
 
         this.infoTitle = "Achievements information";
 
-        this.infoBody = "After each game, an achievement manager takes the gameplay metrics and checks if the player has passed the conditions to \
-        complete an achievement. The purpose of achievements is to increase the rewards a player gets while trying out the game.";
+        this.infoBody = "After each game, an achievement manager takes the gameplay metrics and checks if the player has passed the conditions to\n" +
+                        "complete an achievement. The purpose of achievements is to increase the rewards a player gets while trying out the game.";
     }
     
     mapStatusColour(completed, progress){
@@ -95,7 +95,6 @@ export class DashAchieve extends React.Component {
             });
 
             var parseRes = await response.json();
-            // console.log(parseRes)
             this.buildAchievements(parseRes)
 
         } catch (err){

@@ -48,7 +48,6 @@ export class Dashboard extends React.Component {
     rankPlayer(players){
         var temp_sorted = players.sort((a,b) => b.user_metric.tracker_count - a.user_metric.tracker_count);
         var temp_rank = temp_sorted.findIndex(player => player.user_name === this.state.name);
-        console.log(temp_rank)
         this.setState({rank: temp_rank+1})
     }
 
