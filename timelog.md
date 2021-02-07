@@ -527,6 +527,11 @@
 * *0.5 hours* Leaderboard search functionality
 * *1.5 hours* Category mode game history
 
+### 07 Feb 2021
+* *1 hour* Category mode achievements
+* *1.5 hours* Logging now stores entries in database tables instead of files
+* *0.5 hour* Fixing React warnings
+
 
 
 
