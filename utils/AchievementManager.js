@@ -14,6 +14,18 @@ class AchievementManager{
         }
     }
 
+    async getUserCategoryAchievements(user_id){
+        const user_achievements = await models.user.findAll({where: 
+            {user_id: user_id}, 
+            include:[{model: models.achievement, where: {game_mode: "Category"},
+                through: {attributes: ["completed","date_completed","progress"]}}]});
+        if (user_achievements){
+            return user_achievements[0]["achievements"]
+        }else {
+            return null;
+        }
+    }
+
     async checkUniqueTrackers(user_id, unique_trackers, achievements){
         var code = "unique_trackers";
         Object.entries(achievements).filter((key,value)=>key[1].code===code && !key[1].user_achievement.completed).forEach(async ([key,value])=>{
@@ -80,8 +92,28 @@ class AchievementManager{
         await this.checkGamesWon(user_id, is_winner, achievements, "Race");
     }
 
+    async checkTotalAdverts(user_id, cat_count, achievements){
+        var code = "total_adverts";
+        var total_count = Object.values(cat_count).reduce((a,b)=>a+b);
+        Object.entries(achievements).filter((key,value)=>key[1].code===code && !key[1].user_achievement.completed).forEach(async ([key,value])=>{
+            if (total_count >= value.condition){
+                await models.user_achievement.update({completed: true, date_completed: new Date(), progress: value.condition}, 
+                {where: {achievement_id: value.achievement_id, user_id: user_id}});
+            } else {
+                await models.user_achievement.update({progress: total_count}, {where: {achievement_id: value.achievement_id, user_id: user_id}});
+            }
+        })
+    }
+
     async checkForCategoryAchievements(user_id, cat_count, games_played_update, is_winner){
-        return
+        var achievements = await this.getUserCategoryAchievements(user_id);
+        if (!achievements){
+            return
+        }
+
+        await this.checkGamesPlayed(user_id, games_played_update, achievements, "Category");
+        await this.checkGamesWon(user_id, is_winner, achievements, "Category");
+        await this.checkTotalAdverts(user_id, cat_count, achievements);
     }
 }
 

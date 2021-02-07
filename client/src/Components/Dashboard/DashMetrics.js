@@ -19,7 +19,8 @@ export class DashMetrics extends React.Component {
             games_played: {'Race': 0, 'Category': 0},
             categories: [],
             trackers: [],
-            user_metrics: null
+            user_metrics: null,
+            total_adverts: 0
         }
 
     }
@@ -48,8 +49,16 @@ export class DashMetrics extends React.Component {
 
     buildGameMetrics(metrics){
         var cat_count = [["Category", "Ads delievered"]];
-        Object.keys(metrics.categories_count).forEach((key)=> cat_count.push([key,metrics.categories_count[key]]));
-        this.setState({categories: cat_count, total_trackers: metrics.total_ad_trackers, games_played: {"Race": metrics.race_games, "Category": metrics.category_games}});
+        var total_adverts = 0;
+        Object.keys(metrics.categories_count).forEach((key)=> {
+            cat_count.push([key,metrics.categories_count[key]]);
+            total_adverts += metrics.categories_count[key];
+        });
+
+        this.setState({categories: cat_count, 
+            total_trackers: metrics.total_ad_trackers, 
+            games_played: {"Race": metrics.race_games, "Category": metrics.category_games},
+            total_adverts: total_adverts});    
     }
 
     render(){
@@ -61,8 +70,8 @@ export class DashMetrics extends React.Component {
                     <FontAwesomeIcon title={`Race: ${this.state.games_played['Race']} | Category: ${this.state.games_played['Category']}`}className="ml-2 tooltip-hover text-primary" icon={faInfoCircle} />
                     </p>
                     <DashTrackers user_id={this.props.user_id}></DashTrackers>
-                    {/* <div className="chart align-items-center">
-                        <h5>Ad categories seen</h5>
+                    <div className="chart align-items-center">
+                        <h5>Ad categories seen ({this.state.total_adverts})</h5>
                         <Chart
                             width={'30vh'}
                             height={'30vh'}
@@ -76,7 +85,7 @@ export class DashMetrics extends React.Component {
                             }}
                             rootProps={{ 'data-testid': '1' }}
                         />
-                    </div> */}
+                    </div>
                 </div>
             </div>
             <div className="col-md-6 text-center ">

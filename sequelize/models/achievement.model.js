@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         },
         code: {
             allowNull: false,
-            type: DataTypes.ENUM('race_mode','category_mode','total_trackers','unique_trackers', 'games_won_race', 'games_won_category')
+            type: DataTypes.ENUM('race_mode','category_mode','total_trackers','unique_trackers', 'games_won_race', 'games_won_category', 'total_adverts')
         }
     });
 };
