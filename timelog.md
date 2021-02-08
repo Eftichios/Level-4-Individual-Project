@@ -532,6 +532,10 @@
 * *1.5 hours* Logging now stores entries in database tables instead of files
 * *0.5 hour* Fixing React warnings
 
+## Week 17
+* *2 hours* Configuring unit testing with mocha instead of jest
+* *1 hour* Cleaning up packages and fixing errors when installing modules
+
 
 
 
