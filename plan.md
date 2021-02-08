@@ -94,7 +94,13 @@
   * Refinements and last attempt to implement category mode
   * Add more achievements?
 * **Week 16**
+  * Set up the category game mode
+  * More achievements
+  * Refine logging to store in database instead of files
 * **Week 17**
+  * Bug fixes and better error handling
+  * Polish and refine system components
+  * Refactor socket communications
 * **Week 19**
 * **Week 20**
 * **Week 21**
