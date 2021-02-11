@@ -1,0 +1,4 @@
+file : [
+  './test/test_setup.js',
+  './test/users.test.js'
+]

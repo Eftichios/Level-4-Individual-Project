@@ -139,4 +139,5 @@ async function reset() {
     console.log("Populating tables...")
 };
 
-reset();
+// reset();
+module.exports = reset

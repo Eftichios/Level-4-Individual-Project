@@ -91,11 +91,16 @@ async function update(req, res) {
 }
 
 async function remove(req, res) {
-    const id = getIdParam(req);
-    
+    const param_id = getIdParam(req);
+    const body_id = req.body.user_id;
+
+    if (param_id!==body_id){
+        res.status(400).json("Param id does not match body id")
+    }
+
     await models.user.destroy({
         where: {
-            user_id:id
+            user_id:body_id
         }
     });
     res.status(200).json("User deleted succesfully.")
@@ -157,7 +162,6 @@ async function login(req, res) {
     // check if req password is the same as db password
         
     const validPassword = await bcrypt.compare(password, user.user_password);
-    console.log(validPassword);
     if (!validPassword){
         return res.status(401).json("Incorrect password");
     }
