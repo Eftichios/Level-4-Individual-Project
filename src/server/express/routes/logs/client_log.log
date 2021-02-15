@@ -1,0 +1,1132 @@
+{"Date":"16/01/2021, 16:17:27","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:17:40","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:17:27","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:17:40","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:25:44","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:25:45","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:25:45","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:25:44","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:27:41","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:27:41","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:27:42","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:27:42","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:27:42","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:27:49","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:27:49","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:27:49","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:27:49","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:27:49","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:28:09","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:28:09","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:28:10","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:28:10","level":"trace","msg":"User viewed game history","user":""}
+{"Date":"16/01/2021, 16:28:10","level":"trace","msg":"User viewed game history","user":"user_1"}
+{"Date":"16/01/2021, 16:28:50","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:28:50","level":"info","msg":"testing","user":"user"}
+{"Date":"16/01/2021, 16:32:38","level":"trace","msg":"User viewed history of game 10","user":"user_1"}
+{"Date":"16/01/2021, 16:33:23","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"16/01/2021, 16:33:23","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"16/01/2021, 16:41:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"16/01/2021, 16:42:01","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"16/01/2021, 16:43:05","level":"chat","msg":"Room0: hey","user":"user_1"}
+{"Date":"16/01/2021, 16:43:44","level":"chat","msg":"[Room0]: fwfw","user":"user_1"}
+{"Date":"16/01/2021, 16:41:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"16/01/2021, 16:42:01","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"16/01/2021, 16:43:05","level":"chat","msg":"Room0: hey","user":"user_1"}
+{"Date":"16/01/2021, 16:43:44","level":"chat","msg":"[Room0]: fwfw","user":"user_1"}
+{"Date":"17/01/2021, 11:59:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 11:59:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 11:59:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 11:59:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:00:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:00:42","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:00:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:01:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:01:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:01:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:01:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:02:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:02:33","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:02:33","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:02:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:03:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:03:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:03:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:03:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:05:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:05:35","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:05:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:05:35","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:06:44","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:06:50","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:06:44","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:06:50","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:14:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:14:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:16:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:16:31","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:17:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:17:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:17:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:17:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:19:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:19:05","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:19:10","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:20:10","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:19:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:19:05","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:19:10","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:20:10","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:33:19","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:34:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:35:27","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:35:44","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:36:21","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 12:39:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:40:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:41:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:42:21","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:43:48","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:44:05","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:44:37","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 12:44:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:45:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:45:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:53:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:53:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:55:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:55:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:56:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:56:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:58:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:59:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 12:59:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:01:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:01:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:02:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:03:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:03:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:04:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:05:01","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:06:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:08:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:08:46","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:09:47","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:09:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:09:47","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:09:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:13:11","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:13:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:13:40","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:13:11","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:13:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:13:40","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:33:03","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:34:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:36:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:37:19","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:36:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:38:58","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:39:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:40:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:40:55","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:40:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:40:55","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:44:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:44:44","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:44:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:44:44","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:47:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:47:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:48:41","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:48:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:49:02","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:49:02","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:48:41","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:48:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:50:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:50:58","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:51:12","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:51:22","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:50:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:50:58","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:51:12","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 13:51:22","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 13:58:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:58:34","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:59:03","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:59:04","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:00:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:59:03","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 13:59:04","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:00:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:03:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:04:16","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:04:17","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:04:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:04:56","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:06:20","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:06:21","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:06:37","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 14:07:21","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:07:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:07:37","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 14:08:02","level":"trace","msg":"User viewed history of game 16","user":"user_2"}
+{"Date":"17/01/2021, 14:07:21","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 14:07:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:07:37","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 14:08:02","level":"trace","msg":"User viewed history of game 16","user":"user_2"}
+{"Date":"17/01/2021, 14:57:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:58:00","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 14:58:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:59:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 14:59:15","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:00:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:00:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:00:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:00:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:03:05","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:03:57","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:04:08","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:04:16","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 15:05:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:05:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:05:38","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 15:05:40","level":"chat","msg":"[Room0]: 51252152","user":"user_1"}
+{"Date":"17/01/2021, 15:05:43","level":"chat","msg":"[Room0]: 1212412","user":"user_1"}
+{"Date":"17/01/2021, 15:05:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:05:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:05:38","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 15:13:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:13:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:13:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:13:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:18:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:18:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:18:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:18:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:22:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:22:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:22:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:22:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:25:22","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:25:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:25:32","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:25:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:25:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:25:32","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:25:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:28:51","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:28:52","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:28:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:33:48","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:33:56","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:34:01","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:33:48","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:33:56","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:34:01","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:39:35","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:39:36","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:39:43","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:39:36","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:39:35","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:43:00","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:43:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:43:08","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:45:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:45:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:45:24","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:45:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:45:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:48:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:48:10","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:48:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:48:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:48:10","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:48:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:50:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:50:50","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:50:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:50:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:50:50","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:50:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:53:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:53:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:53:38","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:54:52","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:54:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:55:03","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:55:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:55:38","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:56:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:56:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:56:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:56:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:56:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:56:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 15:59:21","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 15:59:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 15:59:29","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:00:39","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:00:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:00:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:04:16","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:04:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:04:36","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:07:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:07:47","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:07:55","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:07:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:07:47","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:07:55","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:23:13","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:23:14","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"17/01/2021, 16:23:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:23:26","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:24:58","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:24:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:25:12","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:26:03","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:26:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:26:12","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:26:03","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:26:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:30:36","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 16:31:40","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:31:41","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:31:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:33:06","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:33:07","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:33:14","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:33:24","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 16:33:27","level":"chat","msg":"[Room0]: 521512","user":"user_2"}
+{"Date":"17/01/2021, 16:33:53","level":"chat","msg":"[Room0]: 123123","user":"user_2"}
+{"Date":"17/01/2021, 16:39:04","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:39:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:39:16","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:39:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:39:57","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:40:05","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:40:17","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 16:40:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:40:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:42:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:42:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:42:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:42:59","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 16:43:02","level":"chat","msg":"[Room0]: g2g2","user":"user_1"}
+{"Date":"17/01/2021, 16:43:05","level":"chat","msg":"[Room0]: 123","user":"user_2"}
+{"Date":"17/01/2021, 16:43:11","level":"chat","msg":"[Room0]: well why","user":"user_2"}
+{"Date":"17/01/2021, 16:42:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"17/01/2021, 16:42:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"17/01/2021, 16:42:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"17/01/2021, 16:42:59","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"17/01/2021, 16:43:05","level":"chat","msg":"[Room0]: 123","user":"user_2"}
+{"Date":"17/01/2021, 16:43:11","level":"chat","msg":"[Room0]: well why","user":"user_2"}
+{"Date":"18/01/2021, 11:37:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:38:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:38:21","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 11:37:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:38:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:38:21","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 11:46:06","level":"trace","msg":"User viewed history of game 6","user":"user_1"}
+{"Date":"18/01/2021, 11:46:14","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:46:22","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 11:47:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:48:01","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 11:50:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 11:51:07","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:04:24","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:04:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:04:35","level":"chat","msg":"[Room0]: 123","user":"user_2"}
+{"Date":"18/01/2021, 12:04:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:04:57","level":"chat","msg":"[Room0]: 123","user":"user_2"}
+{"Date":"18/01/2021, 12:04:59","level":"chat","msg":"[Room0]: ggeg","user":"user_1"}
+{"Date":"18/01/2021, 12:05:08","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"18/01/2021, 12:05:31","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:05:32","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:08:10","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:08:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:09:11","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:09:29","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:09:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:16:55","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:17:53","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:17:57","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:18:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:19:05","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:19:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:21:40","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:21:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:21:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:26:25","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:27:41","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:28:06","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:28:33","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:31:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:32:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:34:48","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:34:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:34:58","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:35:06","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"18/01/2021, 12:35:07","level":"chat","msg":"[Room0]: 521521","user":"user_2"}
+{"Date":"18/01/2021, 12:35:32","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:35:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:37:49","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:37:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:37:57","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:38:10","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:38:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:41:38","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:41:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:41:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:42:13","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:42:14","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:43:44","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:43:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:43:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:44:22","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:44:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:47:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:47:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:48:07","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:48:24","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:48:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:49:25","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:49:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:49:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:49:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:49:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:49:53","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:54:32","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:54:34","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:54:36","level":"info","msg":"User searching for game","user":"user_3"}
+{"Date":"18/01/2021, 12:54:38","level":"info","msg":"User searching for game","user":"user_4"}
+{"Date":"18/01/2021, 12:54:39","level":"info","msg":"User searching for game","user":"user_5"}
+{"Date":"18/01/2021, 12:54:41","level":"info","msg":"User searching for game","user":"user_6"}
+{"Date":"18/01/2021, 12:54:43","level":"info","msg":"User searching for game","user":"user_7"}
+{"Date":"18/01/2021, 12:54:45","level":"info","msg":"User searching for game","user":"user_8"}
+{"Date":"18/01/2021, 12:55:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 12:55:29","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 12:55:49","level":"info","msg":"User started game in lobby Room1"}
+{"Date":"18/01/2021, 12:56:11","level":"chat","msg":"[Room1]: good one bro","user":"user_1"}
+{"Date":"18/01/2021, 12:56:25","level":"chat","msg":"[Room0]: hehe","user":"user_6"}
+{"Date":"18/01/2021, 12:57:07","level":"info","msg":"User searching for game","user":"user_8"}
+{"Date":"18/01/2021, 12:57:11","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 12:57:17","level":"chat","msg":"[Room0]: hey","user":"user_2"}
+{"Date":"18/01/2021, 12:57:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 13:06:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:11:38","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:39","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:39","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:40","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:40","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:41","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:41","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:42","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:43","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:43","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:50","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:51","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:11:52","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:11:52","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:02","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:02","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:03","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:04","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:05","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:05","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:05","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:05","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:35","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:36","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:37","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:38","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:38","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:39","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:39","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:40","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:49","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:49","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:50","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:50","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:50","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:51","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:12:51","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:12:51","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:33","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:35","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:35","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:36","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:38","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:38","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:39","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:39","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:40","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:40","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:41","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:41","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:42","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"18/01/2021, 13:13:42","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:13:44","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:21:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:22:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:23:06","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:27:32","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:27:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:34:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:34:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:34:45","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"18/01/2021, 13:34:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:35:06","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 13:35:18","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"18/01/2021, 13:35:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"18/01/2021, 13:36:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:36:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:36:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:43:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:43:58","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:44:05","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 13:44:32","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:44:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 13:53:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:53:15","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:53:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 13:53:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 13:55:02","level":"trace","msg":"User viewed history of game 61","user":"user_1"}
+{"Date":"18/01/2021, 14:00:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 14:00:14","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:00:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:00:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 14:00:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:02:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 14:02:34","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:04:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 14:04:33","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:06:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 14:06:53","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 14:09:26","level":"trace","msg":"User viewed history of game 66","user":"user_1"}
+{"Date":"18/01/2021, 18:03:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:03:09","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"18/01/2021, 18:03:17","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:03:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:03:37","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:05:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:05:29","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:07:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:07:26","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:54:52","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:55:02","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:56:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:56:54","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:57:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:57:38","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 18:58:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:58:43","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 18:58:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:18:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:19:02","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:20:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:20:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:20:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:20:57","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:22:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:22:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:22:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:23:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:23:17","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:26:27","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:26:33","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:32:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:32:13","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:32:21","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:32:55","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:33:02","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"18/01/2021, 19:33:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"18/01/2021, 19:33:31","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 14:49:40","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 14:49:49","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 14:49:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 14:49:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 14:52:57","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 14:53:15","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 14:53:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 14:53:35","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 15:04:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 15:04:41","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 15:04:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 15:04:51","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:12:26","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:12:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:12:34","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:18:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:18:40","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:18:40","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:18:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:20:28","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:20:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:20:36","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:26:27","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:26:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:26:34","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:36:22","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:36:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:36:29","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 16:38:57","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 16:38:57","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 16:39:08","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 17:07:29","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:07:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:07:45","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:07:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:07:58","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 17:17:09","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:17:10","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:17:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 17:18:22","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:18:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:18:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 17:19:43","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:19:43","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:19:53","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"19/01/2021, 17:34:39","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"19/01/2021, 17:34:40","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"19/01/2021, 17:34:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 11:40:51","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 11:41:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 11:43:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 11:45:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 11:46:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 11:47:21","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 11:48:23","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 11:49:31","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 12:25:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:25:54","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:26:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:27:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:27:45","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:29:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:29:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:31:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:31:50","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:36:43","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:36:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:39:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:39:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:39:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:47:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:47:54","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:48:11","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 12:48:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:48:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:49:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:49:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:51:09","level":"trace","msg":"User viewed history of game 6","user":"user_1"}
+{"Date":"20/01/2021, 12:52:26","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 12:52:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 12:52:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 12:57:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:00:45","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:00:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:00:56","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:03:00","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:03:02","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:03:10","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:03:11","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:03:22","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:10:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:10:13","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:10:19","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:12:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:12:28","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:12:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:16:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:16:22","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:16:28","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:20:05","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:20:05","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:20:12","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:24:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:24:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:24:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:24:24","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:25:22","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:25:23","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:25:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:25:43","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:26:54","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:26:55","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:27:05","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:34:03","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:34:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:34:11","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:40:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:40:48","level":"info","msg":"User logged out.","user":"user_2"}
+{"Date":"20/01/2021, 13:40:53","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 13:40:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:40:55","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 13:40:55","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:41:04","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:41:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:46:28","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 13:46:29","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 13:46:29","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:46:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:46:38","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 13:49:24","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 13:49:25","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 13:49:26","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 13:49:30","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 13:49:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:15:43","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:15:44","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:15:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:15:46","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:15:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:27:07","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:27:08","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:27:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:27:20","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:27:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:30:04","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:30:05","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:30:06","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:30:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:30:16","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:36:52","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:36:53","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:36:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:36:57","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:37:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:47:58","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:47:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:48:00","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:48:00","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:48:09","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:49:46","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:49:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:49:47","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:49:48","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:49:56","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 14:55:02","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:55:18","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 14:55:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 14:55:26","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"20/01/2021, 14:55:27","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"20/01/2021, 14:55:36","level":"info","msg":"User started game in lobby Room1"}
+{"Date":"20/01/2021, 15:00:44","level":"trace","msg":"User viewed history of game 17","user":"user_2"}
+{"Date":"20/01/2021, 15:00:50","level":"trace","msg":"User viewed history of game 1","user":"user_2"}
+{"Date":"20/01/2021, 15:10:36","level":"trace","msg":"User viewed history of game 17","user":"user_2"}
+{"Date":"20/01/2021, 15:15:38","level":"trace","msg":"User viewed history of game 17","user":"user_1"}
+{"Date":"20/01/2021, 15:15:47","level":"trace","msg":"User viewed history of game 16","user":"user_1"}
+{"Date":"20/01/2021, 15:15:49","level":"trace","msg":"User viewed history of game 7","user":"user_1"}
+{"Date":"20/01/2021, 15:15:53","level":"trace","msg":"User viewed history of game 6","user":"user_1"}
+{"Date":"20/01/2021, 15:15:54","level":"trace","msg":"User viewed history of game 4","user":"user_1"}
+{"Date":"20/01/2021, 15:15:56","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"20/01/2021, 15:15:57","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"20/01/2021, 15:16:01","level":"trace","msg":"User viewed history of game 17","user":"user_1"}
+{"Date":"20/01/2021, 15:16:33","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:16:42","level":"chat","msg":"[Room0]: 123","user":"user_1"}
+{"Date":"20/01/2021, 15:16:45","level":"chat","msg":"[Room0]: fqfq","user":"user_1"}
+{"Date":"20/01/2021, 15:16:58","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:18:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:19:03","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:21:33","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 15:21:34","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"20/01/2021, 15:21:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:21:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:25:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:25:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:30:14","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 15:30:15","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:30:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:43:20","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 15:43:21","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:43:23","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"20/01/2021, 15:43:30","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 15:43:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:43:38","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 15:53:06","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 15:53:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 15:53:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 16:01:57","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"20/01/2021, 16:01:58","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"20/01/2021, 16:02:01","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 16:02:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"20/01/2021, 16:02:41","level":"chat","msg":"[Room0]: gwrg","user":"user_1"}
+{"Date":"20/01/2021, 16:02:58","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"20/01/2021, 16:12:16","level":"trace","msg":"User viewed history of game 20","user":"user_1"}
+{"Date":"21/01/2021, 18:05:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:05:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:06:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:07:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:07:16","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:10:27","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:11:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:11:43","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:13:08","level":"info","msg":"User searching for game","user":""}
+{"Date":"21/01/2021, 18:14:09","level":"info","msg":"User searching for game","user":""}
+{"Date":"21/01/2021, 18:16:06","level":"info","msg":"User searching for game"}
+{"Date":"21/01/2021, 18:16:34","level":"info","msg":"User searching for game"}
+{"Date":"21/01/2021, 18:16:47","level":"info","msg":"User searching for game"}
+{"Date":"21/01/2021, 18:17:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:17:09","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:17:13","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:17:21","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:17:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 18:17:34","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 18:22:13","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"21/01/2021, 18:38:00","level":"info","msg":"User logged out.","user":"test_after"}
+{"Date":"21/01/2021, 18:39:54","level":"info","msg":"User logged out.","user":"test_now"}
+{"Date":"21/01/2021, 18:42:09","level":"info","msg":"User searching for game","user":"test_user11"}
+{"Date":"21/01/2021, 18:42:21","level":"info","msg":"User searching for game","user":"test_user11"}
+{"Date":"21/01/2021, 18:42:31","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:05:42","level":"info","msg":"User searching for game","user":"test_user11"}
+{"Date":"21/01/2021, 19:05:53","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:16:57","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 19:17:07","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 19:17:17","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:27:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 19:27:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:29:50","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 19:29:59","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:31:03","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 19:31:10","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 19:45:10","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"21/01/2021, 19:45:55","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"21/01/2021, 19:48:50","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"21/01/2021, 19:50:42","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"21/01/2021, 19:51:07","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"21/01/2021, 19:51:31","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"21/01/2021, 19:51:48","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"21/01/2021, 19:57:36","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"21/01/2021, 19:59:51","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"21/01/2021, 20:05:58","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:06:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:06:13","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:08:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:08:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:08:15","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:09:10","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:09:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:09:19","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:10:01","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:10:03","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:10:09","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:24:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:25:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:31:05","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:31:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:31:41","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:31:52","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:32:08","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:32:48","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:32:56","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:33:11","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:33:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:33:30","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:33:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:34:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:34:22","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:34:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:34:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:36:31","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:47:16","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"21/01/2021, 20:47:17","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"21/01/2021, 20:47:34","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"21/01/2021, 20:54:18","level":"trace","msg":"User viewed history of game 3","user":"user_2"}
+{"Date":"22/01/2021, 17:22:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"22/01/2021, 17:22:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"22/01/2021, 17:23:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"22/01/2021, 17:23:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"22/01/2021, 17:24:04","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"22/01/2021, 17:24:29","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"22/01/2021, 17:24:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"22/01/2021, 17:34:12","level":"info","msg":"User logged out.","user":"ffffaaa"}
+{"Date":"22/01/2021, 17:35:54","level":"info","msg":"User logged out.","user":"nnn"}
+{"Date":"22/01/2021, 17:37:42","level":"info","msg":"User logged out.","user":"mm1"}
+{"Date":"22/01/2021, 18:23:02","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:23:13","level":"trace","msg":"User clicked on achievement Fastest man alive III","user":"user_1"}
+{"Date":"22/01/2021, 18:23:17","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:27:22","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:27:53","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:28:42","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:30:13","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:39:21","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:42:08","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:42:45","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"22/01/2021, 18:42:47","level":"trace","msg":"User clicked on achievement Fastest man alive II","user":"user_1"}
+{"Date":"22/01/2021, 18:42:50","level":"trace","msg":"User clicked on achievement Fastest man alive III","user":"user_1"}
+{"Date":"22/01/2021, 18:42:52","level":"trace","msg":"User clicked on achievement Fastest man alive IV","user":"user_1"}
+{"Date":"22/01/2021, 18:42:54","level":"trace","msg":"User clicked on achievement Hide and seek I","user":"user_1"}
+{"Date":"23/01/2021, 12:32:33","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"23/01/2021, 14:35:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 14:40:01","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 14:40:06","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"23/01/2021, 14:41:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 14:41:31","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"23/01/2021, 14:45:46","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"23/01/2021, 14:46:33","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"23/01/2021, 14:46:34","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"23/01/2021, 17:41:24","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"23/01/2021, 17:41:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 17:41:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"23/01/2021, 17:44:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 17:44:14","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"23/01/2021, 17:44:20","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"23/01/2021, 17:44:27","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"23/01/2021, 17:49:08","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"23/01/2021, 17:49:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"23/01/2021, 17:49:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 13:54:30","level":"trace","msg":"User clicked on achievement Fastest man alive I","user":"user_1"}
+{"Date":"24/01/2021, 14:57:19","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 14:59:34","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:20:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:20:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:21:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:21:12","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:21:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:21:49","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:22:39","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:22:52","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:24:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:24:35","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:25:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:25:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:26:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:26:25","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:27:16","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:27:26","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:33:32","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:33:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:34:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:34:15","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:41:29","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:41:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:41:51","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:44:03","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:44:18","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:45:35","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:45:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:45:51","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:46:01","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:47:00","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:47:55","level":"trace","msg":"User clicked on achievement Play 5 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:47:58","level":"trace","msg":"User clicked on achievement Win 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:48:03","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:50:20","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:50:25","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 15:50:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 15:50:41","level":"trace","msg":"User clicked on achievement Play 5 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:50:44","level":"trace","msg":"User clicked on achievement Play 10 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 15:50:47","level":"trace","msg":"User clicked on achievement Win 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:09:28","level":"trace","msg":"User clicked on achievement Win 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:09:32","level":"trace","msg":"User clicked on achievement Find 20 Unique Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:09:42","level":"trace","msg":"User clicked on achievement Find 500 Unique Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:09:46","level":"trace","msg":"User clicked on achievement Win 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:09:49","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 16:13:58","level":"trace","msg":"User clicked on achievement Find 100 Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:14:01","level":"trace","msg":"User clicked on achievement Find 20 Unique Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:14:20","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"24/01/2021, 16:14:32","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"24/01/2021, 16:14:43","level":"trace","msg":"User clicked on achievement Find 100 Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:14:49","level":"trace","msg":"User clicked on achievement Play 5 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:14:52","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:21:13","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:23:59","level":"trace","msg":"User clicked on achievement Play 5 Race Game","user":"user_1"}
+{"Date":"24/01/2021, 16:24:06","level":"trace","msg":"User clicked on achievement Find 1000 Ad Trackers","user":"user_1"}
+{"Date":"24/01/2021, 16:25:40","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"26/01/2021, 14:57:19","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"26/01/2021, 15:00:26","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"26/01/2021, 15:01:03","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"26/01/2021, 15:05:40","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"26/01/2021, 17:36:30","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"26/01/2021, 17:37:26","level":"info","msg":"User logged out.","user":"test_user1111"}
+{"Date":"26/01/2021, 17:38:55","level":"info","msg":"User logged out.","user":"test_user21"}
+{"Date":"26/01/2021, 17:41:49","level":"info","msg":"User logged out.","user":"test_user31"}
+{"Date":"26/01/2021, 17:43:16","level":"info","msg":"User logged out.","user":"test_user41"}
+{"Date":"26/01/2021, 17:44:32","level":"info","msg":"User logged out.","user":""}
+{"Date":"26/01/2021, 17:45:30","level":"info","msg":"User logged out.","user":"test_user61"}
+{"Date":"27/01/2021, 12:24:42","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:25:56","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:27:53","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:32:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:33:01","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:35:26","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:43:06","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:44:54","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:45:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"27/01/2021, 12:45:25","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"27/01/2021, 12:46:28","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:46:47","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"27/01/2021, 12:52:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 12:52:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"27/01/2021, 12:54:12","level":"trace","msg":"User viewed history of game 9","user":"user_1"}
+{"Date":"27/01/2021, 12:59:01","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"27/01/2021, 13:05:13","level":"info","msg":"User searching for game","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:17","level":"chat","msg":"[Room0]: 123","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:23","level":"chat","msg":"[Room0]: 412421","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:25","level":"chat","msg":"[Room0]: 41241","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:26","level":"chat","msg":"[Room0]: 41241","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:28","level":"chat","msg":"[Room0]: 4141","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:06:31","level":"chat","msg":"[Room0]: 124412412421","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:09:43","level":"chat","msg":"[Room0]: 123","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:09:53","level":"info","msg":"User searching for game","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:10:19","level":"chat","msg":"[Room0]: 123","user":"test_user_1112"}
+{"Date":"27/01/2021, 13:39:28","level":"trace","msg":"User viewed history of game 9","user":"user_1"}
+{"Date":"27/01/2021, 13:39:33","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"27/01/2021, 14:35:44","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 14:35:45","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"27/01/2021, 14:36:07","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 15:19:17","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 15:19:18","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 15:19:25","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"27/01/2021, 15:22:11","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 15:22:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 15:22:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 15:22:38","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 15:22:42","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"27/01/2021, 15:24:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 15:24:36","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"27/01/2021, 15:24:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"27/01/2021, 15:25:04","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"01/02/2021, 23:39:09","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"01/02/2021, 23:49:42","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"01/02/2021, 23:49:43","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"01/02/2021, 23:49:50","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"01/02/2021, 23:52:28","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"01/02/2021, 23:52:29","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"01/02/2021, 23:53:08","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"01/02/2021, 23:53:09","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"01/02/2021, 23:53:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 00:04:33","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:04:34","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:05:04","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:06:03","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:08:24","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:08:24","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:09:11","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:09:13","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:09:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 00:23:40","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:35:17","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:35:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:35:18","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:35:29","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 00:46:57","level":"info","msg":"User switched game mode for Race","user":"user_2"}
+{"Date":"02/02/2021, 00:46:58","level":"info","msg":"User searching for game","user":"user_2"}
+{"Date":"02/02/2021, 00:47:08","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 18:27:01","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 18:27:09","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 18:27:20","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:27:35","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:27:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:27:44","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:32:02","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:32:02","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:32:15","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:39:35","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:39:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:39:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:47:12","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:47:12","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:47:24","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:53:51","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:53:51","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:54:05","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:54:08","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:54:18","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 19:58:43","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 19:58:43","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 19:59:30","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 20:04:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 20:06:26","level":"trace","msg":"User viewed history of game 4","user":"user_1"}
+{"Date":"02/02/2021, 20:06:45","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 20:06:45","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 20:06:51","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 20:11:44","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"02/02/2021, 20:11:44","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"02/02/2021, 20:11:50","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"02/02/2021, 20:13:24","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 18:22:46","level":"info","msg":"User logged out.","user":"test_user_111"}
+{"Date":"06/02/2021, 18:30:34","level":"info","msg":"User switched game mode for Race","user":"giorgos12345"}
+{"Date":"06/02/2021, 18:30:35","level":"info","msg":"User switched game mode for Category","user":"giorgos12345"}
+{"Date":"06/02/2021, 19:24:41","level":"info","msg":"User logged out.","user":"giorgos12345"}
+{"Date":"06/02/2021, 19:24:54","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"06/02/2021, 19:42:27","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"06/02/2021, 19:43:56","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"06/02/2021, 19:44:20","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"06/02/2021, 20:04:21","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"06/02/2021, 20:04:35","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"06/02/2021, 20:07:15","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"06/02/2021, 20:08:38","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"06/02/2021, 20:11:37","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:11:47","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:13:33","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:13:35","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:13:41","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"06/02/2021, 20:23:08","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"06/02/2021, 20:28:54","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:29:09","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:29:11","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:29:23","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"06/02/2021, 20:29:59","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:29:59","level":"info","msg":"User switched game mode for Category","user":"user_1"}
+{"Date":"06/02/2021, 20:29:59","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:30:00","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:30:09","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"06/02/2021, 20:36:45","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:36:46","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:37:05","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"06/02/2021, 20:37:19","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"06/02/2021, 20:37:18","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"06/02/2021, 20:37:39","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"06/02/2021, 20:38:10","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"06/02/2021, 20:39:33","level":"trace","msg":"User viewed history of game 5","user":"user_1"}
+{"Date":"06/02/2021, 20:39:35","level":"trace","msg":"User viewed history of game 4","user":"user_1"}
+{"Date":"07/02/2021, 17:59:08","level":"info","msg":"User logged out.","user":"user_1"}
+{"Date":"07/02/2021, 18:01:27","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:03:39","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:03:40","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:04:51","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:04:52","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:04:58","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:06:00","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:06:03","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:06:07","level":"trace","msg":"User clicked on achievement Play 1 Category Game","user":"user_1"}
+{"Date":"07/02/2021, 18:06:14","level":"trace","msg":"User clicked on achievement Win 5 Race Games","user":"user_1"}
+{"Date":"07/02/2021, 18:08:13","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:08:14","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:08:24","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:09:46","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:09:48","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:09:55","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:10:31","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:10:33","level":"trace","msg":"User clicked on achievement Find 200 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:18:40","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:18:41","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:18:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:19:58","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:19:59","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:20:05","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:23:04","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:23:18","level":"trace","msg":"User clicked on achievement Find 100 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:23:35","level":"trace","msg":"User clicked on achievement Play 5 Category Game","user":"user_1"}
+{"Date":"07/02/2021, 18:23:37","level":"trace","msg":"User clicked on achievement Play 10 Category Game","user":"user_1"}
+{"Date":"07/02/2021, 18:25:31","level":"info","msg":"User switched game mode for Race","user":"user_1"}
+{"Date":"07/02/2021, 18:25:32","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:25:38","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:27:54","level":"trace","msg":"User clicked on achievement Find 200 Advert categories","user":"user_1"}
+{"Date":"07/02/2021, 18:40:37","level":"trace","msg":"User viewed history of game 1","user":"user_1"}
+{"Date":"07/02/2021, 18:40:42","level":"trace","msg":"User viewed history of game 4","user":"user_1"}
+{"Date":"07/02/2021, 18:40:40","level":"trace","msg":"User viewed history of game 3","user":"user_1"}
+{"Date":"07/02/2021, 18:40:39","level":"trace","msg":"User viewed history of game 2","user":"user_1"}
+{"Date":"07/02/2021, 18:40:56","level":"trace","msg":"User clicked on achievement Play 1 Race Game","user":"user_1"}
+{"Date":"07/02/2021, 18:40:59","level":"trace","msg":"User clicked on achievement Play 5 Race Game","user":"user_1"}
+{"Date":"07/02/2021, 18:41:37","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:41:48","level":"info","msg":"User started game in lobby Room0"}
+{"Date":"07/02/2021, 18:46:17","level":"info","msg":"User searching for game","user":"user_1"}
+{"Date":"07/02/2021, 18:46:23","level":"info","msg":"User started game in lobby Room0"}
