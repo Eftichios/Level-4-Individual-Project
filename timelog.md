@@ -533,9 +533,35 @@
 * *0.5 hour* Fixing React warnings
 
 ## Week 17
+
+### 08 Feb 2021
 * *2 hours* Configuring unit testing with mocha instead of jest
 * *1 hour* Cleaning up packages and fixing errors when installing modules
 
+### 09 Feb 2021
+* *1 hour* More unit testing
+
+### 10 Feb 2021
+* *1 hour* Dissertation writing
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 11 Feb 2021
+* *1 hour* Dissertation writing
+
+### 12 Feb 2021
+* *1 hour* Refactoring extension websockets
+
+### 13 Feb 2021
+* *2 hours* Dissertation writing
+
+### 14 Feb 2021
+* *1 hour* Dissertation writing
+
+## Week 18
+
+### 15 Feb 2021
+* *4 hours* Working on automated unit testing
 
 
 
