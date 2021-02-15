@@ -12,12 +12,34 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
     defaults:
       run:
         working-directory: ./src/server
+    
     strategy:
       matrix:
         node-version: [12.x]
+   
+   # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -31,5 +53,13 @@ jobs:
         
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm test
-
+      - name: Connect to PostgreSQL and test
+        run: npm test
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          db_host: localhost
+          # The default PostgreSQL port
+          db_port: ${{ job.services.postgres.ports['5432'] }}
+          db_name: postgres
+          db_pass: postgres
+          db_user: postgres
