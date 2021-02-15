@@ -14103,3 +14103,37 @@ POST /api/auth/login 200 {"user_name":"user_1","password":"123"} - 164 - 102.038
 GET /api/userMetrics/ 200 {} - 54840439 - 9723.796 ms
 POST /api/userMetrics/search 200 {"user":"user_1"} - 9140074 - 1757.002 ms
 POST /api/userMetrics/search 404 {"user":"does not exist"} - 4 - 4.916 ms
+POST /api/auth/login 200 {"user_name":"user_1","password":"123"} - 164 - 148.046 ms
+GET /api/achievements 200 {} - 3816 - 4.927 ms
+GET /api/achievements/1 200 {} - 164 - 3.973 ms
+GET /api/achievements/45 404 {} - 42 - 15.898 ms
+DELETE /api/achievements/1 200 {} - 34 - 8.408 ms
+POST /api/category 200 {"ad_url":"www.joindota.com"} - 10 - 1158.396 ms
+POST /api/category 200 {"ad_url":"not-a-valid-url"} - 15 - 903.196 ms
+POST /api/auth/login 200 {"user_name":"user_1","password":"123"} - 164 - 109.827 ms
+GET /api/gameHistory/1 200 {} - 4269 - 8.676 ms
+POST /api/gameHistory/ 200 {"winner_id":1,"winner_name":"user_1","game_mode":"Race","game_date":"2021-02-15T22:50:01.355Z","player_stats":{"user_1":{"page_history":{"www.example.com":{"count":20,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]},"www.another-example.com":{"count":15,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]},"www.lots-of-trackers.com":{"count":65,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]}},"score":100},"user_2":{"page_history":{"www.example.com":{"count":15,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]},"www.another-example.com":{"count":10,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]},"www.lots-of-trackers.com":{"count":55,"trackers":["example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker","example_tracker"]}},"score":80}},"game_stats":{"time_elapsed":13,"win_condition":100},"player_ids":[1,2]} - 4 - 6.446 ms
+POST /api/gameHistory/ 200 {"winner_id":1,"winner_name":"user_1","game_mode":"Category","game_date":"2021-02-15T22:50:01.381Z","player_stats":{"user_1":{"categories":["Internet and Telecom","Law and Government","Law and Government","Science","Food and Drink","News and Media"]},"user_2":{"categories":["Internet and Telecom","Science","Science","Food and Drink","Food and Drink"]}},"game_stats":{"time_elapsed":13,"win_condition":"News and Media"},"player_ids":[1,2]} - 4 - 4.586 ms
+GET /api/gameHistory/1 200 {} - 8537 - 5.909 ms
+POST /api/logger/logs 200 {"from":"client"} - 104 - 2.695 ms
+POST /api/logger/logs 404 {"from":"extension"} - 15 - 2.879 ms
+GET /api/users 200 {} - 325 - 5.377 ms
+GET /api/users/1 200 {} - 53 - 2.497 ms
+GET /api/users/90 404 {} - 35 - 1.768 ms
+POST /api/users/name 200 {"user_name":"user_1"} - 53 - 5.392 ms
+POST /api/users/name 404 {"user_name":"does_not_exist"} - 42 - 1.659 ms
+POST /api/auth/register 401 {"user_name":"unit_test","password":"1234","confirm_password":"1234","owns_plugin":true} - 48 - 0.946 ms
+POST /api/auth/register 401 {"user_name":"u","password":"123456","confirm_password":"123456","owns_plugin":true} - 49 - 0.518 ms
+POST /api/auth/register 200 {"user_name":"unit_test","password":"123456","confirm_password":"123456","owns_plugin":true} - 164 - 1022.561 ms
+POST /api/auth/login 200 {"user_name":"unit_test","password":"123456"} - 164 - 97.594 ms
+PUT /api/users/7 200 {"new_pass":"test_123","old_pass":"123456","user_id":7} - 54 - 195.535 ms
+POST /api/auth/login 200 {"user_name":"unit_test","password":"test_123"} - 164 - 99.183 ms
+DELETE /api/users/7 200 {"user_id":7} - 27 - 3.256 ms
+POST /api/auth/login 200 {"user_name":"user_1","password":"123"} - 164 - 98.612 ms
+GET /api/userAchievements/1 200 {} - 5131 - 18.507 ms
+GET /api/userAchievements/1 200 {} - 5131 - 9.002 ms
+PUT /api/userAchievements/1 200 {"achievement_id":1,"completed":true} - 33 - 5.031 ms
+POST /api/auth/login 200 {"user_name":"user_1","password":"123"} - 164 - 103.273 ms
+GET /api/userMetrics/ 200 {} - 54840439 - 10291.090 ms
+POST /api/userMetrics/search 200 {"user":"user_1"} - 9140074 - 1688.211 ms
+POST /api/userMetrics/search 404 {"user":"does not exist"} - 4 - 3.421 ms
