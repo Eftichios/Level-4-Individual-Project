@@ -31,7 +31,7 @@ async function search(req, res){
         var user_metrics = await models.user.findAll({attributes: ['user_name'], include: [models.user_metric]});
     }
     
-    if (user_metrics){
+    if (user_metrics.length>0){
         res.status(200).json(user_metrics)
     } else {
         res.status(404).json(null)

@@ -100,6 +100,9 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	if (routeController.logger){
 		app.post(`/api/logger`, makeHandlerAwareOfAsyncErrors(routeController.logger));
 	}
+	if (routeController.getAllLogs){
+		app.post(`/api/logger/logs`, makeHandlerAwareOfAsyncErrors(routeController.getAllLogs));
+	}
 
 	// handle category routes
 	if (routeController.category){

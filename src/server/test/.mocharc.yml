@@ -1,4 +1,11 @@
 file : [
-  './test/test_setup.js',
-  './test/users.test.js'
+  './test/setup.test.js',
+  './test/users.test.js',
+  './test/achievements.test.js',
+  './test/game_history.test.js'
+  './test/user_achievements.test.js',
+  './test/user_metrics.test.js',
+  './test/logger.test.js',
+  './test/category.test.js',
+  './test/lobby_handler.test.js'
 ]

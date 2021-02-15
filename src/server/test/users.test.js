@@ -19,6 +19,13 @@ describe("Users API", ()=>{
         response.body.user_id.should.be.eq(1);           
     });
 
+    it("It should return no user exists with id=90", async ()=>{
+        const user_id = 90
+        const response = await chai.request(app).get("/api/users/" + user_id)
+        response.should.have.status(404);
+        response.body.should.be.eq('No user exists with the given id.');           
+    });
+
     it("It should return user with user_id=1 by name", async ()=>{
         const name = "user_1";
         const response = await chai.request(app)
@@ -28,6 +35,40 @@ describe("Users API", ()=>{
         response.should.have.status(200);
         response.body.user_id.should.be.eq(1);
         response.body.user_name.should.be.eq(name);
+    })
+
+    it("It should no user exists by non-registered name", async ()=>{
+        const name = "does_not_exist";
+        const response = await chai.request(app)
+                                   .post("/api/users/name")
+                                   .set('content-type', 'application/json')
+                                   .send({user_name: name});
+        response.should.have.status(404);
+        response.body.should.be.eq('No user exists with the given user name.');
+    })
+
+    it("It should fail to register a new user with pass < 6 char", async ()=>{
+        const name = "unit_test";
+        const pass = "1234";
+        const owns_plugin = true;
+        const response = await chai.request(app)
+                                   .post("/api/auth/register")
+                                   .set('content-type', 'application/json')
+                                   .send({user_name: name, password: pass, confirm_password: pass, owns_plugin: owns_plugin});
+        response.body.should.be.eq("Password should be at least 6 characters long.")
+        response.should.have.status(401);
+    })
+
+    it("It should fail to register a new user with username < 3 char", async ()=>{
+        const name = "u";
+        const pass = "123456";
+        const owns_plugin = true;
+        const response = await chai.request(app)
+                                   .post("/api/auth/register")
+                                   .set('content-type', 'application/json')
+                                   .send({user_name: name, password: pass, confirm_password: pass, owns_plugin: owns_plugin});
+        response.body.should.be.eq("User name should be at least 3 characters long.")
+        response.should.have.status(401);
     })
 
     it("It should register a new user with name unit_test", async ()=>{

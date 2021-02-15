@@ -29,7 +29,6 @@ async function queryCategories(url){
     // make api request
     try{
         var res = await sa.get(`https://website-categorization.whoisxmlapi.com/api/v1?apiKey=at_ur6J5OfOyx7VU1A1SAeKlgwKFA7zx&domainName=${url}`)
-        console.log(res.body.categories);
         if (res.body.categories.length > 0){
             categories = res.body.categories;
         } else {
@@ -38,7 +37,6 @@ async function queryCategories(url){
         await store_in_database(url, categories);
         return categories;
     } catch (err){
-        console.log(err.message, url)
         return ["No Category"];
     }
 
