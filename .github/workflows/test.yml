@@ -29,7 +29,11 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -55,6 +59,7 @@ jobs:
           # The hostname used to communicate with the PostgreSQL service container
           db_host: localhost
           # The default PostgreSQL port
-          db_port: 5432
-          db_name: adhunt_test
-          db_pass: password
+          db_port: ${{ job.services.postgres.ports['5432'] }}
+          db_name: postgres
+          db_pass: postgres
+          db_user: postgres
