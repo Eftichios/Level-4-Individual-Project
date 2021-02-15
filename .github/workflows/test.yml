@@ -20,7 +20,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Cd into the server directory
-        run: cd src/server
+        run: cd src\server
       
       # Runs a single command using the runners shell
       - name: Install npm modules
