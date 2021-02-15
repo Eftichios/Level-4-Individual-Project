@@ -29,7 +29,7 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          db_pass: postgres
+          POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -48,12 +48,9 @@ jobs:
           node-version: ${{matrix.node-version}}
         
       - run: npm ci
-      - name: Connect to PostgreSQL
-        # Runs a script that creates a PostgreSQL client, populates
-        # the client with data, and retrieves data
-        run: node sequelize/reset_db.js
-        # Environment variable used by the script to create
-        # a new PostgreSQL client.
+      - run: npm run build --if-present
+      - name: Connect to PostgreSQL and test
+        run: npm test
         env:
           # The hostname used to communicate with the PostgreSQL service container
           db_host: localhost
@@ -61,6 +58,3 @@ jobs:
           db_port: 5432
           db_name: adhunt_test
           db_pass: password
-      - run: npm run build --if-present
-      - run: npm test
-
