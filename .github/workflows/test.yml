@@ -12,7 +12,11 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -20,13 +24,13 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Cd into the server directory
-        run: cd src\server
+        run: cd src/server
       
-      # Runs a single command using the runners shell
-      - name: Install npm modules
-        run: npm install
-
-      # Runs a set of commands using the runners shell
-      - name: Run the mocha unit tests
-        run: npm run test
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
 
