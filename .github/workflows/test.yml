@@ -63,3 +63,4 @@ jobs:
           db_name: postgres
           db_pass: postgres
           db_user: postgres
+          jwtSecret: ${{secrets.JWT_SECRET}}
