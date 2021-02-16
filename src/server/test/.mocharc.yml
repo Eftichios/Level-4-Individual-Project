@@ -7,5 +7,7 @@ file : [
   './test/user_metrics.test.js',
   './test/logger.test.js',
   './test/category.test.js',
-  './test/lobby_handler.test.js'
+  './test/lobby_handler.test.js',
+  './test/metrics_handler.test.js',
+  './test/achievement_manager.test.js'
 ]

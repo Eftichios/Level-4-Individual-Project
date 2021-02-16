@@ -1,0 +1,11 @@
+require('./test/setup.test.js');
+require('./test/users.test.js');
+require('./test/achievements.test.js');
+require('./test/game_history.test.js');
+require('./test/user_achievements.test.js');
+require('./test/user_metrics.test.js');
+require('./test/logger.test.js');
+require('./test/category.test.js');
+require('./test/lobby_handler.test.js');
+require('./test/metrics_handler.test.js');
+require('./test/achievement_manager.test.js');
