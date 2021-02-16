@@ -32,13 +32,10 @@ app.use((req,res,next)=>{
 const routes = {
 	users: require('./routes/users'),
 	game: require('./routes/game'),
-	organisations: require('./routes/organisations'),
 	achievements: require('./routes/achievements'),
 	userMetrics: require('./routes/user_metrics'),
 	userAchievements: require('./routes/user_achievements'),
-	userOrganisations: require('./routes/user_organisations'),
 	gameHistory: require('./routes/game_history'),
-	market: require('./routes/market'),
 	logger: require('./routes/logger'),
 	category: require('./routes/category')
 }
@@ -76,7 +73,7 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/${routeName}`, authorization, makeHandlerAwareOfAsyncErrors(routeController.create));
 	}
 
-	// handle athorisation routes
+	// handle authorisation routes
 	if (routeController.register) {
 		app.post(`/api/auth/register`, validInfo, makeHandlerAwareOfAsyncErrors(routeController.register));
 	}

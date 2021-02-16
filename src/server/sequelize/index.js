@@ -13,13 +13,10 @@ const sequelize = new Sequelize(`postgres://${process.env.db_user}:${process.env
 // load all of our models
 const modelDefiners = [
     require('./models/user.model'),
-    require('./models/organisation.model'),
     require('./models/achievement.model'),
     require('./models/user_metric.model'),
     require('./models/user_achievement.model'),
-    require('./models/user_organisation.model'),
     require('./models/game_history.model'),
-    require('./models/market.model'),
     require('./models/ad_category.model'),
     require('./models/client_logger.model'),
     require('./models/extension_logger.model'),
