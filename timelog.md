@@ -563,5 +563,13 @@
 ### 15 Feb 2021
 * *4 hours* Working on automated unit testing
 
+### 16 Feb 2021
+* *1 hour* Working on automated unit testing
+* *1 hour* Bug fixes and refinements
+
+### 17 Feb 2021
+* *1.5 hours* Reset page trackers for each new game
+* *2.5 hours* Attempting to refactor sockets to handle disconnections better 
+
 
 
