@@ -31,6 +31,22 @@ socket.on('gameStartRace', async(game_state)=>{
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'postGame': null});
     chrome.storage.local.set({'error': null});
+
+    // reset page trackers
+    chrome.tabs.query({}, function(tab) {
+        var temp_ads = {}
+        tab.forEach(async (t) => {
+          var id = t.id
+          var domain = extractDomain(t.url);
+          if (!domain){
+            domain = "other";
+          }  
+          temp_ads[id] = {'url': domain, 'trackers': 0};   
+        });
+        chrome.storage.local.set({'tab_id_ads': temp_ads}, ()=>{
+          console.log(temp_ads);
+        })
+      });
 });
 
 // listen to category game start event and set game state

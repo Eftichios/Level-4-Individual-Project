@@ -122,16 +122,17 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                         chrome.storage.local.set({"page_history": data.page_history});
                     });
 
-                    chrome.storage.local.get([tab_id], function(data) {
-                        if (!data[tab_id]){
+                    chrome.storage.local.get('tab_id_ads', function(page_data) {
+                        var page = page_data.tab_id_ads
+                        if (!page[tab_id]){
                             return
                         }
-                        data[tab_id].trackers +=1;
-                        if (data[tab_id].url==="other" && domain) {
-                            data[tab_id].url = domain;
+                        page[tab_id].trackers +=1;
+                        if (page[tab_id].url==="other" && domain) {
+                            page[tab_id].url = domain;
                         }
-                        chrome.storage.local.set({[tab_id]: data[tab_id]}, function() {
-                            console.log("Page ads: ", data[tab_id].trackers);
+                        chrome.storage.local.set({'tab_id_ads': page}, function() {
+                            console.log("Page ads: ", page[tab_id].trackers);
                         });  
                     });
                     

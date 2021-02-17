@@ -6,12 +6,12 @@ chrome.storage.local.get("gameMode", function(data){
         // send a message every two seconds
         var interval_id = setInterval(function() { 
             chrome.runtime.sendMessage({reinject: true});
-        }, 2000);
+        }, 500);
 
-        // stop sending messages after 40 seconds
+        // stop sending messages after 1 minute
         setTimeout(function(){
             clearInterval(interval_id)
             console.log("CLEARED INTERVAL");
-        }, 40000)
+        }, 60000)
     }
 });

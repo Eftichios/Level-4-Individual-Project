@@ -154,17 +154,17 @@ chrome.storage.local.get('postGame', function(gameOverData) {
 
 // Find the active tab and set the number of page ad trackers
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
-  var tab_id = tab[0].id.toString();
-  chrome.storage.local.get([tab_id], function(data) {
-    document.getElementById('ads').innerHTML = `(${data[tab_id].url}): ${data[tab_id].trackers}`;
+  var tab_id = tab[0].id;
+  chrome.storage.local.get('tab_id_ads', function(page_data) {
+    document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
   });
 });
 
 // listen to tab switches to update feedback accordingly
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-  var tab_id = activeInfo.tabId.toString();
-  chrome.storage.local.get([tab_id], function(data) {
-    document.getElementById('ads').innerHTML = `(${data[tab_id].url}): ${data[tab_id].trackers}`;
+  var tab_id = activeInfo.tabId;
+  chrome.storage.local.get('tab_id_ads', function(page_data) {
+    document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
   });
 });
 
@@ -179,13 +179,13 @@ chrome.storage.local.get('error', function(err_data){
 // This enables real-time updating of player scores and other feedback
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
-    var tab_id = tab[0].id.toString();
+    var tab_id = tab[0].id;
     for (var key in changes) {
       var storageChange = changes[key];
       if (key=="totalAds"){
         document.getElementById('totalAds').innerHTML = storageChange.newValue;
-      }else if (key==tab_id){
-        document.getElementById('ads').innerHTML = `(${storageChange.newValue.url}): ${storageChange.newValue.trackers}`;
+      }else if (key=='tab_id_ads'){
+        document.getElementById('ads').innerHTML = `(${storageChange.newValue[tab_id].url}): ${storageChange.newValue[tab_id].trackers}`;
       }else if (key=="latestTracker"){
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="latestCategory"){
@@ -194,7 +194,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('adCount').innerHTML = storageChange.newValue;
       }else if (key=="ownerName"){
         document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`;
-      }else if (key=="error"){
+      }else if (key=="error" && storageChange.newValue){
         document.getElementById('status').innerHTML = "Something went wrong...";
       }else if (key=="postGame"){
         if (storageChange.newValue){

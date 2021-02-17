@@ -1,8 +1,7 @@
 // Initialise relevant player metrics when extension is installed
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.local.set({'totalAds': 0}, function(){
-      console.log("Initialise total ads number.")
-    });
+    chrome.storage.local.set({'totalAds': 0});
+    chrome.storage.local.set({'tab_id_ads': 0});
     chrome.storage.local.set({'gameState': null});
     chrome.storage.local.set({'gameMode': null});
     chrome.storage.local.set({'ownerName': null});
@@ -12,6 +11,22 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'latestCategory': null});
     chrome.storage.local.set({"postGame": null});
     chrome.storage.local.set({'adCount': 0});
+
+    // For each already open tab in chrome, initialise a counter for ad trackers
+    chrome.tabs.query({}, function(tab) {
+      var temp_ads = {}
+      tab.forEach(async (t) => {
+        var id = t.id
+        var domain = extractDomain(t.url);
+        if (!domain){
+          domain = "other";
+        }  
+        temp_ads[id] = {'url': domain, 'trackers': 0};   
+      });
+      chrome.storage.local.set({'tab_id_ads': temp_ads}, ()=>{
+        console.log(temp_ads);
+      })
+    });
   });
 
   // Enables the extension for all pages given in the pageUrl option
@@ -25,69 +40,62 @@ chrome.runtime.onInstalled.addListener(function() {
           actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
   });
-
-  // For each already open tab in chrome, initialise a counter for ad trackers
-  chrome.tabs.query({}, function(tab) {
-    tab.forEach((t) => {
-      var id = t.id.toString();
-      var domain = extractDomain(t.url);
-      if (!domain){
-        domain = "other";
-      }
-      chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-      console.log("Initialised total ads for tab with id",id, t);
-    });
-    });
-  });
   
   // When a new tab is created, initialise a counter for ad trackers
   chrome.tabs.onCreated.addListener(function (tab) {
-    var id = tab.id.toString();
+    var id = tab.id
     var domain = extractDomain(tab.url) || extractDomain(tab.pendingUrl);
     if (!domain){
       domain = "other";
     }
-    chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-      console.log("Initialised total ads for tab with id",id);
+    chrome.storage.local.get('tab_id_ads', (page_data)=>{
+      var tab_ads = page_data.tab_id_ads;
+      tab_ads[id] = {'url':domain, 'trackers':0}
+      chrome.storage.local.set({'tab_id_ads': tab_ads}, function() {
+        console.log("Initialised total ads for tab with id",id);
+      });
     });
   });
 
 
   // When a tab is destroyed, remove the counter from storage
   chrome.tabs.onRemoved.addListener(function (tab_id){
-    var id = tab_id.toString()
-    chrome.storage.local.remove([id], function() {
-      console.log("Destroyed total ads for tab with id ",id);
+    var id = tab_id
+    chrome.storage.local.get('tab_id_ads', (page_data)=>{
+      var tab_ads = page_data.tab_id_ads;
+      delete tab_ads[id]
+      chrome.storage.local.set({'tab_id_ads': tab_ads}, function() {
+        console.log("Initialised total ads for tab with id",id);
+      });
     });
   })
 
-  // Listen to url changes in order to update url trackers
+  // Listen to tab changes in order to update page url and trackers
   chrome.tabs.onUpdated.addListener(function (tab_id){
-    var id = tab_id.toString();
-    try{
-      chrome.tabs.get(tab_id, function(tab_details){
-          var domain = extractDomain(tab_details.url);
-          if (!domain){
-            domain = "other";
+    var id = tab_id
+    chrome.tabs.get(id, function(tab_details){
+      var domain = extractDomain(tab_details.url);
+      if (!domain){
+        domain = "other";
+      }
+      chrome.storage.local.get('tab_id_ads', (page_data)=>{
+        var tab_ads = page_data.tab_id_ads;
+        if (tab_ads[id]){
+          if (tab_ads[id].url !== domain){
+            tab_ads[id] = {'url':domain, 'trackers':0}
+          } else {
+            tab_ads[id]['url'] = domain
           }
-          chrome.storage.local.get([id], function(data) {
-            if (data[id].url !== domain){
-              chrome.storage.local.set({[id]: {'url':domain, 'trackers':0}}, function() {
-                console.log("Updated tab url",id);
-              });
-            }
+          chrome.storage.local.set({'tab_id_ads': tab_ads}, function() {
+            console.log("Updated tab url",id);
           });
-        })
-      }catch (err){
-        console.log(err.message);
-        chrome.storage.local.set({[id]: {'url':domain?domain:"other", 'trackers':0}}, function() {
-          console.log("Updated tab url",id);
-        });
-    }  
+        }  
+      });
+    })
   });
 
   // listen to content script messages
-  // every 2 seconds runs the content script inside all frames
+  // every 0.5 seconds runs the content script inside all frames
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     if(request.reinject) {
       chrome.tabs.executeScript(sender.tab.id,{
