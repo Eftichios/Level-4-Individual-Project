@@ -70,7 +70,7 @@ export class Lobby extends React.Component {
     }
 
     startGame = async () => {
-        logger.log("info", `User started game in lobby ${this.state.lobbyData.room}`, this.props.location.user_name)
+        logger.log("info", `User started game in lobby ${this.state.lobbyData.room}`, this.props.location.state.user_name)
         try {
 
             const response = await fetch(`/api/startGame`, {
