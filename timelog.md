@@ -571,5 +571,10 @@
 * *1.5 hours* Reset page trackers for each new game
 * *2.5 hours* Attempting to refactor sockets to handle disconnections better 
 
+### 18 Feb 2021
+* *0.5 hour* Trying to reduce socket disconnections
+* *1 hour* Kick players out of lobby if they disconnect
+* *3 hours* Player profile picture functionality 
+
 
 
