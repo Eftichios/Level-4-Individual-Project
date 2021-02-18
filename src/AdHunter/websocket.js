@@ -2,6 +2,14 @@ var socket = io.connect('http://localhost:5000');
 
 socket.on('connect', ()=>{
     console.log('Connected to server')
+
+    // check if this player was in an active game
+    chrome.storage.local.get('gameState', async (game_data)=>{
+        if (game_data.gameState){
+            // indicate error
+            chrome.storage.local.set({'error':"Disconnected from network."})
+        }
+    })
 });
 
 // special message to expose extension sockets to the server

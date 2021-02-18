@@ -160,6 +160,7 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
     socket.on('extensionError', (error_data)=>{
         if (socket.user_name === error_data.player){
             io.to(lobby.room).emit("ext_error", socket.user_name);
+            socket.leave(ext_room)
         }
     });
 
