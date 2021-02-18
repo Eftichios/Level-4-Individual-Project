@@ -10,7 +10,9 @@ const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer, {
 	cors: {
 		origin: "*"
-	}
+	},
+	'pingTimeout': 180000, 
+	'pingInterval': 25000
 });
 
 // connect to the database
