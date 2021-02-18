@@ -273,7 +273,7 @@ export class Lobby extends React.Component {
                             <div className="p-1">{this.state.lobbyData.game_mode==="Race"?"Get tracked by:":"Category:"}</div>
                             <div className="p-1 text-orange">{this.state.lobbyData.game_mode==="Race"?`${this.state.lobbyData.condition} Unique Ad Trackers`:`${this.state.lobbyData.condition}`}</div>
                         </div>
-                        <div className="p-1"><button onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
+                        <div className="p-1"><button disabled={this.state.game_on} onClick={()=>this.toggleReady()} className="constSize btn btn-primary">Ready</button></div>
                         <div className="p-1"><button onClick={()=>this.leaveLobby()}className="constSize btn orange">Leave</button></div>
                     </div>
                 </div>
