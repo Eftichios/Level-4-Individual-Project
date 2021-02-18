@@ -75,7 +75,7 @@ _reset_client_socket_listeners = (socket) =>{
 }
 
 _reset_ext_socket_listeners = (ext_socket) =>{
-    const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory", "extensionError"]
+    const listeners = ["sendUpdateToAllClients", "playerWon", "playerHistory", "extensionError"];
     for (var i in listeners){
         ext_socket.removeAllListeners(listeners[i])
     }
@@ -198,7 +198,7 @@ async function checkIfExtensionConfigured(user_id){
 async function findGame(req, res){
     var io = getIo();
         
-    const { user_id, user_name, socketId, game_mode } = req.body;
+    const { user_id, user_name, socketId, game_mode, profile } = req.body;
     io.emit("identifyExtension", {user_name, user_id});
 
     // put a timer to wait for the extension to respond
@@ -214,7 +214,7 @@ async function findGame(req, res){
 
     var socket = io.sockets.sockets.get(socketId);
     if (socket){
-        lobby.addPlayer(socket.id, user_name, user_id);
+        lobby.addPlayer(socket.id, user_name, user_id, profile);
         await _setClientSocketConnections(io, lobby, socket);
             
             
@@ -224,11 +224,9 @@ async function findGame(req, res){
     
         res.status(200).json({'success':true, 'lobby':lobby});
     } else {
-        
         res.status(400).json("Unable to find game at this time. Try refreshing the page and trying again.");
     }
     lobbyHandler.clearEmptyLobbies();
-    
 }
 
 async function startGame(req, res){

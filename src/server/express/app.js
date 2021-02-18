@@ -84,6 +84,10 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.get(`/api/auth/isVerified`, authorization, makeHandlerAwareOfAsyncErrors(routeController.isVerified));
 	}
 
+	if (routeController.update_profile) {
+		app.put(`/api/users/updateProfile/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.update_profile));
+	}
+
 	// handle game play routes 
 	if (routeController.findGame){
 		app.post(`/api/play`, authorization, makeHandlerAwareOfAsyncErrors(routeController.findGame));

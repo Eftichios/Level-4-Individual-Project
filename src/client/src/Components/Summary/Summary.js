@@ -216,7 +216,7 @@ export class Summary extends React.Component {
             </div>    
                 <div className="col-md-4">
                     <div className="float-right pr-5 d-flex flex-column align-items-center">
-                        <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
+                    <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
                         <div className="p-1 mb-4"><h3><strong>{this.props.location.state.user_name}</strong></h3></div>
                         <div className="mb-4 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>

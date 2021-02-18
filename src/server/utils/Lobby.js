@@ -36,9 +36,9 @@ class Lobby {
         return playerId in this.playerIds;
     }
 
-    addPlayer(socketId, user_name, playerId) {
+    addPlayer(socketId, user_name, playerId, profile) {
         if (!this.isLobbyFull() && !this.isPlayerInLobby() ){
-            this.playerIds[playerId] = {"name": user_name, "ready": false};
+            this.playerIds[playerId] = {"name": user_name, "ready": false, "profile": profile};
             this.socketPlayerMap[socketId] = playerId;
         }
     }

@@ -42,12 +42,12 @@ async function reset() {
 
     // populates users table
     var users_db = await sequelize.models.user.bulkCreate([
-        { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true},
-        { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true},
-        { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true},
-        { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true},
-        { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true},
-        { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true}
+        { user_name: "user_1", user_password: bcrypt_password, owns_plugin:true, profile_picture:'blue_bot.svg'},
+        { user_name: "user_2", user_password: bcrypt_password, owns_plugin:true, profile_picture:'green_bot.svg'},
+        { user_name: "user_3", user_password: bcrypt_password, owns_plugin:true, profile_picture:'yellow_bot.svg'},
+        { user_name: "user_4", user_password: bcrypt_password, owns_plugin:true, profile_picture:'lilah_bot.svg'},
+        { user_name: "user_5", user_password: bcrypt_password, owns_plugin:true, profile_picture:'red_bot.svg'},
+        { user_name: "user_6", user_password: bcrypt_password, owns_plugin:true, profile_picture:'blue_bot.svg'}
     ], {returning: true});
 
     // populates achievements table
