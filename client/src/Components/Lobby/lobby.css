@@ -1,7 +1,7 @@
 .player-small {
     width: 30px;
     height: 30px;
-    border-radius: 100%;
+    border-radius: 25%;
     margin: auto;
 }
 
@@ -68,7 +68,7 @@
 .lobby-profile {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: 25%;
 }
 
 .running {

@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../index.css";
 import "./lobby.css";
-import profile from "../../Media/profile.jpeg";
 import running from "../../Media/running.png";
 import technology from "../../Media/technology.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -201,7 +200,7 @@ export class Lobby extends React.Component {
 
     constructPlayerTable(){
         return Object.keys(this.state.lobbyData.playerIds).map((id)=><tr key={id}>
-                <td><img className="player-small" src={profile} alt="Player" /></td>
+                <td><img className="player-small" src={require(`../../Media/bots/${this.state.lobbyData.playerIds[id]["profile"]}`).default} alt="Player" /></td>
                 <td><strong>{this.state.lobbyData.playerIds[id]["name"]}</strong></td>
                 <td><FontAwesomeIcon className={this.state.lobbyData.playerIds[id]["ready"]?"text-success":"text-danger"} icon={faCircle} /></td>
             </tr>)
@@ -233,7 +232,7 @@ export class Lobby extends React.Component {
             return <Redirect to={{pathname: "/summary", state: {lobby: this.state.lobbyData, 
                 user_name: this.props.location.state.user_name, user_id: this.props.location.state.user_id, 
                 winner: this.state.temp_winner, msg_data: this.state.msgData, game_state: this.state.game_state,
-                player_metrics: this.state.player_metrics}}}></Redirect>
+                player_metrics: this.state.player_metrics, profile: this.props.location.state.profile}}}></Redirect>
         }
         if (this.state.error){
             return <Redirect to="/dashboard"></Redirect>
@@ -265,7 +264,7 @@ export class Lobby extends React.Component {
             
                 <div className="col-md-4">
                     <div className="float-right pr-5 d-flex flex-column align-items-center">
-                        <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
+                    <div className="p-1"><img className="lobby-profile" src={require(`../../Media/bots/${this.props.location.state.profile}`).default} alt="Profile" /></div>
                         <div className="p-1 mb-1"><h5><strong>{this.props.location.state.user_name}</strong></h5></div>
                         <div className="mb-1 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>

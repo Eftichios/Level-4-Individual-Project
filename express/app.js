@@ -82,7 +82,7 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/${routeName}`, authorization, makeHandlerAwareOfAsyncErrors(routeController.create));
 	}
 
-	// handle athorisation routes
+	// handle authorisation routes
 	if (routeController.register) {
 		app.post(`/api/auth/register`, validInfo, makeHandlerAwareOfAsyncErrors(routeController.register));
 	}
@@ -91,6 +91,10 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	}
 	if (routeController.isVerified) {
 		app.get(`/api/auth/isVerified`, authorization, makeHandlerAwareOfAsyncErrors(routeController.isVerified));
+	}
+
+	if (routeController.update_profile) {
+		app.put(`/api/users/updateProfile/:id`, authorization, makeHandlerAwareOfAsyncErrors(routeController.update_profile));
 	}
 
 	// handle game play routes 

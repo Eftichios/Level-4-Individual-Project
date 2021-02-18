@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt');
 const jwtGenerator = require("../../utils/jwtGenerator");
 const { getIdParam, getCategoryMap } = require('../../utils/helpers');
 const trackers = require('../../utils/global')
+const possible_profiles = ['blue_bot.svg', 'cyan_bot.svg',
+                        'red_bot.svg', 'green_bot.svg',
+                        'grey_bot.svg', 'lilah_bot.svg',
+                        'purple_bot.svg', 'red_bot.svg', 'yellow_bot.svg']
 var passwordValidator = require('password-validator');
 var schema = new passwordValidator();
 
@@ -90,12 +94,41 @@ async function update(req, res) {
     }
 }
 
+async function update_profile(req, res){
+    const param_user_id = getIdParam(req);
+    const {icon_path, user_id} = req.body;
+
+    // check if param user id matches body user id 
+    if (param_user_id === user_id) {
+
+        // find the user
+        var user = await models.user.findOne({where: {user_id: user_id}});
+        if (!user){
+            res.status(404).json({success: false, msg: "No user found with the given id"});
+            return;
+        }
+
+        // check that the new profile icon path is valid
+        if (!possible_profiles.includes(icon_path)){
+            res.status(400).json({success: false, msg: "Invalid profile picture path"});
+            return;
+        }
+        await models.user.update({profile_picture: icon_path}, {where: {user_id: user_id}});
+        res.status(200).json({success: true, msg: "Profile picture changed succesfully.", profile_picture: icon_path})
+    }
+}
+
 async function remove(req, res) {
-    const id = getIdParam(req);
-    
+    const param_id = getIdParam(req);
+    const body_id = req.body.user_id;
+
+    if (param_id!==body_id){
+        res.status(400).json("Param id does not match body id")
+    }
+
     await models.user.destroy({
         where: {
-            user_id:id
+            user_id:body_id
         }
     });
     res.status(200).json("User deleted succesfully.")
@@ -132,7 +165,7 @@ async function register(req, res) {
 
         // insert user inside database
         var cat_count = createCategories();
-        const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin})
+        const newUser = await models.user.create({"user_name":user_name, "user_password":bcrypt_password, "owns_plugin":owns_plugin, "profile_picture":"blue_bot.svg"})
         await models.user_metric.create({ user_id: newUser.user_id, race_games: 0, category_games: 0, total_ad_trackers: 0, categories_count: cat_count, tracker_list: trackers, tracker_count: 0, score:10})
         await initAchievements(newUser.user_id);
 
@@ -157,7 +190,6 @@ async function login(req, res) {
     // check if req password is the same as db password
         
     const validPassword = await bcrypt.compare(password, user.user_password);
-    console.log(validPassword);
     if (!validPassword){
         return res.status(401).json("Incorrect password");
     }
@@ -182,5 +214,6 @@ module.exports = {
     login,
     isVerified,
     update,
-    remove
+    remove,
+    update_profile
 }

@@ -198,7 +198,7 @@ async function checkIfExtensionConfigured(user_id){
 async function findGame(req, res){
     var io = getIo();
         
-    const { user_id, user_name, socketId, game_mode } = req.body;
+    const { user_id, user_name, socketId, game_mode, profile } = req.body;
     io.emit("identifyExtension", {user_name, user_id});
 
     // put a timer to wait for the extension to respond
@@ -214,7 +214,7 @@ async function findGame(req, res){
 
     var socket = io.sockets.sockets.get(socketId);
     if (socket){
-        lobby.addPlayer(socket.id, user_name, user_id);
+        lobby.addPlayer(socket.id, user_name, user_id, profile);
         await _setClientSocketConnections(io, lobby, socket);
             
             

@@ -1,7 +1,7 @@
 .profile {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 25%;
 }
 
 .not-full {
@@ -18,6 +18,10 @@
     border-color: Transparent;
     overflow: auto; 
     resize: none;
+}
+
+.center-pictures{
+    justify-content: center;
 }
 
 hr {
@@ -46,6 +50,10 @@ hr {
     overflow-y: scroll;
 }
 
+.remove-scroll {
+    overflow-y: hidden!important;
+}
+
 .detail-hover:hover{
     cursor: pointer;
 }
@@ -71,4 +79,8 @@ hr {
 
 .page_switch {
     flex: auto;
+}
+
+.toggle-profile {
+    position: absolute;
 }

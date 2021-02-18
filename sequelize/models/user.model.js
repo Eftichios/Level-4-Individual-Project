@@ -21,6 +21,10 @@ module.exports = (sequelize) => {
         owns_plugin: {
             allowNull: false,
             type: DataTypes.BOOLEAN
+        },
+        profile_picture:{
+            allowNull: false,
+            type: DataTypes.STRING,
         }
     });
 };
