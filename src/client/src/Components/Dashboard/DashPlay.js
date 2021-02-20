@@ -27,8 +27,6 @@ export class DashPlay extends React.Component {
             temp_index: this.canditate_profiles.indexOf(props.icon_path),
         };
 
-        this.actual_picture = require(`../../Media/bots/${this.canditate_profiles[this.canditate_profiles.indexOf(props.icon_path)]}`).default
-
         // ensure that the socket listener is added only once
         if (socket._callbacks){
             if (!socket._callbacks.hasOwnProperty("$connect")){
@@ -88,12 +86,6 @@ export class DashPlay extends React.Component {
         this.setState({temp_index: (this.state.temp_index + 1) % this.canditate_profiles.length});
     }
 
-    getPicture(index){
-        let temp = require(`../../Media/bots/${this.canditate_profiles[index]}`).default
-        this.actual_picture = temp
-        return temp
-    }
-
     async updateProfile(changed){
         if (changed){
             await this.setState({icon_index: this.state.temp_index})
@@ -120,7 +112,7 @@ export class DashPlay extends React.Component {
                         </div>
                         <div className="modal-body remove-scroll text-center">
                             <div className="row center-pictures">
-                                <img className="profile" src={this.getPicture(this.state.temp_index)} alt="Profile" />
+                                <img className="profile" src={process.env.PUBLIC_URL + "/bots/" + this.canditate_profiles[this.state.temp_index]} alt="Profile" />
                             </div>
                             <button className="row btn btn-primary mt-4 constSize" onClick={()=>this.switchIcon()} >Next</button>
                         </div>
@@ -133,7 +125,7 @@ export class DashPlay extends React.Component {
                     </div>
                     <div className="d-flex flex-column align-items-center">
                     <div className="p-1">
-                        <img className="profile" src={require(`../../Media/bots/${this.canditate_profiles[this.canditate_profiles.indexOf(this.props.icon_path)]}`).default} alt="Profile" />
+                        <img className="profile" src={process.env.PUBLIC_URL +"/bots/" + this.canditate_profiles[this.canditate_profiles.indexOf(this.props.icon_path)]} alt="Profile" />
                         <FontAwesomeIcon data-toggle="modal" data-target="#profile" className="toggle-profile text-primary detail-hover" icon={faPencilAlt} />
                     </div>
                     <div className="p-1">Player: {this.props.name}</div>
