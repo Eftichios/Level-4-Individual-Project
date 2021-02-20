@@ -27,7 +27,7 @@ export class Dashboard extends React.Component {
         this.saveProfile = async (icon_path)=>{
             // make a request to the server to save new profile picture string
             try {
-                var response = await fetch(`http://localhost:5000/api/users/updateProfile/${this.user_id}`, {
+                var response = await fetch(`/api/users/updateProfile/${this.user_id}`, {
                     method: "PUT",
                     headers: {"Content-Type": "application/json", "token": localStorage.token},
                     body: JSON.stringify({icon_path: icon_path, user_id: this.user_id})
