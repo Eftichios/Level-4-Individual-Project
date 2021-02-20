@@ -130,7 +130,7 @@ chrome.storage.local.get("latestTracker", function(trackerData){
 })
 
 chrome.storage.local.get("adCount", function(adCountData){
-  document.getElementById('adCount').innerHTML = adCountData.adCount;
+  document.getElementById('adCount').innerHTML = `Categorised: ${adCountData.adCount["categorised"]}, Non-categorised: ${adCountData.adCount["non-categorised"]}`;
 })
 
 chrome.storage.local.get("latestCategory", function(categoryData){
@@ -191,7 +191,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       }else if (key=="latestCategory"){
         document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.categories.join(" | "):"None";
       }else if (key=="adCount"){
-        document.getElementById('adCount').innerHTML = storageChange.newValue;
+        document.getElementById('adCount').innerHTML = `Categorised: ${storageChange.newValue["categorised"]}, Non-categorised: ${storageChange.newValue["non-categorised"]}`;
       }else if (key=="ownerName"){
         document.getElementById('user').innerHTML = `Hello ${storageChange.newValue}!`;
       }else if (key=="error" && storageChange.newValue){

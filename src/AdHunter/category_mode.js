@@ -29,9 +29,7 @@ extract_links = async ()=>{
                 continue
             }
             if (!ad_urls.has(redirect_url)){
-                console.log(">>>", redirect_url);
                 ad_urls.add(redirect_url);
-                // console.log(ad_urls);
                 var parseRes = [];
                 try{
                     var response = await fetch("http://localhost:5000/api/category", {
@@ -43,13 +41,16 @@ extract_links = async ()=>{
                     parseRes = await response.json();
                     console.log(parseRes);
                 } catch (err){
-                    console.log(">>>>>>>||||:", err.message);
                     parseRes = ["No Category"]
                 } finally {
                     var temp_domain = extractDomain(location.href);
-                    chrome.storage.local.set({'latestCategory': {"categories":parseRes, "url":temp_domain || "Unknown"}});
+                    if (parseRes[0] !== "No Category"){
+                        chrome.storage.local.set({'latestCategory': {"categories":parseRes, "url":temp_domain || "Unknown"}});
+                    }
+                    
                     chrome.storage.local.get("adCount", async (adCountData)=>{
-                        chrome.storage.local.set({"adCount": adCountData.adCount+1})
+                        parseRes[0] !== "No Category"?adCountData.adCount["categorised"] += 1: adCountData.adCount["non-categorised"] += 1
+                        chrome.storage.local.set({"adCount": adCountData.adCount});
                     })
                     chrome.storage.local.get("gameState",async (gameData)=>{
                         chrome.storage.local.get("ownerName", async (ownerData)=>{
@@ -57,12 +58,12 @@ extract_links = async ()=>{
                                 gameData.gameState.players[ownerData.ownerName]["categories"] = gameData.gameState.players[ownerData.ownerName]["categories"].concat(parseRes)
                                 chrome.storage.local.set({"gameState": gameData.gameState});
                                 if (parseRes.includes(gameData.gameState.condition)){
-                                    console.log(gameData.gameState.players[ownerData.ownerName]["categories"]);
                                     chrome.storage.local.set({'handleCategorySockets': {"type": "winner", "data": {'player':ownerData.ownerName,'game_state':gameData.gameState}}})
                                     chrome.storage.local.set({'winner': ownerData.ownerName});
                                     chrome.storage.local.set({'gameMode': null});
                                     chrome.storage.local.set({'postGame': gameData.gameState});
                                     chrome.storage.local.set({'gameState': null});
+                                    chrome.storage.local.set({'adCount': {"categorised":0, "non-categorised":0}});
                                 } else {
                                     chrome.storage.local.set({'handleCategorySockets': {"type": "update", "data": {'player':ownerData.ownerName,'game_state':gameData.gameState}}})
                                 }

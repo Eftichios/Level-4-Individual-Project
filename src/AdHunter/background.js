@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'latestTracker': null});
     chrome.storage.local.set({'latestCategory': null});
     chrome.storage.local.set({"postGame": null});
-    chrome.storage.local.set({'adCount': 0});
+    chrome.storage.local.set({'adCount': {"categorised":0, "non-categorised":0}});
 
     // For each already open tab in chrome, initialise a counter for ad trackers
     chrome.tabs.query({}, function(tab) {
@@ -74,6 +74,9 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.tabs.onUpdated.addListener(function (tab_id){
     var id = tab_id
     chrome.tabs.get(id, function(tab_details){
+      if (chrome.runtime.lastError){
+        return
+      }
       var domain = extractDomain(tab_details.url);
       if (!domain){
         domain = "other";
@@ -103,7 +106,7 @@ chrome.runtime.onInstalled.addListener(function() {
         allFrames: true },
       function(results){
         chrome.tabs.sendMessage(sender.tab.id, sender.tab.id);
-        console.log("success in injecting script into iframes of page", results);
+        void chrome.runtime.lastError
       });
     }
   });
@@ -143,12 +146,13 @@ chrome.runtime.onInstalled.addListener(function() {
         } else {
           chrome.browserAction.setBadgeText({text: ''});
         }
-        
-      } else if (key=="gameState"){
+      }else if (key=="gameState"){
         if (storageChange.newValue){
           chrome.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
           chrome.browserAction.setBadgeText({text: ' '});
         } 
+      }else if (key=="userLeft" && storageChange.newValue){
+        chrome.browserAction.setBadgeText({text: ''})
       }
     }
   }); 

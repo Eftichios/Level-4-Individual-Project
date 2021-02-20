@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:5000');
 
 socket.on('connect', ()=>{
-    console.log('Connected to server')
+    console.log('Connected to server');
 
     // check if this player was in an active game
     chrome.storage.local.get('gameState', async (game_data)=>{
@@ -10,7 +10,11 @@ socket.on('connect', ()=>{
             chrome.storage.local.set({'error':"Disconnected from network."})
         }
     })
-});
+
+socket.on('disconnect',(data)=>{
+        
+    console.log('Disconnected from server', data);
+})
 
 // special message to expose extension sockets to the server
 socket.on('identifyExtension', async (user_data)=>{
@@ -39,6 +43,7 @@ socket.on('gameStartRace', async(game_state)=>{
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'postGame': null});
     chrome.storage.local.set({'error': null});
+    chrome.storage.local.set({'userLeft': false});
 
     // reset page trackers
     chrome.tabs.query({}, function(tab) {
@@ -67,6 +72,8 @@ socket.on('gameStartCategory', async(game_state)=>{
     chrome.storage.local.set({'page_history': {}});
     chrome.storage.local.set({'postGame': null});
     chrome.storage.local.set({'error': null});
+    chrome.storage.local.set({'userLeft': false});
+    chrome.storage.local.set({'adCount': {"categorised":0, "non-categorised":0}});
 });
 
 // listen to updates to the game state from other players and update their score
@@ -129,6 +136,7 @@ socket.on("extUserLeft", async(user_data)=>{
             chrome.storage.local.set({'page_history': {}});
             chrome.storage.local.set({'gameState': null});
             chrome.storage.local.set({'postGame': null});
+            chrome.storage.local.set({'userLeft': true});
             logger.log("game", "User left the game", user_data.user_name);
         } else {
             // if it is not this player, remove the player that left from the game state
@@ -146,3 +154,4 @@ socket.on("extUserLeft", async(user_data)=>{
     
     
 })
+});
