@@ -132,11 +132,23 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.browserAction.setBadgeText({text: ''});
         }
         
-      } else if (key=="error" && storageChange.newValue){
-        chrome.storage.local.get("ownerName", function(owner_data){
-          socket.emit('extensionError', {player: owner_data.ownerName, error: storageChange.newValue});
-
-        })
+      } else if (key=="error"){
+        if (storageChange.newValue){
+          chrome.browserAction.setBadgeBackgroundColor({ color: "#dc3545" });
+          chrome.browserAction.setBadgeText({text: 'x'});
+          chrome.storage.local.get("ownerName", function(owner_data){
+            socket.emit('extensionError', {player: owner_data.ownerName, error: storageChange.newValue});
+  
+          })
+        } else {
+          chrome.browserAction.setBadgeText({text: ''});
+        }
+        
+      } else if (key=="gameState"){
+        if (storageChange.newValue){
+          chrome.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
+          chrome.browserAction.setBadgeText({text: ' '});
+        } 
       }
     }
   }); 
