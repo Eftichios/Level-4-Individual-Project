@@ -200,7 +200,7 @@ export class Lobby extends React.Component {
 
     constructPlayerTable(){
         return Object.keys(this.state.lobbyData.playerIds).map((id)=><tr key={id}>
-                <td><img className="player-small" src={process.env.PUBLIC_URL +"/bots/"+this.props.location.state.profile} alt="Player" /></td>
+                <td><img className="player-small" src={process.env.PUBLIC_URL +"/bots/"+this.state.lobbyData.playerIds[id]["profile"]} alt="Player" /></td>
                 <td><strong>{this.state.lobbyData.playerIds[id]["name"]}</strong></td>
                 <td><FontAwesomeIcon className={this.state.lobbyData.playerIds[id]["ready"]?"text-success":"text-danger"} icon={faCircle} /></td>
             </tr>)
