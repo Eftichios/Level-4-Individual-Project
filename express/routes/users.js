@@ -33,13 +33,13 @@ async function initAchievements(user_id){
 }
 
 async function getAll(req, res) {
-    const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin']});
+    const users = await models.user.findAll({attributes: ['user_id','user_name','owns_plugin','profile_picture']});
     res.status(200).json(users);
 }
 
 async function getById(req, res) {
     const user_id = getIdParam(req);
-    const user = await models.user.findByPk(user_id, {attributes: ['user_id','user_name','owns_plugin']});
+    const user = await models.user.findByPk(user_id, {attributes: ['user_id','user_name','owns_plugin','profile_picture']});
     if (user){
         res.status(200).json(user);
     } else {
@@ -48,7 +48,7 @@ async function getById(req, res) {
 }
 
 async function getByName(req, res) {
-    const user = await models.user.findOne({where: {user_name: req.body.user_name}, attributes: ['user_id','user_name','owns_plugin']})
+    const user = await models.user.findOne({where: {user_name: req.body.user_name}, attributes: ['user_id','user_name','owns_plugin','profile_picture']})
     if (user){
         res.status(200).json(user);
     } else {
