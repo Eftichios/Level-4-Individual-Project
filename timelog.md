@@ -576,5 +576,10 @@
 * *1 hour* Kick players out of lobby if they disconnect
 * *3 hours* Player profile picture functionality 
 
+### 19 Feb 2021
+* *1 hour* Fixing static files path on deployed app 
+* *0.5 hour* Improving the chat in the lobby 
+* *0.5 hour* Adding more extension notification icons
+
 
 
