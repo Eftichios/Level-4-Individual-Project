@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../index.css";
 import "./summary.css";
-import profile from "../../Media/profile.jpeg";
 import { LobbyChat } from '../Lobby/LobbyChat';
 import { Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -215,7 +214,7 @@ export class Summary extends React.Component {
             </div>    
                 <div className="col-md-4">
                     <div className="float-right pr-5 d-flex flex-column align-items-center">
-                        <div className="p-1"><img className="lobby-profile" src={profile} alt="Profile" /></div>
+                    <div className="p-1"><img className="lobby-profile" src={process.env.PUBLIC_URL +"/bots/"+this.props.location.state.profile} alt="Profile" /></div>
                         <div className="p-1 mb-4"><h3><strong>{this.props.location.state.user_name}</strong></h3></div>
                         <div className="mb-4 d-flex flex-column align-items-center game-details">
                             <div className="p-1">Game Mode:</div>
