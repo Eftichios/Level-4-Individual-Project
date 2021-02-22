@@ -39,7 +39,8 @@ export class Lobby extends React.Component {
             game_state: null,
             player_metrics: null,
             timer: 0,
-            error: null
+            error: null,
+            cat_img: null
         }   
         
         this.timerID = null;
@@ -139,7 +140,8 @@ export class Lobby extends React.Component {
                     status_msg: this.status_msg_data["done"] + post_game_data.summary.player, 
                     game_on: false, game_state: post_game_data.summary.game_state, 
                     game_finished: true,
-                    player_metrics: post_game_data.player_metrics});
+                    player_metrics: post_game_data.player_metrics,
+                    cat_img: post_game_data.img_src? post_game_data.img_src:null});
             })
             socket.on("chatMessage", (data)=>{
                 var tempData = this.state.msgData.concat(data);
@@ -232,7 +234,7 @@ export class Lobby extends React.Component {
             return <Redirect to={{pathname: "/summary", state: {lobby: this.state.lobbyData, 
                 user_name: this.props.location.state.user_name, user_id: this.props.location.state.user_id, 
                 winner: this.state.temp_winner, msg_data: this.state.msgData, game_state: this.state.game_state,
-                player_metrics: this.state.player_metrics, profile: this.props.location.state.profile}}}></Redirect>
+                player_metrics: this.state.player_metrics, profile: this.props.location.state.profile, cat_img: this.state.cat_img}}}></Redirect>
         }
         if (this.state.error){
             return <Redirect to="/dashboard"></Redirect>

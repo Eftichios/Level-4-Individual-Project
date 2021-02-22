@@ -1,10 +1,10 @@
 class Logger{
-  _construct_msg = (level, message, user) =>{
-      return {date: new Date(), level: level, msg: message, user: user}
+  _construct_msg = (level, message, user, ad_img, categories) =>{
+      return {date: new Date(), level: level, msg: message, user: user, ad_img: ad_img, categories: categories}
   }
 
-  log = (level, message, user) =>{
-      var msg_data = this._construct_msg(level, message, user);
+  log = (level, message, user, ad_img=null, categories=null) =>{
+      var msg_data = this._construct_msg(level, message, user, ad_img, categories);
       fetch("http://localhost:5000/api/logger", {
           method: "POST",
           headers: {"Content-Type": "application/json"},

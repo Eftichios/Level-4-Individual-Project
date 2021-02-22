@@ -14,6 +14,11 @@
           height: 150px;
         }
 
+        .cat-image {
+          width: 80%;
+          height: auto;
+        }
+
         form {
           padding: 15px;
         }
@@ -49,6 +54,8 @@
       <div hidden id="category-stats" class="game-stats category-stats text-center">
         <p>Category: <span id="category">None</span></p>
         <p>Latest categories found: <i><span class="text-secondary" id="latestCategory">None</span></i></p>
+        <img hidden id="advert-img" class="cat-image" src="images/advert.png" alt="Advert image"/>
+        <p hidden id="no-img" class="text-center">Failed to extract advert image</p>
         <p>Adverts found: <i><span class="text-secondary" id="adCount">None</span></i></p>
       </div>
       <div class="text-center" id="other-players">

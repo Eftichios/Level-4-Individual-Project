@@ -119,11 +119,12 @@ chrome.runtime.onInstalled.addListener(function() {
         if (storageChange.newValue){
           switch(storageChange.newValue.type){
             case "update":
+              logger.log("game", `Advert identified`, storageChange.newValue.data.player, storageChange.newValue.log_stats.img, storageChange.newValue.log_stats.categories)
               socket.emit('sendUpdateToAllClients', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
               break;
             case "winner":
               storageChange.newValue.data.game_state["finished_at"] = new Date()
-              socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state})
+              socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state, "img_src": storageChange.newValue.data.img_src})
               break;
           }
         }

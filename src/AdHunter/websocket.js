@@ -74,6 +74,7 @@ socket.on('gameStartCategory', async(game_state)=>{
     chrome.storage.local.set({'error': null});
     chrome.storage.local.set({'userLeft': false});
     chrome.storage.local.set({'adCount': {"categorised":0, "non-categorised":0}});
+    chrome.storage.local.set({'latestCategory': null});
 });
 
 // listen to updates to the game state from other players and update their score

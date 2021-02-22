@@ -134,8 +134,18 @@ chrome.storage.local.get("adCount", function(adCountData){
 })
 
 chrome.storage.local.get("latestCategory", function(categoryData){
-  console.log(categoryData)
   document.getElementById('latestCategory').innerHTML = categoryData.latestCategory? categoryData.latestCategory.categories.join(" | "):"None"
+  if (categoryData.latestCategory && categoryData.latestCategory.img_src){
+    document.getElementById('no-img').setAttribute('hidden', true);
+    document.getElementById('advert-img').removeAttribute('hidden');
+    document.getElementById('advert-img').src = categoryData.latestCategory.img_src
+  } else if (categoryData.latestCategory && categoryData.latestCategory.img_src===null){
+    document.getElementById('no-img').removeAttribute('hidden');
+    document.getElementById('advert-img').setAttribute('hidden', true);
+  } else if (!categoryData.latestCategory){
+    document.getElementById('no-img').setAttribute('hidden', true);
+    document.getElementById('advert-img').setAttribute('hidden', true);
+  }
 })
 
 // check if a game was played and was finished and set winner
@@ -190,6 +200,17 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="latestCategory"){
         document.getElementById('latestCategory').innerHTML = storageChange.newValue? storageChange.newValue.categories.join(" | "):"None";
+        if (storageChange.newValue && storageChange.newValue.img_src){
+          document.getElementById('no-img').setAttribute('hidden', true);
+          document.getElementById('advert-img').removeAttribute('hidden');
+          document.getElementById('advert-img').src = storageChange.newValue.img_src
+        }else if (storageChange.newValue && storageChange.newValue.img_src===null) {
+          document.getElementById('no-img').removeAttribute('hidden');
+          document.getElementById('advert-img').setAttribute('hidden', true);
+        }else if (!storageChange.newValue){
+          document.getElementById('no-img').setAttribute('hidden', true);
+          document.getElementById('advert-img').setAttribute('hidden', true);
+        }
       }else if (key=="adCount"){
         document.getElementById('adCount').innerHTML = `Categorised: ${storageChange.newValue["categorised"]}, Non-categorised: ${storageChange.newValue["non-categorised"]}`;
       }else if (key=="ownerName"){
