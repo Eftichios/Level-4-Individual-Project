@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
         },
         req_body: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: DataTypes.STRING(2048)
         },
         res_body: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: DataTypes.STRING(2048)
         }
     },{
         freezeTableName: true

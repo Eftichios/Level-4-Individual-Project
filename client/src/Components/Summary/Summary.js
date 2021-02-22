@@ -166,6 +166,22 @@ export class Summary extends React.Component {
             this.setState({user_left: true})
         }
     }
+
+    display_cat_img(){
+        if (this.state.lobbyData.game_mode==="Race"){
+            return <div></div>
+        }
+        else if (this.props.location.state.cat_img){
+            return <div>
+                <h4>Winning Advert:</h4>
+                <img src={this.props.location.state.cat_img} alt="Winner advert" />
+            </div>
+        } else {
+            return <div>
+                <h4>Winning Advert image not available.</h4>
+            </div>
+        }
+    }
     
 
     render(){
@@ -194,6 +210,7 @@ export class Summary extends React.Component {
                                 {this.state.game_metrics}
                             </tbody>
                         </table>
+                        {this.display_cat_img()}
                     </div>
                 </div>
                 <div className="text-center col-md-4">

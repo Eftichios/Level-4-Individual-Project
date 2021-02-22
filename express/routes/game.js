@@ -63,7 +63,7 @@ function _build_category_game_history(io, lobby, player_game_state){
         player_ids: Object.keys(lobby.playerIds)}
     
     
-    io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data});
+    io.to(lobby.room).emit("gameFinished", {summary: player_game_state, player_metrics: player_data, img_src: player_game_state.img_src});
     create_category_from_server(game_history);
 }
 
