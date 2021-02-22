@@ -581,5 +581,19 @@
 * *0.5 hour* Improving the chat in the lobby 
 * *0.5 hour* Adding more extension notification icons
 
+### 20 Feb 2021
+* *2 hours* Manually testing and fixing bugs in gameplay
+* *0.5 hour* Profile picture in summary and remove unecessary images
+
+### 21 Feb 2021
+* *0.5 hour* Trying to add the response body in the server logs (no success) 
+* *1 hour* Dissertation writing
+
+## Week 19
+
+### 22 Feb 2021
+* *3 hours* Improving category game mode (identify and display advert images along with categories)
+* *0.5 hour* Manually testing the category game mode to identify potential bugs 
+
 
 
