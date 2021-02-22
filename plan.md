@@ -101,7 +101,18 @@
   * Bug fixes and better error handling
   * Polish and refine system components
   * Refactor socket communications
+* **Week 18**
+  * Finish writing unit tests
+  * Fix any identified bugs or errors
+  * Refactor socket communication to handle disconnections better
+  * User profile picture
+  * Extension notification icons
 * **Week 19**
+  * Improve category game mode feedback
+  * Polish and refine instructions
+  * Create survey for evalutaion
+  * Deploy first version of app
+  * Run first round of experiments
 * **Week 20**
 * **Week 21**
 * **Week 22**
