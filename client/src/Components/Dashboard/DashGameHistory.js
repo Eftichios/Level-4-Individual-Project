@@ -165,6 +165,22 @@ export class DashGameHistory extends React.Component {
                         )}
                     </tbody>
                 </table>      
+                <hr></hr>
+                <h5 className="text-center">Websites Visited</h5>
+                <table className="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th>url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {game.player_stats[this.props.name]["history"].map((key,index)=>
+                            <tr key={index}>
+                                <td>{key}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>  
             </div>
             <div className="modal-footer">
                 <button onClick={()=>this.resetModalData()} type="button" className="btn btn-secondary">Back</button>
