@@ -30,8 +30,25 @@ export class DashTrackers extends React.Component {
         
         this.infoTitle = "What do these trackers mean?"
 
-        this.infoBody = "These are domains of known third party trackers that collect information about the user while they are browsing the web. You can see which trackers have tracked you\n" +
-                "while playing the game by looking at the Found tab. In some cases we have further information on the trackers (indicated by the info circle next to the domain name)."
+        this.infoBody = <div>
+            <div>
+                <strong>What are Trackers?</strong>
+                <p>Trackers are the entities responsible for monitoring the user's browsing activity and collecting information about the user, which they then share with ad platforms to help them
+                    build an interest profile on the user. Trackers use cookies or pixels (1 pixel pictures embedded with a script, invisible to the user) to track the user's activity.
+                </p>
+            </div>
+            <p>In this modal you can see the domains of known third party trackers. They are separated into the found and not found tabs, the found tab contains the domains of trackers that have
+                tracked you while playing the Race game mode. The not found tab contains the rest of the domains that we know about. In some cases we have further information on the trackers 
+                (indicated by the info circle next to the domain name).
+            </p>
+            <div>
+                <strong>Disclaimer:</strong>
+                <p>You might notice that the found trackers do not correspond 1 to 1 with the trackers found in game. This means that not all trackers found in a game will have their domains in the tracker list.
+                   This is because, during gameplay, we use regular expression rules to match trackers, which also matches domains of trackers that are not included in our tracker list.
+                   Furthermore, not all trackers are identified during the gameplay, since the list of known trackers that we are using in this project is not exhaustive.
+                </p>
+            </div>
+        </div>
     }
 
     componentDidMount(){

@@ -72,12 +72,30 @@ export class DashSettings extends React.Component {
           this.infoTitle = "How to play the game?"
 
           this.infoBody = <div><p>To play the game you must have the corresponding chrome extension installed. Instructions on how to set everything up can be found in the about page (you 
-            can navigate to the about page by expanding the navigation side bar). With the extension installed, click on Find Game, this will put you in a lobby. In the lobby 
+            can navigate to the about page by expanding the navigation side bar). With the extension installed, select a game mode and click on Find Game, this will put you in a lobby. In the lobby 
             you must indicate that you are ready before the game can start. As soon as all players are ready, any one of the players can start the game.</p><p><strong>Race mode:</strong> The goal of this game mode 
-            is to get tracked by the number of unique trackers given in the lobby. To get tracked by ad trackers, simply visit any website that you beleive it has lots of tracking. You can view 
-            feedback on how you are progressing from the interface of the extension.</p><p><strong>Category mode(disabled):</strong> In this game mode, you are given an advert category in the lobby. The purpose 
+            is to get tracked by the number of unique trackers given in the lobby. To get tracked by ad trackers, simply visit any website. You can view 
+            feedback on how you are progressing from the interface of the extension.</p><p><strong>Category mode(experimental):</strong> In this game mode, you are given a random advert category in the lobby. The purpose 
             of the game is to visit websites in a calculated way such that you receive an advert on the given category. The first player to receive an advert in that category is the winner.</p>
-            <p>If you have any questions about the game or the project in general, you can email me at: 2329664k@student.gla.ac.uk</p></div>
+            <div><strong>Tips and tricks for the Race mode:</strong>
+              <ul>
+                <li>Examples of websites that have a lot of trackers are news websites or blogs.</li>
+                <li>Websites that do their own tracking usually don't have a lot of trackers (i.e Facebook, YouTube, Twitter...)</li>
+                <li>Accepting cookies when first visiting a website increases the number of trackers.</li>
+              </ul>
+            </div>
+            <div><strong>Tips and tricks for the Category mode:</strong>
+              <ul>
+                <li>Use a fresh broswer account. Details on how to create a fresh browser account can be found in the set up instructions.</li>
+                <li>When the game starts, spend a few minutes getting building your interest profile. For example, if you are given the Food category, browse the web
+                  in a way that shows you are interested in Food.
+                </li>
+                <li>After building your interest profile, visit websites that have a lot of adverts.</li>
+                <li>If you are still seeing unrelated adverts, spend some more time building your interest profile (try different strategies)</li>
+                <li>Finally, for each new game, you can clear your browsing history to reset your interest profile (remember to use the fresh browser account)</li>
+              </ul>
+            </div>
+            <p>If you have any questions about the game or the project in general, you can email me: 2329664k@student.gla.ac.uk</p></div>
     }
 
     logout = (e) => {

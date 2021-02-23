@@ -26,7 +26,7 @@ export class InfoModal extends React.Component {
                 </button>
             </div>
                 <div className="modal-body info-body">
-                    <div>{this.text}</div>
+                    {this.text}
                 </div>
                 <div className="modal-footer">    
                     <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={"#"+this.who}>Close</button>
