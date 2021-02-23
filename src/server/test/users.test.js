@@ -37,7 +37,7 @@ describe("Users API", ()=>{
         response.body.user_name.should.be.eq(name);
     })
 
-    it("It should no user exists by non-registered name", async ()=>{
+    it("It should return no user exists by non-registered name", async ()=>{
         const name = "does_not_exist";
         const response = await chai.request(app)
                                    .post("/api/users/name")
@@ -96,6 +96,22 @@ describe("Users API", ()=>{
                                    .set('content-type', 'application/json')
                                    .set('token', temp_response.body.token)
                                    .send({new_pass: new_pass, old_pass: old_pass, user_id: temp_response.body.user_id});
+        response.body.success.should.be.eq(true)
+        response.should.have.status(200);
+    })
+
+    it("It should update the new users profile picture", async ()=>{
+        const name = "unit_test";
+        const pass = "test_123"
+        const temp_response = await chai.request(app)
+                                   .post("/api/auth/login")
+                                   .set('content-type', 'application/json')
+                                   .send({user_name: name, password: pass});
+        const response = await chai.request(app)
+                                   .put("/api/users/updateProfile/" + temp_response.body.user_id)
+                                   .set('content-type', 'application/json')
+                                   .set('token', temp_response.body.token)
+                                   .send({icon_path: "lilah_bot.svg", user_id: temp_response.body.user_id});
         response.body.success.should.be.eq(true)
         response.should.have.status(200);
     })
