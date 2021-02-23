@@ -166,7 +166,12 @@ chrome.storage.local.get('postGame', function(gameOverData) {
 chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
   var tab_id = tab[0].id;
   chrome.storage.local.get('tab_id_ads', function(page_data) {
-    document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
+    if (page_data.tab_id_ads[tab_id]){
+      document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
+    }
+    else {
+      document.getElementById('ads').innerHTML = `Not available`;
+    }
   });
 });
 
@@ -174,7 +179,11 @@ chrome.tabs.query({active: true, windowType:"normal"}, function(tab) {
 chrome.tabs.onActivated.addListener(function(activeInfo) {
   var tab_id = activeInfo.tabId;
   chrome.storage.local.get('tab_id_ads', function(page_data) {
-    document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
+    if (page_data.tab_id_ads[tab_id]){
+      document.getElementById('ads').innerHTML = `(${page_data.tab_id_ads[tab_id].url}): ${page_data.tab_id_ads[tab_id].trackers}`;
+    } else {
+    document.getElementById('ads').innerHTML = `Not available`;
+  }
   });
 });
 
@@ -195,7 +204,11 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       if (key=="totalAds"){
         document.getElementById('totalAds').innerHTML = storageChange.newValue;
       }else if (key=='tab_id_ads'){
-        document.getElementById('ads').innerHTML = `(${storageChange.newValue[tab_id].url}): ${storageChange.newValue[tab_id].trackers}`;
+        if (storageChange.newValue[tab_id]){
+          document.getElementById('ads').innerHTML = `(${storageChange.newValue[tab_id].url}): ${storageChange.newValue[tab_id].trackers}`;
+        } else {
+          document.getElementById('ads').innerHTML = `Not available`;
+        }
       }else if (key=="latestTracker"){
         document.getElementById('latestTracker').innerHTML = storageChange.newValue? storageChange.newValue:"None";
       }else if (key=="latestCategory"){
