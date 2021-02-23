@@ -20,7 +20,8 @@ const modelDefiners = [
     require('./models/ad_category.model'),
     require('./models/client_logger.model'),
     require('./models/extension_logger.model'),
-    require('./models/server_logger.model')
+    require('./models/server_logger.model'),
+    require('./models/bug_report.model')
 ]
 
 // define all the models
