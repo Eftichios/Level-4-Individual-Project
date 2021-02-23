@@ -169,6 +169,7 @@ chrome.storage.onChanged.addListener(function race_flag_listener(changes, namesp
                                 chrome.storage.local.set({'gameMode': null});
                                 chrome.storage.local.set({'postGame': gameState});
                                 chrome.storage.local.set({'gameState': null});
+                                chrome.storage.local.set({'winCondition': null});
                                                     
                                 return;
                             }

@@ -11,6 +11,7 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({'latestCategory': null});
     chrome.storage.local.set({"postGame": null});
     chrome.storage.local.set({'adCount': {"categorised":0, "non-categorised":0}});
+    chrome.storage.local.set({'winCondition': null});
 
     // For each already open tab in chrome, initialise a counter for ad trackers
     chrome.tabs.query({}, function(tab) {
@@ -148,10 +149,13 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.browserAction.setBadgeText({text: ''});
         }
       }else if (key=="gameState"){
-        if (storageChange.newValue){
-          chrome.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
-          chrome.browserAction.setBadgeText({text: ' '});
-        } 
+        chrome.storage.local.get("winner", (winnerData)=>{
+          if (storageChange.newValue && !winnerData.winner){
+            chrome.browserAction.setBadgeBackgroundColor({ color: "#28a745" });
+            chrome.browserAction.setBadgeText({text: ' '});
+          } 
+        })
+        
       }else if (key=="userLeft" && storageChange.newValue){
         chrome.browserAction.setBadgeText({text: ''})
       }

@@ -44,6 +44,7 @@ socket.on('gameStartRace', async(game_state)=>{
     chrome.storage.local.set({'postGame': null});
     chrome.storage.local.set({'error': null});
     chrome.storage.local.set({'userLeft': false});
+    chrome.storage.local.set({'winCondition': game_state.condition});
 
     // reset page trackers
     chrome.tabs.query({}, function(tab) {
@@ -115,6 +116,7 @@ socket.on('winnerFound', async(player_game_state)=>{
         chrome.storage.local.set({'latestTracker': null});
         chrome.storage.local.set({'latestCategory': null});
         chrome.storage.local.set({'adCount': 0});
+        chrome.storage.local.set({'winCondition': null});
     });
     chrome.storage.local.get('ownerName', async function(data){
         chrome.storage.local.get('page_history', async function(historyData){

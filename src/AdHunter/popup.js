@@ -59,6 +59,15 @@ _resetGameState = () =>{
   });
 }
 
+chrome.storage.local.get('winCondition', function(data){
+  if (data.winCondition){
+    document.getElementById('race_condition').removeAttribute('hidden');
+    document.getElementById('winCondition').innerHTML = data.winCondition
+  }else{
+    document.getElementById('race_condition').setAttribute('hidden', true);
+  }
+})
+
 // searches for the user's user name and disabled the form if it exists
 chrome.storage.local.get('ownerName', function(data) {
   if (data.ownerName){
