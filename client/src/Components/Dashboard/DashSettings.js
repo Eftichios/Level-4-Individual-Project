@@ -14,7 +14,8 @@ export class DashSettings extends React.Component {
 
         this.state = {
             old_pass: "",
-            new_pass: ""
+            new_pass: "",
+            bug_description: "",
         }
 
         this.onChange = e => {
@@ -43,6 +44,29 @@ export class DashSettings extends React.Component {
               toast.error(err.message);
             }
 
+        }
+
+        this.onSubmitBug = async (e)=>{
+          e.preventDefault();
+          try {
+              const response = await fetch(`api/bugReport`, {
+                method:"POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({"bug_description": this.state.bug_description, "user_name": this.props.name})
+              });
+  
+              const parseRes = await response.json();
+  
+              if (parseRes){     
+                this.setState({bug_description: ""})
+                toast.success("Bug report submitted succesfully.");
+              }else{
+                toast.error("Failed to submit bug report");
+              }
+            } catch (err){
+              console.error(err.message)
+              toast.error(err.message);
+            }
         }
 
           this.infoTitle = "How to play the game?"
@@ -95,11 +119,36 @@ export class DashSettings extends React.Component {
                     </div>
                 </div>
                 </div>
+                <div className="modal fade" id="bugReport" tabIndex="-1" role="dialog" aria-labelledby="bugReportLabel" aria-hidden="true">
+                <div className="modal-dialog modal-md" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="bugReportLabel">Report a Bug</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                    <form className="col-12" onSubmit={this.onSubmitBug}>
+                        <div className="mt-2 form-group">
+                            <label htmlFor="bugDescriptionInput">Please describe the bug:</label>
+                            <textarea rows="7" name="bug_description" type="textarea" className="form-control" id="bugDescriptionInput" placeholder="Bug description" value={this.state.bug_description} onChange={(e)=>this.onChange(e)} />
+                        </div>
+                        <div className="text-center">
+                            <button disabled={this.state.bug_description.length === 0 } value="submit" className="constSize btn btn-primary">Submit</button>
+                            <button type="button" data-dismiss="modal" className="constSize btn btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
                 <div className="p-1"><h3>Settings</h3></div>
                 <div className="p-1"><button onClick={(e)=>this.logout(e)} className="constSize btn btn-primary">Logout</button></div>
                 <div className="p-1"><button className="constSize btn btn-secondary" data-toggle="modal" data-target="#changePassword">Change Password</button></div>
                 {/* <div className="p-1"><button className="constSize btn btn-danger">Delete Account</button></div> */}
                 <div className="p-1"><InfoModal who="gameInfo" title={this.infoTitle} text={this.infoBody} button={true}></InfoModal></div>
+                <div className="p-1"><button className="constSize btn btn-danger" data-toggle="modal" data-target="#bugReport">Report a Bug</button></div>
                 </div>
     }
 

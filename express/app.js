@@ -19,7 +19,6 @@ app.use(morgan(':method :url :status :custom_reqBody :custom_resBody :res[conten
 		return req.url==="/api/logger"
 	}}))
 
-
 // use cors and allow for json responses
 app.use(cors());
 app.use(express.json());
@@ -46,7 +45,8 @@ const routes = {
 	gameHistory: require('./routes/game_history'),
 	market: require('./routes/market'),
 	logger: require('./routes/logger'),
-	category: require('./routes/category')
+	category: require('./routes/category'),
+	bugReport: require('./routes/bug_report')
 }
 
 // We create a wrapper to workaround async errors not being transmitted correctly.
@@ -126,6 +126,10 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		app.post(`/api/userMetrics/search`, makeHandlerAwareOfAsyncErrors(routeController.search));
 	}
 
+	// handle bug report route
+	if (routeController.reportBug){
+		app.post(`/api/bugReport`, makeHandlerAwareOfAsyncErrors(routeController.reportBug));
+	}
 };
 
 app.get('/*', (req, res)=>{
