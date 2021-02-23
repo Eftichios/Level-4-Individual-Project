@@ -1,8 +1,6 @@
 import React from 'react';
 import "../../index.css";
 import "./lobby.css";
-import running from "../../Media/running.png";
-import technology from "../../Media/technology.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LobbyChat } from './LobbyChat';
@@ -244,7 +242,7 @@ export class Lobby extends React.Component {
             <h3 className="text-center push-down">Lobby - {this.state.lobbyData.room} ({this.state.lobbyData.game_mode})</h3>
             <div className="row">
                 <div className="col-md-4">
-                    <img className="running" src={this.state.lobbyData.game_mode==="Race"?running:technology} alt="Man running"></img>
+                    {/* Placeholder column to align items better */}
                 </div>
                 <div className="text-center col-md-4">
                 <h5><strong>PLAYERS ({this.getNumberOfPlayersInLobby()})</strong></h5>
