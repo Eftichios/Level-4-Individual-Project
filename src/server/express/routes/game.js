@@ -15,7 +15,7 @@ function _initRaceGameState(lobby) {
 
 function _initCategoryGameState(lobby) {
     var players = {};
-    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"categories":[]});
+    Object.keys(lobby.playerIds).forEach((pid)=>players[lobby.playerIds[pid]['name']]={"categories":[], "history":[]});
     return {"players":players, "game_mode":"Category", "condition": "No Category", "started_at": new Date(), "room": `ext_${lobby.room}` }
 }
 
@@ -54,8 +54,9 @@ function _build_category_game_history(io, lobby, player_game_state){
         metricsHandler.handleCategoryMetrics(player_id, player, player_game_state.game_state.players[player], winner_id===player_id);
         player_data[player] = {};
         player_data[player]["categories"] = player_game_state.game_state.players[player]["categories"];
+        player_data[player]["history"] = player_game_state.game_state.players[player]["history"];
     })
-    
+
     var game_history = {winner_id: winner_id, winner_name: player_game_state.player, game_mode: player_game_state.game_state.game_mode, game_date: new Date(),
         player_stats: player_data, 
         game_stats: {time_elapsed: getMinutesOfDates(player_game_state.game_state.started_at, player_game_state.game_state.finished_at), 

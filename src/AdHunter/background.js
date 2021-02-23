@@ -101,6 +101,26 @@ chrome.runtime.onInstalled.addListener(function() {
   // listen to content script messages
   // every 0.5 seconds runs the content script inside all frames
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+
+    // extract the url of the website that we are about to inject our script in
+    // and store it in the game state
+    chrome.tabs.query({}, function(tabs) {
+      tabs.forEach((tab)=>{
+        if (tab.id === sender.tab.id){
+          chrome.storage.local.get("gameState",async (gameData)=>{
+            chrome.storage.local.get("ownerName", async (ownerData)=>{
+              if (gameData.gameState){
+                  gameData.gameState.players[ownerData.ownerName]["history"] = gameData.gameState.players[ownerData.ownerName]["categories"].concat([tab.url?tab.url:"Unknown"])
+                  chrome.storage.local.set({"gameState": gameData.gameState});
+              }
+            });
+          });
+        } else {
+          console.log("Not found: ",tab.id, sender.tab.id)
+        }
+      })
+    });
+
     if(request.reinject) {
       chrome.tabs.executeScript(sender.tab.id,{
         file: "category_mode.js", 
@@ -139,6 +159,11 @@ chrome.runtime.onInstalled.addListener(function() {
         
       } else if (key=="error"){
         if (storageChange.newValue){
+          chrome.storage.local.set({'gameState': null});   
+          chrome.storage.local.set({'latestTracker': null});
+          chrome.storage.local.set({'latestCategory': null});
+          chrome.storage.local.set({'adCount': 0});
+          chrome.storage.local.set({'winCondition': null});
           chrome.browserAction.setBadgeBackgroundColor({ color: "#dc3545" });
           chrome.browserAction.setBadgeText({text: 'x'});
           chrome.storage.local.get("ownerName", function(owner_data){

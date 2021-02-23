@@ -34,13 +34,13 @@ export class DashGameHistory extends React.Component {
             var parseRes = await response.json();
             this.buildModalContent(parseRes);
         } catch (err){
-            toast.error("Failed to retrieve player's game history.");
+            toast.error("Failed to retrieve player's game history.", err.message);
         }
     }
 
     buildModalContent = (game_history) => {
         var all_games = game_history.map((game)=><tr key={game.game_id}>
-            <td>{game.game_date}</td>
+            <td>{game.game_date.substring(0, 10)}</td>
             <th className={game.winner_id===this.props.user_id?'text-success':'text-danger'}>{game.winner_id===this.props.user_id? 'W': 'L'}</th>
             <td><button className="btn btn-sm btn-info" onClick={()=>this.setModalData(game)}>{game.game_mode}</button></td>
             <td>{game.game_stats.time_elapsed===0? ">1 min": game.game_stats.time_elapsed + " min"}</td>
@@ -72,6 +72,15 @@ export class DashGameHistory extends React.Component {
                                     </div> 
                                 </Fragment>
         this.setState({modalContentAll: temp_data})
+    }
+
+    setModalData(game) {
+        logger.log("trace",`User viewed history of game ${game.game_id}`, this.props.name)
+        if (game.game_mode==="Race"){
+            this.setModalRaceData(game);
+        } else {
+            this.setModalCategoryData(game);
+        }
     }
 
     setModalRaceData(game){
@@ -155,22 +164,29 @@ export class DashGameHistory extends React.Component {
                             </tr>
                         )}
                     </tbody>
-                </table>      
+                </table>    
+                <hr></hr>
+                <h5 className="text-center">Websites Visited</h5>
+                <table className="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th>url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {game.player_stats[this.props.name]["history"].map((key,index)=>
+                            <tr key={index}>
+                                <td>{key}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>  
             </div>
             <div className="modal-footer">
                 <button onClick={()=>this.resetModalData()} type="button" className="btn btn-secondary">Back</button>
             </div> 
         </Fragment>
         this.setState({show_all: false, game_stats: temp_content});
-    }
-
-    setModalData(game) {
-        logger.log("trace",`User viewed history of game ${game.game_id}`, this.props.name)
-        if (game.game_mode==="Race"){
-            this.setModalRaceData(game);
-        } else {
-            this.setModalCategoryData(game);
-        }
     }
 
     setTrackersModalContent(trackers){
