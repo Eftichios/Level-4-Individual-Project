@@ -20,8 +20,12 @@ export class DashAchieve extends React.Component {
 
         this.infoTitle = "Achievements information";
 
-        this.infoBody = "After each game, an achievement manager takes the gameplay metrics and checks if the player has passed the conditions to\n" +
-                        "complete an achievement. The purpose of achievements is to increase the rewards a player gets while trying out the game.";
+        this.infoBody = <div>
+                            <p>After each game, an achievement manager looks at the gameplay metrics and checks if the player has passed the conditions to
+                            complete an achievement.</p> 
+                            <p>The purpose of achievements is to increase the rewards a player gets while playing the game.</p>
+                            <p>You can click on the info icon under details to view your current progress for a specific achievement.</p>
+                        </div>
     }
     
     mapStatusColour(completed, progress){
