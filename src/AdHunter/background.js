@@ -110,8 +110,10 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.storage.local.get("gameState",async (gameData)=>{
             chrome.storage.local.get("ownerName", async (ownerData)=>{
               if (gameData.gameState){
+                if (!gameData.gameState.players[ownerData.ownerName]["categories"].includes(tab.url)){
                   gameData.gameState.players[ownerData.ownerName]["history"] = gameData.gameState.players[ownerData.ownerName]["categories"].concat([tab.url?tab.url:"Unknown"])
                   chrome.storage.local.set({"gameState": gameData.gameState});
+                }
               }
             });
           });
