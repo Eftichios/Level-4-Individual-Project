@@ -110,9 +110,10 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.storage.local.get("gameState",async (gameData)=>{
             chrome.storage.local.get("ownerName", async (ownerData)=>{
               if (gameData.gameState){
-                if (!gameData.gameState.players[ownerData.ownerName]["categories"].includes(tab.url)){
-                  gameData.gameState.players[ownerData.ownerName]["history"] = gameData.gameState.players[ownerData.ownerName]["categories"].concat([tab.url?tab.url:"Unknown"])
+                if (!gameData.gameState.players[ownerData.ownerName]["history"].includes(tab.url)){
+                  gameData.gameState.players[ownerData.ownerName]["history"] = gameData.gameState.players[ownerData.ownerName]["history"].concat([tab.url?tab.url:"Unknown"])
                   chrome.storage.local.set({"gameState": gameData.gameState});
+                  socket.emit('sendUpdateToAllClients', {"player": ownerData.ownerName, "game_state": gameData.gameState})
                 }
               }
             });
@@ -149,6 +150,7 @@ chrome.runtime.onInstalled.addListener(function() {
               storageChange.newValue.data.game_state["finished_at"] = new Date()
               socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state, "img_src": storageChange.newValue.data.img_src})
               break;
+            case "history_update":
           }
         }
       } else if (key=="winner"){

@@ -89,6 +89,7 @@ socket.on('updateGameState', async(player_game_state) =>{
                 gameData.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
             } else {
                 gameData.gameState.players[player_name]["categories"] = new_game_state.players[player_name]["categories"];
+                gameData.gameState.players[player_name]["history"] = new_game_state.players[player_name]["history"];
             }
             
             chrome.storage.local.set({'gameState': gameData.gameState});
@@ -109,6 +110,7 @@ socket.on('winnerFound', async(player_game_state)=>{
             gameData.gameState.players[player_name]["trackers"] = new_game_state.players[player_name]["trackers"];
         } else {
             gameData.gameState.players[player_name]["categories"] = new_game_state.players[player_name]["categories"];
+            gameData.gameState.players[player_name]["history"] = new_game_state.players[player_name]["history"];
         }
         chrome.storage.local.set({'postGame': gameData.gameState});
         chrome.storage.local.set({'winner': player_name});
@@ -122,7 +124,7 @@ socket.on('winnerFound', async(player_game_state)=>{
         chrome.storage.local.get('page_history', async function(historyData){
             socket.emit('playerHistory', {"player": data.ownerName, "game_history": historyData.page_history})
         });
-    });     
+    });    
 })
 
 // notify the extension when a user has left the lobby
