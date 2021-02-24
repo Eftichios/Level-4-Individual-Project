@@ -109,8 +109,10 @@ async function reset() {
     var player_data_race = {user_1: {page_history: {"www.example.com":{"count":20,"trackers": Array(20).fill(dummy_trackers)}, "www.another-example.com": {"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":65,"trackers": Array(65).fill(dummy_trackers)}}, score: 100},
                         user_2: {page_history: {"www.example.com":{"count":15,"trackers": Array(15).fill(dummy_trackers)}, "www.another-example.com": {"count":10,"trackers": Array(10).fill(dummy_trackers)}, "www.lots-of-trackers.com": {"count":55,"trackers": Array(55).fill(dummy_trackers)}}, score: 80}}
  
-    var player_data_category = {user_1: {categories: ["Internet and Telecom","Law and Government","Law and Government","Science", "Food and Drink", "News and Media"]},
-                                user_2: {categories: ["Internet and Telecom", "Science", "Science", "Food and Drink", "Food and Drink"]}}
+    var player_data_category = {user_1: {categories: ["Internet and Telecom","Law and Government","Law and Government","Science", "Food and Drink", "News and Media"],
+                                        history: ["www.example.com", "www.example.com", "www.example.com","www.example.com", "www.example.com", "www.example.com"]},
+                                user_2: {categories: ["Internet and Telecom", "Science", "Science", "Food and Drink", "Food and Drink"],
+                                        history: ["www.example.com", "www.example.com", "www.example.com","www.example.com", "www.example.com", "www.example.com"]}}
 
     var startDate = new Date("2020/08/08 15:00");
     var endDate = new Date("2020/08/08 15:13");
