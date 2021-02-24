@@ -68,8 +68,9 @@ export class About extends React.Component {
             </div>
             <div className="info-text">
             <p>While the extension manages to identify most trackers, there are still trackers that won't be identified due to the fact that the list of known trackers is not 
-                exhaustive. Furthermore, in categorising adverts, not only can adverts not be identified, the extracted categories are not always accurate. However, the game still
-                provides useful insights into what happens behind the scenes when browsing the web.
+                exhaustive. Furthermore, in categorising adverts, not only can adverts not be identified, the extracted categories are not always accurate. This means that sometimes
+                during gameplay, you might see an advert on the given category first but still not win if the extension fails to identify that advert. This can cause some frustrations but
+                the nature of this game is experimental and education and it should still provide useful insights into what happens behind the scenes when browsing the web.
             </p>
             </div>
         </div>
