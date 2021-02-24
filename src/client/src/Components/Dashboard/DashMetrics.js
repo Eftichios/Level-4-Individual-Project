@@ -70,7 +70,7 @@ export class DashMetrics extends React.Component {
                     </p>
                     <DashTrackers user_metrics={this.state.user_metrics}></DashTrackers>
                     <div className="chart align-items-center">
-                        <h5>Ad categories seen ({this.state.total_adverts})</h5>
+                        <h5>Total adverts served: {this.state.total_adverts}</h5>
                         <Chart
                             width={'30vh'}
                             height={'30vh'}
