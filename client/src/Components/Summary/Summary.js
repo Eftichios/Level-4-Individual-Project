@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import "../../index.css";
 import "./summary.css";
 import { LobbyChat } from '../Lobby/LobbyChat';
@@ -23,7 +23,8 @@ export class Summary extends React.Component {
             play_again: false,
             modalContent: null,
             user_page_history: null,
-            game_metrics: null
+            game_metrics: null,
+            cat_count: true
         }
 
     }
@@ -135,7 +136,12 @@ export class Summary extends React.Component {
                 <td>{key[1]}</td>
             </tr>
         )
-        this.setState({user_category_history: category_history});
+
+        var website_history = this.props.location.state.game_state.players[user_name]["history"].map((key,index)=>
+        <tr key={index}>
+            <td>{key}</td>
+        </tr>)
+        this.setState({user_category_history: category_history, user_website_history: website_history});
     }
 
     setModalContent(trackers){
@@ -182,8 +188,60 @@ export class Summary extends React.Component {
             </div>
         }
     }
-    
 
+    set_tables(){
+        if (this.state.lobbyData.game_mode==="Race"){
+            return <h5><strong>Page History</strong></h5>
+        }else{
+            return  <div className="text-center"><h5><strong>
+                        <button className="mr-2 btn btn-link page-history-toggle" onClick={()=>this.setState({cat_count:true})}>Categories Count</button>
+                        <button className="btn btn-link page-history-toggle" onClick={()=>this.setState({cat_count:false})}>Website History</button>
+                        </strong></h5>
+                    </div>
+        }
+        
+    }
+
+    set_table_body(){
+        if (this.state.lobbyData.game_mode==="Race"){
+            if (this.state.user_page_history && this.state.user_page_history.length >0){
+                return this.state.user_page_history
+            } else {
+                return <tr key="no_data">
+                        <td>No Trackers found</td>
+                        <td></td>
+                        </tr>
+            }
+            
+        }else{
+            if (this.state.cat_count){
+                if (this.state.user_category_history && this.state.user_category_history.length > 0){
+                    return this.state.user_category_history
+                } else {
+                    return <tr key="no_data">
+                        <td>No adverts found</td>
+                        <td></td>
+                        </tr>
+                }
+                
+            }else{
+                return this.state.user_website_history
+            }
+        }
+    }
+
+    set_table_headers(){
+        if (this.state.lobbyData.game_mode==="Race"){
+            return <Fragment><th scope="col">Page</th><th scope="col">Tracker Count</th></Fragment>
+        }else{
+            if (this.state.cat_count){
+                return <Fragment><th scope="col">Category</th><th scope="col">Count</th></Fragment>
+            }else{
+                return <th scope="col">url</th>
+            }
+        }
+    }
+    
     render(){
         if (!this.state.lobbyData || this.state.user_left || this.state.user_refreshed){
             return <Redirect to="/dashboard"></Redirect>
@@ -214,17 +272,16 @@ export class Summary extends React.Component {
                     </div>
                 </div>
                 <div className="text-center col-md-4">
-                <h5><strong>{this.state.lobbyData.game_mode==="Race"?"Page History":"Categories Count"}</strong></h5>
+                {this.set_tables()}                
                 <div className="table-wrapper-scroll-y scrollbar">
                     <table className="player-table table table-borderless">
                     <thead>
                         <tr>
-                        <th scope="col">{this.state.lobbyData.game_mode==="Race"?"Page":"Category"}</th>
-                            <th scope="col">{this.state.lobbyData.game_mode==="Race"?"Tracker Count":"Count"}</th>
+                            {this.set_table_headers()}
                         </tr>
                     </thead>
                     <tbody>
-                    {this.state.lobbyData.game_mode==="Race"?this.state.user_page_history:this.state.user_category_history}
+                    {this.set_table_body()}                    
                     </tbody>
                     </table>
                 </div>
