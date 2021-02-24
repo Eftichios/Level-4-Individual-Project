@@ -595,5 +595,11 @@
 * *3 hours* Improving category game mode (identify and display advert images along with categories)
 * *0.5 hour* Manually testing the category game mode to identify potential bugs 
 
+### 23 Feb 2021
+* *0.5 hour* Adding unit tests for user routes (update profile test)
+* *2.5 hours* Add report bugs functionality and category mode website history
+* *1 hour* Add more detailed information to the information sections
+* *1 hour* Working on the evaluation survey
+
 
 
