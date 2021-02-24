@@ -192,7 +192,7 @@ function waitForExtensionResponse(ms){
 async function checkIfExtensionConfigured(user_id){
     var ext_sockets = getPlayerExtensionSockets();
     if (!ext_sockets[user_id]){
-        throw new Error("Please ensure that you have the chrome extension installed and that you have entered your username correctly.")
+        throw new Error("Unable to join a game. Ensure that you have the correct user name on the extension, refresh and try again.")
     }
 }
 
