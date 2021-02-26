@@ -33,8 +33,9 @@ export class DashTrackers extends React.Component {
         this.infoBody = <div>
             <div>
                 <strong>What are Trackers?</strong>
-                <p>Trackers are the entities responsible for monitoring the user's browsing activity and collecting information about the user, which they then share with ad platforms to help them
-                    build an interest profile on the user. Trackers use cookies or pixels (1 pixel pictures embedded with a script, invisible to the user) to track the user's activity.
+                <p>Ad Trackers are the entities that track the users when they are browsing the web, usually by embedding content 
+                    in the website such as invisible pixels or by using cookies to capture behavioural data such as where the user clicked or 
+                    their browsing history, or capture demographics such as age or gender.
                 </p>
             </div>
             <p>In this modal you can see the domains of known third party trackers. They are separated into the found and not found tabs, the found tab contains the domains of trackers that have
