@@ -3,11 +3,12 @@
     overflow-y: auto;
     display: block;
     float: center;
-    width: 70%;
+    width: 60%;
 }
 
 .info-title{
     text-align: center;
+    margin-top: 3%;
 }
 
 .detail-hover:hover{

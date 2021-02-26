@@ -88,7 +88,7 @@ export class DashSettings extends React.Component {
           </div>
           <div><strong>Tips and tricks for the Category mode:</strong>
             <ul>
-              <li>Use a fresh broswer account. Details on how to create a fresh browser account can be found in the set up instructions.</li>
+              <li>Use a fresh browser account. Details on how to create a fresh browser account can be found in the set up instructions.</li>
               <li>When the game starts, spend a few minutes building your interest profile. For example, if you are given the Food category, browse the web
                 in a way that shows you are interested in Food. For example, visiting food blogs or restaurant menus.
               </li>

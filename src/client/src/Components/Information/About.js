@@ -12,9 +12,23 @@ export class About extends React.Component {
             </div>
             <div className="info-text">
             <p>Ad Trackers are the entities that track the users when they are browsing the web, usually by embedding content 
-               in the website such as invisible pixels or by using cookies. They gather information about the user and share it
-               with advertisers. The advertisers then use that information to profile the user in order to target them with personalised adverts that they assume the
-               user would be more interested in.
+               in the website such as invisible pixels or by using cookies to capture behavioural data such as where the user clicked or 
+               their browsing history, or capture demographics such as age or gender <a href="#source_2">[2]</a>. This data is then shared with advertisers. The advertisers 
+               then use that data to profile the user in order to target them with personalised adverts that they assume the
+               user would be more interested in. <a href="#source_1">[1]</a>
+            </p>
+            </div>
+            <div className="info-title">
+                <h3>Privacy Issues:</h3>
+            </div>
+            <div className="info-text">
+            <p>There are many entities involved in collecting the user's information, creating an interest profile, and targeting the user
+               with personalised adverts. 
+               This information can be stored or even shared between these different entities, often with not enough precaution, meaning 
+               that potential attacks or data leaks are possible, compromising the privacy of the user. This information can even be sold to
+               third-parties, or used to manipulate politics (a good example is the <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal">Cambridge Analytica data scandal</a>)
+               Another concern for private data is that there is a general lack of transparency when it comes to how advertising systems work and what exact data is used. Furthermore,
+               the user usually has little or no control over what happens with their data. <a href="#source_1">[1]</a>
             </p>
             </div>
             <div className="info-title">
@@ -27,7 +41,7 @@ export class About extends React.Component {
                 <p><strong>The Race Mode:</strong> In this game mode, the players can see in real time how many trackers are on a website (along with their domains). Observing this, the players 
                 can determine what kind of websites include the most tracking, and therefore which websites to avoid if they are concerned about privacy.</p>
                 <p><strong>The Category Mode:</strong> In this game mode, players will explore the way the interest profile is build when browsing the web. They will also 
-                observe and understand what advert categories are most common and why.</p>
+                observe and understand what the different advert categories are.</p>
             </div>
             <div className="info-title">
                 <h3>The Chrome Extension:</h3>
@@ -35,7 +49,7 @@ export class About extends React.Component {
             <div className="info-text">
             <p >During the game-play we need something that can look at the network requests and the DOM of each player and identify ad trackers/adverts. To do this we use a Chrome
                 extension which communicates with our server to update the game states accordingly. You must have the extension installed to play the game, 
-                information on how to set up the extension and play the game can be found here: <a href="https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing">Instructions to set up</a>.
+                information on how to set up the extension and play the game can be found here: <a target="_blank" rel="noreferrer" href="https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing">Instructions to set up</a>.
             </p>
             </div>
             <div className="info-title">
@@ -72,6 +86,20 @@ export class About extends React.Component {
                 during gameplay, you might see an advert on the given category first but still not win if the extension fails to identify that advert. This can cause some frustrations but
                 the nature of this game is experimental and education and it should still provide useful insights into what happens behind the scenes when browsing the web.
             </p>
+            </div>
+            <div className="info-title">
+                <h3>Credits:</h3>
+            </div>
+            <div className="info-text">
+                <p>Sources:</p>
+                <ul>
+                    <li id="source_1">1. Jose Estrada-Jimenez, Javier Parra-Arnau, Ana Rodriguez-Hoyos, and Jordi Forne. <br></br>
+                        Online advertising: Analysis of privacy threats and protection approaches. Computer Communications,
+                        100:32–51, 2017. ISSN 01403664. doi: 10.1016/j.comcom.2016.12.016</li>
+                    <li id="source_2">2. Nadine Bol, J. Strycharz, N. Helberger, Bob van de Velde, and Claes De Vreese. Vulnerability
+                        in a tracked society: Combining tracking and survey data to understand who gets targeted with
+                        what content. New Media and Society, 2019. ISSN 1461-4448. doi: 10.1177/1461444820924631</li>
+                </ul>
             </div>
         </div>
         </Fragment>
