@@ -28,8 +28,10 @@ export class LobbyChat extends React.Component {
         this.setState({message:""})
     }
 
-    componentDidUpdate(){
-        this.chat_container.scrollTop = this.chat_container.scrollHeight
+    componentDidUpdate(prevProps){
+        if (prevProps.msgs && this.props.msgs && prevProps.msgs.length !== this.props.msgs.length){
+            this.chat_container.scrollTop = this.chat_container.scrollHeight
+        }
     }
 
     render () {

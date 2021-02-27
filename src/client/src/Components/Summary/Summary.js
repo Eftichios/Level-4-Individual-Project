@@ -132,7 +132,7 @@ export class Summary extends React.Component {
 
         var category_history = Object.entries(temp_cat_count).map((key,index)=>
             <tr key={index}>
-                <td>{key[0]}</td>
+                <td>{this.props.location.state.game_state.condition===key[0]?<strong>{key[0]}</strong>:key[0]}</td>
                 <td>{key[1]}</td>
             </tr>
         )
