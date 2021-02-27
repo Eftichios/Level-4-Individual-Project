@@ -11,7 +11,7 @@ export class About extends React.Component {
                 <h3>Ad Trackers and advertisers:</h3>
             </div>
             <div className="info-text">
-            <p>Ad Trackers are the entities that track the users when they are browsing the web, usually by embedding content 
+            <p>Ad Trackers are the entities that track the users when they are browsing the web, usually by embedding content (content that has scripts attached to it)
                in the website such as invisible pixels or by using cookies to capture behavioural data such as where the user clicked or 
                their browsing history, or capture demographics such as age or gender <a href="#source_2">[2]</a>. This data is then shared with advertisers. The advertisers 
                then use that data to profile the user in order to target them with personalised adverts that they assume the
@@ -26,8 +26,8 @@ export class About extends React.Component {
                with personalised adverts. 
                This information can be stored or even shared between these different entities, often with not enough precaution, meaning 
                that potential attacks or data leaks are possible, compromising the privacy of the user. This information can even be sold to
-               third-parties, or used to manipulate politics (a good example is the <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal">Cambridge Analytica data scandal</a>)
-               Another concern for private data is that there is a general lack of transparency when it comes to how advertising systems work and what exact data is used. Furthermore,
+               third-parties, or used to manipulate politics (a good example is the <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal">Cambridge Analytica data scandal</a>).
+               A big concern for the user's privacy is that there is a general lack of transparency when it comes to how advertising systems work and what exact data is used. Furthermore,
                the user usually has little or no control over what happens with their data. <a href="#source_1">[1]</a>
             </p>
             </div>

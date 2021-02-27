@@ -74,15 +74,16 @@ export class DashSettings extends React.Component {
         this.infoBody = <div><p>To play the game you must have the corresponding chrome extension installed. Instructions on how to set everything up can be found in the about page (you 
           can navigate to the about page by expanding the navigation side bar). With the extension installed, select a game mode and click on Find Game, this will put you in a lobby. In the lobby 
           you must indicate that you are ready before the game can start. As soon as all players are ready, any one of the players can start the game.</p><p><strong>Race mode:</strong> The goal of this game mode 
-          is to get tracked by the number of unique trackers given in the lobby. To get tracked by ad trackers, simply visit any website. You can view 
-          feedback on how you are progressing from the interface of the extension.</p><p><strong>Category mode(experimental):</strong> To play this game mode, you need to
-          disable any ad blockers. In this game mode, you are given a random advert category in the lobby. The purpose of the game is to visit websites in a calculated way such that 
+          is to get tracked by the number of unique trackers given in the lobby. To get tracked by ad trackers, simply visit any website, the extension will identify and count
+          third-party trackers that are tracking you. You can view feedback on how you are progressing from the interface of the extension.</p>
+          <p><strong>Category mode(experimental):</strong> To play this game mode, you need to disable any ad blockers. 
+          In this game mode, you are given a random advert category in the lobby. The purpose of the game is to visit websites in a calculated way such that 
           you receive an advert on the given category. The first player to receive an advert in that category is the winner. For example, if the advert category is Food and you see an 
           advert related to Food first you win (e.g an advert for a restaurant). </p>
           <div><strong>Tips and tricks for the Race mode:</strong>
             <ul>
               <li>Examples of websites that have a lot of trackers are news websites or blogs.</li>
-              <li>Websites that do their own tracking usually don't have a lot of trackers (i.e Facebook, YouTube, Twitter...)</li>
+              <li>Websites that do their own tracking usually don't have a lot of third-party trackers (e.g Facebook, YouTube, Twitter...)</li>
               <li>Accepting cookies when first visiting a website increases the number of trackers.</li>
             </ul>
           </div>
