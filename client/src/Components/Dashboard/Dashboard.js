@@ -16,7 +16,8 @@ export class Dashboard extends React.Component {
             name: this.props.location.state? this.props.location.state.user_name:"",
             rank: null,
             from_summary: this.props.location.state?this.props.location.state.game_mode:null,
-            icon_path: "blue_bot.svg"
+            icon_path: "blue_bot.svg",
+            loading: false
         }
 
         this.setAuth = props.setAuth;  
@@ -27,6 +28,7 @@ export class Dashboard extends React.Component {
         this.saveProfile = async (icon_path)=>{
             // make a request to the server to save new profile picture string
             try {
+                this.setState({loading: true});
                 var response = await fetch(`/api/users/updateProfile/${this.user_id}`, {
                     method: "PUT",
                     headers: {"Content-Type": "application/json", "token": localStorage.token},
@@ -39,6 +41,8 @@ export class Dashboard extends React.Component {
             } catch (err){
                 console.log(err.message)
                 toast.error("Failed to update profile picture.");
+            } finally {
+                this.setState({loading: false});
             }
         }
     }
@@ -52,6 +56,7 @@ export class Dashboard extends React.Component {
 
     getAndRankPlayer = async () =>{
         try {
+            this.setState({loading: true});
             var response = await fetch("/api/userMetrics", {
                 method: "GET",
                 headers: {"Content-Type": "application/json"},
@@ -61,6 +66,8 @@ export class Dashboard extends React.Component {
             this.rankPlayer(parseRes);
         } catch (err){
             toast.error("Failed to retrieve players.");
+        } finally {
+            this.setState({loading: false});
         }
     }
 
@@ -72,7 +79,7 @@ export class Dashboard extends React.Component {
 
     getUserProfile = async ()=> {
         try {
-
+            this.setState({loading: true});
             const response = await fetch(`/api/users/${this.user_id}`, {
                 method:"GET",
                 headers: {token: localStorage.token, "Content-Type": "application/json"}
@@ -84,6 +91,8 @@ export class Dashboard extends React.Component {
 
         } catch (err){
             toast.error("Failed to retrieve user details");
+        } finally {
+            this.setState({loading: false});
         }
     }
 
@@ -94,7 +103,7 @@ export class Dashboard extends React.Component {
             {!this.props.owns_plugin?<div className="text-secondary">You have indicated that you do not own the extension. Click <a target="_blank" rel="noreferrer" href="https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing">here</a> for instructions on setting everything up.</div>:""}
             <div className="row">
                 <div className="col-md-6">
-                    <DashPlay saveProfile = {this.saveProfile} icon_path={this.state.icon_path} name={this.state.name} rank={this.state.rank} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
+                    <DashPlay loading = {this.state.loading} saveProfile = {this.saveProfile} icon_path={this.state.icon_path} name={this.state.name} rank={this.state.rank} user_id={this.props.user_id} from_summary={this.state.from_summary}></DashPlay>
                 </div>
                 <div className="col-md-6 vertical">
                     <DashSettings user_id={this.props.user_id} name={this.state.name} setAuth={this.setAuth}></DashSettings>
