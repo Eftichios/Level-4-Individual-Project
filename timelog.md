@@ -618,5 +618,9 @@
 * *1 hour* Manually testing deployed app to identify potential problems
 * *1 hour* Improvements and refinements to the web app  
 
+### 27 Feb 2021
+* *1.5 hours* Updating outdated information in Github readmes and wiki
+* *0.5 hour* Updating React component diagram
+
 
 
