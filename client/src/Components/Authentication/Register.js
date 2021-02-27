@@ -37,7 +37,6 @@ export class Register extends React.Component {
         });
 
         const parseRes = await response.json();
-        
         this.setState({loading: false});
         if (parseRes.token){
           localStorage.setItem("token", parseRes.token);
@@ -83,7 +82,7 @@ export class Register extends React.Component {
               </select>
             </div>
             <div className="text-center">
-            <button disabled = {this.state.loading} value="submit" className="constSize btn btn-primary">{this.state.loading?"Registering...":"Register"}</button>
+            <button disabled = {this.state.loading} value="submit" className="constSize btn btn-primary">{this.state.loading?"Registering...":"Submit"}</button>
               <Link to="/login"><button className="constSize btn orange">Login</button></Link>
             </div>
           </form>   
