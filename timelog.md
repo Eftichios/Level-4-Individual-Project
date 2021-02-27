@@ -601,5 +601,22 @@
 * *1 hour* Add more detailed information to the information sections
 * *1 hour* Working on the evaluation survey
 
+### 24 Feb 2021
+* *1 hour* Fixing bugs in category mode game history and server logger
+* *0.5 hours* Improvements to information sections
+* *2 hours* Display category mode website history in summary
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 25 Feb 2021
+* *0.5 hour* Dissertation writing
+* *2 hours* Working on the evaluation survey
+* *1 hour* Adding more details to the information sections
+
+### 26 Feb 2021
+* *0.5 hour* Finishing up the evaluation survey 
+* *1 hour* Manually testing deployed app to identify potential problems
+* *1 hour* Improvements and refinements to the web app  
+
 
 
