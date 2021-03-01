@@ -150,7 +150,6 @@ chrome.runtime.onInstalled.addListener(function() {
               storageChange.newValue.data.game_state["finished_at"] = new Date()
               socket.emit('playerWon', {"player": storageChange.newValue.data.player, "game_state": storageChange.newValue.data.game_state, "img_src": storageChange.newValue.data.img_src})
               break;
-            case "history_update":
           }
         }
       } else if (key=="winner"){
@@ -171,6 +170,7 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.browserAction.setBadgeBackgroundColor({ color: "#dc3545" });
           chrome.browserAction.setBadgeText({text: 'x'});
           chrome.storage.local.get("ownerName", function(owner_data){
+            logger.log("error", `Error occured ${storageChange.newValue}`, storageChange.newValue.data.player);
             socket.emit('extensionError', {player: owner_data.ownerName, error: storageChange.newValue});
   
           })
