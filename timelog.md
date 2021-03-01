@@ -622,5 +622,12 @@
 * *1.5 hours* Updating outdated information in Github readmes and wiki
 * *0.5 hour* Updating React component diagram
 
+### 28 Feb 2021
+* *1 hour* Dissertation writing
+
+## Week 20
+* *1 hour* Changed how extension sockets are identified
+* *1 hour* Improvements to the summary UI and more detail to how to play section.
+
 
 
