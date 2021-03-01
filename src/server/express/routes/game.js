@@ -185,15 +185,28 @@ async function _setExtSocketConnections(io, lobby, ext_room, socket){
     });
 }
 
-function waitForExtensionResponse(ms){
-    return new Promise(resolve=>setTimeout(resolve, ms))
-}
-
-async function checkIfExtensionConfigured(user_id){
+function checkIfExtensionConfigured(user_id){
     var ext_sockets = getPlayerExtensionSockets();
     if (!ext_sockets[user_id]){
-        throw new Error("Unable to join a game. Ensure that you have the correct user name on the extension, refresh and try again.")
+        return false;
+    } else {
+        return true;
     }
+}
+
+async function sleepUntil(fn, timeoutMs, user_id) {
+    return new Promise((resolve, reject) => {
+        timeWas = new Date();
+        wait = setInterval(function() {
+            if (fn(user_id)) {
+                clearInterval(wait);
+                resolve(true);
+            } else if (new Date() - timeWas > timeoutMs) { // Timeout
+                clearInterval(wait);
+                reject(new Error("Unable to join a game. Ensure that you have the correct user name on the extension, refresh and try again."));
+            }
+        }, 1000);
+    });
 }
 
 async function findGame(req, res){
@@ -202,10 +215,9 @@ async function findGame(req, res){
     const { user_id, user_name, socketId, game_mode, profile } = req.body;
     io.emit("identifyExtension", {user_name, user_id});
 
-    // put a timer to wait for the extension to respond
-    await waitForExtensionResponse(3000);
-    await checkIfExtensionConfigured(user_id);
-        
+    // wait until we identify the extension, or 15 seconds pass
+    // in which case we throw an error
+    await sleepUntil(checkIfExtensionConfigured, 15000, user_id);
 
     var lobby = lobbyHandler.findOrCreateLobby(game_mode);
         
