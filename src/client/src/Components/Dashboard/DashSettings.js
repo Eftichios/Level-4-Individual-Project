@@ -73,7 +73,9 @@ export class DashSettings extends React.Component {
 
         this.infoBody = <div><p>To play the game you must have the corresponding chrome extension installed. Instructions on how to set everything up can be found in the about page (you 
           can navigate to the about page by expanding the navigation side bar). With the extension installed, select a game mode and click on Find Game, this will put you in a lobby. In the lobby 
-          you must indicate that you are ready before the game can start. As soon as all players are ready, any one of the players can start the game.</p><p><strong>Race mode:</strong> The goal of this game mode 
+          you must indicate that you are ready before the game can start. As soon as all players are ready, any one of the players can start the game. After the game is over, the players are put in the
+          summary, where they can view the winner as well as well as the gameplay metrics. Players can see the metrics of other players in the summary by clicking on their username. 
+          </p><p><strong>Race mode:</strong> The goal of this game mode 
           is to get tracked by the number of unique trackers given in the lobby. To get tracked by ad trackers, simply visit any website, the extension will identify and count
           third-party trackers that are tracking you. You can view feedback on how you are progressing from the interface of the extension.</p>
           <p><strong>Category mode(experimental):</strong> To play this game mode, you need to disable any ad blockers. 
@@ -94,8 +96,9 @@ export class DashSettings extends React.Component {
                 in a way that shows you are interested in Food. For example, visiting food blogs or restaurant menus.
               </li>
               <li>After building your interest profile, visit websites that have a lot of adverts.</li>
-              <li>If you are still seeing unrelated adverts, spend some more time building your interest profile (try different strategies)</li>
-              <li>Finally, for each new game, you can clear your browsing history to reset your interest profile (remember to use the fresh browser account)</li>
+              <li>When you visit a website, make sure you give enough time to the extension to identify and categorize adverts.</li>
+              <li>If you are still seeing unrelated adverts, spend some more time building your interest profile (try different strategies).</li>
+              <li>Finally, for each new game, you can clear your browsing history to reset your interest profile (remember to use the fresh browser account).</li>
             </ul>
           </div>
           <p>If you have any questions about the game or the project in general, you can email me: 2329664k@student.gla.ac.uk</p></div>
