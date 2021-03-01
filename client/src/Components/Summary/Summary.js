@@ -139,7 +139,7 @@ export class Summary extends React.Component {
 
         var website_history = this.props.location.state.game_state.players[user_name]["history"].map((key,index)=>
         <tr key={index}>
-            <td>{key}</td>
+            <td title={key}>{index+1}. {key.length > 100?key.substring(0,100)+"...":key}</td>
         </tr>)
         this.setState({user_category_history: category_history, user_website_history: website_history});
     }
@@ -154,8 +154,12 @@ export class Summary extends React.Component {
         var page_history = Object.entries(this.props.location.state.player_metrics[user_name]["page_history"]).map((key,index)=>
             <tr key={index}>
                 <td>{key[0]}</td>
-                <td>{key[1]["count"]} 
-                    <FontAwesomeIcon onClick={()=>this.setModalContent(key[1]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="ml-2 detail-hover text-primary" icon={faInfoCircle} />
+                <td>
+                    <div className="row">
+                        <span className="col-md-2">{key[1]["count"]}</span> 
+                        <Fragment className="col-md-1"></Fragment>
+                        <FontAwesomeIcon onClick={()=>this.setModalContent(key[1]["trackers"])} data-toggle="modal" data-target="#trackerModal" className="col-md-6 detail-hover text-primary" icon={faInfoCircle} />
+                    </div>
                 </td>
             </tr>
         )
@@ -191,7 +195,7 @@ export class Summary extends React.Component {
 
     set_tables(){
         if (this.state.lobbyData.game_mode==="Race"){
-            return <h5><strong>Page History</strong></h5>
+            return <h5 className="text-center"><strong>Page History</strong></h5>
         }else{
             return  <div className="text-center"><h5><strong>
                         <button className="mr-2 btn btn-link page-history-toggle" onClick={()=>this.setState({cat_count:true})}>Categories Count</button>
@@ -255,6 +259,7 @@ export class Summary extends React.Component {
                 <div className="text-center col-md-4">
                     <h3><strong>{this.props.location.state.winner}</strong> is the winner!</h3>
                     <h5><strong>Game metrics:</strong></h5>
+                    <p><small>Note: You can view the gameplay metrics of other players by clicking on their username.</small></p>
                     <div className="stats-table">
                         <table className="table table-borderless">
                             <thead>
@@ -271,7 +276,7 @@ export class Summary extends React.Component {
                         {this.display_cat_img()}
                     </div>
                 </div>
-                <div className="text-center col-md-4">
+                <div className="col-md-4">
                 {this.set_tables()}                
                 <div className="table-wrapper-scroll-y scrollbar">
                     <table className="player-table table table-borderless">
