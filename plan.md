@@ -110,10 +110,13 @@
 * **Week 19**
   * Improve category game mode feedback
   * Polish and refine instructions
-  * Create survey for evalutaion
+  * Create survey for evaluation
   * Deploy first version of app
   * Run first round of experiments
 * **Week 20**
+  * Monitor how user evaluation is going
+  * Make any changes required if something unexpected happens
+  * Focus on dissertation writing
 * **Week 21**
 * **Week 22**
 * **Week 23 [TERM ENDS]**
