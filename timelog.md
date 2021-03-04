@@ -626,8 +626,17 @@
 * *1 hour* Dissertation writing
 
 ## Week 20
+
+### 01 Mar 2021
 * *1 hour* Changed how extension sockets are identified
 * *1 hour* Improvements to the summary UI and more detail to how to play section.
 
+### 02 Mar 2021
+* *1.5 hours* Dissertation writing
 
+### 03 Mar 2021
+* *2 hours* Dissertation writing
+
+### 04 Mar 2021
+* *2 hours* Dissertation writing
 
