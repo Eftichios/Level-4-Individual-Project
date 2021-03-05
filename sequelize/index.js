@@ -12,7 +12,12 @@ const sequelize = new Sequelize(db_config,
 {
     logging: false,
     define: {timestamps: false},
-    dialectOptions: {"ssl":true}
+    dialect: "postgres",
+    native: true,
+    ssl: true,
+    dialectOptions: {
+        "ssl": {require:true, rejectUnauthorized: false}
+    }
 });
 
 // load all of our models
