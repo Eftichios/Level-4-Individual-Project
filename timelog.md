@@ -640,3 +640,7 @@
 ### 04 Mar 2021
 * *2 hours* Dissertation writing
 
+### 05 Mar 2021
+* *1.5 hours* Upgrading database plan on heroku and migrating data
+* *2 hours* Dissertation writing
+
