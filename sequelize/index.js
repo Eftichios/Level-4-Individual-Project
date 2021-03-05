@@ -11,7 +11,8 @@ const db_config = process.env.NODE_ENV === "production"? pro_config:dev_config;
 const sequelize = new Sequelize(db_config,
 {
     logging: false,
-    define: {timestamps: false}
+    define: {timestamps: false},
+    dialectOptions: {"ssl":true}
 });
 
 // load all of our models
