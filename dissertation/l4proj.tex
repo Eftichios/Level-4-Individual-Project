@@ -84,7 +84,7 @@
 
 Ad Tracking and targeted advertising are part of the web browsing eco-system. While it is not essential to the personal browsing experience of a user, it is the main source of income for businesses that provide free services (such as Facebook). With this model, users can in most cases browse the web for free, but this comes at the cost of the user's privacy, and usually without their knowledge. 
 
-Online targeted advertising is done in a massive scale, and many entities are involved in this processes, having access to a large number of internet users. As a result, mass amounts of user data is is being transported between these entities. Adding to this the fact that there is a general lack of transparency on what exact data is gathered from the user and how it is processed, serious privacy concerns are constantly being expressed (cite something that expresses privacy issues in targeted advertising).
+Online targeted advertising is done on a massive scale, and many entities are involved in this processes, having access to a large number of internet users. As a result, mass amounts of user data is is being transported between these entities. Adding to this the fact that there is a general lack of transparency on what exact data is gathered from the user and how it is processed, serious privacy concerns are constantly being expressed (cite something that expresses privacy issues in targeted advertising).
 TODO: Provide a bit more introduction to the project as well. Phrase the above paragrah a bit differently!
 
 \section{Motivation}
@@ -96,7 +96,7 @@ In this paper, we attempt to use targeted advertising in a way that is fun and e
 TODO: Refine motivation section, mention briefly privacy issues in targeted advertsing, maybe also mention any scandals that happened, and then tie it up with what we are trying to do in this paper.
 
 \section{Aims}
-In order to investigate and improve user knowledge of targeted advertising systems, we create a mutli-player game using adverts and third-party trackers in web browsers as game entities. The nature of game is meant to be educational and experimental; We are not interested in building the most fun game, but rather explore the possibilities of using tracker and advertising as game mechanics. During the game-play, players can put their knowledge to the test, with the goal of tricking the profiling done by advertisers or getting tracked by a certain amount of ad trackers, depending on the game mode.
+In order to investigate and improve user knowledge of targeted advertising systems, we create a mutli-player game using adverts and third-party trackers in web browsers as game entities. The nature of the game is meant to be educational and experimental; We are not interested in building the most fun game, but rather explore the possibilities of using tracker and advertising as game mechanics. During the game-play, players can put their knowledge to the test, with the goal of tricking the profiling done by advertisers or getting tracked by a certain amount of ad trackers, depending on the game mode.
 
 \textbf{Category mode:} Players are given an advert category that belongs to a content category (e.g Arts and Entertainment). Starting with a fresh browser account, they browse the web until they see an advert that belongs to the category given. This will allow the users to explore how the profiling is done by trying out different strategies to be targeted with an advert in that category. The first player to receive an advert in the given category is the winner. 
 
@@ -118,19 +118,17 @@ In both game modes, we gather relevant gameplay metrics in order to analyse and 
 TODO: The Aims section is better to be left for after the evaluation. 
 
 \section{Content Structure}
-We begin in Chapter 2 by providing an overview of related technologies and the state of affairs in online targeted advertising. In Chapter 3, we formalise the requirements and discuss the different aspects of the required solution. Chapter 4 shows the design decisions made along with explanations, it also gives an overview of the process throughout the production of the product and includes a high level overview of the system architecture. Chapter 5 dives into the implementation of the product, where the abstract details given in Chapter 4 are explained in more detail. We split the independent components of the system and explain their functionality and various challenges encountered throughout the development, we then give a complete picture of the system by putting everything together. In Chapter 6, we describe our experiments with players and use the data gathered to make conclusions about the players understanding of targeted advertising systems. We also include a discussion on game engagement and the fun factor. Finally, in Chapter 7 we discuss the limitations of our product and set the groundwork for future work. We end with a conclusion on the findings of this paper and a discussion as to why users need to have a better understanding of online targeted advertising systems.
+We begin in Chapter 2 by providing an overview of related technologies and the state of affairs in online targeted advertising. In Chapter 3, we formalise the requirements and discuss the different aspects of the required solution. Chapter 4 shows the design decisions made along with explanations, it also gives an overview of the process throughout the production of the product and includes a high level overview of the system architecture. Chapter 5 dives into the implementation of the product, where the abstract details given in Chapter 4 are explained in more detail. We split the independent components of the system and explain their functionality and various challenges encountered throughout the development, we then give a complete picture of the system by putting everything together. In Chapter 6, we describe the experiment used the gathered data to help us make conclusions about the players knowledge of targeted advertising systems as well as the system's usability. Additionally, we analyse the gameplay for all the participants in any attempt to identify any patterns in their strategy. Finally, in Chapter 7 we discuss the limitations of our product and set the groundwork for future work. We end with a conclusion on the findings of this paper and a discussion as to why users need to have a better understanding of online targeted advertising systems.
 TODO: Ensure this section is correct when paper is finished
-
 
 %==================================================================================================================================
 \chapter{Background}
 In this chapter we provide a discussion on the entities involved in targeted advertising and how it works, as well as how trackers collect the user's data. While we are mostly interested in third-party trackers for the purpose of our game, we also explain how first-party tracking is usually done. Furthermore, we explain briefly the privacy risks and discrimination issues associated with targeted advertising and how they affects casual users. Finally, we explore technologies that are commonly used by users to deal with targeted advertising and we conclude with a section on related technologies to what we are trying to build.
 
-\section{???Early days of advertising???}
-Here talk about how advertising was done before we had access to so much data and machine learning techniques.
-
 \section{Targeted advertising systems}
 \label{targeted}
+In the early days of the internet, advertising was very limited due to the lack of user data and the lack of resources to display adverts on. This meant that advertisers would commonly place their adverts on any available media that existed, but rather than attracting users, these kind of ads were unwanted (cite [Jiminez ref13]). With the modern advantages in recommender systems and the expansion of the internet with supporting technologies such as cookie matching or real-time bidding, advertisers can now use the context of the user to select what advert to serve to that user.    
+
 \subsection{Entities involved in targeted advertising systems and their roles}
 Targeted advertising systems are complex and there are a lot of entities involved that interact with each other in order to serve personalised adverts to users. \cite{Estrada-Jimenez2017}, discuss in detail how these entities interact with each other and what implications this might have in terms of privacy issues. Abstracting those details, let us first begin by giving a brief and simplified overview of how these systems work. 
 
@@ -152,8 +150,27 @@ Finally, \textbf{data aggregators} (trackers) are the entities responsible for c
 \textbf{First-party tracking} is done by publishers, usually for the purpose of collecting and analysing the user's information to offer a better experience with using their website. First-party tracking involves tracking the user using first-party cookies, which the user has to give consent before they could be used for advertising purposes. Cookies usually capture implicit data about the user's interactions with the website. Furthermore, data provided by the user, either directly through forms or captured from their network requests are also gathered.
 
 \textbf{Third-party tracking} involves tracking the user by embedding content in first party websites (i.e in publisher sites) that allows trackers to monitor the user's browsing activity and capture meaningful data that will later on be used to target the user with personalised content. This content is usually embedded in the website without the user's consent, and in most cases, without the user's knowledge.
-First-party tracking is less of a privacy concern than third-party tracking as it is limited to the users that use the publisher's website. Additionally, there is usually more transparency as to what data is gathered and how it is used. The privacy risks in first-party tracking are directly correlated with the publisher's intentions; publishers can choose to sell private data to ad exchanges. Third-party tracking on the other hand is a much bigger privacy concern due to the lack of transparency and lack of user involvement. Finally, third-party trackers share the user's data with other entities in the targeted advertising eco-system, considering there is a vast amount of data moving between these entities, any potential data leaks can cause serious privacy issues. 
-% TODO: maybe mention that trackers can combine data they have about the user, and why this is problematic 
+First-party tracking is less of a privacy concern than third-party tracking as it is limited to the users of the publisher's website. Additionally, there is usually more transparency as to what data is gathered and how it is used. The privacy risks in first-party tracking are directly correlated with the publisher's intentions; publishers can choose to sell private data to ad exchanges or use that data in malicious ways. Third-party tracking on the other hand is a much bigger privacy concern due to the lack of transparency and lack of user involvement. Finally, third-party trackers share the user's data with other entities in the targeted advertising eco-system, considering there is a vast amount of data moving between these entities, any potential data leaks can cause serious privacy issues. 
+
+While different publishers and trackers collect different types of user information, and in some cases, there is no way to know for certain what exact data is gathered from the user, these are common data gathered when tracking the user (cite):
+\begin{itemize}
+   \item 
+   \textbf{Browsing Behaviour:}
+   \begin{itemize}
+	\item
+           \textbf{Clickstream Data:} A record of web pages that the user has clicked on.
+	\item
+           \textbf{Search Data:} A record of search terms that the user has queried for.
+	\item
+           \textbf{Purchase Data:} A record of transactions that the user has either completed or started when using e-commerce sites such as Amazon.
+	\item
+           \textbf{Other:} Publishers may gather data about interactions of the user that are unique to their site. For example, Netflix gathers implicit data when the user's mouse hovers over an item (cite).
+   \end{itemize}
+   \item
+   \textbf{Demographics:} Data such as the age, gender or education of the user.
+   \item
+   \textbf{Social Media Profile Data:} Any data the user has provided for their social media profiles such as their interests. 
+\end{itemize}
 
 \subsection{Process of serving personalised adverts to the user}
 From the user's perspective, the ads that they see are part of the website they are visiting. The ads are indeed embedded in the content of the website, but the ads come from third parties, and are served when the user's browser sends an HTTP request to a publisher's website. Since publishers are directly associated with ad exchanges, along with the original content that the user would have been served, additional content is served in the form of scripts or ad tags which is executed automatically by the browser. The scripts automatically notify the ad exchange, which in turn notify advertisers that a space for adverts is available to be filled. Additionally, using cookie matching, ad exchanges can provide data about the user to the advertisers, and the ad space is then sold to the advertisers willing to pay the most, usually in real-time auctions in a process called real-time bidding (\cite{Estrada-Jimenez2017}).
@@ -176,17 +193,16 @@ In a study to explore the sources of personally identifiable information that ar
 \subsection{Discrimination Issues}
 \cite{Bol2019a} conducted an experiment with the purpose of identifying what advert categories groups of users with different demographics get targeted with. It was found that age, gender and education are all factors in targeted advertising, showing that these systems discriminate user groups in an attempt to maximise their efficiency. An implication of this form of discrimination is that it reinforces the usual age and gender stereotypes (e.g men like cars and women like beauty products). When presented with different discrimination scenarios, users stated that they found 44\% of them moderately or severely concerning and that discrimination based on demographics is more concerning than discrimination based on behaviour (\cite{Plane2017}).
 
-\section{Web categorisation}
-Web categorisation is the process of classifying a website's content into a set of categories. This usually works by training a classification model that takes as input the html content of the website. The model then parses the html content to extract any keywords that help classify that website into a category. 
+This form of discrimination is very problematic as advertisers can take advantage of groups of people that are more suggestible to advertising due to their demographics. For example, constantly showing an older person adverts about skin care can be seen as a marketing stategy that aims to take advantage of the age of the person.
 
-There are a lot of services that provide web categorisation APIs, which allow you to make HTTP requests to categorise a website by including the website's url in the request. There are some limitations to these services however, as some websites might be difficult to classify correctly because of their complex content.
-
-\section{Seams?}
-Can adverts be seen as seams in a browsing experience? Not in the traditional sense, as seams are more seen as aspects of a system that are often hidden from users to provide a more smooth experience. In this area of seams, there is usually some form of technical understanding that a user must have to interact more efficiently with the system
+% \section{Seams?}
+% Can adverts be seen as seams in a browsing experience? Not in the traditional sense, as seams are more seen as aspects of a system that are often hidden from users to provide a more smooth experience. In this area of seams, there is usually some form of technical understanding that a user must have to interact more efficiently with the system
 
 \section{Related products}
 \subsection{Tally Saves The Internet Game}
-Explain what this is, when it came out and how similar it is to what we are trying to do. Conclude on why our project is different and why it is also useful
+Tally saves the internet is a browser game released in August 2020 that is implemented as a browser extension. When users have the extension installed and visit any website, it detects various tracking mechanisms and displays monsters somewhere on the page. The user has the option to fight the monster and defeat it in a turn-based RPG combat, which effectively blocks the trackers identified on the page. It also allows users to earn badges when finding different resources on the web or defeating different types of monsters.
+
+Similar to Adblockers, the purpose of the game is to block tracking, advertising and the collection of the user's data in the browser. The biggest difference is that the game blocks trackers in an interactive manner, requiring the user's attention which ensures that the user is aware of the tracking done on that page (\cite{tally}). 
 
 \subsection{Adblockers}
 Users receive adverts as HTTP content through HTTP requests. The requests are made when a user accesses a publisher's site, and are out of the users control. This led to the development of browser add-ons that listen to these requests and block them, effectively blocking adverts from being served to the user. 
@@ -202,6 +218,16 @@ In an attempt to identify the different targeting mechanisms used in targeted ad
 For each user in the search logs, the bing search engine was used to search for the items in the log and the top 5 websites were visited and advert information was collected using the AdReveal tool (a browser extension). The AdReveal tool scans the DOM of the website and gathers the following information: the url of the page and its semantic categories, the url the advert redirects to and its semantic categories and whether a re-marketing script is present on the page. The semantic categories of the pages are extracted by using a web categorisation API. 
 This information was collected in two ways, in the first way, search history and cookies were wiped before the entirety of the search. In the second way, search history and cookies were wiped after each individual search. Using these data sets, a machine learning model was built and trained that predicts what kind of targeting mechanism was used for the adverts on the page by calculating a targeting score.
 
+\subsection{Web Categorisation}
+Web categorisation is the process of classifying a website's content into a set of categories. This usually works by training a classification model that takes as input the html content of the website. The model then parses the html content to extract any keywords that help classify that website into a category. 
+
+There are a lot of services that provide web categorisation APIs, which allow you to make HTTP requests to categorise a website by including the website's url in the request. There are some limitations to these services however, as some websites might be difficult to classify correctly because of their complex content.
+
+\section{Summary}
+In this section we have discussed how targeted advertising systems work and the entities and technologies involved in them. We have also discussed the various issues in these systems. These concepts are important for the development of the game, as they are the core of the game mechanics. 
+
+The related products section looks at products that are either similar to what we have done or use methods that we have adapted for this project. The closest product to ours is Tally Saves The Internet Game but it is still very different to what we are trying to do. This project is unique in the sense that it is multi-player and uses both tracking and advertising as game mechanics. 
+
 %==================================================================================================================================
 \chapter{Analysis/Requirements}
 What is the problem that you want to solve, and how did you arrive at it?
@@ -213,7 +239,7 @@ The requirements from the initial proposal involved playing the game in Facebook
 Additionally, the idea of using trackers in the game in addition to adverts came later during the research phase of the project. It was apparent that tracking is a very important concept, and therefore, a new requirement was added to have a game mode involving tracking in browsers.
 
 \section{User Stories}
-For this project, we only have one set of user roles; the players. The user stories bellow reflect the requirements identified during the requirements analysis phase along with any requirements identified later on in the project. We split up the user stories according to which section of our app the requirements affects.
+For this project, we only have one set of user roles; the players. The user stories bellow reflect the requirements identified during the requirements analysis phase along with any requirements identified later on in the project. We split up the user stories into sections according to what the requirement is. These sections will be the different pages in the web app that the user would be able to navigate to.
 
 \textbf{Authentication/Dashboard}
 \begin{itemize}
@@ -223,6 +249,7 @@ For this project, we only have one set of user roles; the players. The user stor
     \item As a player, I want to be able to view all achievements, including those I have not yet completed, so that I know what achievements to aim for.
     \item As a player, I want to be able to change my password, so that I can ensure the security of my account.
     \item As a player, I want to be able to play the game anonymously, so that I can ensure my privacy.
+    \item As a player, I want to be able to change my profile picture, so that I can choose which picture represents my account.
 \end{itemize}
 
 \textbf{Leaderboard}
@@ -265,7 +292,7 @@ For this project, we only have one set of user roles; the players. The user stor
 \end{itemize}
 
 \section{Functional Requirements}
-We will now refine the user stories into implementable tasks which we categorise the prioritisation of the requirements using the MoSCoW prioritisation technique (\cite{moscow}) which labels the tasks into Must Have, Should Have, Could Have and Won't Have. We also number the requirements so that we can reference them throughout the paper.
+We will now refine the user stories into implementable tasks which we categorise using the MoSCoW prioritisation technique (\cite{moscow}) that labels the tasks into Must Have, Should Have, Could Have and Won't Have according to their relative importance for the functionality of the system. We number the requirements so that we can reference them throughout the paper.
 
 \textbf{Authentication/Dashboard}
 \begin{enumerate}
@@ -275,7 +302,7 @@ We will now refine the user stories into implementable tasks which we categorise
     \item \textbf{Should Have:} Users should be able to view all achievements available for them to complete as well as those they have already completed.
     \item \textbf{Must Have:} Users must be able to change their password.
     \item \textbf{Must Have:} Users should be able to create an account without providing personally identifiable information.
-
+    \item \textbf{Could Have:} Users could be able to update their profile pictures.
 
 \textbf{Leaderboard}
     \item \textbf{Should Have:} Users should be able to view the leader board.
@@ -320,7 +347,7 @@ In addition to the implementable tasks identified, we also identify tasks that a
 \end{enumerate}
 
 \section{User Journey}
-To give a more practical overview of the requirements, we provide a brief overview of the user's journey from account creation to playing the game. Specific implementation details for each step will be provided in the \nameref{implementation} section. We include the requirements that have to be implemented under each step.
+To give a more practical overview of the requirements, we provide a brief overview of the user's journey from account creation to playing the game. We include the requirements that have to be implemented under each step.
 User journey:
 \begin{enumerate}
     \item The user registers for an account and logs in
@@ -376,35 +403,41 @@ In this chapter we provide an overview of the system and how the various compone
 \section{Overview}
 A high level explanation of the full system with the three different components (server, client and extension) and a simple, comprehensive diagram showing the interaction between these components.
 \subsection{System Components}
-The system can be logically split into three high level components; the server, the client and the browser extension. These components work together to form the complete system where users can create accounts and play the game.
+When designing the infrastructure of the system, the requirements that limited the scope of technologies to use were the fact that the game must be multi-player and played in web browsers. The only way to fulfil these requirements is to implement the game as a web application. There was an apparent issue however; to build the gameplay logic, we need a way to monitor the user's browsing activity in sites outside of our domain which can not be done with front-end or back-end technologies. This led to the addition of another component into the infrastructure of the system; the browser extension, which gives us access to the user's network requests which we use to identify third-party trackers, and the HTML of each site the user visits during the game which we use to identify adverts.
+
+The system can then be logically split into three high level components; the server, the client and the browser extension. These components work together to form the complete system where users can create accounts and play the game.
 \begin{itemize}
     \item
     \textbf{Client:} This will be the front-end that will allow users to interact with the system.
     \item
     \textbf{Server:} The server will handle all network requests, along with any database operations. Additionally, the server will handle the communication between the clients and the extensions to handle updates to the game states for each player.
     \item
-    \textbf{Browser Extension:} The extension will handle all gameplay logic and provide feedback to the players of the current game state. 
+    \textbf{Browser Extension:} The extension will handle all gameplay logic and provide feedback to the players of the current game state.
 \end{itemize}
 
 \subsection{System Architecture}
 Explain the interaction of the components of the system and include a system architecture diagram.
+Figure x.x shows the system architecture diagram with the three components and the interactions between them. The three component of the system interact in two different ways:
+\begin{itemize}
+   \item
+   \textbf{HTTP requests:} Both the client and the extension interact with the server through HTTP requests. The client interacts with the server to authenticate users, retrieve database data and handle any functionality of the web application outside the game. The extension interacts with the server to retrieve the user's information as well as for categorising adverts identified during the gameplay.
+   \item
+   \textbf{Websockets:} To handle three-way, real-time communication between the components of the system, we use Websockets. Websockets allow us to set up TCP communication lines between the clients and the server and communication lines between the extensions and the server. Note that there is no direct communication line between the extensions and the clients, the server acts as an intermediary when these component want to communicate. 
+
+To communicate, Websockets emit events and there are corresponding event listeners that listen to those events and handle any logic necessary. We can also pass additional data when emitting events. For the purpose of our game, we set up events and event listeners to these Websockets to handle updates to the game state for all players in real-time as well as to implement the chat functionality. Websockets also allow us to put users into different rooms, which we use to support multiple games being played at the same time.
+\end{itemize}
 
 \section{The Server}
 What is the server's role? How does the interaction happen? What are the most interesting aspects of the server?
+The server implements a REST API that both the client and the extension use. It handles most of the functionality of the web app and the gameplay. The server connects to the database to handle any database operations. 
 
 \subsection{ER Diagram}
-Explain the database tables and put the ER diagram as a figure
+We chose a relational database as it is the most appropriate for our project. With the relational database we can model the interactions between users and their gameplay metrics or achievements, such that it is easy to query the database for the user's information. Figure x.x shows the ER diagram for the database. To ensure that database operations are consistent and that no malicious queries are executed against the database, we use an object relational mapper (ORM) as an interface between the server and the database.
 
 \subsection{REST API}
-Explain briefly how the REST API routes are set up.
+The server uses a controller that sets up all REST API routes, which makes it easier to handle any server-side errors. The routes correspond to the database tables and for each table we have routes to retrieve, insert, update or delete entries from the table. This allows us to handle user registration and authentication, game metrics and achievement updates, game history updates and any retrieval requests such as retrieving the user's achievements or gameplay metrics. There are also additional routes that are not related to database operations, these routes handle requests for find or start a game and logging of various events in the system.
 
-\subsection{The Lobby System}
-Talk about the lobby system and why it is important.
-
-\subsection{Game metrics and achievements}
-Why do we gather game metrics and how are they used? Is this important?
-
-\section{The extension}
+\section{The Extension}
 What does it do? Why is this needed?
 
 \subsection{Tracker identification}
@@ -419,10 +452,10 @@ How do we identify and categorise advertisements? Any limitations with this meth
 \section{The Web App}
 What components does this include? Why do we need this.
 
-\subsection{Wireframes Prototypes}
-During the prototype phase of the project, we have created two different sets of wireframe designs for the user interface of the web app. We then created a survey and asked participants to answer which of the two different designs they preferred. The survey along with the responses can be found in the Appendix. Figure \ref{fig:wireframe} shows an example of the two different designs for the dashboard page; the idea for the first design was to include all page components in cards, and use tabs to navigate between a play screen and the dashboard. The idea for the second design was to include everything in one screen and make it span the whole page.
+\subsection{Wireframe Prototypes}
+During the prototype phase of the project, we have created two different sets of wireframe designs for the user interface of the web app using Figma (cite). Figma allows the creation of interactive prototypes that can simulate the functionality of each page. We then created a survey and asked participants to answer which of the two different designs they preferred. The survey along with the responses can be found in the Appendix. Figure \ref{fig:wireframe} shows an example of the two different designs for the dashboard page; the idea for the first design was to include all page components in cards, and use tabs to navigate between a play screen and the dashboard. The idea for the second design was to include everything in one screen and make it span the whole page.
 
-In total, seven participants took part in the survey and the results were that most people preferred the colours of design 1 but when it comes to the look of the wireframes, design 2 wins for all screens. Therefore we have chosen to combine the colours of design 1 with the UI of design 2 to get our final design. Figure \ref{fig:finaldesign} shows a prototype wireframe of the dashboard screen after the evaluation of the survey.
+In total, seven participants took part in the survey and the results were that most people preferred the colours of design 1 but when it comes to the look of the wireframes, design 2 won for all screens. Therefore we have chosen to combine the colours of design 1 with the UI of design 2 to get our final design. Figure \ref{fig:finaldesign} shows a prototype wireframe of the dashboard screen after the evaluation of the survey.
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{images/Dashboard.png}    
@@ -441,25 +474,43 @@ In total, seven participants took part in the survey and the results were that m
     \label{fig:finaldesign} 
 \end{figure}
 
-\subsection{Tracker List}
-Explain what this is and why should a user care about tracker domain names.
+\subsection{Web App Components}
+The interface of the web app can be split into different components. We briefly mention these components along with any functionality they provide to the user.
 
-\subsection{Account Registration}
+\textbf{Authentication Views:} These are the register and login pages which will be the first thing new users will see when they visit the web app. New users can create accounts and existing users can use their credentials to log in, in which case, users are redirected to the dashboard.
 
-\subsection{Chat System}
+\textbf{Dashboard:} The dashboard will be the main screen of the web app where most user interaction happens. In the dashboard, the user can search for games, view the leaderboard, game metrics, achievements and game history, change their profile picture or their password and find information on how to play.
 
-\subsection{Game History}
+\textbf{About:} The about page is the only page the user can navigate to other than the dashboard. It contains information about the concepts used in the game, as well as information about the game. The about page is meant to assist in improving the user's understanding of targeted advertising systems and the various issues involved with it. 
 
-\section{Websockets}
-How did we use websockets in this project and why?
+\textbf{Lobby:} When a user searches for and finds a game, they are redirected to the lobby. This lobby will allow players to chat with each other before the game or during the game. Players can see what the required winning condition is and indicate that they are ready for the game to start. When all players are ready, any one of them can start the game. During the game, players remain in the lobby, where they can continue chatting or choose to leave.
 
-\section{How do these systems interact?}
-Give a linear eplanation of how does the web app interact with the server and the extension in order to set up and play games.
+\textbf{Summary:} When a winner is found, players automatically get redirected to a summary page where they can see who won and their own or other players gameplay metrics. For example, in the case of the Race mode, users can see the pages other players have visited along with the number of unique trackers found in each page and their names. Players can continue chatting in the summary until they either choose to leave the summary page or play again. 
+
+\section{Game Mode Design and Evaluation:}
+The project specification required the implementation of just one game mode. However, during the design phase of the project, we have decided to implement more game modes to showcase more concepts in targeted advertising systems. But first, we needed to evaluate these game modes to determine if it is worth implementing them and identify any potential problems or improvements.
+
+Three game mode design prototypes were created in total which were presented in a survey, along with questions aimed at evaluating the perceived engagement that these participants would have with the game. The three game mode designs are as follows:
+\\
+\begin{itemize}
+   \item
+   \textbf{Race Mode:} This game mode will be utilising third-party trackers as the main gameplay mechanic. It will be a very simple racing game, where the winner is the player that gets tracked by a certain amount of third-party trackers first.
+
+   \item
+   \textbf{Category Mode:} This game mode will be utilising adverts on pages as the main gameplay mechanic. Players will be given an advert category and the purpose of this game mode is to browse the web until a player is served an advert that belongs to the category given. The first player to be targeted with an advert in that category wins the game.
+
+   \item
+   \textbf{Hunting Mode:} This game mode is different than the other two in the sense that it does not involve active gameplay. Players can choose to have the extension activated in hunting mode while they are casually browsing the web. The extension will then identify any trackers and try to pull additional information about that tracker such as their location and their organisation name. Players will then have a collection of found organisations.
+\end{itemize} 
+\\
+In total there were six responses to the survey and the survey along with the results can be found in the appendix. All participants stated that they would play all three games modes, with the exception of one participant stating that they would not play the hunting game mode. However, participants stated that the game modes would get boring quite quickly. Additionally, some aspects of the game modes such as the purpose of the hunting mode seemed confusing to participants and so improvements and changes have to be made in order to make them more interesting and engaging.
+
+Following the evaluation results, it was clear that changes needed to be made to these game modes. Therefore, we have decided to completely drop the hunting game mode and add aspects of the hunting mode, such as the organisation collection to the Race mode. We are therefore left with two game mode design prototypes: the race mode and the category mode.
 
 \section{Technologies used}
 There were many technologies that we could have used for the development of the various components of the system. There were no limitations from the project specification, but since we are interested in tracking and 
 advertising in web browsers, it was clear that we needed a JavaScript framework for the web application. Furthermore, to keep the language unified and consistent across our system components, we will also use a JavaScript framework for our
-back-end, which will make it trivial to share resources between the server, client and extension using JSON. 
+back-end, which will make it trivial to share resources between the server, client and extension using JSON data. 
 
 \subsection{The Server}
 The server needs to be able to handle authentication of users, communication between users and handle HTTP requests along with any database operations. Furthermore, since the game supports multiple players, we need
@@ -478,16 +529,17 @@ can be reused in different parts of the app.
 \subsection{The Extension}
 The extension needs to be able to handle all gameplay logic as well as displaying feedback to the users when they are in an active game. This means that it should be able to make updates to its interface that correspond to updates in the game state.
 Therefore, we need our extension to have scripts running in the background that can handle the gameplay logic as well as scripts than can handle the updates to the interface. We have chosen to implement the extension in Google Chrome, as it is the
-most widely used browser and the Google Chrome devleoper API provides many useful event driven methods that can help us detect trackers or identify adverts.
+most widely used browser and the Google Chrome developer API provides many useful event driven methods that can help us detect trackers or identify adverts.
 
-Google Chrome extensions are similar to web applications, in the sense that we can use web frameworks to implement them. However, for our extension we have chosen to go with vanilla javascript instead of using frameworks such as React or Angular.
-This is because we are mostly interested in the scripts rather than the interface, and the Google Chrome developer API powerful enough so that we can implement the complex functionality required.
+Google Chrome extensions are similar to web applications, in the sense that we can use web frameworks to implement them. However, for our extension we have chosen to go with vanilla JavaScript instead of using frameworks such as React or Angular.
+This is because we are mostly interested in the scripts rather than the interface, and the Google Chrome developer API is powerful enough to help us implement the complex functionality required.
 
 \subsection{Database}
-Explain why postgresql database.
+For the relational database, we could have chosen any of the SQL databases as they all have the capabilities to handle any operation we might need for this project. However, for the selection of the database, we have decided to look ahead to the deployment of the 
+app to avoid any potential incompatibilities between the service we will use to deploy the app and the database. 
 
-\section{Challenges/Limitations?}
-
+A good service to deploy web apps that is free and supports automatic deployment is Heroku (cite). Heroku has add-ons that can be added to the deployed app which provide cloud databases that
+our app can connect to. One of the most supported and commonly used add-ons is the Heroku Postgres which is what we will be using. Using PostgreSQL also makes it easy to store and query JSON data, which will be convenient when we want to store or retrieve entries for the game history.
 
 %==================================================================================================================================
 \chapter{Implementation}
@@ -538,6 +590,9 @@ Talk about the implementation of the extension
 %==================================================================================================================================
 \chapter{Evaluation} 
 briefly mention participants, and the limitations that we had when trying to evaluate the project
+
+\section{Experiment}
+survey, participants, explanation...
 
 \section{User Knowledge Of Targeted Advertising System}
 Explain how we evaluate this, include statistical analysis with corresponding graphs.
