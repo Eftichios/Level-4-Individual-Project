@@ -650,3 +650,10 @@
 ### 07 Mar 2021
 * *3 hours* Dissertation writing
 
+# Week 21
+
+### 08 Mar 2021
+* *2 hours* Disseration writing
+
+### 09 Mar 2021
+* *2.5 hours* Disseration writing
