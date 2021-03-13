@@ -657,3 +657,15 @@
 
 ### 09 Mar 2021
 * *2.5 hours* Disseration writing
+
+### 10 Mar 2021
+* *2 hours* Disseration writing
+* *2 hours* Creating an evaluation notebook to interpret survey responses and create plots
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+
+### 11 Mar 2021
+* *1 hour* Dissertation writing
+
+### 12 Mar 2021
+* *2 hours* Dissertation writing
