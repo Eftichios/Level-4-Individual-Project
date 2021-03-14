@@ -669,3 +669,11 @@
 
 ### 12 Mar 2021
 * *2 hours* Dissertation writing
+
+### 13 Mar 2021
+* *2 hours* Dissertation writing
+
+### 14 Mar 2021
+* *1.5 hour* Refining the System architecture and ER diagrams
+* *0.5 hour* Creating a diagram to show the process of real-time bidding
+* *2 hours* Dissertation writing
