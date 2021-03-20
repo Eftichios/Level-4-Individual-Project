@@ -650,7 +650,7 @@
 ### 07 Mar 2021
 * *3 hours* Dissertation writing
 
-# Week 21
+## Week 21
 
 ### 08 Mar 2021
 * *2 hours* Disseration writing
@@ -677,3 +677,25 @@
 * *1.5 hour* Refining the System architecture and ER diagrams
 * *0.5 hour* Creating a diagram to show the process of real-time bidding
 * *2 hours* Dissertation writing
+
+## Week 22
+
+### 15 Mar 2021
+* *2 hours* Dissertation writing
+
+### 16 Mar 2021
+* *2 hours* Dissertation writing
+* *2 hours* Creating diagrams for lobby system and REST API
+
+### 17 Mar 2021
+* No Progress
+
+### 18 Mar 2021
+* *1 hour* Working on evaluation notebook
+
+### 19 Mar 2021
+* *2 hours* Dissertation writing
+
+### 20 Mar 2021
+* *1 hour* Evaluating the gameplay of players
+
