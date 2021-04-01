@@ -36,11 +36,11 @@ In short, this is how it works:
 While the extension manages to identify most trackers, there are still trackers that won't be identified due to the fact that the list of known trackers is not exhaustive. Furthermore, in categorising adverts, not only can adverts not be identified, the extracted categories are not always accurate. This means that sometimes during gameplay, you might see an advert on the given category first but still not win if the extension fails to identify that advert. This can cause some frustrations but the nature of this game is experimental and educational and it should still provide useful insights into what happens behind the scenes when browsing the web.
 
 ### Setup
-Instructions on building the web app locally: (Note that to fully build the web app, a database connection to a Postgresql server is needed).
+Instructions on building the web app locally: (Note that to fully build the web app, a database connection to a Postgresql server is needed as well as Node.js and npm).
 * Clone the master repository
-* Open a cmd/bash inside the server directory
+* Open a cmd/bash inside the `src/server` directory
 * Run `npm install`
-* Do the same for the client directory
+* Do the same for the `src/client` directory
 * In the server directory, create a file called `.env` which would contain the env variables
 * Insert your database credentials (valid PostgreSQL database connection) and a secret key (could be anything) in `.env`. Example screenshot included below:
 
@@ -48,8 +48,8 @@ Instructions on building the web app locally: (Note that to fully build the web 
 
 * Init the database and populate it with dummy data by running `node sequelize/rest_db.js` inside the server dir
 * Start the node server by running `node index.js` inside the server dir
-* Start the React app by runnung `npm start` inside the client dir
+* In another cmd/bash, start the React app by running `npm start` inside the client dir
 * Navigate to the corresponding local host url that the React app is running on
-* See instructions below to set up and play the game. Note that they are for the deployed app and in the local version, you should use the extension that you cloned from the repository to play the game.
+* See instructions below to set up and play the game. Note that they are for the deployed app and in the local version, you should use the extension that you cloned from the repository to play the game (found in `src/AdHunter`).
 
 Instructions on playing the deployed app: [https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing](Instructions)
