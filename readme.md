@@ -52,4 +52,4 @@ Instructions on building the web app locally: (Note that to fully build the web 
 * Navigate to the corresponding local host url that the React app is running on
 * See instructions below to set up and play the game. Note that they are for the deployed app and in the local version, you should use the extension that you cloned from the repository to play the game (found in `src/AdHunter`).
 
-Instructions on playing the deployed app: [https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing](Instructions)
+Instructions on playing the deployed app: [Instructions](https://docs.google.com/document/d/1zIbCuwDIHwgJgykpyYQw8kPiVyl4iTkQkJvB8PoyrjY/edit?usp=sharing)
