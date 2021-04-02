@@ -18,20 +18,16 @@
 %% METADATA
 \title{A Distributed Game Using Adverts and Trackers In Web Browsers}
 \author{Eftychios Karagiorgis}
-\date{March 15, 2021}
+\date{March 30, 2021}
 
 \maketitle
 
 %==============================================================================
 %% ABSTRACT
 \begin{abstract}
-    Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
-    \vskip 0.5em
-    ``XYZ is bad. This project investigated ABC to determine if it was better. 
-    ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have
-    never been used together. It was found that  
-    ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
-*TODO*: Write abstract at the end
+Targeted advertising systems and tracking in web browsers are very controversial and cause concerns amongst internet users over privacy of personal data. The controversy in these systems comes from the lack of knowledge that users have of how they work or what data they collect from the users. In this project, we attempt to investigate and improve the knowledge that users have of these systems by creating an interactive online multi-player game that uses tracking and advertising in web browsers as game-play mechanics. 
+
+We conducted an experiment that asked participants to play the game and found that, within the limitations of our analysis, almost all participants reported that they had an increase in knowledge after playing just a single game.
 \end{abstract}
 
 %==============================================================================
@@ -87,11 +83,12 @@
 \pagenumbering{arabic} 
 
 \section{Motivation}
-Targeted advertising is the process of serving personalised adverts to users based on an interest profile, that is created by using information about the user gathered by tracking the user's browsing activity. It it is a big part of the web browsing eco-system and even though it is not essential to the personal browsing experience of the user, it is the main source of income for businesses that provide free services (such as Facebook). With this model, users can in most cases browse the web for free, but this comes at the cost of the user's privacy, and usually without their knowledge or consent. Furthermore, the user usually has no way of knowing what data was used to profile them, as there is a lack of transparency in these systems. Not understanding what these systems do or how they work makes users feel like they have no control over their privacy, which causes concerns over intrusion of their privacy (\cite{intro}). 
+Targeted advertising is the process of serving personalised adverts to users based on an interest profile. To create the interest profile, advertisers use any information that is available about the user, such as information gathered by the user's interaction on social media sites or their demographics. In addition to this information, advertisers also use information gathered by tracking the user’s
+browsing activity. Advertisers then use the interest profile to select what adverts to deliver to the user with the purpose of increasing the number of users interacting with their adverts and maximise their profits. 
+
+Targeted advertising is a big part of the web browsing eco-system and even though it is not essential to the personal browsing experience of the user, it is the main source of income for businesses that provide free services (such as Facebook). With this model, users can in most cases browse the web for free, but this comes at the cost of the user's privacy, and usually without their knowledge or consent. Furthermore, the user usually has no way of knowing what data was used to profile them, as there is a lack of transparency in these systems. Not understanding what these systems do or how they work makes users feel like they have no control over their privacy, which causes concerns over intrusion of their privacy (\cite{intro}). 
 
 In this paper, we attempt to use targeted advertising and tracking in web browsers in a way that is fun and educational with the purpose of directly observing and improving the knowledge that users have of these systems. We also attempt to increase awareness of the various privacy and discrimination issues involved in these systems. It is important for users to have at least some knowledge of how these systems work so they can make more informed decisions when browsing online to preserve their privacy.
-
-*TODO: Refine Motivation section at the end.
 
 \section{Aims}
 In order to investigate and improve user knowledge of targeted advertising systems, we created a mutli-player online game using adverts and third-party trackers in web browsers as gameplay mechanics. The nature of the game is meant to be educational and experimental; we are not interested in building the most fun game, but rather explore the possibilities of using tracking and advertising in web browsers as game mechanics. During the game-play, players can put their knowledge to the test, with the goal of tricking the profiling done by advertisers or getting tracked by a certain amount of third-party trackers, depending on the game mode. The two game modes that were implemented are as follows:
@@ -102,24 +99,22 @@ In order to investigate and improve user knowledge of targeted advertising syste
 
 The game being multi-player allows players to discuss and collaborate with each other, which increases the engagement with the game and makes things more interesting. It also introduces a competitive factor to the game that can act as a motivator for users to improve their strategies.  Additionally, after the game, players can see what websites the other players have visited, which will be a good starting point for new players to come up with their own strategies.
 
-In addition to the game-play, we include information sections in the game which are meant to re-enforce the concepts seen during the game and help with improving the user's knowledge of tracking, targeted advertising systems and the privacy issues involved in these systems.     
+In addition to the game-play, we include information sections in the game which are meant to re-enforce the concepts seen during the game and help with improving the user's knowledge of tracking, targeted advertising systems and the privacy issues involved in these systems. We also include information sections about different aspects of the game such as how to play the game or information about different aspects of the web app.     
 
-In both game modes, we gather relevant gameplay metrics in order to analyse and evaluate the players' strategies. Additionally, by conducting an experiment, we evaluate the player's knowledge of targeted advertising systems before and after playing the game as well as the usability of the system in general. In particular, for the users that played the game, the key questions we would like to explore are:
+In both game modes, we gather relevant gameplay metrics in order to analyse and evaluate the players' strategies. Additionally, by conducting an experiment that asked participants to play the game while answering survey questions and we evaluate the player's knowledge of targeted advertising systems before and after playing the game as well as the usability of the system in general. In particular, for the users that played the game, the key questions we would like to explore are:
 \begin{itemize}
     \item
     What did the user know about targeted advertising systems and tracking, and what did they learn after playing the game?
     \item
-    Did the user play the game blindly or did they have some sort of strategy in mind? What were the most visited types of websites by the users?
+    Did the user play the game blindly or did they have some sort of strategy in mind? What types of websites were visited by users throughout the gameplay?
     \item
-    If the user played multiple games, did their strategy improve over time?
+    If the user played multiple games, did their strategy improve over time? Was there a significant difference in the length of the games they played? 
+    \item
+    Is our system user friendly and enjoyable to use? Did new users have trouble using our system?
 \end{itemize}
 
-*TODO: Refine the Aims section after the evaluation. 
-
 \section{Content Structure}
-We begin in Chapter 2 by providing an overview of related technologies and the state of affairs in online targeted advertising. In Chapter 3, we formalise the requirements and discuss the different aspects of the required solution. Chapter 4 shows the design decisions made along with explanations, it also gives an overview of the software development process that we following during the development of the product and includes a high level overview of the system architecture. Chapter 5 dives into the implementation of the product, where the abstract details given in Chapter 4 are explained in more detail. We separate the independent components of the system and explain their functionality and various challenges encountered throughout the development, we then give a complete picture of the system by putting everything together. In Chapter 6, we describe the experiment we conducted to gather data to help us make conclusions about the players knowledge of targeted advertising systems as well as the system's usability. Additionally, we analyse the gameplay for all the participants in any attempt to identify any patterns in their strategy. Finally, in Chapter 7 we discuss the limitations of our product and set the groundwork for future work. We end with a conclusion on the findings of this paper and a discussion as to why users need to have a better understanding of online targeted advertising systems.
-
-*TODO: Ensure this section is correct when paper is finished
+We begin in Chapter 2 by providing an overview of related technologies and the state of affairs in online targeted advertising. In Chapter 3, we formalise the requirements and discuss the different aspects of the required solution. Chapter 4 shows the design process and the different aspects of the system on an abstract level. Chapter 5 gives an overview of the software development process that we followed during the development of the product and includes a high level overview of the system architecture. We then discuss the implementation details of the product, where the abstract details given in Chapter 4 are explained in more detail. We separate the independent components of the system and explain their functionality and various challenges encountered throughout the development, we then give a complete picture of the system by putting everything together. In Chapter 6, we describe the experiment we conducted to gather data to help us make conclusions about the players knowledge of targeted advertising systems as well as the system's usability. Additionally, we analyse the gameplay for all the participants in any attempt to explore their behaviour any identify any patterns in their strategy. Finally, in Chapter 7 we summarise the project, discuss the limitations of our product and propose various improvements that could be made to various aspects of the product as well as the evaluation in future work.
 
 %==================================================================================================================================
 \chapter{Background}
@@ -250,12 +245,12 @@ Our game falls into the category of seamful games, where the technical limitatio
 In our game we are not exactly exposing the technical limitations of our game's infrastructure but rather exposing aspects of the targeted advertising systems, which we consider to be seams inside web browsers, as the way they function is hidden from users and they are part of the web browser's infrastructure.
 
 \subsection{Blacklight}
-What is blacklight?
+\cite{blight} is a real-time website privacy inspector that inspects the different types of surveillance that can be found in websites. It works by visiting the pages in an automated browser and running custom software that identifies: third-party cookies, trackers, key loggers, session recorders, canvas fingerprinting, Facebook trackers, and google analytics re-marketing scripts. Users can interact with Blacklight by inputting a URL of a website in its interface which Blacklight will then visit, run the appropriate software to identify the different surveillance metrics and produce a report which is then displayed to the user. Along with many other metrics, the users can see how many trackers were identified on the page.
 
 \section{Summary}
 In this section we have discussed how targeted advertising systems work and the entities and technologies involved in them. We have also discussed the various issues in these systems. These concepts are important for the development of the game, as they are the core of the game mechanics. 
 
-In the related products section, we looked at products that are either similar to ours or use methods that we have adapted and used for the functionality of our system. The closest product to ours is Tally Saves The Internet Game but it is still very different to what we are trying to do. This project is unique in the sense that it is multi-player and uses both tracking and advertising as game mechanics. 
+In the related products section, we looked at products that are either similar to ours or use methods that we have adapted and used for the functionality of our system. The closest product to ours is Tally Saves The Internet game, which is also implemented as a Chrome extension and uses trackers as game entities. However, it is still significantly different to what we are trying to do. The product we have built is unique in the sense that it is multi-player and uses both tracking and advertising as game mechanics. 
 
 %==================================================================================================================================
 \chapter{Analysis/Requirements}
@@ -596,7 +591,7 @@ our app can connect to. One of the most supported and commonly used add-ons is t
 
 In this chapter we discuss the implementation details for the most important aspects of the different components of the system. This is by no means a comprehensive and exhaustive discussion, as we avoid delving into much detail and exclude parts of the system that we assume are trivial to implement and require no further explanation. 
 
-We start by briefly explaining our software development process which was put in place to ensure that the project was organised and that most good software practises were followed.
+We start by briefly explaining our software development process which was put in place to ensure that the project was organised and that most good software practises were followed. We then start by describing how we handled the communication between the different components of the system and continue by discussing the implementation details for the three components of the system as well as the database.
 
 \section{Software Development Process}
 
@@ -728,6 +723,9 @@ The render method of the component allows us to write HTML directly in the JavaS
 \section{The Chrome Extension}
 The Chrome Extension consists of two parts: the interface, which can be toggled by clicking on the extension's icon in the browser and the scripts that handle the functionality of the extension.
 
+\subsection{Extension storage}
+To handle the game-play logic we have defined different types of scripts that need access to the same variables or data structures to handle the logic. Therefore, to allow different scripts to access the same variables, we use the extensions local storage API, this way we can access the local storage from the scripts instead of having to set up communication between scripts. Furthermore, the API provides events listeners that listen to any storage changes and execute a callback function. We use the API along with variables used as flags to detect different state changes in the game.
+
 \subsection{Interface}
 The interface of the extension is fairly simple and it displays information about the game only when users are in an active game. This provides feedback to the user of the state of the game and the scores of other players. To handle real time updates to the extension's interface, we embed a script in the html content of the interface that listens to any changes to the storage of the extension. When something changes in the storage, we check to see if it was the game state, in which case, we use the new game state to modify the values of our HTML elements dynamically. Figure \ref{fig:ext} shows the final interface of the extension for both game modes while the user is in an active game with 2 other players. The player can see the winning condition, their own number of unique trackers in the case of the Race mode or the latest category found along with its image in the case of the Category mode. The player can also see the unique tracker score of other players in the case of the Race mode and the latest category the other players have found in the case of the category mode.
 
@@ -739,6 +737,9 @@ The interface of the extension is fairly simple and it displays information abou
 
     \label{fig:ext} 
 \end{figure}
+
+
+
 
 \subsection{Tracker identification}
 Chrome extensions allows us to define scripts that run in the background, meaning that these scripts are active on all pages. To identify trackers we use a background script with two main functionalities, implemented by utilising the Google Chrome developer API. The first functionality is to ensure that the script only executes its logic when the player is in an active game. This means that the script should be aware when a game is active or not. To implement this we set up an event listener to listen for changes in the extension's local storage. We then check if there is any value changes to particular flags used to indicate that a game is active or not. Using these flags we can then decide when to execute the scripts logic. The second and most important functionality of this script is identifying and counting trackers while also emitting events to the server to update the game state for all other players. An event is also emitted to the server when the player wins. 
@@ -761,16 +762,16 @@ Advert elements are typically served to the user through HTTP response objects a
 %==================================================================================================================================
 \chapter{Evaluation} 
 In this chapter we evaluate user's knowledge of targeted advertising systems before and after playing the game, as well as the usability of the system by conducting an experiment. 
-Before we discuss the results, it is important to note that we had trouble finding people to participate in this experiment. In total, 9 participants took part in the experiment, playing a total of 6 games: 5 games of the Race mode and 1 game of the Category mode. Seven participants took part in the experiment in groups, one was a group of 3 and the other was a group of 4 that played the game together. The remaining 2 participants played the game solo. Additionally, 6 of the participants were computer science students that were already exposed to these concepts through university courses. Due to the small number of participants and the fact that most of them were not the target audience, we were unable to reach valid conclusions from our analysis. We discuss our methodology and our findings within these limitations.
+Before we discuss the results, it is important to note that we had trouble finding people to participate in this experiment. In total, 9 participants took part in the experiment, playing a total of 6 games: 5 games of the Race mode and 1 game of the Category mode. Seven participants took part in the experiment in groups, one was a group of 3 and the other was a group of 4 that played the game together. The remaining 2 participants played the game solo. Additionally, 6 of the participants were computer science students that were already exposed to these concepts through university courses. Due to the small number of participants and the fact that most of them were not the target audience, the conclusions reached from our analysis might not be generalisable. We discuss our methodology and our findings within these limitations.
 
 \section{Experiment}
 For the experiment, participants were asked to complete a survey. The survey included questions to evaluate the user's knowledge of targeted advertising systems, tracking and the privacy issues involved with these systems. It also included questions aimed at evaluating the system's usability in general. The survey first asked participants to rate their knowledge on a scale of 1 to 5 of various aspects of these systems. A rating of 1 means that the participant's knowledge is very poor and a rating of 5 means that the participant's knowledge is excellent. Participants were also asked to rate their technical proficiency, so that we can explore whether there is a relationship between the participant's technical knowledge and their knowledge in targeted advertising systems, which is something we expect. The survey then included instructions on how to set up and play the game, and asked participants to play one game of the Race mode and read the information sections on the web app. After playing the game, participants were again asked to rate their knowledge on the same questions that they were asked before the gameplay. Finally, the survey included ten questions taken from the SUS questionnaire (\cite{sus}) aimed at evaluating the system's usability.
 
-A better experiment would have been to ask people to play multiple games, as they would get more familiar with the gameplay and perhaps understand these concepts better. This would have also given us more data to analyse and try and reach conclusions. However, due to the difficulty in finding participants and the amount of time it took to complete the experiment (20-30 minutes), we did not want participants to feel like they were asked to do too much or waste too much of their time, because they might simply choose not to take part in the experiment.
+A better experiment would have been to ask people to play multiple games, as they would get more familiar with the gameplay and perhaps understand these concepts better. This would have also given us more data to analyse and try and reach even more conclusions. However, due to the difficulty in finding participants and the amount of time it took to complete the experiment (20-30 minutes), we did not want participants to feel like they were asked to do too much or waste too much of their time, because they might simply choose not to take part in the experiment.
 
 \subsection{User Knowledge Of Targeted Advertising System}
 Figure \ref{fig:know} shows a table of the responses from all the participants that took part in the experiment for the knowledge questions, along with the description of each question. As we can observe from the table, almost all participants rated at least one aspect of these systems higher after playing the game. The most significant result is the improvement in knowledge of targeted advertising systems, as 8 out of 9 participants reported an increase of 1 or more in their perceived knowledge rating. The other participant rated their knowledge as excellent, so there was no possibility for improvement there.
-The increase in perceived knowledge could potentially mean that the participant's learned something they did not know before from playing the game, but there is not enough evidence to confirm this. It is worth noting that for the few participants that rated their technical proficiency low, the increase in perceived knowledge is more significant. This is because participants with higher technical proficiency are more likely to be exposed to these concepts. 
+The increase in perceived knowledge could potentially mean that the participant's learned something they did not know before from playing the game, but there is not enough evidence to confirm that this is the case. It is worth noting that for the few participants that rated their technical proficiency low, the increase in perceived knowledge is more significant. This is because participants with higher technical proficiency are more likely to be exposed to these concepts. 
 
 From the results it also seems that the participants did not feel like they learned something about the various privacy issues in targeted advertising systems. This might be because this concept was not directly related to the gameplay but instead information was given through the information sections and participants might have chosen not to read the information sections, even though they were asked to. An interesting result that we observed is that some participants rated their knowledge lower after playing the game. This is most prominent in the privacy issues question and it might mean two things: either the participants made a mistake or they realised that these systems are far more complex than they initially thought and they rated their knowledge lower to reflect this. However, as the survey responses were anonymous, we could not follow up to confirm this.
 
@@ -860,7 +861,7 @@ In terms of the non-functional requirements, the only requirement that was not f
 \chapter{Conclusion}    
 
 \section{Summary}
-For this project, we have created an online multiplayer game in order to investigate the knowledge different users have on targeted advertising systems and tracking in web browsers and attempt to improve it. The game uses trackers and averts as game resources in two different game modes and the premise is that by interacting with the game, users can observe directly what is happening behind the scenes in terms of tracking and advertising when they visit different websites. The game was implemented as a web application, which allows users to create accounts and search for games while at the same time earn achievements while playing. Additionally, a Chrome Extension was developed to enable the gameplay, as we need access to the user's DOM and network requests inside their browser. 
+For this project, we have created an online multiplayer game in order to investigate the knowledge different users have about targeted advertising systems and tracking in web browsers and attempt to improve it. The game uses trackers and adverts as game resources in two different game modes and the premise is that by interacting with the game, users can observe directly what is happening behind the scenes in terms of tracking and advertising when they visit different websites. The game was implemented as a web application, which allows users to create accounts and search for games while at the same time earn achievements while playing. Additionally, a Chrome Extension was developed to enable the gameplay, as we need access to the user's DOM and network requests inside their browser. 
 
 In the background section we have discussed how targeted advertising systems work, what types of data trackers gather and how they do it, and the roles of the different entities involved in these systems. While the discussion was not all inclusive and we avoided delving into too much detail, it gives the reader the necessary context to understand the concepts in the game. 
 
@@ -870,7 +871,7 @@ With the web application deployed, we ran an experiment in order to evaluate our
 
 \section{Limitations}
 \label{limitations}
-There were three main limitation that were discussed in this paper which we summarise here in short. The first limitation is the tracker list that we use to identify trackers; this list contains domains of known trackers but it is not exhaustive, meaning that there are potential cases where we fail to identify a tracker because their domain is not in the list. We could have potentially combined multiple tracker lists but the limitation still remains, as it is safe to assume that there are tracker domains not found in any of these lists. The second limitation is the way we identify and categorise adverts, which limits the game only to Google's DoubleClick adverts. Additionally, we categorise adverts by their redirection URL, using a Web Categorisation API, which could either fail to categorise an advert or categorise it wrong. The third limitation was the small number of participants in the experiments and the fact that they did not represent the target audience. This made it difficult to reach any valid conclusions with the limited data we had.
+There were three main limitation that were discussed in this paper which we summarise here in short. The first limitation is the tracker list that we use to identify trackers; this list contains domains of known trackers but it is not exhaustive, meaning that there are potential cases where we fail to identify a tracker because their domain is not in the list. We could have potentially combined multiple tracker lists but the limitation still remains, as it is safe to assume that there are tracker domains not found in any of these lists. The second limitation is the way we identify and categorise adverts, which limits the game only to Google's DoubleClick adverts. Additionally, we categorise adverts by their redirection URL, using a Web Categorisation API, which could either fail to categorise an advert or categorise it wrong. The third limitation was the small number of participants in the experiments and the fact that they did not represent the target audience. This made it difficult to reach conclusions that generalise with the limited data we had.
 
 \section{Future Work}
 When we were developing the game, we focused on important features that contribute to the functionality of the system. This means that there is a lot of room for additional features to be added that would enhance either the gameplay or the user experience. In this section, we will first discuss potential improvements for the limitations mentioned above and then propose general improvements to the project.
@@ -891,7 +892,7 @@ A voting system inside the lobby can be implemented, to allow users to personali
 Finally, improvements can be made to the gameplay by either enhancing the existing game modes by adding more features, adding different types of feedback to the extension's interface, or by implementing more game modes, that use different aspects of targeted advertising systems as game mechanics.
 
 \subsection{Experiment and Evaluation Improvements}
-The fact that we had a small number of participants made it difficult to interpret the gameplay and reach valid conclusions. Before moving forward with the development of new features, it would certainly be beneficial to run an evaluation experiment again with a wider and more diverse pool of participants. This is because a more valid evaluation could indicate what area of the system needs the most improvements. For our experiment we asked users to play one single game of Race mode and optionally play more games of either game mode. Different experiments can also provide different data that could be used in conjunction . For example, asking participants to play both game modes multiple times, and observe how their strategy develops after playing multiple games.
+The fact that we had a small number of participants made it difficult to interpret the gameplay and determine with certainty if playing the game improves the participants knowledge of targeted advertising systems. Before moving forward with the development of new features, it would certainly be beneficial to run an evaluation experiment again with a wider and more diverse pool of participants. This is because a more valid evaluation could indicate what area of the system needs the most improvements. For our experiment we asked users to play one single game of Race mode and optionally play more games of either game mode. Different experiments can also provide different data that could be used in conjunction . For example, asking participants to play both game modes multiple times, and observe how their strategy develops after playing multiple games.
 
 The focus of our evaluation was mainly about user knowledge of targeted advertising systems but the game can be used to evaluate other concepts as well. For example, determining what role the player's location and demographics have on the category of adverts that they are being served. This could be done by having different groups of people with different demographics play the game from different locations and then analysing the results to see if there is a statistical difference between the distribution of advert categories seen by the groups. 
 
@@ -909,29 +910,31 @@ As we have observed from trial runs of the game, the number of trackers on a pag
 
 \section{Ethics Checklist}
 
-%\includepdf[pages=-]{images/Ethics_Checklist.pdf}
+\includepdf[pages=-]{images/Ethics_Checklist.pdf}
 
 \section{Design Evaluation Survey}
 
-%\includepdf[pages=-]{images/design_survey.pdf}
+\includepdf[pages=-]{images/design_survey.pdf}
 
 \section{Results For Design Evaluation}
-TODO: Include tables and graphs of the responses gathered from this survey.
+
+\includepdf[pages=-]{images/design_responses.pdf}
 
 \section{Gameplay Evaluation Survey}
 
-%\includepdf[pages=-]{images/gameplay_survey.pdf}
+\includepdf[pages=-]{images/gameplay_survey.pdf}
 
 \section{Results For Gameplay Evaluation}
-TODO: Include tables and graphs of the responses gathered from this survey.
+
+\includepdf[pages=-]{images/gameplay_responses.pdf}
 
 \section{User Evaluation Survey}
 
-%\includepdf[pages=-]{images/user_evaluation_survey.pdf}
+\includepdf[pages=-]{images/user_evaluation_survey.pdf}
 
 \section{Results For User Evaluation Survey}
-TODO: Include tables and graphs of the responses gathered from this survey.
 
+\includepdf[pages=-]{images/user_responses.pdf}
 
 \end{appendices}
 
