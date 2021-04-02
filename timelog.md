@@ -699,3 +699,53 @@
 ### 20 Mar 2021
 * *1 hour* Evaluating the gameplay of players
 
+### 21 Mar 2021
+* *1 hour* Dissertation writing
+
+## Week 23
+
+### 22 Mar 2021
+* No Progress
+
+### 23 Mar 2021
+* *1 hour* Dissertation writing
+
+### 24 Mar 2021
+* *2 hours* Dissertation writing
+* *2 hours* Evaluating gameplay and survey responses and creating tables/plots
+
+### 25 Mar 2021
+* *1 hour* Dissertation writing
+
+### 26 Mar 2021
+* *1 hour* Dissertation writing
+
+### 27 Mar 2021
+* *1 hour* Dissertation writing
+
+### 28 Mar 2021
+* *1 hour* Dissertation writing
+
+## Week 24
+
+### 28 Mar 2021
+* *2 hours* Organising code and documenting
+
+### 29 Mar 2021
+* *1 hour* Organising code and documenting
+
+### 30 Mar 2021
+* *1 hour* Organising code and documenting
+
+### 31 Mar 2021
+* No Progress
+
+### 01 Apr 2021
+* *0.5 hour* Preparing for supervisor meeting
+* *0.5 hour* Supervisor meeting
+* *2 hours* Dissertation writing
+* *2 hours* Organising code and documenting
+
+### 02 Apr 2021
+* *2 hours* Refinements to dissertation and appendix
+* *2 hours* Organising GitHub and readmes
