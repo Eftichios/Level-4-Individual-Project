@@ -1,0 +1,1 @@
+This directory contains the React App's source files. All required packages used by the components are found in `package.json` and can be installed by executing `npm install`.
