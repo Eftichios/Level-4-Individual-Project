@@ -118,7 +118,18 @@
   * Make any changes required if something unexpected happens
   * Focus on dissertation writing
 * **Week 21**
+  * Dissertation writing
+  * Evaluate survey responses
+  * Create plots and graphs of survey responses
 * **Week 22**
+  * Dissertation writing
+  * Evaluate gameplay of players
 * **Week 23 [TERM ENDS]**
-* **Week 24** Dissertation submission deadline and presentations.
+  * Continue evaluating gameplay of players
+  * Organise code and document
+  * Dissertation writing
+* **Week 24**
+  * Finish dissertation
+  * Create presentation slides and video
+  * Submit
 
