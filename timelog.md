@@ -749,3 +749,11 @@
 ### 02 Apr 2021
 * *2 hours* Refinements to dissertation and appendix
 * *2 hours* Organising GitHub and readmes
+
+### 03 Apr 2021
+* *4 hour* Final refinements and grammar checks to dissertation
+
+### 04 Apr 2021
+* *2 hour* Working on presentation slides
+* *3 hours* Creating the presentation video
+
